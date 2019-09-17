@@ -1,13 +1,19 @@
-*{
+body{
   margin: 0;
   padding: 0;
-}
-body{
   line-height: 1.8;
   font-family: sans-serif;
   color:#222;
   background-color: #fff;
 }
+/*设置头和脚的宽度*/
+.my_header iframe ,.my_footer iframe {
+    width:100%;
+}
+.my_footer iframe{
+    height:23rem;
+}
+
 /* head.html */
 input.button,input.button:hover{
   border:1px solid transparent;
@@ -46,6 +52,7 @@ input.button,input.button:hover{
     font-size:0.8rem;
   }
 }
+
 /* foot.html */
 .foot-div{
   background: #84CF6D;
@@ -78,4 +85,22 @@ footer img{
   footer .col-md-3{
     display: none;
   }
+}
+/* index.html */
+/* 用i标签做小图标 */
+ul.homeicon,ul.homeicon li{
+  font-size: 0.9rem;
+}
+.icon{
+  display: inline-block;
+  background:url(../img/cat-icon.png) no-repeat;
+  width:2rem;
+  height:2rem;
+  margin-right:1rem;
+}
+.homeicon-0 .icon{
+  background-position: 0 0;
+}
+.homeicon-1 .icon{
+  background-position: 0 -40px;
 }
