@@ -12,8 +12,11 @@
     "url": "https://git.sinacloud.com/xiachufang"
   },
   "dependencies": {
-    
+    "express": "^4.13.3"
   },
-  "author": "xujing",
+  "author": {
+    "name":"xujing",
+    "email": "517006882@qq.com"
+  },
   "license": "ISC"
 }
