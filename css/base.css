@@ -2,6 +2,13 @@
   margin: 0;
   padding: 0;
 }
+body{
+  line-height: 1.8;
+  font-family: sans-serif;
+  color:#222;
+  background-color: #fff;
+}
+/* head.html */
 input.button,input.button:hover{
   border:1px solid transparent;
   border-radius:0;
@@ -15,10 +22,6 @@ input.button,input.button:hover{
   color:#fff;
   background: #dd3915;
   text-decoration: none;
-}
-.a-link{
-  display: inline-block;
-  padding: 0.5rem 0.5rem;
 }
 @media screen and (max-width:576px){
   .col-sm-3 {
@@ -41,5 +44,38 @@ input.button,input.button:hover{
     flex: 0 0 75%;
     max-width: 75%;
     font-size:0.8rem;
+  }
+}
+/* foot.html */
+.foot-div{
+  background: #84CF6D;
+  padding:0.5rem 1.5rem 0.5rem;
+  margin:1.25rem;
+  margin-left:0;
+}
+.foot-div>a,.foot-div>a:hover{
+  text-decoration: none;
+  color:#fff;
+  font-size:0.8rem;
+}
+footer a,footer div{
+  color:#909090;
+  font-size:0.8rem;
+  margin:0;
+}
+footer a:hover{
+  color:#909090;
+  text-decoration: none;
+}
+footer .col-md-9 a{
+  float:left;
+  margin-right:0.5rem;
+}
+footer img{
+  width:1.5rem;
+}
+@media screen and (max-width:768px){
+  footer .col-md-3{
+    display: none;
   }
 }
