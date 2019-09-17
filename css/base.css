@@ -1,0 +1,45 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+input.button,input.button:hover{
+  border:1px solid transparent;
+  border-radius:0;
+  background: #dd3915;
+  color:#fff;
+}
+.link-text{
+  color:#dd3915;
+}
+.link-text:hover{
+  color:#fff;
+  background: #dd3915;
+  text-decoration: none;
+}
+.a-link{
+  display: inline-block;
+  padding: 0.5rem 0.5rem;
+}
+@media screen and (max-width:576px){
+  .col-sm-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    font-size:0.8rem;
+  }
+  .col-sm-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    font-size:0.8rem;
+  }
+  .col-sm-9 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+    font-size:0.8rem;
+  }
+}
