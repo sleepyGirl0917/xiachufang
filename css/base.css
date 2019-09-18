@@ -6,6 +6,9 @@ body{
   color:#222;
   background-color: #fff;
 }
+a:hover{
+  text-decoration: none;
+}
 /*设置头和脚的宽度*/
 .my_header iframe ,.my_footer iframe {
     width:100%;
@@ -27,7 +30,6 @@ input.button,input.button:hover{
 .link-text:hover{
   color:#fff;
   background: #dd3915;
-  text-decoration: none;
 }
 @media screen and (max-width:576px){
   .col-sm-3 {
@@ -61,7 +63,6 @@ input.button,input.button:hover{
   margin-left:0;
 }
 .foot-div>a,.foot-div>a:hover{
-  text-decoration: none;
   color:#fff;
   font-size:0.8rem;
 }
@@ -87,20 +88,87 @@ footer img{
   }
 }
 /* index.html */
-/* 用i标签做小图标 */
-ul.homeicon,ul.homeicon li{
+ul.homeicon li{
   font-size: 0.9rem;
+  margin-top: 10px;
 }
+ul.homeicon li a.homeicon-link,ul.homeicon li a.homeicon-link:hover{
+  display: block;
+}
+ul.homeicon li a.homeicon-link{
+  color:#222;
+}
+ul.homeicon li a.homeicon-link:hover{
+  color:#dd3915;
+}
+ul.homeicon li a.homeicon-link span.homeicon-name{
+  vertical-align: middle;
+}
+/* 用i标签做小图标 */
 .icon{
   display: inline-block;
   background:url(../img/cat-icon.png) no-repeat;
   width:2rem;
   height:2rem;
   margin-right:1rem;
+  vertical-align: middle;
 }
-.homeicon-0 .icon{
+ul.homeicon li.homeicon-0 .icon{
   background-position: 0 0;
 }
-.homeicon-1 .icon{
+ul.homeicon li.homeicon-1 .icon{
   background-position: 0 -40px;
 }
+ul.homeicon li.homeicon-2 .icon{
+  background-position: 0 -80px;
+}
+ul.homeicon li.homeicon-3 .icon{
+  background-position: 0 -120px;
+}
+ul.homeicon li.homeicon-4 .icon{
+  background-position: 0 -160px;
+}
+ul.homeicon li.homeicon-5 .icon{
+  background-position: 0 -200px;
+}
+ul.homeicon li.homeicon-6 .icon{
+  background-position: 0 -240px;
+}
+ul.homeicon li.homeicon-7 .icon{
+  background-position: 0 -280px;
+}
+ul.homeicon li.homeicon-8 .icon{
+  background-position: 0 -320px;
+}
+ul.homeicon li.homeicon-9 .icon{
+  background-position: 0 -360px;
+}
+ul.homeicon li.homeicon-10 .icon{
+  background-position: 0 -400px;
+}
+ul.homeicon li.homeicon-11 .icon{
+  background-position: 0 -440px;
+}
+ul.homeicon li.homeicon-12 .icon{
+  background-position: 0 -480px;
+}
+/* ul.homeicon li.homeicon-13 .icon{
+  background-position: 0 -520px;
+} */
+ul.homeicon li.homeicon-13 .homeicon-border{
+  margin:1rem 0 1rem;
+  border:1px solid #F3F3F3;
+}
+ul.homeicon li.homeicon-14 .icon{
+  background-position: 0 -560px;
+}
+ul.homeicon li.homeicon-15 .icon{
+  background-position: 0 -600px;
+}
+ul.homeicon li.homeicon-16 .icon{
+  background-position: 0 -640px;
+}
+ul.homeicon li.homeicon-17 .icon{
+  background-position: 0 -680px;
+}
+
