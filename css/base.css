@@ -336,3 +336,10 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   right:0;
   background-position:-31px -280px;
 }
+.rookie-recipe-item{
+  width:32%;
+}
+.rookie-recipe-item img{
+  max-width: 100%;
+  padding:1rem 0;
+}
