@@ -153,11 +153,11 @@ a.homemenu-link{
 a.homemenu-link:hover{
   color:#dd3915;
 }
-ul.homemenu li a.homemenu-link span.homeicon-name{
+ul.homemenu li a.homemenu-link span.home-ul-icon-name{
   vertical-align: middle;
 }
 /* 用i标签做小图标 */
-.homeicon{
+.home-ul-icon{
   display: inline-block;
   background:url(../img/cat-icon.png) no-repeat;
   width:2rem;
@@ -165,72 +165,72 @@ ul.homemenu li a.homemenu-link span.homeicon-name{
   margin-right:1rem;
   vertical-align: middle;
 }
-ul.homemenu li.homemenu-0 .homeicon{
+ul.homemenu li.homemenu-0 .home-ul-icon{
   background-position: 0 0;
 }
-ul.homemenu li.homemenu-1 .homeicon{
+ul.homemenu li.homemenu-1 .home-ul-icon{
   background-position: 0 -40px;
 }
-ul.homemenu li.homemenu-2 .homeicon{
+ul.homemenu li.homemenu-2 .home-ul-icon{
   background-position: 0 -80px;
 }
-ul.homemenu li.homemenu-3 .homeicon{
+ul.homemenu li.homemenu-3 .home-ul-icon{
   background-position: 0 -120px;
 }
-ul.homemenu li.homemenu-4 .homeicon{
+ul.homemenu li.homemenu-4 .home-ul-icon{
   background-position: 0 -160px;
 }
-ul.homemenu li.homemenu-5 .homeicon{
+ul.homemenu li.homemenu-5 .home-ul-icon{
   background-position: 0 -200px;
 }
-ul.homemenu li.homemenu-6 .homeicon{
+ul.homemenu li.homemenu-6 .home-ul-icon{
   background-position: 0 -240px;
 }
-ul.homemenu li.homemenu-7 .homeicon{
+ul.homemenu li.homemenu-7 .home-ul-icon{
   background-position: 0 -280px;
 }
-ul.homemenu li.homemenu-8 .homeicon{
+ul.homemenu li.homemenu-8 .home-ul-icon{
   background-position: 0 -320px;
 }
-ul.homemenu li.homemenu-9 .homeicon{
+ul.homemenu li.homemenu-9 .home-ul-icon{
   background-position: 0 -360px;
 }
-ul.homemenu li.homemenu-10 .homeicon{
+ul.homemenu li.homemenu-10 .home-ul-icon{
   background-position: 0 -400px;
 }
-ul.homemenu li.homemenu-11 .homeicon{
+ul.homemenu li.homemenu-11 .home-ul-icon{
   background-position: 0 -440px;
 }
-ul.homemenu li.homemenu-12 .homeicon{
+ul.homemenu li.homemenu-12 .home-ul-icon{
   background-position: 0 -480px;
 }
-/* ul.homemenu li.homemenu-13 .homeicon{
+/* ul.homemenu li.homemenu-13 .home-ul-icon{
   background-position: 0 -520px;
 } */
-ul.homemenu li.homemenu-13 .homeicon-border{
+ul.homemenu li.homemenu-13 .home-ul-icon-border{
   margin:1rem 0 1rem;
   border:1px solid #F3F3F3;
 }
-ul.homemenu li.homemenu-14 .homeicon{
+ul.homemenu li.homemenu-14 .home-ul-icon{
   background-position: 0 -560px;
 }
-ul.homemenu li.homemenu-15 .homeicon{
+ul.homemenu li.homemenu-15 .home-ul-icon{
   background-position: 0 -600px;
 }
-ul.homemenu li.homemenu-16 .homeicon{
+ul.homemenu li.homemenu-16 .home-ul-icon{
   background-position: 0 -640px;
 }
-ul.homemenu li.homemenu-17 .homeicon{
+ul.homemenu li.homemenu-17 .home-ul-icon{
   background-position: 0 -680px;
 }
 .mt-home{
   margin-top:2rem;
 }
-.home-subicon{
+.home-icon{
   display: inline-block;
   background: url(../img/icon-arrow.png) no-repeat;
 }
-.home-subicon-arrow{
+.home-icon-arrow{
   position: absolute;
   background-position: -7px -58px;
   width:0.8rem;
@@ -258,4 +258,81 @@ ul.homemenu li.homemenu-17 .homeicon{
 }
 .ul-mar{
   bottom:-50px;
+}
+/* 轮播图 */
+/* .carouser */
+.carousel-caption {
+  left:5%;
+  right:0;
+  bottom:1rem;    
+  text-align:left;
+}
+.carousel-indicators{
+  bottom:-20px;
+  margin:0;
+}
+.carousel-indicators li{
+  width:8px;
+  height:8px;
+  border-radius: 50%;
+  border:1px solid rgb(128,128,128);
+}
+.carousel-indicators li:hover{
+  background:rgb(181,181,181);
+}
+.carousel-indicators li.active{
+  background:rgb(128,128,128);
+}
+.carousel-title{
+  font-size:30px;;
+  font-weight: 700;
+}
+.carousel-num,.carousel-author{
+  font-size:13px;
+}
+.carousel-item img{
+  width:540px;
+}
+
+.home-icon-carousel{
+  /* 最近的已定位祖先元素是div.carousel */
+  position: absolute;
+  background-position: 0 -10px;
+  width: 20px;
+  height: 20px;
+  right:36%;
+  bottom:-20px;
+}
+@media screen and (max-width:768px){
+  .carousel-title{
+    font-size:20px;;
+    font-weight: 600;
+}
+  .home-icon-carousel{
+    right:30%;
+  }
+}
+/* 菜谱 */
+.rookie-recipe{
+  position:relative;
+}
+.title{
+  margin:0;
+  font-size:20px;
+  font-weight: 700;
+  color:#C0AE7D;
+}
+.home-icon-left-arrow{
+  position: absolute;
+  width:24px;
+  height:24px;
+  right:30px;
+  background-position:-120px -280px;
+}
+.home-icon-right-arrow{
+  position: absolute;
+  width:24px;
+  height:24px;
+  right:0;
+  background-position:-31px -280px;
 }
