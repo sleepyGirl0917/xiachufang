@@ -313,7 +313,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   }
 }
 /* 菜谱 */
-.rookie-recipe{
+.rookie-recipe-title{
   position:relative;
 }
 .title{
@@ -337,9 +337,14 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   background-position:-31px -280px;
 }
 .rookie-recipe-item{
+  color:transparent;
   width:32%;
 }
 .rookie-recipe-item img{
   max-width: 100%;
-  padding:1rem 0;
+}
+.rencent-pop ul img{
+
+    width: 235px;
+    height: 138px;
 }
