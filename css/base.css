@@ -344,7 +344,26 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   max-width: 100%;
 }
 .rencent-pop ul img{
-
+    object-fit: cover;
     width: 235px;
     height: 138px;
+}
+.rencent-pop ul li{
+  float:left;
+}
+/* :nth 奇数个li加右外边距，偶数个li加左外边距 */
+.rencent-pop ul img:hover{
+  opacity: 0.9;
+}
+.rencent-pop ul li .font-recipe{
+  font-size: 18px;
+}
+.rencent-pop ul li .stats{
+  font-size: 12px;
+}
+.rencent-pop ul li .stats span{
+  color:#a5a7a6;
+}
+.recipe-pop-border{
+  border:1px solid #f3f3f3;
 }
