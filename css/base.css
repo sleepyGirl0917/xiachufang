@@ -4,7 +4,7 @@ body{
   line-height: 1.8;
   font-family: sans-serif;
   color:#222;
-  background-color: #fff;
+  background-color:#fff;
 }
 a:hover{
   text-decoration: none;
@@ -337,27 +337,43 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   background-position:-31px -280px;
 }
 .rookie-recipe-item{
-  color:transparent;
   width:32%;
+  color:transparent;
 }
 .rookie-recipe-item img{
   max-width: 100%;
 }
+ul img:hover{
+  opacity: 0.9;
+}
+/* 最近流行 */
 .rencent-pop ul img{
     object-fit: cover;
-    width: 235px;
+    width:100%;
     height: 138px;
 }
 .rencent-pop ul li{
+  margin-bottom: 1.5rem;
+}
+/*第奇数个li*/
+.rencent-pop ul li:nth-child(odd){
   float:left;
+  width:50%;
 }
-/* :nth 奇数个li加右外边距，偶数个li加左外边距 */
-.rencent-pop ul img:hover{
-  opacity: 0.9;
+.rencent-pop ul li:nth-child(odd) .recipe-width{
+  margin-right:0.8rem;
 }
-.rencent-pop ul li .font-recipe{
+/*第偶数个li */
+.rencent-pop ul li:nth-child(even){
+  float:right;
+  width:50%;
+}
+.rencent-pop ul li:nth-child(even) .recipe-width{
+  margin-left: 0.8rem;
+}
+/* .rencent-pop ul li .font-recipe{
   font-size: 18px;
-}
+} */
 .rencent-pop ul li .stats{
   font-size: 12px;
 }
@@ -367,3 +383,35 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
 .recipe-pop-border{
   border:1px solid #f3f3f3;
 }
+.recipe-title{
+  margin:10px 5px 0;
+  font-size: 18px;
+}
+/* 时令食材 */
+.seasonal-ingredients .season-bg{
+  background: #f5f6f5;
+}
+.seasonal-ingredients .season-bg img{
+  width:100%;
+  /* height:60px; */
+}
+.seasonal-ingredients .season-bg ul{
+  /* padding:0 21px; */
+}
+.seasonal-ingredients .season-bg ul li{
+  text-align: center;
+  /* width:70px; */
+  width:16%;
+  float:left;
+  margin:0 2px;
+}
+.seasonal-ingredients .season-bg ul li a{
+  display: block;
+  padding:2px;
+}
+.seasonal-ingredients .season-bg ul li a span{
+  display: block;
+  margin:4px;
+  font-size:12px;
+}
+/* a标签给内边距，li给外边距,每行6个li,计算ul的内外边距 要写媒体查询*/
