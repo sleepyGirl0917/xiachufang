@@ -389,29 +389,144 @@ ul img:hover{
 }
 /* 时令食材 */
 .seasonal-ingredients .season-bg{
-  background: #f5f6f5;
+  background: #f5f5f5;
 }
 .seasonal-ingredients .season-bg img{
   width:100%;
-  /* height:60px; */
 }
 .seasonal-ingredients .season-bg ul{
-  /* padding:0 21px; */
+  padding:10px 7px 6px;
 }
 .seasonal-ingredients .season-bg ul li{
   text-align: center;
-  /* width:70px; */
-  width:16%;
+  width:16.666%;
   float:left;
-  margin:0 2px;
+  padding:4px 5px;
 }
 .seasonal-ingredients .season-bg ul li a{
   display: block;
-  padding:2px;
+  margin:0 2px;
 }
 .seasonal-ingredients .season-bg ul li a span{
   display: block;
   margin:4px;
   font-size:12px;
 }
-/* a标签给内边距，li给外边距,每行6个li,计算ul的内外边距 要写媒体查询*/
+/* 大家的作品 */
+.col-12{
+  padding:0;
+}
+.opus{
+   background: #f5f5f5;
+   padding:2rem 2rem;
+   margin:0 0 2px;
+}
+.opus h3{
+  font-size:24px;
+  line-height: 2;
+}
+@media screen and (max-width:768px){
+  .opus h3{
+    font-size:20px;
+  }
+}
+@media screen and (max-width:576px){
+  .opus h3{
+    font-size:16px;
+  }
+}
+.opus .opus-link{
+  font-size: 14px;
+  font-weight: 700;
+}
+.opus .opus-link a{
+  display: inline-block;
+  margin-right:2rem;
+  overflow: hidden;
+  color: #dd3915;
+  text-decoration: none;
+}
+.opus .opus-link a:hover{
+  color:#fff;
+  background: #dd3915;
+}
+.opus .title .num{
+  color:#ec6c3f;
+}
+.event li{
+  background: #f5f5f5;
+  margin:0 0 2px;
+  padding:2rem 2rem;
+  position: relative; /*配合a.cover-link定位*/
+}
+.event .event-left>*{
+  float:left;
+  padding:0 2px;
+}
+.event .cover-link{
+  display: block;
+  width:100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.event .desc{
+  font-size: 12px;
+  color: #909090;
+}
+.w-60{
+  width:60%;
+}
+.w-40{
+  width:40%;
+}
+.w-33{
+  width:33.333%;
+}
+.event-left img{
+  width:100%;
+}
+/* 登录卡片 */
+.login-part{
+  padding: 4rem 2rem 2rem;
+  background:#f5f5f5;
+  text-align: center;
+  position: relative;
+  margin-bottom:30px;
+}
+.login-part .button{
+  background: #dd3915;
+  display: block;
+  color:#fff;
+  width:170px;
+  margin:5px auto;
+  padding:10px 10px;
+}
+.login-part a{
+  font-size:14px;
+}
+.login-part .report-link{
+  position: absolute;
+  width:100%;
+  text-align: center;
+  left:0;
+  bottom:16px;
+}
+.login-icon{
+  display: inline-block;
+  background:url(../img/login-icon.png) no-repeat;
+  width:16px;
+  height:16px;
+  margin-right:8px;
+  vertical-align: middle;
+}
+.login-icon-qq{
+  background-position: 0 0;
+}
+.login-icon-webo{
+  background-position: 0 -30px;
+}
+/* 流行搜索 */
+/* 流行菜单 */
+/* 下厨房的厨友们 */
