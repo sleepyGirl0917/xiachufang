@@ -9,6 +9,25 @@ body{
 a:hover{
   text-decoration: none;
 }
+.button {
+  display: inline-block;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  border: none;
+  line-height: normal;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5em 2em;
+  font-size: 15px;
+}
+.button,.button:hover {
+  color: #fff;
+  background-color: #dd3915;
+}
 /*设置头和脚的宽度*/
 .my_header iframe ,.my_footer iframe {
     width:100%;
@@ -255,9 +274,6 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
 .menu-float>*{
   float: left;
   display: block;
-}
-.ul-mar{
-  bottom:-50px;
 }
 /* 轮播图 */
 /* .carouser */
@@ -528,5 +544,99 @@ ul img:hover{
   background-position: 0 -30px;
 }
 /* 流行搜索 */
+.home-icon-euqal{
+  position: absolute;
+  background-position: -20px 0px;
+  width: 10px;
+  height: 10px;
+  right: 10%;
+  bottom: 6px;
+}
+.home-icon-up{
+  position: absolute;
+  background-position: 0 0;
+  width: 10px;
+  height: 10px;
+  right: 10%;
+  bottom: 6px;
+}
+.home-icon-down{
+  position: absolute;
+  background-position: -9px 0px;
+  width: 11px;
+  height: 11px;
+  right: 10%;
+  bottom: 6px;
+}
+.pop-search ol li{
+  position: relative;
+  margin-bottom:3px;
+}
+.pop-search ol li a span{
+  display: inline-block;
+  width:60%;
+  vertical-align: top;
+}
+.pop-search ol li .num{
+  display: inline-block;
+  width: 24px;
+  color: #909090;
+  padding-right: 8px;
+}
 /* 流行菜单 */
+.pop-recipe ul li{
+  margin-bottom: 20px;
+}
+.pop-recipe ul li img{
+  object-fit: cover;
+  width:100%;
+  height:170px;
+}
+.pop-recipe ul li .pop-recipe-title{
+  padding: 14px 10px;
+  font-size: 16px;
+}
 /* 下厨房的厨友们 */
+.cookers .cookers-list ul li{
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom:1rem;
+  margin-bottom:1rem;
+}
+.cookers .cookers-list ul li .cooker-container{
+  position: relative;
+  font-size: 14px;
+}
+.cookers .cookers-list ul li .cooker-container .avatar{
+  display: inline-block;
+}
+.cookers .cookers-list ul li .cooker-container .avatar img{
+  border-radius: 50%;
+  width:60px;
+  height:60px;
+  vertical-align: middle;
+}
+.cookers .cookers-list ul li .cooker-container .detail{
+  display: inline-block;
+  vertical-align: middle;
+  color: #909090;
+  height:60px;
+  line-height: 20px;
+  padding-left: 16px;
+}
+.cookers .cookers-list ul li .cooker-container .detail .stats{
+  font-size:12px;
+}
+.cookers .cookers-list ul li .cooker-container .concern{
+  position: absolute;
+  top:0;
+  right:0;
+}
+.cookers .cookers-list ul li .cooker-container .concern .button{
+  width:90px;
+  height:40px;
+  line-height: 40px;
+  padding:0;
+}
+.cookers .cookers-list .more{
+  text-align: center;
+}
