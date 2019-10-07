@@ -1,0 +1,11 @@
+本期最受欢迎	http://www.xiachufang.com/explore/	
+新秀菜谱		http://www.xiachufang.com/explore/rising/
+往期头条		http://www.xiachufang.com/explore/head/
+厨房101		http://www.xiachufang.com/explore/honor/
+月度最佳		http://www.xiachufang.com/explore/monthhonor/
+最新创建		http://www.xiachufang.com/explore/created/
+流行菜单		http://www.xiachufang.com/explore/menu/pop/
+用户		http://www.xiachufang.com/cook/10000025/
+
+轮播图的图片，取往期头条数据库的前5张
+正则	@(.*)|\?(.*)
