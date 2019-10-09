@@ -28,14 +28,26 @@ a:hover{
   color: #fff;
   background-color: #dd3915;
 }
-/*设置头和脚的宽度*/
-.my_header iframe ,.my_footer iframe {
-    width:100%;
+.top-ad{
+  text-align: center;
+  padding: 10px 0 10px;
+  border-top: 1px solid #f3f3f3;
 }
-.my_footer iframe{
-    height:23rem;
+#toTop{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:none;
+  z-index:20;
 }
-/* head.html */
+#toTop img{
+  cursor: pointer;
+}
+/* header */
+header.container{
+  padding-top:0.5rem;
+  padding-bottom:0.5rem;
+}
 .logo{
   display: inline-block;
   vertical-align: middle;
@@ -62,19 +74,22 @@ input.button,input.button:hover{
 }
 .head-submenu{
   position: absolute;
-  background: #F5F6F5;
   text-align: center;
   width:400px;
-  top:2rem;
+  top:1.5rem;
   left:1rem;
-  padding:0;
+  padding:1rem;
+  z-index:20;
 }
-.head-submenu>ul{
+.head-submenu>div{
+  background: #F5F6F5;
+}
+.head-submenu ul{
   display: inline-block;
   text-align: left;
   margin:1rem 1.3rem 0.5rem;
 }
-.head-submenu>ul>li{
+.head-submenu ul li{
   margin-bottom:0.3rem;
 }
 .my-gray{
@@ -121,7 +136,10 @@ input.button,input.button:hover{
   }
 }
 
-/* foot.html */
+/* footer */
+footer.container{
+  padding-bottom:5rem;
+}
 .foot-div{
   background: #84CF6D;
   padding:0.5rem 1.5rem 0.5rem;
@@ -264,6 +282,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   top:-20px;
   left:160px;
   padding: 1rem 2rem;
+  z-index: 20;
 }
 .homemenu .home-submenu .home-submenu-item{
   padding: 0.8rem 0;
