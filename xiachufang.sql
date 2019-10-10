@@ -10,28 +10,27 @@ SET FOREIGN_KEY_CHECKS=0;
 #取消外键约束
 
 -- ----------------------------
--- Table structure for `xz_index_carousel`
--- 轮播图数据表
+-- Table structure for `xiachufang_explore_head`
+-- 往期头条  轮播图从头条表中取，order by date
 -- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_index_carousel`;
-CREATE TABLE `xiachufang_index_carousel` (
+DROP TABLE IF EXISTS `xiachufang_explore_head`;
+CREATE TABLE `xiachufang_explore_head`(
   `cid` int(11) NOT NULL auto_increment,
-  `img` varchar(128) default NULL,
-  `title` varchar(64) default NULL,
+  `recipe_img` varchar(128) default NULL,
+  `recipe_title` varchar(64) default NULL,
+  `recommend_date` date default NULL,
   `href` varchar(128) default NULL,
-  PRIMARY KEY  (`cid`)
+  PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-#ENGINE=InnoDB使用innodb引擎
-#DEFAULT CHARSET=utf8 数据库默认编码为utf-8
-#AUTO_INCREMENT=13 自增键的起始序号为13
 
 -- ----------------------------
--- Records of xz_index_carousel
+-- Records of xiachufang_explore_head
 -- ----------------------------
-INSERT INTO `xiachufang_index_carousel` VALUES ('9', 'img/index/banner1.png', '轮播广告商品1', 'product_details.html?lid=28');
-INSERT INTO `xiachufang_index_carousel` VALUES ('10', 'img/index/banner2.png', '轮播广告商品2', 'product_details.html?lid=19');
-INSERT INTO `xiachufang_index_carousel` VALUES ('11', 'img/index/banner3.png', '轮播广告商品3', 'lookforward.html');
-INSERT INTO `xiachufang_index_carousel` VALUES ('12', 'img/index/banner4.png', '轮播广告商品4', 'lookforward.html');
+INSERT INTO `xiachufang_explore_head` VALUES ('1','img/head/6e7e3c000ae044339c3e7aaabaafa900_1920w_1080h.jpg','韩国海带汤','2019-10-10','/recipe/103849179');
+INSERT INTO `xiachufang_explore_head` VALUES ('2', 'img/head/a80d958cad79466c9ace1303b2ea2d78_6720w_4480h.jpg', '葱油饼（饺子皮版）', '2019-10-9', '/recipe/102766541');
+INSERT INTO `xiachufang_explore_head` VALUES ('3', 'img/head/d8264d145efe4a198a732340c349878e_900w_596h.jpg', '【不加一滴水的草莓酱】本酱！', '2019-10-8', '/recipe/103768226');
+INSERT INTO `xiachufang_explore_head` VALUES ('4', 'img/head/85a3606580694751b49cd1da7bdb67c7_1505w_1003h.jpg', '左宗棠鸡', '2019-10-7', '/recipe/104077470');
+INSERT INTO `xiachufang_explore_head` VALUES ('5', 'img/head/1455ad70c41245c58f86c910500bc6b9_750w_1000h.jpg', '💯十里飘香啤酒鸭㊙️这样做很简单', '2019-10-6', '/recipe/104085926');
 
 -- ----------------------------
 -- Table structure for `xz_index_product`
