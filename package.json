@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.sinacloud.com/xiachufang"
+    "url": "https://github.com/sleepyGirl0917/xiachufang"
   },
   "dependencies": {
     "express": "^4.13.3"
