@@ -1,18 +1,19 @@
 window.onload = function () {
   // 控制二级列表的显示/隐藏
-  let elems = document.querySelectorAll("[data-list=submenu]")
+  var elems = document.querySelectorAll("[data-list=submenu]")
   for (let elem of elems) {
-    var parent = elem.parentElement;
-    parent.onmouseover = function () {
+    let parent = elem.parentElement;
+    // 添加事件监听对象
+    parent.addEventListener("mouseover",function () {
       elem.setAttribute("style","display:block;")
-    }
-    parent.onmouseout = function () {
+    })
+    parent.addEventListener("mouseout",function () {
       elem.setAttribute("style","display:none;")
-    }
+    })
   }
 }
 
-window.onscroll = function () {
+/* window.onscroll = function () {
   // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
   var scrollTop = document.body.scrollTop
     || document.documentElement.scrollTop;
@@ -22,3 +23,28 @@ window.onscroll = function () {
   else
     toTop.style.display = "none";
 }
+
+window.onload=function() {
+  var toTop = document.getElementById("toTop");
+  toTop.addEventListener("click", function () {
+    scrollTo(0, 0);
+  })
+} */
+
+// JQ实现点击返回顶部（有动画过渡）
+$(function () {
+  $(function () {
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 800) {
+        $("#toTop").fadeIn(500);
+      }
+      else {
+        $("#toTop").fadeOut(500);
+      }
+    });
+    $("#toTop").click(function () {
+      $('body,html').animate({ scrollTop: 0 }, 20);
+      return false;
+    });
+  });
+});
