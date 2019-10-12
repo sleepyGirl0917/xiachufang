@@ -77,10 +77,10 @@ input.button,input.button:hover{
   background: #dd3915;
   color:#fff;
 }
-.head-link,.login-link{
+.head-link,.login-link,.registe-link{
   color:#dd3915;
 }
-.head-link:hover,.login-link:hover{
+.head-link:hover,.login-link:hover,.registe-link:hover{
   color:#fff;
   background: #dd3915;
 }

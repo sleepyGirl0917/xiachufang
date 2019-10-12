@@ -203,7 +203,7 @@
         text.style.color = "#fff";
         btn.innerHTML = "";
         btn.className = "btn_ok"
-        bg.style.backgroundColor = "##76c61d";
+        bg.style.backgroundColor = "#76c61d";
         // 2.设置滑动成功后的状态
         success = true;
         // 成功后，清除掉鼠标按下事件和移动事件（因为移动时并不会涉及到鼠标松开事件）
@@ -227,13 +227,13 @@
       if (success) {
         return;
       } else {
-        //反之，则将滑块复位（设置了1s的属性过渡效果）
+        //否则，将滑块复位（设置了1s的属性过渡效果）
         btn.style.left = 0;
         bg.style.width = 0;
         btn.style.transition = "left 1s ease";
         bg.style.transition = "width 1s ease";
       }
-      //只要鼠标松开了，说明此时不需要拖动滑块了，那么就清除鼠标移动和松开事件
+      //鼠标松开，则说明此时不需要拖动滑块，那么就清除鼠标移动和松开事件
       document.onmousemove = null;
       document.onmouseup = null;
     }
