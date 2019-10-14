@@ -76,6 +76,7 @@ input[type=password], input[type=text] {
   line-height: 50px;
   width: 130px;
   border:1px solid #ebe9e7;
+  cursor: pointer;
 }
 .form-container .code-form .dropdown .selected{
   height:50px;
@@ -197,6 +198,9 @@ input[type=password], input[type=text] {
   width:130px;
   line-height: 50px;
   color:#fff;
+}
+.form-container .code-form a.sendCode .timer {
+  display: none;
 }
 .form-container .code-form a.button,.form-container .code-form a.button:hover{
   background: #c6c1b8;

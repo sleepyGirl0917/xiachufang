@@ -115,20 +115,23 @@
               </div>
             </div>
             <script>
-            var $carat=$("span.carat");
-            var $dropdown= $(".dropdown");
-            var $li=$(".dropdown ul li");
-            $carat.on("click",function(){
-              // console.log(1);
-              $dropdown.toggleClass("open");
-            });
-            $li.on("click",function(){
-              // console.log(2);
-              $li.removeClass("active");
-              $(this).addClass("active");
-              $("span.selected").html($(this).html());
-              $dropdown.removeClass("open");
-            })
+              // 模拟select/option
+              var $carat=$("span.carat");
+              var $dropdown= $(".dropdown");
+              var $li=$(".dropdown ul li");
+              $dropdown.on("click",function(){
+                // console.log(1);
+                $dropdown.toggleClass("open");
+              });
+              $li.on("click",function(){
+                // console.log(2);
+                $li.removeClass("active");
+                $(this).addClass("active");
+                $("span.selected").html($(this).html());
+                $dropdown.removeClass("open");
+              })
+              // 手机号格式验证
+              
             </script>
             <div class="float_g clearfix mb30">
               <label class="drag-label">滑动验证</label>
@@ -221,11 +224,30 @@
               <div class="float_g clearfix">
                 <a href="#" class="button sendCode font12">
                   <span class="action">发送验证码</span>
-                  <span class="timer">60</span>
+                  <span class="timer">5</span>
                 </a>
                 <input class="code" type="text" name="code" autocomplete="off">
               </div>
             </div>
+            <script>
+              $timer = $("span.timer");      
+              $("a.sendCode").on("click",function(){ 
+                // 点击验证框开始倒计时
+                $("span.action").html('重发验证码');
+                $timer.css("display", "inline-block");
+                var timeCounter=setInterval(function(){
+                  var time = parseInt($timer.html());
+                  time--;
+                  if (time == 0) {
+                    // $timer.html("");
+                    $timer.css("display", "none");
+                    clearInterval(timeCounter);
+                  } else {
+                    $timer.html(time);
+                  }
+                },1000);
+              })
+            </script>
           </div>
           <div class="login-form mb30 font12">
             <div class="text-right">
