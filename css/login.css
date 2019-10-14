@@ -110,7 +110,9 @@ input[type=password], input[type=text] {
 }
 .dropdown.open div {
   opacity: 1;
-  z-index: 2;
+  z-index: 30;
+  height:370px;
+  
 }
 .dropdown ul{
   position: absolute;
@@ -119,7 +121,7 @@ input[type=password], input[type=text] {
   height: 100%;
   width: 100%;
   list-style: none;
-  overflow: hidden;
+  overflow: auto;
   padding: 0;
   margin: 0;
 }
@@ -133,6 +135,10 @@ input[type=password], input[type=text] {
 }
 .dropdown li.active {
   font-weight: 700;
+}
+.dropdown li:hover {
+  background:#dd3915;
+  color:#fff;
 }
 /* 滑动 */
 #dragContainer{
