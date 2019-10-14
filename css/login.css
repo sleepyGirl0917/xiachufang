@@ -221,3 +221,11 @@ input[type=password], input[type=text] {
 .form-container .submit{
   margin:0 0 30px 110px;
 }
+.form-container .error {
+  text-align: center;
+  height: 40px;
+  line-height:40px;
+  margin: -40px 0 0;
+  width: 100%;
+  padding:0;
+}

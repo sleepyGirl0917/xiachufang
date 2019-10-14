@@ -30,8 +30,8 @@
   </header>
 
   <div class="container">
-    <div class="row justify-content-center m-4">
-      <span class="font34">经常登录的同志是好同志</span>
+    <div class="row justify-content-center pt-3 mb30 font34">
+      经常登录的同志是好同志
     </div>
     <div class="login-box float_g clearfix">
       <div class="social-login-box">
@@ -41,6 +41,7 @@
       </div>
       <div class="form-container">
         <form action="" method="post">
+          <div class="error font12 w-100"></div>
           <div class="code-form">
             <div class="float_g clearfix mb30">
               <label for="tel">手机号</label>
@@ -121,17 +122,14 @@
               var $li=$(".dropdown ul li");
               $dropdown.on("click",function(){
                 // console.log(1);
-                $dropdown.toggleClass("open");
+                $(this).toggleClass("open");
               });
               $li.on("click",function(){
                 // console.log(2);
                 $li.removeClass("active");
                 $(this).addClass("active");
                 $("span.selected").html($(this).html());
-                $dropdown.removeClass("open");
               })
-              // 手机号格式验证
-              
             </script>
             <div class="float_g clearfix mb30">
               <label class="drag-label">滑动验证</label>
@@ -232,7 +230,17 @@
             <script>
               $timer = $("span.timer");      
               $("a.sendCode").on("click",function(){ 
-                // 点击验证框开始倒计时
+                // 先验证手机号码格式
+                var $tel = $("input.tel");
+                var valid_rule = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
+                var phone_number = $tel.val();
+                // console.log(phone_number)
+                if (!valid_rule.test(phone_number)) {
+                  // alert('手机号码格式有误');
+                  $("form>.error").html('手机号码格式有误');
+                  return false;
+                }
+                // 验证成功后开始倒计时
                 $("span.action").html('重发验证码');
                 $timer.css("display", "inline-block");
                 var timeCounter=setInterval(function(){
