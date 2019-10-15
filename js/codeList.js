@@ -1,4 +1,20 @@
 // 封装用ul/li模拟select/option的方法
+
+/* 
+<div class="dropdown">
+  <span class="selected">中国大陆 +86 </span>
+  <span class="carat"></span>
+  <div>
+    <ul>
+      <li class="active">中国大陆 +86 </li>
+      <li class="">中国台湾 +886 </li>
+      <li class="">中国香港 +852 </li>
+      <li class="">中国澳门 +853 </li>
+    </ul>
+  </div>
+</div> 
+*/
+
 $(document).ready(function () {
   var $dropdown = $(".dropdown");
   var $li = $(".dropdown ul li");

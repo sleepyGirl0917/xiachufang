@@ -1,13 +1,12 @@
 // 封装滑块验证的方法
 
 /* 
-  <div id="dragContainer">
-    <div id="dragBg"></div>
-    <div id="dragText">
-      <span>请按住滑块，拖动到最右边</span>
-    </div>
-    <div id="dragHandler" class="dragHandlerBg">&gt;&gt;</div>
+<div id="dragContainer">
+  <div id="dragBg"></div>
+  <div id="dragText">
+    <span>请按住滑块，拖动到最右边</span>
   </div>
+  <div id="dragHandler" class="dragHandlerBg">&gt;&gt;</div>
 </div> 
 */
 
