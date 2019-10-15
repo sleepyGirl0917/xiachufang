@@ -10,6 +10,7 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/drag.js"></script>
+  <script src="../js/codeList.js"></script>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/login.css">
 </head>
@@ -116,34 +117,6 @@
                 <input class="tel" type="text" name="tel" autocomplete="off">
               </div>
             </div>
-            <script>
-              // 模拟select/option
-              var $carat=$("span.carat");
-              var $dropdown= $(".dropdown");
-              var $li=$(".dropdown ul li");
-              $dropdown.click(function(){
-                // console.log(1);
-                $(this).toggleClass("open");
-              });
-              $li.click(function(){
-                // console.log(2);
-                $li.removeClass("active");
-                $(this).addClass("active");
-                $("span.selected").html($(this).html());
-              })
-              // 点击网页空白区域收回列表
-              $(document).click(function(e) {
-                // console.log(3);
-                // $dropdown为目标区域
-                if (!$dropdown.is(e.target) && $dropdown.has(e.target).length == 0) {
-                    $dropdown.removeClass("open");
-                }
-              });
-              /* 判断点击事件发生在区域外的条件是：
-              1. 点击事件的对象不是目标区域本身 !$dropdown.is(e.target)
-              2. 事件对象同时也不是目标区域的子元素 $dropdown.has(e.target).length == 0
-              */
-            </script>
             <div class="float_g clearfix mb30">
               <label class="drag-label">滑动验证</label>
               <div id="dragContainer">
