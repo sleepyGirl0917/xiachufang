@@ -1,0 +1,75 @@
+body{
+  min-width:960px;
+}
+body .reg-container{
+  width:1000px;
+  margin:auto;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.reg-box{
+  width:40%;
+  margin:auto;
+}
+input[type=password], input[type=text] {
+  border: 1px solid #f3f3f3;
+  letter-spacing: 1px;
+  padding: 0.2em;
+}
+.form-container  input{
+  height: 30px;
+  line-height: 30px;
+}
+.form-container .dropdown{
+  height: 30px;
+  line-height: 30px;
+  width: 130px;
+}
+.form-container .dropdown .selected{
+  height:30px;
+  line-height:30px;
+  padding:0 12px;
+}
+/* 滑动 */
+#dragContainer{
+  width: 300px;
+  height: 34px;
+  background-color: #e8e8e8;
+  position: relative;
+  margin:0;
+  padding:0;
+}
+#dragBg{
+  width:10px;
+  height: 100%;
+  left:0;
+  position: absolute;
+  background-color: #7ac23c;
+}
+#dragText{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 34px;
+  font-size:12px;
+  color: #4d4d4d;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
+#dragHandler{
+  position: absolute;
+  width:40px;
+  height:34px;
+  background-color: #fff;
+  color:#737383;
+  border:1px solid #ccc;
+  left:0;
+  cursor: move;
+  font-family: "宋体";
+  text-align: center;
+  user-select: none;
+  z-index: 2;
+}

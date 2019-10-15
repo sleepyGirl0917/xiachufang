@@ -1,0 +1,234 @@
+html{
+  overflow-x: hidden;
+}
+body{
+  margin: 0;
+  padding:70px 0 0;
+  line-height: 1.8;
+  font-family: sans-serif;
+  color:#222;
+  background-color:#fff;
+}
+header{
+  background: #fff;
+  position:fixed;
+  top:0;
+  height:70px;
+  width:100%;
+  z-index:20;
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,0.2);
+  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+  align-items: center;
+}
+a:hover{
+  text-decoration: none;
+}
+.button {
+  display: inline-block;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  border: none;
+  line-height: normal;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5em 2em;
+  font-size: 15px;
+}
+.button,.button:hover {
+  color: #fff;
+  background-color: #dd3915;
+}
+.logo{
+  display: inline-block;
+  vertical-align: middle;
+  padding:0.5rem 0;
+}
+.logo>img{
+  vertical-align: middle;
+}
+input.button,input.button:hover{
+  border:1px solid transparent;
+  border-radius:0;
+  background: #dd3915;
+  color:#fff;
+}
+.head-link,.login-link,.registe-link{
+  color:#dd3915;
+}
+.head-link:hover,.login-link:hover,.registe-link:hover{
+  color:#fff;
+  background: #dd3915;
+}
+.w-33{
+  width:33.333% !important;
+}
+.w-40{
+  width:40% !important;
+}
+.w-60{
+  width:60% !important;
+}
+.mb10{
+  margin-bottom: 10px !important;
+}
+.mb30{
+  margin-bottom: 30px !important;
+}
+.mt20{
+  margin-top:20px !important;
+}
+.font34{
+  font-size: 34px;
+  font-weight: 700;
+}
+.font12{
+  font-size: 12px;
+  color: #dd3915;
+}
+.float_g>*{
+  float:left;
+  display: block;
+}
+.form-container {
+  margin: 0 0 0 50px;
+}
+.form-container .tel{
+  margin-left: -1px;
+  width: 200px;
+  max-width: 100%;
+}
+/* 列表 */
+.form-container .dropdown{
+  position:relative;
+  height: 50px;
+  line-height: 50px;
+  width: 130px;
+  border:1px solid #ebe9e7;
+  cursor: pointer;
+}
+.form-container .dropdown .selected{
+  height:50px;
+  line-height:50px;
+  padding:0 12px;
+}
+.form-container .dropdown .carat{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -4px;
+  border: 6px solid transparent;
+  border-top: 8px solid #000;
+}
+.form-container .dropdown.open .carat {
+  margin-top: -10px;
+  border: 6px solid transparent;
+  border-bottom: 8px solid #000;
+}
+.form-container .dropdown div {
+  position: absolute;
+  height: 0;
+  left: -1px;
+  right: -1px;
+  top: 100%;
+  margin-top: -1px;
+  background: #fff;
+  border: 1px solid #ebe9e7;
+  border-radius: 0 0 3px 3px;
+  overflow: hidden;
+  opacity: 0;
+}
+.form-container .dropdown.open div {
+  opacity: 1;
+  z-index: 30;
+  height:370px;
+  
+}
+.form-container .dropdown ul{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+}
+.form-container .dropdown .selected,.form-container .dropdown li{
+  display:block;
+  font-size:12px;
+  overflow:hidden;
+  white-space:nowrap;
+  line-height: 1;
+  padding: 14px 12px;
+}
+.form-container .dropdown li.active {
+  font-weight: 700;
+}
+.form-container .dropdown li:hover {
+  background:#dd3915;
+  color:#fff;
+}
+/* 滑动 */
+#dragContainer{
+  width: 300px;
+  height: 34px;
+  background-color: #e8e8e8;
+  position: relative;
+  margin:0;
+  padding:0;
+}
+#dragBg{
+  width:10px;
+  height: 100%;
+  left:0;
+  position: absolute;
+  background-color: #7ac23c;
+}
+#dragText{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 34px;
+  font-size:12px;
+  color: #4d4d4d;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
+#dragHandler{
+  position: absolute;
+  width:40px;
+  height:34px;
+  background-color: #fff;
+  color:#737383;
+  border:1px solid #ccc;
+  left:0;
+  cursor: move;
+  font-family: "宋体";
+  text-align: center;
+  user-select: none;
+  z-index: 2;
+}
+#dragContainer .btn_ok{
+  cursor: default;
+  background: #fff url('../img/icon-ok.svg') no-repeat center;
+}
+.form-container .submit{
+  margin:0 0 30px 110px;
+}
+.form-container .error {
+  text-align: center;
+  height: 40px;
+  line-height:40px;
+  margin: -40px 0 0;
+  width: 100%;
+  padding:0;
+}
