@@ -9,8 +9,7 @@
   <script src="../js/jquery.min.js"></script>
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/drag.js"></script>
-  <script src="../js/codeList.js"></script>
+  <script src="../js/login_reg.js"></script>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/login.css">
 </head>
@@ -139,35 +138,6 @@
                 <input class="code" type="text" name="code" autocomplete="off">
               </div>
             </div>
-            <script>
-              $timer = $("span.timer");      
-              $("a.sendCode").click(function(){ 
-                // 先验证手机号码格式
-                var $tel = $("input.tel");
-                var valid_rule = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
-                var phone_number = $tel.val();
-                // console.log(phone_number)
-                if (!valid_rule.test(phone_number)) {
-                  // alert('手机号码格式有误');
-                  $("form>.error").html('手机号码格式有误');
-                  return false;
-                }
-                // 验证成功后开始倒计时
-                $("span.action").html('重发验证码');
-                $timer.css("display", "inline-block");
-                var timeCounter=setInterval(function(){
-                  var time = parseInt($timer.html());
-                  time--;
-                  if (time == 0) {
-                    // $timer.html("");
-                    $timer.css("display", "none");
-                    clearInterval(timeCounter);
-                  } else {
-                    $timer.html(time);
-                  }
-                },1000);
-              })
-            </script>
           </div>
           <div class="login-form mb30 font12">
             <div class="text-right">
