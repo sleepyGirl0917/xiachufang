@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  // 滑动验证的初始值
+  var success = false; 
+
   // 封装用ul/li模拟select/option的方法
 
   /* 
@@ -59,18 +62,25 @@ $(document).ready(function () {
     }
   }
 
-  // 判断滑动验证是否成功
-  function vali_success(success) {
+  // 判断滑动验证
+  /* function vali_success(success) {
     if (!success) {
-      console.log('滑动验证失败');
+      console.log('没有进行滑动验证或验证失败');
+      return;
     } else {
       console.log('滑动验证成功');
-      // 验证成功后，点击验证框
-      $("a.sendCode").click(function () {
-        // 手机号码也验证成功，才发送验证码
-        if (phone_valid()) sendCode();
-      })
     }
+  } */
+
+  // 验证密码格式
+  function password_valid() {
+    console.log('密码格式验证中···')
+    // console.log('密码长度为6~12位');
+  }
+
+  // 验证码格式
+  function code_valid() {
+    console.log('验证码格式验证中···')
   }
 
   // 发送验证码
@@ -89,14 +99,29 @@ $(document).ready(function () {
         $timer.html(time);
       }
     }, 1000);
+    // 向服务器发送请求，接收服务器返回的结果
     console.log('验证码发送成功');
   }
 
+  // 判断验证码是否正确：判断输入框的内容与服务器返回结果是否一致
+  function codeJudge() {
+    console.log('正在判断验证码是否正确···');
+  }
+
   codeList();
+
+  // 点击发送验证码
   $("a.sendCode").click(function () {
     phone_valid();
+    if (success) {
+      sendCode() 
+    } else {
+      console.log('没有进行滑动验证');
+      return;
+    }
   })
-  //滑动验证
+  
+  // 拖动滑块
   /*
     <div id="dragContainer">
     <div id="dragBg"></div>
@@ -114,7 +139,7 @@ $(document).ready(function () {
     var startX = e.clientX;
     var $text = $("#dragText>span"); // 文字
     var distanse = $("#dragContainer").width() - $("#dragHandler").width(); // 滑动距离
-    var success = false; // 验证成功的判断标准
+    // var success = false; // 验证成功的判断标准
 
     // 按下滑块之后给文档注册鼠标移动事件
     $(document).mousemove(function (e) {
@@ -163,7 +188,55 @@ $(document).ready(function () {
       $(document).off('mousemove'); // 不清除，松开鼠标后滑块仍然跟随鼠标移动
       $(document).off('mouseup');
       // 松开鼠标后，一次滑块拖动完成，返回判断滑动验证是否成功
-      return vali_success(success); 
+      if (!success) {
+        console.log('滑动验证失败');
+      } else {
+        console.log('滑动验证成功');
+      } 
     })
+  })
+
+  // 点击注册
+  $(".reg-box input[type=submit]").click(function (e) {
+    // 阻止submit的默认提交
+    e.preventDefault();
+    console.log('开始注册···');
+    // 1、验证手机号码格式
+    phone_valid();
+    // 2、验证密码格式
+    password_valid();
+    // 3、验证码格式
+    code_valid();
+    // 4、判断滑动验证
+    if (!success) {
+      console.log('没有进行滑动验证或验证失败');
+      return;
+    } else {
+      console.log('滑动验证成功');
+    }
+    // 5、判断验证码：输入框的内容与服务器返回结果是否一致
+    codeJudge();
+    // 6、注册：写入数据库
+    console.log('注册成功')
+  })
+
+  // 点击登录
+  $(".submit input[type=submit]").click(function (e) {
+    // 1、阻止submit的默认提交
+    e.preventDefault();
+    console.log('开始登录');
+    // 2、验证手机号码格式
+    phone_valid();
+    // 3、验证码格式
+    // 4、判断滑动验证
+    if (!success) {
+      console.log('没有进行滑动验证或验证失败');
+      return;
+    } else {
+      console.log('滑动验证成功');
+    }
+    // 5、验证登录信息：手机号是否注册（该用户不存在）->验证码
+    // 6、登录成功
+    console.log('登录成功');
   })
 })

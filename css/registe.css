@@ -37,7 +37,7 @@ input{
 .form-container a.sendCode .timer {
   display: none;
 }
-.form-container a.button,.form-container a.button:hover{
+.form-container .button,.form-container .button:hover{
   color: #fff;
   background-color: #dd3915;
 }
