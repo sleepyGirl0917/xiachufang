@@ -93,7 +93,7 @@ $(document).ready(function () {
     }
   }
 
-    // 滑块验证
+  // 滑块验证
   /*
     <div id="dragContainer">
     <div id="dragBg"></div>
