@@ -8,6 +8,9 @@
     display: none !important;
   }
 }
+.login{
+  height:56px;
+}
 .social-login-box{
   margin: 0 0 0 100px;
 }

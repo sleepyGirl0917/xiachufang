@@ -10,7 +10,7 @@ header{
   margin:auto;
 }
 .registe{
-  line-height: 56px;
+  height:56px;
 }
 .reg-box{
   width:33.333%;
@@ -43,4 +43,5 @@ input{
 }
 .form-container .code {
   width: 210px;
+  margin-right:30px;
 }
