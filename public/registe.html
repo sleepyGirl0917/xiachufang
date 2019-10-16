@@ -16,30 +16,30 @@
 </head>
 <body>
   <header>
-    <div class="reg-container">
-        <div class="w-25">
-          <a href="#" class="logo">
-            <img src="../img/logo.png">
-          </a>
-        </div>
-        <div class="w-75 d-flex align-items-center justify-content-end registe">
-          <span>已经有账号？</span>
-          <a href="#" class="registe-link">登录</a>
-        </div>
+    <div class="header-container float_g clearfix">
+      <div class="w-25">
+        <a href="#" class="logo">
+          <img src="../img/logo.png">
+        </a>
       </div>
+      <div class="w-75 d-flex align-items-center justify-content-end registe">
+        <span>已经有账号？</span>
+        <a href="#" class="registe-link">登录</a>
+      </div>
+    </div>
   </header>
 
-  <div>
+  <div class="page-container mt30">
     <div class="text-center pt-3 mb30 font34">
       注册一个新的账号
     </div>
-    <div class="form-container reg-box">
+    <div class="form-container reg-box font14">
       <form action="" method="post">
         <div class="error font12 w-100"></div>
         <!-- 手机号 -->
         <div class="mb10">手机号</div>
-        <div class="float_g clearfix mb10">
-          <div class="dropdown">
+        <div class="float_g clearfix mb20">
+          <div class="dropdown w-40">
             <span class="selected">中国大陆 +86 </span>
             <span class="carat"></span>
             <div>
@@ -104,8 +104,11 @@
               </ul>
             </div>
           </div>
-          <input class="tel" type="text" name="tel" autocomplete="off">
+          <input class="w-60" type="text" name="tel" autocomplete="off" placeholder="手机号">
         </div>
+        <!-- 密码 -->
+        <div class="mb10">密码</div>
+        <input class="mb20 w-100 password" type="password" name="password" placeholder="设置下厨房密码（不少于6位）">
         <!-- 滑动验证 -->
         <div class="mb10">滑动验证</div>
         <div id="dragContainer" class="mb10">
@@ -116,8 +119,17 @@
           <div id="dragHandler" class="dragHandlerBg">&gt;&gt;</div>
         </div> 
         <!-- 短信验证码 -->
+        <div class="mb10">短信验证码</div>
+        <a href="#" class="button font12 sendCode float-left mb20">
+          <span class="action">获取短信验证码</span>
+          <span class="timer">60</span>
+        </a>
+        <input class="mb10 code" type="text" name="code" placeholder="请输入验证码" autofocus="autofocus">
+        <input class="button float-right" type="submit" value="注册">
         <!-- 注册协议 -->
-        
+        <div class="mt20 font12 gray-font">
+          注册即代表你同意下厨房<a href="#" class="registe-link">《用户协议》</a>和<a href="#" class="registe-link">《隐私政策》</a>
+        </div>
       </form>
     </div>   
   </div>
