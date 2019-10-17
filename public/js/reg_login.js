@@ -199,7 +199,7 @@ $(document).ready(function () {
         $timer.html(time);
       }
     }, 1000);
-    // 向服务器发送请求，接收服务器返回的结果
+    // 向服务器发送get请求，获取验证码
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -208,7 +208,7 @@ $(document).ready(function () {
         codeReceive = result;
       }
     }
-    xhr.open('get',"/user/code",true)
+    xhr.open('get',"/code",true)
     xhr.send(null);
   }
 

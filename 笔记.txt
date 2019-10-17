@@ -21,8 +21,46 @@ recipe/103951128	相关分类	 家常菜(导航） 下饭菜 鱼香	    3个分�
 (先写数据库，用少量数据占位，后面再上传菜谱测试)
 
 
-1.搜索功能
-2.注册，登录，退出
+1.搜索功能（搜索用户/菜谱，模糊查询）
+2.注册，登录，用户中心，退出
+    登录后首页登录框变为用户信息，出现创建菜谱入口
+
 3.用户表
 4.用户作品展示
 5.分类可以写模板
+
+Status	            Active
+AccessKeyId	        LTAI4FiE8CEPZr85uPGRjRiE
+AccessKeySecret	    qjyinbnsDoytIAAo2ew6D5TPodbExL
+
+//配置session
+server.use(session({
+  secret: 'keyboard cat', //秘钥，自定义，一般用不到
+  resave: false,
+  saveUninitialized: true
+}));
+
+//设置session 实例 req.session.name="ali";
+server.get('/', (req, res) =>{
+  req.session.name = "ali";
+  req.session.flag = true;
+  res.send('index.page');
+
+})
+//使用session实例 req.session.name
+server.get('/login', (req, res) => {
+  if (req.session.flag == true) {
+    res.send('欢迎' + req.session.name);
+  } else {
+    res.send('登陆过期');
+  }
+
+})
+
+server.get('/loginOut', function (req, res) {
+
+  req.session.name = null;
+  req.session.flag = false;
+  res.send('退出登录');
+
+})
