@@ -33,19 +33,18 @@ Status	            Active
 AccessKeyId	        LTAI4FiE8CEPZr85uPGRjRiE
 AccessKeySecret	    qjyinbnsDoytIAAo2ew6D5TPodbExL
 
+
 //配置session
 server.use(session({
   secret: 'keyboard cat', //秘钥，自定义，一般用不到
   resave: false,
   saveUninitialized: true
 }));
-
 //设置session 实例 req.session.name="ali";
 server.get('/', (req, res) =>{
   req.session.name = "ali";
   req.session.flag = true;
   res.send('index.page');
-
 })
 //使用session实例 req.session.name
 server.get('/login', (req, res) => {
@@ -54,13 +53,9 @@ server.get('/login', (req, res) => {
   } else {
     res.send('登陆过期');
   }
-
 })
-
 server.get('/loginOut', function (req, res) {
-
   req.session.name = null;
   req.session.flag = false;
   res.send('退出登录');
-
 })
