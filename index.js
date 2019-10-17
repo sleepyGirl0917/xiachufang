@@ -8,7 +8,7 @@ var server = express();
 server.listen(3000, () =>{
   console.log('running--------')
 });
-// 托管静态资源到public目录下
+/* // 托管静态资源到public目录下
 server.use(express.static('public'));
 // 使用body-parser中间件将post请求数据解析为对象
 server.use(bodyParser.urlencoded({
@@ -24,4 +24,5 @@ server.use('/user', userRouter);
 // 请求验证码的接口
 server.get('/code', (req, res) => {
   res.send('123456')
-});
+}); */
+
