@@ -12,7 +12,8 @@
     "url": "https://github.com/sleepyGirl0917/xiachufang"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mysql": "^2.17.1"
   },
   "author": {
     "name": "xujing",

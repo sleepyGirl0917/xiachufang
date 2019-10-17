@@ -4,6 +4,7 @@ $(document).ready(function () {
   var successPwd=false; // 密码格式初始值
   var successCode=false; // 验证码格式验证初始值
   var successDrag = false; // 滑动验证的初始值
+  var codeReceive; // 存储验证码
   
   codeList();
 
@@ -199,8 +200,16 @@ $(document).ready(function () {
       }
     }, 1000);
     // 向服务器发送请求，接收服务器返回的结果
-    console.log('验证码发送成功');
-    console.log('接收到验证码123456');
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var result = xhr.responseText;
+        console.log('验证码发送成功，并接收到验证码'+result);
+        codeReceive = result;
+      }
+    }
+    xhr.open('get',"/user/code",true)
+    xhr.send(null);
   }
 
   // 点击发送验证码：手机号和滑块验证
@@ -225,6 +234,7 @@ $(document).ready(function () {
     // 阻止submit的默认提交
     e.preventDefault();
     console.log('开始注册···');
+    console.log(codeReceive)
     // 1、验证手机号码格式
     phone_valid();
     if(!successPhoneNumber){
@@ -254,13 +264,23 @@ $(document).ready(function () {
       console.log('滑动验证成功');
     }
     // 5、判断验证码：输入框的内容与服务器返回结果是否一致
-    var receiveCode=123456;
-    if($("input.code").val()==receiveCode){
-      console.log('验证码正确');
-      // 6、注册：写入数据库
-      console.log('注册成功');
-    }else{
-      console.log('验证码错误');
+    if ($("input.code").val() == codeReceive) {
+      console.log('验证码正确')
+      // 6、注册用户
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var result = xhr.responseText;
+          console.log(result);
+        }
+      };
+      xhr.open("post", "/user/registe", true);
+      var formdata = "tel=" + $("input.tel").val() + "&password=" + $("input.password").val();
+      console.log(formdata)
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send(formdata);
+    } else {
+      console.log('验证码错误')
     }
   })
 
