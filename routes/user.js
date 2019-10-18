@@ -16,36 +16,44 @@ router.post('/registe', (req, res) => {
   var $tel = obj.tel;
   var tel_valid = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
   if (!$tel) {
-    res.send({ code: 401, msg: 'tel required' });
+    res.send({ code: 401, msg: '手机号不能为空' });
     return;
   } else if (!tel_valid.test($tel)) {
-    res.send({ code: 402, msg: 'tel format error' });
+    res.send({ code: 402, msg: '手机号码格式有误' });
     return;
   }
   // 密码
   var $pwd = obj.password;
   var pwd_valid = /\w{6,12}/;
   if (!$pwd) {
-    res.send({ code: 403, msg: 'password required' });
+    res.send({ code: 403, msg: '密码不能为空' });
     return;
   } else if (!pwd_valid.test($pwd)) {
-    res.send({ code: 404, msg: 'password format error' });
+    res.send({ code: 404, msg: '密码长度为6~12位' });
     return;
   }
-  // 验证码（前端验证）
-  // 判断用户是否已存在
+  // 验证码
+  var $code = obj.code;
+  var code_valid = /\d{6}/;
+  if (!$code) {
+    res.send({ code: 405, msg: '验证码不能为空' });
+    return;
+  } else if (!code_valid.test($code)) {
+    res.send({ code: 406, msg: '验证码格式错误' });
+    return;
+  }
+  // 执行SQL语句：判断用户是否已存在
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
-      res.send({ code: 408, msg: '用户已存在'});
+      res.send({ code: 407, msg: '用户已存在'});
     } else {
-      // 注册用户
-      pool.query('INSERT INTO xiachufang_user SET ?', [obj], (err, result) => {
-        if (err) throw err;
-        if (result.affectedRows > 0) {
-          res.send({ code: 200, msg: 'registe success' });
-        }
-      })
+      // 验证码是否正确
+      if ($codeSend == $code && $PhoneNum==$tel) {
+        res.send({ code: 200, msg: '注册成功' });
+      } else {
+        res.send({ code: 408, msg: '注册失败' });
+      } 
     }
   })
 })
@@ -59,24 +67,23 @@ router.post('/login', (req, res) => {
   var $tel = obj.tel;
   var tel_valid = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
   if (!$tel) {
-    res.send({ code: 401, msg: 'tel required' });
+    res.send({ code: 401, msg: '手机号不能为空' });
     return;
   } else if (!tel_valid.test($tel)) {
-    res.send({ code: 402, msg: 'tel format error' });
+    res.send({ code: 402, msg: '手机号码格式有误' });
     return;
   }
   // 验证码
   var $code = obj.code;
   var code_valid = /\d{6}/;
   if (!$code) {
-    res.send({ code: 405, msg: 'code required' });
+    res.send({ code: 405, msg: '验证码不能为空' });
     return;
   } else if (!code_valid.test($code)) {
-    res.send({ code: 406, msg: 'code format error' });
+    res.send({ code: 406, msg: '验证码格式错误' });
     return;
   }
-  // 执行SQL语句，查看是否登录成功
-  // 手机号是否注册
+  // 执行SQL语句，查看手机号是否注册
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
     if (result.length == 0) {
@@ -84,15 +91,15 @@ router.post('/login', (req, res) => {
     } else {
       // 验证码是否正确
       if ($codeSend == $code && $PhoneNum==$tel) {
-        res.send({ code: 200, msg: 'login success' });
+        res.send({ code: 200, msg: '登录成功' });
       } else {
-        res.send({ code: 407, msg: 'login falied' });
+        res.send({ code: 410, msg: '登录失败' });
       } 
     }
   })
 })
 
-// 3、发送验证码
+// 3、阿里云接口发送验证码
 const SMSClient = require('@alicloud/sms-sdk');
 // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
 const accessKeyId = 'LTAI4Fo6Xjni9hY1XCWvyzpi';
@@ -112,7 +119,6 @@ function sendCode(options) {
     if (Code === 'OK') {
       //处理返回参数
       console.log(res);
-      // options.success('ok');
     }
   }, function (err) {
     console.log(err)

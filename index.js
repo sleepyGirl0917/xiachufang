@@ -14,9 +14,14 @@ server.use(express.static('public'));
 server.use(bodyParser.urlencoded({
   extended: false
 }));
-// 默认访问index.html
 server.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html')
 });
+server.get('/login',(req,res)=>{
+  res.sendFile(__dirname + '/public/login.html')
+})
+server.get('/registe',(req,res)=>{
+  res.sendFile(__dirname + '/public/registe.html')
+})
 // 将用户路由器挂载到/user
 server.use('/user', userRouter);
