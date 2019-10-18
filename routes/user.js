@@ -3,6 +3,9 @@ const pool = require('../pool.js');
 const express = require('express');
 // 创建空路由器
 var router = express.Router();
+// 验证码
+var $codeSend;
+var $PhoneNum;
 // 添加路由
 
 // 1、用户注册
@@ -45,11 +48,11 @@ router.post('/registe', (req, res) => {
       })
     }
   })
-
 })
 
 // 2、用户登录
 router.post('/login', (req, res) => {
+  // res.send({code:200,msg:'ok'})
   var obj = req.body;
   // var $password = obj.password;
   // 手机号
@@ -73,30 +76,63 @@ router.post('/login', (req, res) => {
     return;
   }
   // 执行SQL语句，查看是否登录成功
-  // 手机号是否已注册
+  // 手机号是否注册
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
     if (result.length == 0) {
-      res.send({ code: 409, msg: '用户已存在' });
+      res.send({ code: 409, msg: '该手机尚未绑定' });
     } else {
       // 验证码是否正确
-      /* pool.query('SELECT * FROM xiachufang_user WHERE tel=? AND code=?', [$tel, $code], (err, result) => {
-        if (err) throw err;
-        if (result.length > 0) {
-          res.send({ code: 200, msg: 'login success' });
-        } else {
-          res.send({ code: 407, msg: 'login falied,check tel or code' });
-        }
-      }); */
-      // 调用阿里云接口发送验证码，获取返回值 和$code比较
+      if ($codeSend == $code && $PhoneNum==$tel) {
+        res.send({ code: 200, msg: 'login success' });
+      } else {
+        res.send({ code: 407, msg: 'login falied' });
+      } 
     }
   })
-  
-  
-});
-// 3、用户搜索
-// 4、更改用户
-// 5、用户列表
+})
+
+// 3、发送验证码
+const SMSClient = require('@alicloud/sms-sdk');
+// ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
+const accessKeyId = 'LTAI4Fo6Xjni9hY1XCWvyzpi';
+const secretAccessKey = '0HmE4InzQuCAs2XRAGbIpGBxmX5ZVh';
+
+//初始化sms_client
+let smsClient = new SMSClient({ accessKeyId, secretAccessKey })
+//发送短信
+function sendCode(options) {
+  smsClient.sendSMS({
+    PhoneNumbers: options.PhoneNum, //必填:待发送手机号，发送国际/港澳台消息时，接收号码格式为：国际区号+号码，如“85200000000”
+    SignName: 'Ali', //必填:短信签名-可在短信控制台中找到
+    TemplateCode: 'SMS_175536849', //必填:短信模板-可在短信控制台中找到，发送国际/港澳台消息时，请使用国际/港澳台短信模版
+    TemplateParam: '{code:' + options.code + '}' //可选:模板中的变量替换JSON串
+  }).then(function (res) {
+    let { Code } = res;
+    if (Code === 'OK') {
+      //处理返回参数
+      console.log(res);
+      // options.success('ok');
+    }
+  }, function (err) {
+    console.log(err)
+  })
+}
+
+router.post('/code', (req, res) => {
+  var obj = req.body;
+  $PhoneNum = obj.tel; // 把验证码对应的手机号存储到全局变量$PhoneNum
+  $codeSend = Math.random().toFixed(6).slice(-6); // 随机生成6位验证码，为方便验证，$codeSend设为全局变量
+  // var time = 1000 * 60 * 5; //验证码有效时间
+  var time = 1000 * 10; //验证码有效时间,30秒测试
+  sendCode({ PhoneNum: $PhoneNum, code: $codeSend }); // 发送验证码
+  res.send($codeSend); //向客服端返回发送的验证码
+  setTimeout(function () {
+    $codeSend = null;
+    $PhoneNum = null;
+  }, time)
+})
+
 
 // 导出路由
 module.exports = router;

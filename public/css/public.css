@@ -178,7 +178,7 @@ input[type=password], input[type=text] {
   overflow:hidden;
   white-space:nowrap;
   line-height: 1;
-  padding: 14px 12px;
+  padding: 18px 14px;
 }
 .form-container .dropdown li.active {
   font-weight: 700;

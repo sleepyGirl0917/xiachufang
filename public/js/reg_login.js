@@ -1,11 +1,11 @@
 $(document).ready(function () {
   // 验证成功的判断标准
-  var successPhoneNumber=false; // 手机号码验证初始值
-  var successPwd=false; // 密码格式初始值
-  var successCode=false; // 验证码格式验证初始值
+  var successPhoneNumber = false; // 手机号码验证初始值
+  var successPwd = false; // 密码格式初始值
+  var successCode = false; // 验证码格式验证初始值
   var successDrag = false; // 滑动验证的初始值
   var codeReceive; // 存储验证码
-  
+
   codeList();
 
   // 封装用ul/li模拟select/option的方法
@@ -50,7 +50,7 @@ $(document).ready(function () {
       */
     });
   }
-  
+
   // 验证手机号码格式
   function phone_valid() {
     var $tel = $("input.tel");
@@ -61,6 +61,7 @@ $(document).ready(function () {
       successPhoneNumber = true;
       return true;
     } else {
+      successPhoneNumber = false;
       return false;
     }
   }
@@ -68,13 +69,14 @@ $(document).ready(function () {
   // 验证密码格式
   function password_valid() {
     console.log('密码格式验证中···')
-    var $pwd=$("input.password");
+    var $pwd = $("input.password");
     var valid_rule = /\w{6,12}/;
-    var password= $pwd.val();
-    if(valid_rule.test(password)){
-      successPwd=true;
+    var password = $pwd.val();
+    if (valid_rule.test(password)) {
+      successPwd = true;
       return true;
-    }else{
+    } else {
+      successPwd = false;
       return false;
     }
   }
@@ -85,11 +87,11 @@ $(document).ready(function () {
     var $code = $("input.code");
     var valid_rule = /\d{6}/;  //验证码是6位数字
     var code_number = $code.val();
-    console.log(code_number);
     if (valid_rule.test(code_number)) {
-      successCode=true;
+      successCode = true;
       return true;
     } else {
+      successCode = false;
       return false;
     }
   }
@@ -139,7 +141,7 @@ $(document).ready(function () {
       $("#dragHandler").css("left", offsetX);
       $("#dragBg").css('width', offsetX);
     });
-  
+
     // 按下滑块之后给文档注册鼠标松开事件
     $(document).mouseup(function (e) {
       if (!successDrag) {
@@ -164,24 +166,9 @@ $(document).ready(function () {
         console.log('滑动验证失败');
       } else {
         console.log('滑动验证成功');
-      } 
+      }
     })
   })
-
-  /* // 判断验证码是否正确
-  function codeJudge() {
-    console.log('正在判断验证码···');
-    // 1、判断验证码格式
-    code_valid();
-    if (!successCode) {
-      console.log('验证码格式有误');
-      $("form>.error").html('验证码格式有误');
-      return false;
-    } else {
-      // 2、输入的验证码与服务器返回的验证码比较
-      console.log('验证码错误')
-    }
-  } */
 
   // 发送验证码
   function sendCode() {
@@ -199,23 +186,30 @@ $(document).ready(function () {
         $timer.html(time);
       }
     }, 1000);
-    // 向服务器发送get请求，获取验证码
+    // 向服务器发送请求
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var result = xhr.responseText;
-        console.log('验证码发送成功，并接收到验证码'+result);
+        console.log('验证码发送成功，并接收到验证码' + result);
         codeReceive = result;
+        setTimeout(() => {
+          codeReceive = null;
+          // console.log('验证码超时');
+          $("form>.error").html('验证码超时');
+        }, 1000 * 60 * 5);
       }
     }
-    xhr.open('get',"/code",true)
-    xhr.send(null);
+    xhr.open('post', "/user/code", true)
+    var formdata = "tel=" + $("input.tel").val();
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(formdata);
   }
 
   // 点击发送验证码：手机号和滑块验证
   $("a.sendCode").click(function () {
     phone_valid();
-    if(!successPhoneNumber){
+    if (!successPhoneNumber) {
       console.log('手机号码格式有误');
       $("form>.error").html('手机号码格式有误');
       return;
@@ -224,11 +218,12 @@ $(document).ready(function () {
       // 发送验证码
       sendCode();
     } else {
-      console.log('没有进行滑动验证');
+      // console.log('没有进行滑动验证');
+      $("form>.error").html('请完成滑动验证');
       return;
     }
   })
-  
+
   // 点击注册
   $(".reg-box input[type=submit]").click(function (e) {
     // 阻止submit的默认提交
@@ -237,40 +232,41 @@ $(document).ready(function () {
     console.log(codeReceive)
     // 1、验证手机号码格式
     phone_valid();
-    if(!successPhoneNumber){
-      console.log('手机号码格式有误');
+    if (!successPhoneNumber) {
+      // console.log('手机号码格式有误');
       $("form>.error").html('手机号码格式有误');
       return;
     }
     // 2、验证密码格式
     password_valid();
-    if(!successPwd){
-      console.log('密码长度为6~12位');
+    if (!successPwd) {
+      // console.log('密码长度为6~12位');
       $("form>.error").html('密码长度为6~12位');
       return;
     }
     // 3、验证码格式(6位)：验证码格式正确之后，判断滑动验证
     code_valid();
-    if(!successCode){
-      console.log('验证码格式错误');
+    if (!successCode) {
+      // console.log('验证码格式错误');
       $("form>.error").html('验证码格式错误');
       return;
     }
     // 4、判断滑动验证
     if (!successDrag) {
-      console.log('没有进行滑动验证或验证失败');
+      // console.log('没有进行滑动验证或验证失败');
+      $("form>.error").html('请完成滑动验证');
       return;
     } else {
       console.log('滑动验证成功');
     }
     // 5、判断验证码：输入框的内容与服务器返回结果是否一致
+    // 注册模块：前端存储验证码，node没有进行验证码判断
     if ($("input.code").val() == codeReceive) {
-      console.log('验证码正确')
       // 6、注册用户
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          var result = xhr.responseText;
+          var result = JSON.parse(xhr.responseText);
           console.log(result);
         }
       };
@@ -280,7 +276,8 @@ $(document).ready(function () {
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send(formdata);
     } else {
-      console.log('验证码错误')
+      $("form>.error").html('注册失败');
+      return;
     }
   })
 
@@ -291,28 +288,55 @@ $(document).ready(function () {
     console.log('开始登录');
     // 2、验证手机号码格式
     phone_valid();
-    if(!successPhoneNumber){
-      console.log('手机号码格式有误');
+    if (!successPhoneNumber) {
+      // console.log('手机号码格式有误');
       $("form>.error").html('手机号码格式有误');
       return;
     }
     // 3、验证码格式
     code_valid();
-    if(!successCode){
-      console.log('验证码格式错误');
+    if (!successCode) {
+      // console.log('验证码格式错误');
       $("form>.error").html('验证码格式错误');
       return;
     }
     // 4、判断滑动验证
     if (!successDrag) {
-      console.log('没有进行滑动验证或验证失败');
+      // console.log('没有进行滑动验证或验证失败');
+      $("form>.error").html('请完成滑动验证');
       return;
     } else {
       console.log('滑动验证成功');
     }
-    // 5、向服务器发送请求，验证登录信息：判断手机号是否注册（用户不存在）
-    // 6、判断验证码
-    // 7、登录成功
-    console.log('登录成功');
+    // 5、向服务器发送登录请求
+    // 登录模块：服务器进行验证码判断
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var result = JSON.parse(xhr.responseText);
+        console.log(result)
+        if (result.code == 409) {
+          $("form>.error").html('该手机尚未绑定');
+        } else if (result.code == 407) {
+          $("form>.error").html('登录失败');
+        } else if (result.code == 200) {
+          // 登录成功后跳转到首页
+          window.location.href = '/index.html'
+        }
+      }
+    };
+    xhr.open("post", "/user/login", true);
+    var formdata = "tel=" + $("input.tel").val() + "&code=" + $("input.code").val();
+    // console.log(formdata)
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(formdata);
   })
+
+  // 监听error提示，出现5秒后清空
+  $("form>.error").bind("DOMNodeInserted", function () {
+    setTimeout(() => {
+      $("form>.error").html('');
+    }, 5000)
+  })
+
 })
