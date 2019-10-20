@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
   // 验证成功的判断标准
   var successPhoneNumber = false; // 手机号码验证初始值
   var successPwd = false; // 密码格式初始值
@@ -66,7 +66,7 @@ $(document).ready(function () {
   function password_valid() {
     console.log('密码格式验证中···')
     var $pwd = $("input.password");
-    var valid_rule = /\w{6,12}/;
+    var valid_rule = /^\w{6,12}$/;
     var password = $pwd.val();
     if (valid_rule.test(password)) {
       successPwd = true;
@@ -79,7 +79,7 @@ $(document).ready(function () {
   function code_valid() {
     console.log('验证码格式验证中···')
     var $code = $("input.code");
-    var valid_rule = /\d{6}/;  //验证码是6位数字
+    var valid_rule = /^\d{6}$/;  //验证码是6位数字
     var code_number = $code.val();
     if (valid_rule.test(code_number)) {
       successCode = true;
@@ -179,7 +179,16 @@ $(document).ready(function () {
       }
     }, 1000);
     // 向服务器发送请求
-    var xhr = new XMLHttpRequest();
+    $.ajax({
+      url:"http://localhost:3000/user/code",
+      type:"post",
+      data:{tel:$("input.tel").val()},
+      // dataType:"json",
+      success:function(res){
+        console.log('验证码发送成功，并接收到验证码' + res);
+      }
+    })
+    /* var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var result = xhr.responseText;
@@ -189,7 +198,7 @@ $(document).ready(function () {
     xhr.open('post', "/user/code", true)
     var formdata = "tel=" + $("input.tel").val();
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(formdata);
+    xhr.send(formdata); */
   }
 
   // 点击发送验证码：手机号和滑块验证
@@ -243,19 +252,30 @@ $(document).ready(function () {
       console.log('滑动验证成功');
     }
     // 5、向服务器发送注册请求
-    var xhr = new XMLHttpRequest();
+    $.ajax({
+      url:"http://localhost:3000/user/registe",
+      type:"post",
+      data:{
+        tel:$("input.tel").val(),
+        password:$("input.password").val(),
+        code:$("input.code").val(),
+      },
+      dataType:"json",
+      success:function(res){
+        console.log(res);
+        if(res.code==200){
+          window.location.href = '/index.html';
+        }else{
+          $("form>.error").html(res.msg);
+        }
+      }
+    })
+    
+    /* var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var result = JSON.parse(xhr.responseText);
         console.log(result);
-        /* if(result.code==200){
-          // 注册成功后跳转到首页
-          window.location.href = '/index.html';
-        }else if(result.code==407){
-          $("form>.error").html('手机号码已存在');
-        }else if(result.code==408){
-          $("form>.error").html('注册失败');
-        } */
         if(result.code==200){
           window.location.href = '/index.html';
         }else{
@@ -267,7 +287,8 @@ $(document).ready(function () {
     var formdata = "tel=" + $("input.tel").val() + "&password=" + $("input.password").val()+"&code="+$("input.code").val();
     // console.log(formdata)
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(formdata);
+    xhr.send(formdata); */
+
   })
 
   // 点击登录
@@ -297,19 +318,30 @@ $(document).ready(function () {
       console.log('滑动验证成功');
     }
     // 5、向服务器发送登录请求
-    var xhr = new XMLHttpRequest();
+    $.ajax({
+      url:"http://localhost:3000/user/login",
+      type:"post",
+      data:{
+        tel:$("input.tel").val(),
+        code:$("input.code").val(),
+      },
+      dataType:"json",
+      success:function(res){
+        console.log(res);
+        console.log(typeof(res));
+        if(res.code == 200){
+          window.location.href = '/index.html';
+        }else{
+          $("form>.error").html(res.msg);
+        }
+      }
+    })
+
+    /* var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var result = JSON.parse(xhr.responseText);
         console.log(result)
-        /* if(result.code == 200){
-          // 登录成功后跳转到首页
-          window.location.href = '/index.html';
-        }else if(result.code == 409){
-          $("form>.error").html('该手机尚未绑定');
-        }else if(result.code==410){
-          $("form>.error").html('登录失败');
-        } */
         if(result.code == 200){
           window.location.href = '/index.html';
         }else{
@@ -321,7 +353,8 @@ $(document).ready(function () {
     var formdata = "tel=" + $("input.tel").val() + "&code=" + $("input.code").val();
     // console.log(formdata)
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(formdata);
+    xhr.send(formdata); */
+
   })
 
   // 监听error提示，出现3秒后清空

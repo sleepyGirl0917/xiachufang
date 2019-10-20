@@ -6,53 +6,79 @@ var router = express.Router();
 // 验证码
 var $codeSend;
 var $PhoneNum;
+var resCode=[
+  { id:1,code: 401, msg: '手机号不能为空' },
+  { id:2,code: 402, msg: '手机号码格式有误' },
+  { id:3,code: 403, msg: '密码不能为空' },
+  { id:4,code: 404, msg: '密码长度为6~12位' },
+  { id:5,code: 405, msg: '验证码不能为空' },
+  { id:6,code: 406, msg: '验证码格式错误' },
+  { id:7,code: 407, msg: '用户已存在'},
+  { id:8,code: 408, msg: '注册失败' },
+  { id:9,code: 409, msg: '该手机尚未绑定'},
+  { id:10,code: 410, msg: '登录失败' },
+  { id:11,code: 200, msg: '注册成功' },
+  { id:12,code: 200, msg: '登录成功' }
+];
 // 添加路由
 
 // 1、用户注册
 router.post('/registe', (req, res) => {
   // 获取post请求的数据
   var obj = req.body;
+  res.writeHead(200,{
+    "Access-Control-Allow-Origin":"*"
+  });
   // 手机号
   var $tel = obj.tel;
   var tel_valid = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
   if (!$tel) {
-    res.send({ code: 401, msg: '手机号不能为空' });
+    res.write(JSON.stringify(resCode[0]));
+    res.end();
     return;
   } else if (!tel_valid.test($tel)) {
-    res.send({ code: 402, msg: '手机号码格式有误' });
+    res.write(JSON.stringify(resCode[1]));
+    res.end();
     return;
   }
   // 密码
   var $pwd = obj.password;
-  var pwd_valid = /\w{6,12}/;
+  var pwd_valid = /^\w{6,12}$/;
   if (!$pwd) {
-    res.send({ code: 403, msg: '密码不能为空' });
+    res.write(JSON.stringify(resCode[2]));
+    res.end();
     return;
   } else if (!pwd_valid.test($pwd)) {
-    res.send({ code: 404, msg: '密码长度为6~12位' });
+    res.write(JSON.stringify(resCode[3]));
+    res.end();
     return;
   }
   // 验证码
   var $code = obj.code;
-  var code_valid = /\d{6}/;
+  var code_valid = /^\d{6}$/;
   if (!$code) {
-    res.send({ code: 405, msg: '验证码不能为空' });
+    res.write(JSON.stringify(resCode[4]));
+    res.end();
     return;
   } else if (!code_valid.test($code)) {
-    res.send({ code: 406, msg: '验证码格式错误' });
+    res.write(JSON.stringify(resCode[5]));
+    res.end();
     return;
   }
   // 执行SQL语句：判断用户是否已存在
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
-      res.send({ code: 407, msg: '用户已存在'});
+      res.write(JSON.stringify(resCode[6]));
+      res.end();
     } else {
       // 验证码是否正确
       if ($codeSend == $code && $PhoneNum==$tel) {
-        res.send({ code: 200, msg: '注册成功' });
+        res.write(JSON.stringify(resCode[10]));
+        res.end();
       } else {
-        res.send({ code: 408, msg: '注册失败' });
+        res.write(JSON.stringify(resCode[7]));
+        res.end();
       } 
     }
   })
@@ -60,40 +86,50 @@ router.post('/registe', (req, res) => {
 
 // 2、用户登录
 router.post('/login', (req, res) => {
-  // res.send({code:200,msg:'ok'})
   var obj = req.body;
-  // var $password = obj.password;
+  res.writeHead(200,{
+    "Access-Control-Allow-Origin":"*"
+  });
   // 手机号
   var $tel = obj.tel;
   var tel_valid = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
   if (!$tel) {
-    res.send({ code: 401, msg: '手机号不能为空' });
+    res.write(JSON.stringify(resCode[0]));
+    res.end();
     return;
   } else if (!tel_valid.test($tel)) {
-    res.send({ code: 402, msg: '手机号码格式有误' });
+    res.write(JSON.stringify(resCode[1]));
+    res.end();
     return;
   }
   // 验证码
   var $code = obj.code;
-  var code_valid = /\d{6}/;
+  var code_valid = /^\d{6}$/;
   if (!$code) {
-    res.send({ code: 405, msg: '验证码不能为空' });
+    // res.send({ code: 405, msg: '验证码不能为空' });
+    res.write(JSON.stringify(resCode[4]));
+    res.end();
     return;
   } else if (!code_valid.test($code)) {
-    res.send({ code: 406, msg: '验证码格式错误' });
+    // res.send({ code: 406, msg: '验证码格式错误' });
+    res.write(JSON.stringify(resCode[5]));
+    res.end();
     return;
   }
   // 执行SQL语句，查看手机号是否注册
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
     if (result.length == 0) {
-      res.send({ code: 409, msg: '该手机尚未绑定' });
+      res.write(JSON.stringify(resCode[8]));
+      res.end();
     } else {
       // 验证码是否正确
       if ($codeSend == $code && $PhoneNum==$tel) {
-        res.send({ code: 200, msg: '登录成功' });
+        res.write(JSON.stringify(resCode[11]));
+        res.end();
       } else {
-        res.send({ code: 410, msg: '登录失败' });
+        res.write(JSON.stringify(resCode[9]));
+        res.end();
       } 
     }
   })
@@ -129,10 +165,13 @@ router.post('/code', (req, res) => {
   var obj = req.body;
   $PhoneNum = obj.tel; // 把验证码对应的手机号存储到全局变量$PhoneNum
   $codeSend = Math.random().toFixed(6).slice(-6); // 随机生成6位验证码，为方便验证，$codeSend设为全局变量
-  // var time = 1000 * 60 * 5; //验证码有效时间
-  var time = 1000 * 10; //验证码有效时间,30秒测试
+  var time = 1000 * 60 * 5; //验证码有效时间
   sendCode({ PhoneNum: $PhoneNum, code: $codeSend }); // 发送验证码
-  res.send($codeSend); //向客服端返回发送的验证码
+  res.writeHead(200,{
+    "Access-Control-Allow-Origin":"*"
+  });
+  res.write($codeSend);   //向客户端返回发送的验证码
+  res.end()
   setTimeout(function () {
     $codeSend = null;
     $PhoneNum = null;

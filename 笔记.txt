@@ -60,3 +60,9 @@ server.get('/loginOut', function (req, res) {
   req.session.flag = false;
   res.send('退出登录');
 })
+
+jquey:轮播图笔记
+https://blog.csdn.net/qq_36337754/article/details/100093974
+$(…)[0] 返回的是一个dom对象
+而 attr() 方法 只能被JQuery对象所使用
+所以，可以用$(…).eq()

@@ -283,6 +283,8 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
 }
 .carousel-item img{
   width:540px;
+  max-height: 300px;
+  object-fit: cover;
 }
 .home-icon-carousel{
   /* 最近的已定位祖先元素是div.carousel */
