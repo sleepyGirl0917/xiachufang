@@ -82,6 +82,7 @@ router.post('/registe', (req, res) => {
       } 
     }
   })
+  
 })
 
 // 2、用户登录
