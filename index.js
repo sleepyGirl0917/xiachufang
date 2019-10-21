@@ -30,7 +30,8 @@ server.use('/user', userRouter);
 // 轮播图
 server.get("/carousel",(req,res)=>{
   // 取往期头条表的前5条
-  var sql=`SELECT * FROM (xiachufang_headline as A LEFT JOIN xiachufang_recipe as B ON A.recipe_id=B.rid) LEFT JOIN xiachufang_user as C ON B.user_id=C.uid`;
+  var sql=`(SELECT * FROM (xiachufang_headline as A LEFT JOIN xiachufang_recipe as B ON A.recipe_id=B.rid)`
+  sql+=` LEFT JOIN xiachufang_user as C ON B.user_id=C.uid ) ORDER BY date_recommend DESC LIMIT 5`;
   pool.query(sql,(err,result)=>{
     if (err) throw err;
     // 允许跨域
@@ -46,5 +47,7 @@ server.get("/carousel",(req,res)=>{
 // 新秀菜谱
 server.get("/explore", (req, res) => {
   // 菜谱表按最近使用时间（有用户在菜谱下上传作品）排序，取前15条数据
-  // var sql=`SELECT * FROM xiachufang_explore as A `
+  var sql=`SELECT * FROM xiachufang_recipe as A RIGHT JOIN xiachufang_recipe_upload as B ON A.rid=B.recipe_id`;
+  sql+=` ORDER BY date_upload DESC LIMIT 15`;
+  
 })

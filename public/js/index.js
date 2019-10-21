@@ -64,13 +64,9 @@ window.onload=function() {
   $.ajax({
     url:"http://localhost:3000/carousel",
     type:"get",
-    dataType:"json",//自动JSON.parse()
-    //提前给success赋值一个回调函数
-    //在请求成功后自动执行
-    //参数data可自动获得服务端返回的数据
+    dataType:"json",
     success:function(data){
-      //data形参接住了ajax抛出的服务端返回的数据对象
-      // 轮播图1
+      console.log(data)
       for(var i=0;i<5;i++){
         var list=data[i];
         //复制轮播图第一张图的HTML片段，并用模板字符串，填充其中动态生成的部分
@@ -144,17 +140,17 @@ window.onload=function() {
 
 })
 
-    // 5组
-    <li class="d-block" style="width:20%;">
-      <ul class="list-unstyled d-flex justify-content-between">
-        {/* 每组3张图 */}
-        <li class="rookie-recipe-item text-center">
-          <a href="#" class="d-block">
-            <img src="./img/recipe/rising/8465141fae7d4256bd6133171a6cf3af_913w_1370h.jpg" title="奥特曼生日蛋糕">
-          </a>
-          <div class="m-1 text-truncate">
-            <a href="#" class="homemenu-link">奥特曼生日蛋糕</a>
-          </div>
-        </li>  
-      </ul>
-    </li>
+    // // 5组
+    // <li class="d-block" style="width:20%;">
+    //   <ul class="list-unstyled d-flex justify-content-between">
+    //     {/* 每组3张图 */}
+    //     <li class="rookie-recipe-item text-center">
+    //       <a href="#" class="d-block">
+    //         <img src="./img/recipe/rising/8465141fae7d4256bd6133171a6cf3af_913w_1370h.jpg" title="奥特曼生日蛋糕">
+    //       </a>
+    //       <div class="m-1 text-truncate">
+    //         <a href="#" class="homemenu-link">奥特曼生日蛋糕</a>
+    //       </div>
+    //     </li>  
+    //   </ul>
+    // </li>

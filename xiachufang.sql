@@ -29,6 +29,14 @@ INSERT INTO `xiachufang_headline` VALUES ('2','2','2019-10-9');
 INSERT INTO `xiachufang_headline` VALUES ('3','3','2019-10-8');
 INSERT INTO `xiachufang_headline` VALUES ('4','4','2019-10-7');
 INSERT INTO `xiachufang_headline` VALUES ('5','5','2019-10-6');
+INSERT INTO `xiachufang_headline` VALUES ('6','16','2019-10-11');
+INSERT INTO `xiachufang_headline` VALUES ('7','19','2019-10-12');
+INSERT INTO `xiachufang_headline` VALUES ('8','8','2019-10-13');
+INSERT INTO `xiachufang_headline` VALUES ('9','36','2019-10-14');
+INSERT INTO `xiachufang_headline` VALUES ('10','26','2019-10-15');
+INSERT INTO `xiachufang_headline` VALUES ('11','78','2019-10-16');
+INSERT INTO `xiachufang_headline` VALUES ('12','66','2019-10-17');
+INSERT INTO `xiachufang_headline` VALUES ('13','34','2019-10-18');
 
 -- ----------------------------
 -- Table structure for `xiachufang_recipe`
@@ -87,7 +95,7 @@ INSERT INTO `xiachufang_recipe` VALUES ('29','凉拌三丝','/img/recipe/19776b0
 INSERT INTO `xiachufang_recipe` VALUES ('30','琥珀核桃仁—零失败超好吃','/img/recipe/7401bcfc09734f209f367263d5011cee_3024w_3024h.jpg','核桃、细砂糖、水、花生油、蜜糖、芝麻','11','176','8.4','33','2019-01-26 03:19:17','null','null','5475','http://www.xiachufang.com/recipe/103664501/');
 INSERT INTO `xiachufang_recipe` VALUES ('31','如何做超厚的沼三明治~详细tip！牛油果鸡蛋午餐肉三明治~','/img/recipe/262bb5188a4611e6a9a10242ac110002_5173w_3449h.jpg','切片吐司、牛油果、鸡蛋、胡萝卜、海盐、黑胡椒、芥末酱、蛋黄酱、午餐肉、生菜、各种材料、保鲜膜、锋利的锯齿刀、坚果','17','4765','8.4','34','2016-01-29 15:17:15','null','null','169849','http://www.xiachufang.com/recipe/101679912/');
 INSERT INTO `xiachufang_recipe` VALUES ('32','颜值控-做一朵开在碗里的花秋葵蒸水蛋','/img/recipe/08f8a936898511e6b87c0242ac110003_640w_620h.jpg','鸡蛋、秋葵、纯净水、盐、酱油、香油','8','5779','8.2','35','2015-09-16 10:33:35','null','null','143337','http://www.xiachufang.com/recipe/100562276/');
-INSERT INTO `xiachufang_recipe` VALUES ('33','好吃到尖叫的虎皮凤爪','/img/recipe/2e81f174c552496395ac5879114a48d0_3024w_3024h.jpg','鸡爪                        10、蒜、酱油、老抽、料酒、糖、姜、蚝油、白芝麻、桂皮、香叶、洋葱、八角、五香粉、醋、孜然粒','0','145','7','36','2018-11-18 22:51:59','null','null','42184','http://www.xiachufang.com/recipe/103498163/');
+INSERT INTO `xiachufang_recipe` VALUES ('33','好吃到尖叫的虎皮凤爪','/img/recipe/2e81f174c552496395ac5879114a48d0_3024w_3024h.jpg','鸡爪 10、蒜、酱油、老抽、料酒、糖、姜、蚝油、白芝麻、桂皮、香叶、洋葱、八角、五香粉、醋、孜然粒','0','145','7','36','2018-11-18 22:51:59','null','null','42184','http://www.xiachufang.com/recipe/103498163/');
 INSERT INTO `xiachufang_recipe` VALUES ('34','手撕包菜','/img/recipe/37f4ff90c9c24af9964a63749148b8a0_1080w_864h.jpg','包菜、蒜、盐、猪肉、红辣椒、十三香、生抽、耗油、老抽、葱','28','160','7.7','37','2019-08-01 17:45:36','null','null','103686','http://www.xiachufang.com/recipe/103959907/');
 INSERT INTO `xiachufang_recipe` VALUES ('35','纯奶手撕吐司','/img/recipe/b88f5b1f0ed64797ada5cde7b5a49735_1688w_1124h.jpg','高筋面粉、鸡蛋、细砂糖、炼乳、淡奶油、牛奶、奶粉、酵母、盐、黄油','79','2869','9.1','38','2019-04-22 13:16:50','null','null','72569','http://www.xiachufang.com/recipe/103785571/');
 INSERT INTO `xiachufang_recipe` VALUES ('36','不消泡的巧克力戚风胚/「戚风及其衍生」烘焙视频蛋糕篇2','/img/recipe/7d5c5aa81f4311e7947d0242ac110002_4160w_2340h.jpg','鸡蛋、低筋面粉、可可粉、白砂糖、植物油、牛奶','19','1958','8.4','39','2017-04-12 13:47:35','null','null','84109','http://www.xiachufang.com/recipe/102257709/');
@@ -409,6 +417,24 @@ CREATE TABLE `xiachufang_recipe_upload`(
   `date_upload` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY  (`upid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '6', '12', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '15', '11', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '13', '23', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '22', '32', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '35', '42', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '36', '45', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '28', '10', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '75', '2', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '20', '19', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '1', '2', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '3', '8', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '9', '98', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '55', '55', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '82', '88', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '39', '71', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '40', '69', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '63', '73', CURRENT_TIMESTAMP);
 
 -- ----------------------------
 -- Table structure for `xiachufang_menu_collect`
