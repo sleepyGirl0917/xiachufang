@@ -19,9 +19,11 @@ recipe/101874529	被大家加入到以下菜单	recipe_list/100080426 ...
 recipe/103951128	相关分类	 家常菜(导航） 下饭菜 鱼香	    3个分类都可以找到菜谱，点击进去导航分类固定为家常菜
 
 
-1.搜索功能（搜索用户/菜谱，模糊查询）
+1.搜索功能（搜索用户/菜谱，模糊查询）：
+  先精确查找，category/...
+  查不到，再模糊查找，搜索返回的网址 search/?keyword=***&cat=1001
 2.注册，登录，用户中心，退出
-    登录后首页登录框变为用户信息，出现创建菜谱入口
+  登录后首页登录框变为用户信息，出现创建菜谱入口
 
 3.用户表
 4.用户作品展示
@@ -109,3 +111,535 @@ jsonp自动为success生成随机函数名 `${fun}` 就是请求成功后执行�
 });
 //终端中: node server.js
 //浏览器中测试: http://同桌IP:3000
+
+
+//app.js
+//1:加载模块 express pool.js
+const express = require("express");
+const pool = require("./pool");
+//2:创建服务器端对象
+var app = express();
+//3:监听 3000
+app.listen(3000);
+//4:指定静态目录  public 
+app.use(express.static("public"));
+//5:加载跨域访问模块
+const cors = require("cors");
+//6:配置跨域访问模块 那个域名跨域访问允许
+//  脚手架8080允许
+//origin      允许跨域访问域名列表
+//credentials 跨域访问保存session id
+app.use(cors({
+  origin:["http://127.0.0.1:8080",
+  "http://localhost:8080"],
+  credentials:true
+}));
+//6.1:下载express-session 并且配置
+const session = require("express-session");
+app.use(session({
+  secret:"128位随机字符",   //安全字符串
+  resave:false,            //每次请求是否都更新数据
+  saveUninitialized:true,  //初始化时是否保存数据
+  cookie:{
+    maxAge:1000 * 60 * 8   //依靠cookie保存8小时
+  }
+}))
+//7:加载第三方模块 body-parser
+//body-parser 针对post请求处理请求参数
+//如果配置成功 req.body..
+const bodyParser = require("body-parser");
+//8:配置对特殊 json是否是自动转换 不转换
+app.use(bodyParser.urlencoded({extended:false}))
+
+
+//功能一:home 组件轮播图片  
+app.get("/imageList",(req,res)=>{
+    //1:将轮播图中所需图片 复制public/img
+    //2:查询
+    var list = [
+      {id:1,img_url:"http://127.0.0.1:3000/img/banner1.png"},
+      {id:2,img_url:"http://127.0.0.1:3000/img/banner2.png"},
+      {id:3,img_url:"http://127.0.0.1:3000/img/banner3.png"},
+      {id:4,img_url:"http://127.0.0.1:3000/img/banner4.png"},
+    ];
+    res.send(list); 
+});
+ 
+//功能二:获取新闻列表分页显示
+//xz_news表 20 条数据 7行一页  三页
+//1:请求参数  pno 页码 pageSize 页大小
+//2:哪条sql
+// SELECT id,title,img_url,ctime,point
+// FROM xz_news
+// LIMIT ?,?
+//3:返回数据结果json
+//  {code:1,data:[]} 
+app.get("/newslist",(req,res)=>{
+    //1:获取参数 pno pageSize
+    var pno = req.query.pno;
+    var pageSize = req.query.pageSize;
+    //2:设置默认值  pno 1 pageSize 7
+    if(!pno){
+      pno = 1;
+    }
+    if(!pageSize){
+      pageSize = 7;
+    }
+    //3:创sql语句
+    var sql = " SELECT id,title,img_url";
+    sql +=" ,ctime,point";
+    sql +=" FROM xz_news";
+    sql +=" LIMIT ?,?";
+    //4:json
+    var ps = parseInt(pageSize);
+    var offset = (pno-1)*pageSize;
+    pool.query(sql,[offset,ps],(err,result)=>{
+       if(err)throw err;
+       //4:返回 
+       res.send({code:1,data:result});
+    })
+})
+
+//功能三:商品分页显示 
+app.get("/products",(req,res)=>{
+    //1:参数 pno pageSize
+    var pno = req.query.pno;
+    var pageSize = req.query.pageSize;
+    //2:允许使用默认值  1 7
+    if(!pno){pno=1}
+    if(!pageSize){pageSize=7}
+    //3:sql
+    var sql = " SELECT l.lid,l.title,";
+    sql+=" l.price,p.md";
+    sql+=" FROM xz_laptop l,xz_laptop_pic p";
+    sql+=" WHERE l.lid = p.laptop_id";
+    sql+=" GROUP BY l.lid";
+    sql+=" LIMIT ?,?";
+    //4:json
+    var offset = (pno-1)*pageSize;
+    var ps = parseInt(pageSize); 
+    pool.query(sql,[offset,ps],(err,result)=>{
+      if(err)throw err;
+      res.send({code:1,data:result});
+    }) 
+});  
+
+//功能四：获取新闻详细信息
+app.get("/findNewsInfo",(req,res)=>{
+  //1:获取参数
+  var id = req.query.id;
+  //2:创建正则表达式
+  var reg = /^\d{1,}$/;
+  //3:如果验证失败 输出错误信息{code:-1}
+  if(!reg.test(id)){
+    res.send({code:-1,msg:"新闻编号格式有误"});
+    return;//函数停止运行
+  }
+  //4:创建sql
+  var sql = " SELECT id,title,content,ctime";
+      sql +=" ,img_url FROM xz_news";
+      sql +=" WHERE id = ?";
+  //5:发送sql语句
+  pool.query(sql,[id],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,data:result});
+  })
+  //6:输出查询结果 输出{code:1}
+})
+
+//功能五:获取评论列表
+app.get("/getComment",(req,res)=>{
+  //1:参数 nid 新闻编号 pno 页码 pageSize 
+  //页大小
+  var nid = req.query.nid;
+  var pno = req.query.pno;
+  var pageSize = req.query.pageSize;
+  //2:设置默认值 
+  if(!pno){pno=1}
+  if(!pageSize){pageSize=5}
+  //3:sql语句
+  var sql = " SELECT id,content,ctime,nid";
+      sql +=" FROM xz_comment";
+      sql +=" WHERE nid = ?";
+      sql +=" LIMIT ?,?";
+  //4:offset 行偏移量    
+  var offset = (pno-1)*pageSize;
+  //5:页大小造型
+  pageSize = parseInt(pageSize);
+  pool.query(sql,[nid,offset,pageSize],(err,result)=>{
+      if(err)throw err;
+      res.send({code:1,data:result});
+  });
+})
+
+//功能六:发表评论
+//1:用户post请求 /addcomment
+app.post("/addcomment",(req,res)=>{
+  if(!req.session.uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+  }
+  //2:获取二个参数 nid content
+  var nid = req.body.nid;        //新闻编号
+  var content = req.body.content;//评论内容
+  //3:创建sql语句
+  var sql = "INSERT INTO xz_comment VALUES";
+      sql+="(null,?,now(),?)";
+  //4:发送sql语句并且返回返回结果
+  pool.query(sql,[content,nid],(err,result)=>{
+     if(err)throw err;
+     //判断执行insert语句影响行数
+     if(result.affectedRows>0){
+       res.send({code:1,msg:"评论发表成功"});
+     }else{
+       res.send({code:0,msg:"评论发表失败"});
+     }
+  })
+  //5:判断 评论成功 评论失败
+ });
+ //6:加载body-parser模块 配置 写在 app.js 前面 
+ 
+//功能七:获取商品详细信息
+app.get("/findProduct",(req,res)=>{
+  //1:参数 pid
+  var pid = req.query.pid;
+  //2:sql  SELECT lname,price FROM xz_laptop WHERE //lid=?
+  var sql =" SELECT lname,price FROM xz_laptop";
+      sql+=" WHERE lid = ?";
+  //3:json {code:1,data:[]}
+  pool.query(sql,[pid],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,data:result});
+  })
+});
+ 
+//功能八:用户登录
+app.get("/login",(req,res)=>{
+//参数
+  var uname = req.query.uname;
+  var upwd = req.query.upwd;
+  //sql
+  var sql = " SELECT id FROM xz_login";
+      sql+=" WHERE uname = ? AND upwd = md5(?)";
+  pool.query(sql,[uname,upwd],(err,result)=>{
+      if(err)throw err;  
+      if(result.length==0){    
+        res.send({code:-1,msg:"用户名或密码有误"});
+      }else{
+        //将用户登录凭证保存在服务器端 session对象中
+        var id = result[0].id;//获取当前用户id
+        req.session.uid = id;//将用户id保存到session
+        console.log(req.session.uid);
+        res.send({code:1,msg:"登录成功"});
+      }
+  })
+});
+ 
+//功能九:将商品添加至购物车
+//http://127.0.0.1:3000/addcart?pid=1&price=6988&uid=1&val=5
+app.get("/addcart",(req,res)=>{
+  //0:判断用户是否登录成功
+  //如果session对象中uid不存在，原因:当前没有登录
+  if(!req.session.uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+  }
+  //1:参数 pid count uid price
+  //pid：商品编号,count:固定1,uid:用户编号,price:价格
+  var pid = parseInt(req.query.pid);
+  var count =parseInt(req.query.val);
+  var uid = req.session.uid;
+  var price = parseInt(req.query.price);
+  var sql =" SELECT id FROM xz_cart";
+      sql+=" WHERE uid = ? AND pid = ?";
+  pool.query(sql,[uid,pid],(err,result)=>{
+    if(err)throw err; 
+    if(result.length==0){
+      var sql = ` INSERT INTO xz_cart`;
+          sql+=` VALUES(null,${count},${price},${pid},${uid})`;
+      //新增商品种类,code:1
+      pool.query(sql,(err,result)=>{
+        if(err)throw err;
+        if(result.affectedRows > 0){
+          res.send({code:1,msg:"添加成功"+sql});
+        }else{
+          res.send({code:-2,msg:"添加失败"});
+        } 
+      })   
+    }else{
+      var sql = ` UPDATE xz_cart`;
+          sql += ` SET count=count+${count} WHERE pid=${pid}`;
+          sql+=` AND uid = ${uid}`;
+      //商品种类未增加,code:2
+      pool.query(sql,(err,result)=>{
+        if(err)throw err;
+        if(result.affectedRows > 0){
+          res.send({code:2,msg:"添加成功"+sql});
+        }else{
+          res.send({code:-2,msg:"添加失败"});
+        } 
+      }) 
+    }
+    /* pool.query(sql,(err,result)=>{
+      if(err)throw err;
+      if(result.affectedRows > 0){
+        res.send({code:1,msg:"添加成功"+sql});
+      }else{
+        res.send({code:-1,msg:"添加失败"});
+      } 
+    }) */
+  })
+  //5:JSON
+});
+ 
+//功能十:购物车列表
+//http://127.0.0.1:3000/cartlist?uid=1
+app.get("/cartlist",(req,res)=>{
+  //判断用户是否登录成功
+  //如果session对象中uid不存在，原因:当前没有登录
+  if(!req.session.uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+  }
+  //参数 uid
+  var uid = req.session.uid;
+  //sql  多表查询
+  var sql = " SELECT c.id,c.count,c.price,";
+      sql+=" c.uid,c.pid,l.lname,p.sm";
+      sql+=" FROM xz_cart c,xz_laptop l,xz_laptop_pic p";
+      sql+=" WHERE l.lid = c.pid = p.pid";
+      sql+=" AND c.uid = ?";
+  pool.query(sql,[uid],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,data:result})
+  })
+});
+
+//功能十一:删除购物车中一件商品
+//http://127.0.0.1:3000/delCartItem?id=5
+app.get("/delCartItem",(req,res)=>{
+  //1:参数 id
+  var id = req.query.id;
+  //2:sql  DELETE
+  var sql = "DELETE FROM xz_cart WHERE id = ?";
+  pool.query(sql,[id],(err,result)=>{
+    if(err)throw err;
+    if(result.affectedRows > 0){
+      res.send({code:1,msg:"删除成功"});
+    }else{
+      res.send({code:-1,msg:"删除失败"});
+    }
+  });
+  //3:json msg
+});
+
+//功能十二:删除购物车中多个指定商品
+//http://127.0.0.1:3000/removeMItem?ids=3,8
+app.get("/removeMItem",(req,res)=>{
+  //1:参数 ids  3,4,5
+  var ids = req.query.ids;
+  //2:sql DELETE
+  var sql =" DELETE FROM xz_cart ";
+      sql+=" WHERE id IN ("+ids+")";
+  //3:json
+  pool.query(sql,(err,result)=>{
+    if(err)throw err;
+    if(result.affectedRows > 0){
+      res.send({code:1,msg:"删除成功"+sql})
+    }else{
+      res.send({code:-1,msg:"删除失败"}) 
+    }
+  })
+   //4:请求地址格式
+});
+
+ 
+//功能十三:给小程序首页返回轮播数据
+//1:将轮播保存 public/img/banner1.png
+//2:GET /imagelist
+app.get("/imagelist2",(req,res)=>{
+  var rows = [
+    {code:1,img_url:"http://127.0.0.1:3000/img/banner1.png"},
+    {code:2,img_url:"http://127.0.0.1:3000/img/banner2.png"},
+    {code:3,img_url:"http://127.0.0.1:3000/img/banner3.png"},
+    {code:4,img_url:"http://127.0.0.1:3000/img/banner4.png"},
+  ];
+  res.send(rows);
+})
+//3:创建js对象 图片编号 图片地址
+//4:返回 
+
+//功能十四:返回小程序九宫格图片列表
+//将九宫格图片复制 /public/icon/... 
+app.get("/icons",(req,res)=>{
+  var rows = [
+    {id:1,img_url:"http://127.0.0.1:3000/icons/grid-01.png",title:"美食"},
+    {id:2,img_url:"http://127.0.0.1:3000/icons/grid-02.png",title:"更多"},
+    {id:3,img_url:"http://127.0.0.1:3000/icons/grid-03.png",title:"结婚"},
+    {id:4,img_url:"http://127.0.0.1:3000/icons/grid-04.png",title:"卡拉OK"},
+    {id:5,img_url:"http://127.0.0.1:3000/icons/grid-05.png",title:"找工作"},
+    {id:6,img_url:"http://127.0.0.1:3000/icons/grid-06.png",title:"辅导"},
+    {id:7,img_url:"http://127.0.0.1:3000/icons/grid-07.png",title:"汽车保养"},
+    {id:8,img_url:"http://127.0.0.1:3000/icons/grid-08.png",title:"租房"},
+    {id:9,img_url:"http://127.0.0.1:3000/icons/grid-09.png",title:"装修"},
+  ];
+  res.send(rows);
+}) 
+
+//功能十五:用户退出 
+app.get("/logout",(req,res)=>{
+  //1:清空uid
+  req.session.uid = null;
+  //2:返回消息
+  res.send({code:1,msg:"已退出"});
+});
+
+//功能十六:美食列表分页查询
+app.get("/shoplist",(req,res)=>{
+  //1:参数
+  //pno      页码:  用户需要查看页数 1 2 
+  //pageSize 页大小:一页7
+  var pno = req.query.pno;
+  var pageSize = req.query.pageSize;
+  //1.1:默认值 pno 1 pageSize = 7
+  if(!pno){
+    pno = 1;
+  }
+  if(!pageSize){
+    pageSize = 7;
+  }
+  //1.2:创建变量保存执行进度
+  var progress = 0; 
+  //1.3:创建变量最终发送js对象
+  var obj = {code:1}
+
+  //2:sql语句
+  var sql =" SELECT id,img_url,name,tel";
+      sql +=" ,addr,time,star";
+      sql +=" FROM xz_shop"; 
+      sql +=" LIMIT ?,?";
+  var offset = (pno-1)*pageSize;//要查看的页码的起始行
+  //pageSize 造型int
+  pageSize = parseInt(pageSize);
+  pool.query(sql,[offset,pageSize],(err,result)=>{
+    if(err)throw err;
+    progress += 50;     //进度值加50
+    obj.data = result;  //保存当前面内容
+    if(progress==100){  //如果进度值100
+      res.send(obj);    //发送
+    }
+  });
+
+  //3:sql语句总页数
+  var sql =" SELECT count(id) as c";
+      sql+=" FROM xz_shop";//计算总记录数
+  pool.query(sql,(err,result)=>{
+    if(err)throw err;
+    var ps = Math.ceil(result[0].c/pageSize);
+    progress+=50;      //进度值加50
+    obj.pageCount = ps;//保存总页数 
+    if(progress==100){ //当前进度等于100
+      res.send(obj);   //发送
+    }
+  })
+  //4:返回结果 {code:1,data:[],pageCount:3}
+}); 
+
+//功能十七:添加商品
+//CREATE TABLE xz_pro(
+//  id   INT PRIMARY KEY AUTO_INCREMENT,
+//  name VARCHAR(25)
+//);
+app.get("/addpro",(req,res)=>{
+  //1:参数
+  //var id = req.query.id;  
+  var name = req.query.name;
+  //2:sql
+  var sql =" INSERT INTO xz_pro";
+      sql+=" VALUES(null,?)";
+  pool.query(sql,[name],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,msg:"添加成功"});
+  })    
+  //3:json
+});
+
+//功能十八:小程序  上传文件
+//?1:加载express;fs;multer模块
+//const express = require("express");
+//fs fileSystem 文件系统
+//创建文件 删除文件 修改文件 *移动*文件 ..
+const fs = require("fs");
+//上传文件第三方模块..
+const multer = require("multer");
+//2:创建express
+//var app = express();
+//3:指定静态目录 public
+//__dirname 当前文件所属目录绝对路径
+//c:/xampp/htdocs/tao/weixin/day06
+app.use(express.static(__dirname+"/public"));
+//4:监听端口
+//app.listen(3000);
+//5:创建upload对象
+var upload = multer({dest:"upload/"});
+//6:接收客户post请求
+app.post("/upload",upload.single("mypic"),(req,res)=>{
+  // var rows = [
+  //   {code:1,msg:req.file.size},
+  //   {code:2,msg:req.file.mimetype},
+  //   {code:3,msg:req.file.originalname},
+  //   {code:4,msg:req.file.path},
+  // ];
+  // res.send(rows);
+  //7:文件大小
+  //8:文件类型 
+  //9:修改文件名 123.jpg 191282873283.jpg
+  //9.1:获取源文件名后缀
+  var src = req.file.originalname;
+  var i3 = src.lastIndexOf(".");
+  var suff = src.substring(i3);  //源文件名后缀 .jpg
+  //9.2:创建时间毫秒数
+  var ftime = new Date().getTime();
+  //9.3:创建随机数
+  var fran = Math.floor(Math.random()*9999);
+  //9.4:创建新文件名 upload/毫秒数+随机数+后缀名
+  var des = "./upload/"+ftime+fran+suff;
+  //9.5:将临时文件修改名称移动 新文件名
+  //修改名称并且移动文件 (原先文件,目标新文件名)
+  fs.renameSync(req.file.path,des);
+  //10:将临时文件移动upload目录下
+  res.send({code:1,msg:"上传文件成功"});
+});
+//15_WEIXIN/day06/app.js
+//15_WEIXIN/day06/upload
+
+//功能十九:学子商城  商城搜索
+app.get("/search",(req,res)=>{
+  //1:获取参数 key pno pageSize
+  var key = req.query.key;
+  var pno = req.query.pno;
+  var pageSize = req.query.pageSize;
+  //2:设置默认值 1 7
+  if(!pno){
+    pno = 1;
+  }
+  if(!pageSize){
+    pageSize = 7;
+  }
+  //3:创建sql搜索商品信息
+  var sql =" SELECT lid,lname,price";
+     sql +=" FROM xz_laptop";
+     sql +=" WHERE lname LIKE ?";
+     sql +=" LIMIT ?,?";
+  //4:offset pageSize
+  var offset  = (pno-1)*pageSize;
+  pageSize = parseInt(pageSize);
+  pool.query(sql,
+    ["%"+key+"%",offset,pageSize],
+    (err,result)=>{
+      if(err)throw err;
+      res.send({code:1,data:result});
+    });
+  //5:发送sql
+  //7:执行成功 {code:1,data:}
+});

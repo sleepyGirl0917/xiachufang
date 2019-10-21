@@ -73,9 +73,15 @@ router.post('/registe', (req, res) => {
       res.end();
     } else {
       // 验证码是否正确
-      if ($codeSend == $code && $PhoneNum==$tel) {
-        res.write(JSON.stringify(resCode[10]));
-        res.end();
+      if ($codeSend == $code && $PhoneNum == $tel) {
+        var sql = "INSERT INTO xiachufang_user (tel,password) VALUES ("+$tel+","+$pwd+")";
+        pool.query(sql, (err, result) => {
+          if (err) throw err;
+          if (result.affectedRows > 0) {
+            res.write(JSON.stringify(resCode[10]));
+            res.end();
+          }  
+        })      
       } else {
         res.write(JSON.stringify(resCode[7]));
         res.end();
@@ -125,7 +131,7 @@ router.post('/login', (req, res) => {
       res.end();
     } else {
       // 验证码是否正确
-      if ($codeSend == $code && $PhoneNum==$tel) {
+      if ($codeSend == $code && $PhoneNum == $tel) {
         res.write(JSON.stringify(resCode[11]));
         res.end();
       } else {

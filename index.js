@@ -42,3 +42,9 @@ server.get("/carousel",(req,res)=>{
     // result：对象数组
   })
 });
+
+// 新秀菜谱
+server.get("/explore", (req, res) => {
+  // 菜谱表按最近使用时间（有用户在菜谱下上传作品）排序，取前15条数据
+  // var sql=`SELECT * FROM xiachufang_explore as A `
+})

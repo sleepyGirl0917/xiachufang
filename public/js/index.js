@@ -27,6 +27,39 @@ $(function(){
     }
   } */
 
+  // JQ实现点击返回顶部（有动画过渡）
+  $(function () {
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 800) {
+        $("#toTop").fadeIn(500);
+      }
+      else {
+        $("#toTop").fadeOut(500);
+      }
+    });
+    $("#toTop").click(function () {
+      $('body,html').animate({ scrollTop: 0 }, 20);
+    });
+  });
+
+/* window.onscroll = function () {
+// 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
+var scrollTop = document.body.scrollTop
+  || document.documentElement.scrollTop;
+// console.log(scrollTop);
+if (scrollTop >= 800)
+  toTop.style.display = "block";
+else
+  toTop.style.display = "none";
+}
+
+window.onload=function() {
+  var toTop = document.getElementById("toTop");
+  toTop.addEventListener("click", function () {
+    scrollTo(0, 0);
+  })
+} */
+  
   // 轮播图
   $.ajax({
     url:"http://localhost:3000/carousel",
@@ -41,8 +74,8 @@ $(function(){
       for(var i=0;i<5;i++){
         var list=data[i];
         //复制轮播图第一张图的HTML片段，并用模板字符串，填充其中动态生成的部分
-        var html=`<a href="${list.recipe_href}">
-          <img src="${list.recipe_img}" class="img-fluid" title="${list.recipe_title}" alt="${list.recipe_title}">
+        var html = `<a href="${list.recipe_href}">
+          <img src="${list.recipe_img}" title="${list.recipe_title}" alt="${list.recipe_title}">
         </a>
         <div class="carousel-caption p-0" title="${list.recipe_title}">
           <a href="${list.recipe_href}" class="d-block text-white carousel-title">${list.recipe_title}</a>
@@ -78,37 +111,50 @@ $(function(){
   xhr.open("get", "/carousel", true);
   xhr.send(null); */
 
-  // JQ实现点击返回顶部（有动画过渡）
-  $(function () {
-    $(window).scroll(function () {
-      if ($(window).scrollTop() > 800) {
-        $("#toTop").fadeIn(500);
+  // 新秀菜谱
+  $.ajax({
+    url: "http://localhost:3000/explore",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      for (var i = 0; i < 5; i++) {
+        var list = data[i];
+        var html = `<li class="d-block" style="width:20%;">
+          <ul class="list-unstyled d-flex justify-content-between">
+            
+          </ul>
+        </li>`;
+        {/* 每组3张图 */ }
+        for (var j = 0; j < 3; j++) {
+          var sub_list = list[j];
+          var sub_html = `<li class="rookie-recipe-item text-center">
+            <a href="#" class="d-block">
+              <img src="./img/recipe/rising/8465141fae7d4256bd6133171a6cf3af_913w_1370h.jpg" title="奥特曼生日蛋糕">
+            </a>
+            <div class="m-1 text-truncate">
+              <a href="#" class="homemenu-link">奥特曼生日蛋糕</a>
+            </div>
+          </li>`;
+          $(".rookie-recipe .rookie-recipe-list>ul ul").eq(j).html(html);
+        }
+        $(".rookie-recipe .rookie-recipe-list>ul").eq(i).html(html);
       }
-      else {
-        $("#toTop").fadeOut(500);
-      }
-    });
-    $("#toTop").click(function () {
-      $('body,html').animate({ scrollTop: 0 }, 20);
-    });
-  });
-
-  /* window.onscroll = function () {
-  // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
-  var scrollTop = document.body.scrollTop
-    || document.documentElement.scrollTop;
-  // console.log(scrollTop);
-  if (scrollTop >= 800)
-    toTop.style.display = "block";
-  else
-    toTop.style.display = "none";
-  }
-
-  window.onload=function() {
-    var toTop = document.getElementById("toTop");
-    toTop.addEventListener("click", function () {
-      scrollTo(0, 0);
-    })
-  } */
+    }
+  })
 
 })
+
+    // 5组
+    <li class="d-block" style="width:20%;">
+      <ul class="list-unstyled d-flex justify-content-between">
+        {/* 每组3张图 */}
+        <li class="rookie-recipe-item text-center">
+          <a href="#" class="d-block">
+            <img src="./img/recipe/rising/8465141fae7d4256bd6133171a6cf3af_913w_1370h.jpg" title="奥特曼生日蛋糕">
+          </a>
+          <div class="m-1 text-truncate">
+            <a href="#" class="homemenu-link">奥特曼生日蛋糕</a>
+          </div>
+        </li>  
+      </ul>
+    </li>
