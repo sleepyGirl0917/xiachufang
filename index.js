@@ -47,7 +47,14 @@ server.get("/carousel",(req,res)=>{
 // 新秀菜谱
 server.get("/explore", (req, res) => {
   // 菜谱表按最近使用时间（有用户在菜谱下上传作品）排序，取前15条数据
-  var sql=`SELECT * FROM xiachufang_recipe as A RIGHT JOIN xiachufang_recipe_upload as B ON A.rid=B.recipe_id`;
-  sql+=` ORDER BY date_upload DESC LIMIT 15`;
-  
+  var sql =`SELECT * FROM xiachufang_recipe as A RIGHT JOIN xiachufang_recipe_upload as B ON A.rid=B.recipe_id`;
+  sql += ` ORDER BY date_upload DESC LIMIT 15`;
+  pool.query(sql, (err, result) => {
+    if (err) throw err;
+    res.writeHead(200, {
+      "Access-Control-Allow-Origin": "*"
+    });
+    res.write(JSON.stringify(result));
+    res.end()
+  })
 })

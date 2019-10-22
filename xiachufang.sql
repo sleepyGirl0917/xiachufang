@@ -16,7 +16,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `xiachufang_headline`;
 CREATE TABLE `xiachufang_headline`(
   `cid` int(11) NOT NULL auto_increment,
-  `recipe_id` int(11) default NULL, #菜谱表对应编号
+  `recipe_id` int(11) default NULL, 
   `date_recommend` date default NULL,
   PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -47,15 +47,15 @@ CREATE TABLE `xiachufang_recipe`(
   `rid` int(11) NOT NULL auto_increment,
   `recipe_title` varchar(64) default NULL,
   `recipe_img` varchar(128) default NULL,
-  `ingredients` varchar(128) default NULL,
-  `num_used`	int(8) default NULL,          #使用人数
-  `sevenday_used` int(8) default NULL,      #7天内使用人数
+  `ingredients` varchar(128) default NULL COMMENT '食材',
+  `num_used`	int(8) default NULL COMMENT '使用人数',          
+  `sevenday_used` int(8) default NULL COMMENT '7天内使用人数', 
   `score`		decimal(2,1) default NULL,
   `user_id`	int(11) default NULL,
   `date_created`	timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `date_changed`	timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `date_newUsed`  DATETIME default NULL,    #最近使用时间
-  `num_collected`	int(8) default NULL,      #收藏人数
+  `date_newUsed`  DATETIME default NULL COMMENT '最近使用时间',
+  `num_collected`	int(8) default NULL COMMENT '收藏人数',
   `recipe_href` varchar(128) default NULL,
   PRIMARY KEY (`rid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -435,6 +435,7 @@ INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '82', '88', CURRENT_TIMESTA
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '39', '71', CURRENT_TIMESTAMP);
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '40', '69', CURRENT_TIMESTAMP);
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '63', '73', CURRENT_TIMESTAMP);
+INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '27', '27', CURRENT_TIMESTAMP);
 
 -- ----------------------------
 -- Table structure for `xiachufang_menu_collect`
@@ -496,3 +497,7 @@ CREATE TABLE `xiachufang_food_ingredients`(
 -- Records of xiachufang_food_ingredients
 -- ----------------------------
 
+#用户在菜谱下上传作品后把最近一次date_upload更新到菜谱表
+UPDATE  xiachufang_recipe AS A SET A.date_newUsed =
+  (SELECT date_upload from xiachufang_recipe_upload AS B WHERE B.recipe_id = A.rid
+ORDER BY date_upload DESC LIMIT 1);

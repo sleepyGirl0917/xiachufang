@@ -113,44 +113,56 @@ window.onload=function() {
     type: "get",
     dataType: "json",
     success: function (data) {
-      for (var i = 0; i < 5; i++) {
+      console.log(data)
+      for (var i = 0; i < 15; i++) {
         var list = data[i];
-        var html = `<li class="d-block" style="width:20%;">
-          <ul class="list-unstyled d-flex justify-content-between">
-            
-          </ul>
-        </li>`;
-        {/* 每组3张图 */ }
-        for (var j = 0; j < 3; j++) {
-          var sub_list = list[j];
-          var sub_html = `<li class="rookie-recipe-item text-center">
-            <a href="#" class="d-block">
-              <img src="./img/recipe/rising/8465141fae7d4256bd6133171a6cf3af_913w_1370h.jpg" title="奥特曼生日蛋糕">
-            </a>
-            <div class="m-1 text-truncate">
-              <a href="#" class="homemenu-link">奥特曼生日蛋糕</a>
-            </div>
-          </li>`;
-          $(".rookie-recipe .rookie-recipe-list>ul ul").eq(j).html(html);
-        }
-        $(".rookie-recipe .rookie-recipe-list>ul").eq(i).html(html);
+        var html = `<a href="${list.recipe_href}" class="d-block">
+          <img src="${list.recipe_img}" title="${list.recipe_title}">
+        </a>
+        <div class="m-1 text-truncate">
+          <a href="${list.recipe_href}" class="homemenu-link">${list.recipe_title}</a>
+        </div>`;
+        $(".rookie-recipe .rookie-recipe-list .rookie-recipe-item").eq(i).html(html);
       }
     }
   })
+  .then(function () {
+    // 点击左右箭头移动ul列表
+    // 记录移动次数
+    var step = 0;
+    var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
+    var $btnRight = $btnLeft.next();
+    var width = $(".rookie-recipe-list").width();
+    // Q:响应式，屏幕宽度变化，这里不会更新
+    $btnRight.click(function () {
+      // 右边按钮不是disabled时，点击按钮ul向左移动一次
+      if ($(this).is(":not(.disabled)")) {     
+        step++;
+        $(".rookie-recipe-list>ul").css("margin-left", -width * step);
+        // console.log(step)
+        // 启用左边按钮
+        $btnLeft.removeClass("disabled");
+        if (3*step+3==15) {
+          $(this).addClass("disabled");
+        }
+      }
+    })
+    // 左边按钮不是disabled时，点击按钮ul向右移动一次
+    $btnLeft.click(function () {
+      if ($(this).is(":not(.disabled)")) {
+        step--;
+        $(".rookie-recipe-list>ul").css("margin-left", -width * step);
+        // console.log(step)
+        // 启用右边按钮
+        $btnRight.removeClass("disabled");
+        if (step==0) {
+          $(this).addClass("disabled");
+        }
+      }
+    })
+  })
 
+  $(function () {
+    
+  })
 })
-
-    // // 5组
-    // <li class="d-block" style="width:20%;">
-    //   <ul class="list-unstyled d-flex justify-content-between">
-    //     {/* 每组3张图 */}
-    //     <li class="rookie-recipe-item text-center">
-    //       <a href="#" class="d-block">
-    //         <img src="./img/recipe/rising/8465141fae7d4256bd6133171a6cf3af_913w_1370h.jpg" title="奥特曼生日蛋糕">
-    //       </a>
-    //       <div class="m-1 text-truncate">
-    //         <a href="#" class="homemenu-link">奥特曼生日蛋糕</a>
-    //       </div>
-    //     </li>  
-    //   </ul>
-    // </li>

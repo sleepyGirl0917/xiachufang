@@ -309,7 +309,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
     right:30%;
   }
 }
-/* 菜谱 */
+/* 新秀菜谱 */
 .rookie-recipe-title{
   position:relative;
 }
@@ -318,6 +318,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   font-size:20px;
   font-weight: 700;
   color:#C0AE7D;
+  height:27px;
 }
 .home-icon-left-arrow{
   position: absolute;
@@ -333,12 +334,23 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   right:0;
   background-position:-31px -280px;
 }
+.rookie-recipe-list{
+  width:100%;
+  overflow: hidden;
+}
 .rookie-recipe-item{
   width:32%;
   color:transparent;
 }
-.rookie-recipe-item img{
-  max-width: 100%;
+.rookie-recipe-item img {
+  width: 100%;
+  height: 76px;
+  object-fit: cover;
+}
+@media screen and (min-width:768px){
+  .rookie-recipe-item img{
+    height: 108px;
+  }
 }
 ul img:hover{
   opacity: 0.9;
@@ -421,6 +433,7 @@ ul img:hover{
 .opus h3{
   font-size:24px;
   line-height: 2;
+  height:48px;
 }
 @media screen and (max-width:768px){
   .opus h3{
