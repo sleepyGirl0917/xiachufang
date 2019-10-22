@@ -133,9 +133,13 @@ window.onload=function() {
     var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
     var $btnRight = $btnLeft.next();
     var width = $(".rookie-recipe-list").width();
-    // Q:响应式，屏幕宽度变化，这里不会更新
+    // 拉伸窗口时，width和ul的外边距跟随改变
+    $(window).resize(function(){
+      width=$(".rookie-recipe-list").width();
+      $(".rookie-recipe-list>ul").css("margin-left", -width * step);
+    })
+    // 右边按钮不是disabled时，点击按钮ul向左移动一次
     $btnRight.click(function () {
-      // 右边按钮不是disabled时，点击按钮ul向左移动一次
       if ($(this).is(":not(.disabled)")) {     
         step++;
         $(".rookie-recipe-list>ul").css("margin-left", -width * step);
