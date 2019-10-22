@@ -18,6 +18,11 @@ recipe/101874529	被大家加入到以下菜单	recipe_list/100080426 ...
 
 recipe/103951128	相关分类	 家常菜(导航） 下饭菜 鱼香	    3个分类都可以找到菜谱，点击进去导航分类固定为家常菜
 
+浏览器window对象
+本文链接：https://blog.csdn.net/u012681635/article/details/81194990
+
+各种 on事件触发js代码
+本文链接：https://www.cnblogs.com/ssrsblogs/p/on_js.html
 
 1.搜索功能（搜索用户/菜谱，模糊查询）：
   先精确查找，category/...

@@ -283,14 +283,14 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
 }
 .carousel-item img{
   width:100%;
-  height: 220px;
+  /* height: 220px; */
   object-fit: cover;
 }
-@media screen and (min-width:768px){
+/* @media screen and (min-width:768px){
   .carousel-item img{
     height: 300px;
   }
-}
+} */
 .home-icon-carousel{
   /* 最近的已定位祖先元素是div.carousel */
   position: absolute;
@@ -342,7 +342,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   width:32%;
   color:transparent;
 }
-.rookie-recipe-item img {
+/* .rookie-recipe-item img {
   width: 100%;
   height: 76px;
   object-fit: cover;
@@ -351,6 +351,11 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   .rookie-recipe-item img{
     height: 108px;
   }
+} */
+.rookie-recipe-item img {
+  width: 100%;
+  /* height: 76px; */
+  object-fit: cover;
 }
 ul img:hover{
   opacity: 0.9;

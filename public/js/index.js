@@ -85,7 +85,10 @@ window.onload=function() {
       } 
     }
   })
-
+  .then(function(){
+    getHeight($("#home-carousel .carousel-item img"),0.5); //和轮播图冲突
+  }); 
+  
   /* var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -127,7 +130,7 @@ window.onload=function() {
     }
   })
   .then(function () {
-    // 点击左右箭头移动ul列表
+    getHeight($(".rookie-recipe-item img"));
     // 记录移动次数
     var step = 0;
     var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
@@ -166,7 +169,16 @@ window.onload=function() {
     })
   })
 
-  $(function () {
-    
-  })
+  // 宽高比例自适应
+  function getHeight($img,n=0.7){
+    console.log($img)
+    var width=$img.width();
+    $img.css("height",width*n)
+    $(window).resize(function(){
+      width=$img.width();
+      $img.css("height",$img.width()*n)
+      console.log('width：'+width+'，height：'+width*n)
+    })
+  }
+
 })
