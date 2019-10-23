@@ -47,7 +47,7 @@ CREATE TABLE `xiachufang_recipe`(
   `rid` int(11) NOT NULL auto_increment,
   `recipe_title` varchar(64) default NULL,
   `recipe_img` varchar(128) default NULL,
-  `ingredients` varchar(128) default NULL COMMENT '食材',
+  `category` varchar(128) default NULL COMMENT '食材',
   `num_used`	int(8) default NULL COMMENT '使用人数',          
   `sevenday_used` int(8) default NULL COMMENT '7天内使用人数', 
   `score`		decimal(2,1) default NULL,
@@ -482,81 +482,38 @@ CREATE TABLE `xiachufang_menu_details` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `xiachufang_food_ingredients`
+-- Table structure for `xiachufang_category`
 -- 食材（肉类，水产，蔬菜，水果）
 -- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_food_ingredients`;
-CREATE TABLE `xiachufang_food_ingredients`(
-  `fiid` int(11) NOT NULL auto_increment,
-  `fname` varchar(32) default NULL COMMENT '食材名称',
+DROP TABLE IF EXISTS `xiachufang_category`;
+CREATE TABLE `xiachufang_category`(
+  `fid` int(11) NOT NULL auto_increment,
+  `fname` varchar(32) default NULL,
   `food_img` varchar(128) default NULL,
   `score` decimal(2,1) default NULL,
   `is_season` tinyint(1) default NULL COMMENT '时令食材',
-  `family_id` int(11) default NULL COMMENT '食材类别',
-  `food_href` varchar(128) default NULL,
-  PRIMARY KEY  (`fiid`)
+  `food_categary` VARCHAR(32) default NULL COMMENT '类别',
+  `category_href` varchar(128) default NULL,
+  PRIMARY KEY  (`fid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of xiachufang_food_ingredients
+-- Records of xiachufang_category
 -- ----------------------------
-INSERT INTO `xiachufang_food_ingredients` VALUES (NULL,)
-
--- ----------------------------
--- Table structure for `xiachufang_food_family`
--- 类别
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_food_family`;
-CREATE TABLE `xiachufang_food_family`(
-  `fmid` int(11) NOT NULL auto_increment,
-  `family_name` VARCHAR(32) default NULL,
-  `content_id` int(11) default NULL,
-  `family_href` varchar(128) default NULL,
-  PRIMARY KEY  (`fmid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of xiachufang_food_family
--- ----------------------------
-
--- ----------------------------
--- Table structure for `xiachufang_content`
--- 目录
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_content`;
-CREATE TABLE (
-  `cid` int(11) NOT NULL auto_increment,
-  `content` VARCHAR(32) default NULL,
-  PRIMARY KEY  (`cid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of xiachufang_content
--- ----------------------------
-INSERT INTO `xiachufang_content` VALUES('1','热门专题');
-INSERT INTO `xiachufang_content` VALUES('2','烘焙甜品饮料');
-INSERT INTO `xiachufang_content` VALUES('3','肉类');
-INSERT INTO `xiachufang_content` VALUES('4','蔬菜水果');
-INSERT INTO `xiachufang_content` VALUES('5','汤粥主食');
-INSERT INTO `xiachufang_content` VALUES('6','口味特色');
-INSERT INTO `xiachufang_content` VALUES('7','水产');
-INSERT INTO `xiachufang_content` VALUES('8','蛋奶豆制品');
-INSERT INTO `xiachufang_content` VALUES('9','米面干果腌咸');
+INSERT INTO `xiachufang_category` VALUES (NULL,'螃蟹','img/category/螃蟹.jpg','9.8','1','螃蟹','水产','/category/1');
 
 -- ----------------------------
 -- Table structure for `xiachufang_search`
--- 最近流行--菜谱
--- 流行搜索--分类
--- 流行菜单--菜单
+-- 搜菜谱，搜菜单，搜用户
+-- select count(*) from xiachufang_search where date_visited between CURDATE()-interval 7 day;7天内访问次数
 -- ----------------------------
 DROP TABLE IF EXISTS `xiachufang_search`;
 CREATE TABLE `xiachufang_search`(
   `sid` int(11) NOT NULL auto_increment,
-  `recipe_id`int(11) default NULL,
+  `recipe_id` int(11) default NULL,
   `menu_id` int(11) default NULL,
-  `family_id` int(11) default NULL,
-  `num_visited` int(11) default NULL,
-  `date_visited`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '访问时间',
+  `user_id` int(11) default NULL,
+  `date_visited`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '搜索时间',
   PRIMARY KEY  (`sid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -565,3 +522,4 @@ CREATE TABLE `xiachufang_search`(
 UPDATE  xiachufang_recipe AS A SET A.date_newUsed =
   (SELECT date_upload from xiachufang_recipe_upload AS B WHERE B.recipe_id = A.rid
 ORDER BY date_upload DESC LIMIT 1);
+
