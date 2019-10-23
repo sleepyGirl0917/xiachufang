@@ -1,14 +1,14 @@
 //仅DOM内容加载后就提前执行
-$(function(){
+$(function () {
   // 控制二级列表的显示/隐藏
   $(function () {
-    var $submenu=$("[data-list=submenu]");
+    var $submenu = $("[data-list=submenu]");
     $submenu.parent().hover(
-      function(){
-        $(this).find('[data-list=submenu]').css("display","block");
+      function () {
+        $(this).find('[data-list=submenu]').css("display", "block");
       }, //mouseenter
-      function(){
-        $(this).find('[data-list=submenu]').css("display","none");
+      function () {
+        $(this).find('[data-list=submenu]').css("display", "none");
       }  //mouseleave
     )
   })
@@ -42,33 +42,33 @@ $(function(){
     });
   });
 
-/* window.onscroll = function () {
-// 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
-var scrollTop = document.body.scrollTop
-  || document.documentElement.scrollTop;
-// console.log(scrollTop);
-if (scrollTop >= 800)
-  toTop.style.display = "block";
-else
-  toTop.style.display = "none";
-}
-
-window.onload=function() {
-  var toTop = document.getElementById("toTop");
-  toTop.addEventListener("click", function () {
-    scrollTo(0, 0);
-  })
-} */
+  /* window.onscroll = function () {
+  // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
+  var scrollTop = document.body.scrollTop
+    || document.documentElement.scrollTop;
+  // console.log(scrollTop);
+  if (scrollTop >= 800)
+    toTop.style.display = "block";
+  else
+    toTop.style.display = "none";
+  }
   
+  window.onload=function() {
+    var toTop = document.getElementById("toTop");
+    toTop.addEventListener("click", function () {
+      scrollTo(0, 0);
+    })
+  } */
+
   // 轮播图
   $.ajax({
-    url:"http://localhost:3000/carousel",
-    type:"get",
-    dataType:"json",
-    success:function(data){
+    url: "http://localhost:3000/carousel",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
       console.log(data)
-      for(var i=0;i<5;i++){
-        var list=data[i];
+      for (var i = 0; i < 5; i++) {
+        var list = data[i];
         //复制轮播图第一张图的HTML片段，并用模板字符串，填充其中动态生成的部分
         var html = `<a href="${list.recipe_href}">
           <img src="${list.recipe_img}" title="${list.recipe_title}" alt="${list.recipe_title}">
@@ -82,13 +82,13 @@ window.onload=function() {
         </div>`;
         //将片段填充回页面中原父元素内 
         $("#home-carousel .carousel-inner .carousel-item").eq(i).html(html);
-      } 
+      }
     }
   })
-  .then(function(){
-    getHeight($("#home-carousel .carousel-item img"),0.5); //和轮播图冲突
-  }); 
-  
+    .then(function () {
+      // getHeight($("#home-carousel .carousel-item img"),0.5); //和轮播图冲突
+    });
+
   /* var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -112,7 +112,7 @@ window.onload=function() {
 
   // 新秀菜谱
   $.ajax({
-    url: "http://localhost:3000/explore",
+    url: "http://localhost:3000/explore/rising",
     type: "get",
     dataType: "json",
     success: function (data) {
@@ -129,55 +129,159 @@ window.onload=function() {
       }
     }
   })
+    .then(function () {
+      getHeight($(".rookie-recipe-item img"));
+      // 记录移动次数
+      var step = 0;
+      var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
+      var $btnRight = $btnLeft.next();
+      var width = $(".rookie-recipe-list").width();
+      var $ul = $(".rookie-recipe-list>ul");
+      // 拉伸窗口时，width和ul的外边距跟随改变
+      $(window).resize(function () {
+        width = $(".rookie-recipe-list").width();
+        $ul.css("margin-left", -width * step);
+      })
+      // $ul左外边距为0时，禁用左边按钮
+      if ($ul.css("margin-left") == '0px') {
+        $btnLeft.addClass("disabled");
+      }
+      // 图片数量<=3时，禁用右边按钮
+      if ($ul.find("img").length <= 3) {
+        $btnRight.addClass("disabled");
+      }
+      // 右边按钮不是disabled时，点击按钮ul向左移动一次
+      $btnRight.click(function () {
+        if ($(this).is(":not(.disabled)")) {
+          step++;
+          $ul.css("margin-left", -width * step);
+          // console.log(step)
+          // 启用左边按钮
+          $btnLeft.removeClass("disabled");
+          if (3 * step + 3 == 15) {
+            $(this).addClass("disabled");
+          }
+        }
+      })
+      // 左边按钮不是disabled时，点击按钮ul向右移动一次
+      $btnLeft.click(function () {
+        if ($(this).is(":not(.disabled)")) {
+          step--;
+          $ul.css("margin-left", -width * step);
+          // console.log(step)
+          // 启用右边按钮
+          $btnRight.removeClass("disabled");
+          if (step == 0) {
+            $(this).addClass("disabled");
+          }
+        }
+      })
+    })
+
+  // 最近流行
+  $.ajax({
+    url: "http://localhost:3000/explore",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data)
+      var html = "";
+      for (var i = 0; i < 12; i++) {
+        var list = data[i];
+        html += `<li>
+          <div class="text-center recipe-pop-border recipe-width">
+            <a href="${list.recipe_href}" class="d-block">
+              <img src="${list.recipe_img}" title="${list.recipe_title}">
+            </a>
+            <div class="recipe-title">
+              <a href="${list.recipe_href}" class="homemenu-link d-block text-truncate">${list.recipe_title}</a>
+            </div>
+            <div class="stats mb-3">
+              <a href="${list.recipe_href}" class="homemenu-link">${list.upid}</a>
+              &nbsp;&nbsp;&nbsp;
+              <span>${list.num_used} 做过</span>
+            </div>
+          </div>
+        </li>`;
+      }
+      $(".rencent-pop ul").html(html);
+    }
+  })
   .then(function () {
-    getHeight($(".rookie-recipe-item img"));
-    // 记录移动次数
-    var step = 0;
-    var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
-    var $btnRight = $btnLeft.next();
-    var width = $(".rookie-recipe-list").width();
-    // 拉伸窗口时，width和ul的外边距跟随改变
-    $(window).resize(function(){
-      width=$(".rookie-recipe-list").width();
-      $(".rookie-recipe-list>ul").css("margin-left", -width * step);
-    })
-    // 右边按钮不是disabled时，点击按钮ul向左移动一次
-    $btnRight.click(function () {
-      if ($(this).is(":not(.disabled)")) {     
-        step++;
-        $(".rookie-recipe-list>ul").css("margin-left", -width * step);
-        // console.log(step)
-        // 启用左边按钮
-        $btnLeft.removeClass("disabled");
-        if (3*step+3==15) {
-          $(this).addClass("disabled");
-        }
-      }
-    })
-    // 左边按钮不是disabled时，点击按钮ul向右移动一次
-    $btnLeft.click(function () {
-      if ($(this).is(":not(.disabled)")) {
-        step--;
-        $(".rookie-recipe-list>ul").css("margin-left", -width * step);
-        // console.log(step)
-        // 启用右边按钮
-        $btnRight.removeClass("disabled");
-        if (step==0) {
-          $(this).addClass("disabled");
-        }
-      }
-    })
+    getHeight($(".rencent-pop ul img"));
   })
 
+  // 时令食材
+  $.ajax({
+    url: "http://localhost:3000/season",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data)
+      var html = "";
+      for (var i = 0; i < 12; i++){
+        var list = data[i];
+        html += `<li>
+          <a href="${list.recipe_href}" class="homemenu-link">
+            <img src="${list.recipe_img}" alt="${list.recipe_title}"><br>
+            <span>${list.recipe_id}</span>
+          </a>
+        </li>`;
+      }
+      $(".seasonal-ingredients .season-bg ul").html(html);
+    }
+  })
+  .then(function () {
+    getHeight($(".seasonal-ingredients .season-bg ul img"), 1)
+  })
+
+  // 最近菜单
+  $.ajax({
+    url: "http://localhost:3000/menu",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data)
+      var html = "";
+      for (var i = 0; i < 12; i++) {
+        var list = data[i];
+        
+      }
+      $("").html(html);
+    }
+  })
+    .then(function () {
+      getHeight()
+    })
+  
+  // 下厨房的厨友们
+  $.ajax({
+    url: "http://localhost:3000/user",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data)
+      var html = "";
+      for (var i = 0; i < 12; i++) {
+        var list = data[i];
+        
+      }
+      $("").html(html);
+    }
+  })
+    .then(function () {
+      getHeight()
+    })
+  
   // 宽高比例自适应
-  function getHeight($img,n=0.7){
+  function getHeight($img, n = 0.6) {
     console.log($img)
-    var width=$img.width();
-    $img.css("height",width*n)
-    $(window).resize(function(){
-      width=$img.width();
-      $img.css("height",$img.width()*n)
-      console.log('width：'+width+'，height：'+width*n)
+    var width = $img.width();
+    $img.css("height", width * n)
+    $(window).resize(function () {
+      width = $img.width();
+      $img.css("height", $img.width() * n)
+      console.log('width：' + width + '，height：' + width * n)
     })
   }
 

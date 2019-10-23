@@ -45,7 +45,7 @@ server.get("/carousel",(req,res)=>{
 });
 
 // 新秀菜谱
-server.get("/explore", (req, res) => {
+server.get("/explore/rising", (req, res) => {
   // 菜谱表按最近使用时间（有用户在菜谱下上传作品）排序，取前15条数据
   var sql =`SELECT * FROM xiachufang_recipe as A RIGHT JOIN xiachufang_recipe_upload as B ON A.rid=B.recipe_id`;
   sql += ` ORDER BY date_upload DESC LIMIT 15`;
@@ -58,3 +58,39 @@ server.get("/explore", (req, res) => {
     res.end()
   })
 })
+
+// 最近流行（菜谱）
+server.get("/explore", (req, res) => {
+  var sql = `(SELECT * FROM xiachufang_recipe as A LEFT JOIN xiachufang_search as B ON A.rid=B.recipe_id)`;
+  sql += ` UNION `;
+  sql += `(SELECT * FROM xiachufang_recipe as A RIGHT JOIN xiachufang_search as B ON A.rid=B.recipe_id)`;
+  sql += ` ORDER BY num_visited DESC LIMIT 12`;
+  pool.query(sql, (err, result) => {
+    if (err) throw err;
+    res.writeHead(200, {
+      "Access-Control-Allow-Origin": "*"
+    });
+    res.write(JSON.stringify(result));
+    res.end()
+  })
+})
+
+// 时令食材
+server.use("/season", (req, res) => {
+  // 综合评分前12的时令食材
+  var sql = `SELECT * FROM xiachufang_food_ingredients WHERE is_season=1 ORDEY BY score DESC LIMIT 12`;
+  pool.query(sql, (err, result) => {
+    if (err) throw err;
+    res.writeHead(200, {
+      "Access-Control-Allow-Origin": "*"
+    });
+    if (result.length > 0) {
+      res.write(JSON.stringify(result));
+      res.end()
+    }
+  })
+})
+
+// 流行搜索
+
+// 最近菜单

@@ -63,6 +63,7 @@
                     <li><a href="#" class="head-link">茄子</a></li>
                     <li><a href="#" class="head-link">豆腐</a></li>
                   </ul>
+                  <!-- 时令食材动态生成 -->
                   <ul class="list-unstyled">
                     <li class="my-gray">时令食材</li>
                     <li><a href="#" class="head-link">螃蟹</a><span>9.9</span></li>
@@ -440,8 +441,8 @@
               <div class="mt-3 mb-3 rookie-recipe-title d-flex align-items-center">
                 <h3 class="title">新秀菜谱</h3>
                 <a href="#" class="head-link ml-3">全部</a>
-                <a herf="#" class="home-icon home-icon-left-arrow"></a>
-                <a herf="#" class="home-icon home-icon-right-arrow"></a>
+                <a herf="javascript：void(0);" class="home-icon home-icon-left-arrow"></a>
+                <a herf="javascript：void(0);" class="home-icon home-icon-right-arrow"></a>
               </div>
               <div class="rookie-recipe-list">
                 <!-- ul宽度比div大，水平溢出 -->
@@ -507,7 +508,8 @@
               </div>
               <!-- ul内部元素全部浮动，加上clearfix解决高度坍塌 -->
               <ul class="list-unstyled clearfix">
-                <li>
+                <!-- 12个li -->
+                <!-- <li>
                   <div class="text-center recipe-pop-border recipe-width">
                     <a href="#" class="d-block">
                       <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
@@ -521,159 +523,7 @@
                       <span>139 做过</span>
                     </div>
                   </div>
-                </li>
-                <!-- 复制11个li -->
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="text-center recipe-pop-border recipe-width">
-                    <a href="#" class="d-block">
-                      <img src="./img/recipe/pop/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg" title="凉拌金针菇">
-                    </a>
-                    <div class="recipe-title">
-                      <a href="#" class="homemenu-link d-block text-truncate">凉拌金针菇</a>
-                    </div>
-                    <div class="stats mb-3">
-                      <a href="#" class="homemenu-link">美美6375_xw19</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <span>139 做过</span>
-                    </div>
-                  </div>
-                </li>
-
+                </li> -->
               </ul>
             </div>
 
