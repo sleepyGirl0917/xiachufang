@@ -197,7 +197,7 @@ $(function () {
               <a href="${list.recipe_href}" class="homemenu-link d-block text-truncate">${list.recipe_title}</a>
             </div>
             <div class="stats mb-3">
-              <a href="${list.recipe_href}" class="homemenu-link">${list.upid}</a>
+              <a href="${list.user_href}" class="homemenu-link">${list.uname}</a>
               &nbsp;&nbsp;&nbsp;
               <span>${list.num_used} 做过</span>
             </div>
@@ -222,20 +222,25 @@ $(function () {
       for (var i = 0; i < 12; i++){
         var list = data[i];
         html += `<li>
-          <a href="${list.recipe_href}" class="homemenu-link">
-            <img src="${list.recipe_img}" alt="${list.recipe_title}"><br>
-            <span>${list.recipe_id}</span>
+          <a href="${list.category_href}" class="homemenu-link">
+            <img src="${list.food_img}" alt="${list.fname}"><br>
+            <span>${list.fname}</span>
           </a>
         </li>`;
       }
       $(".seasonal-ingredients .season-bg ul").html(html);
+      for (var j = 0; j < 8; j++){
+        var _list = data[j];
+        var $li = $(`<li><a href="${_list.category_href}" class="head-link">${_list.fname}</a><span>${_list.score.toFixed(1)}</span></li>`);
+        $li.appendTo($("header .season"));
+      }
     }
   })
   .then(function () {
     getHeight($(".seasonal-ingredients .season-bg ul img"), 1)
   })
 
-  // 最近菜单
+  // 流行菜单
   $.ajax({
     url: "http://localhost:3000/menu",
     type: "get",
@@ -243,11 +248,16 @@ $(function () {
     success: function (data) {
       console.log(data)
       var html = "";
-      for (var i = 0; i < 12; i++) {
+      for (var i = 0; i < 4; i++) {
         var list = data[i];
-        
+        html += `<li>
+          <a href="#" class="text-center recipe-pop-border d-block homemenu-link" title="那些拿得出手的硬菜">
+            <img src="./img/recipe/pop/c4722f06870111e6a9a10242ac110002_640w_414h.jpg">
+            <div class="pop-recipe-title text-truncate">那些拿得出手的硬菜</div>
+          </a>
+        </li>`;
       }
-      $("").html(html);
+      $(".pop-recipe ul").html(html);
     }
   })
     .then(function () {
@@ -264,13 +274,27 @@ $(function () {
       var html = "";
       for (var i = 0; i < 12; i++) {
         var list = data[i];
-        
+        html += `<li>
+          <div class="cooker-container">
+            <div class="avatar">
+              <a href="#"><img src="./img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg"></a>
+            </div>
+            <div class="detail">
+              <div class="text-truncate name"><a href="#" class="homemenu-link">文文就是个吃货</a></div>
+              <div class="stats">680&nbsp;关注</div>
+              <div class="stats">56&nbsp;个菜谱&nbsp;3973&nbsp;个作品</div>
+            </div>
+            <div class="concern">
+              <a href="#" class="button">关注</a>
+            </div>
+          </div>
+        </li>`;
       }
-      $("").html(html);
+      $(".cookers ul").html(html);
     }
   })
     .then(function () {
-      getHeight()
+      getHeight($(".cookers img"),1)
     })
   
   // 宽高比例自适应

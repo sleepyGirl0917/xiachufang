@@ -21,22 +21,26 @@ CREATE TABLE `xiachufang_headline`(
   PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of xiachufang_headline
--- ----------------------------
-INSERT INTO `xiachufang_headline` VALUES ('1','1','2019-10-10');
-INSERT INTO `xiachufang_headline` VALUES ('2','2','2019-10-9');
-INSERT INTO `xiachufang_headline` VALUES ('3','3','2019-10-8');
-INSERT INTO `xiachufang_headline` VALUES ('4','4','2019-10-7');
-INSERT INTO `xiachufang_headline` VALUES ('5','5','2019-10-6');
-INSERT INTO `xiachufang_headline` VALUES ('6','16','2019-10-11');
-INSERT INTO `xiachufang_headline` VALUES ('7','19','2019-10-12');
-INSERT INTO `xiachufang_headline` VALUES ('8','8','2019-10-13');
-INSERT INTO `xiachufang_headline` VALUES ('9','36','2019-10-14');
-INSERT INTO `xiachufang_headline` VALUES ('10','26','2019-10-15');
-INSERT INTO `xiachufang_headline` VALUES ('11','78','2019-10-16');
-INSERT INTO `xiachufang_headline` VALUES ('12','66','2019-10-17');
-INSERT INTO `xiachufang_headline` VALUES ('13','34','2019-10-18');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'1','2019-10-10');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'2','2019-10-9');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'3','2019-10-8');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'4','2019-10-7');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'5','2019-10-6');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'16','2019-10-11');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'19','2019-10-12');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'8','2019-10-13');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'36','2019-10-14');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'26','2019-10-15');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'78','2019-10-16');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'66','2019-10-17');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'77','2019-10-18');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'25','2019-10-19');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'35','2019-10-20');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'46','2019-10-21');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'95','2019-10-22');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'108','2019-10-23');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'163','2019-10-24');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'134','2019-10-25');
 
 -- ----------------------------
 -- Table structure for `xiachufang_recipe`
@@ -50,7 +54,7 @@ CREATE TABLE `xiachufang_recipe`(
   `category` varchar(128) default NULL COMMENT '食材',
   `num_used`	int(8) default NULL COMMENT '使用人数',          
   `sevenday_used` int(8) default NULL COMMENT '7天内使用人数', 
-  `score`		decimal(2,1) default NULL,
+  `score`		decimal(3,1) default NULL,
   `user_id`	int(11) default NULL,
   `date_created`	timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `date_changed`	timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -60,9 +64,6 @@ CREATE TABLE `xiachufang_recipe`(
   PRIMARY KEY (`rid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of xiachufang_recipe
--- ----------------------------
 INSERT INTO `xiachufang_recipe` VALUES ('1','凉拌金针菇','/img/recipe/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg','金针菇、青辣椒、红辣椒、葱姜蒜、醋、生抽、盐、香油、蒜','33','195','7.8','4','2019-08-18 22:25:15','null','null','98973','http://www.xiachufang.com/recipe/104018067/');
 INSERT INTO `xiachufang_recipe` VALUES ('2','停不下来的秘制凉拌鸡爪','/img/recipe/eb6086d62f6b4275b610d63b86093d67_1242w_1242h.jpg','鸡爪、小米椒、线椒、大蒜、冰糖、柠檬、生抽、醋、蚝油、姜、花椒','26','283','8.4','5','2019-08-16 20:03:32','null','null','52574','http://www.xiachufang.com/recipe/104013468/');
 INSERT INTO `xiachufang_recipe` VALUES ('3','炒方便面￨幸福感爆棚','/img/recipe/fff940b32f3746319b9c655b114e5e33_1280w_853h.jpg','方便面、火腿肠、鸡蛋、小白菜、胡萝卜、圆白菜','13','272','7.2','6','2019-05-27 16:37:45','null','null','44304','http://www.xiachufang.com/recipe/103847222/');
@@ -246,164 +247,359 @@ CREATE TABLE `xiachufang_user` (
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of xiachufang_user
--- ----------------------------
-INSERT INTO `xiachufang_user` VALUES ('1','18162536357', '123456','ali','img/avatar/default.png',null);
-INSERT INTO `xiachufang_user` VALUES ('2','18262546300', '123456','xujing','img/avatar/default.png',null);
-INSERT INTO `xiachufang_user` VALUES ('3','13476823333', '123456','dingding','img/avatar/default.png',null);
-INSERT INTO `xiachufang_user` VALUES ('4','13905224025','123456','美美6375_xw19','img/avatar/b1bb6c125e274554ad4148d7d5ebec3a_640w_640h.jpg','/cook/121800372/');
-INSERT INTO `xiachufang_user` VALUES ('5','15152042952','123456','文文就是个吃货','img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg','/cook/120338543/');
-INSERT INTO `xiachufang_user` VALUES ('6','13905229712','123456','悠悠食记','img/avatar/ff417d31295a4127ac3d962e735c43cc_799w_799h.jpg','/cook/118919309/');
-INSERT INTO `xiachufang_user` VALUES ('7','13905228560','123456','洛阳李青霞','img/avatar/3a307c483a5e407fb8aa2e2592bd8bfa_720w_720h.jpg','/cook/127491656/');
-INSERT INTO `xiachufang_user` VALUES ('8','13905225423','123456','Tinrry甜悦','img/avatar/c70068b80259418a88ff1a2f5a2b406b_1200w_1200h.jpg','/cook/10411331/');
-INSERT INTO `xiachufang_user` VALUES ('9','13905224783','123456','Yvonne徐','img/avatar/41839d76a3f1486599146237e67745b9_854w_854h.jpg','/cook/104059312/');
-INSERT INTO `xiachufang_user` VALUES ('10','15895253904','123456','E路拾缘','img/avatar/23ac6dc946494dda8dc90bfa2665f624_824w_824h.jpg','/cook/103249930/');
-INSERT INTO `xiachufang_user` VALUES ('11','15152048243','123456','小白素食记录','img/avatar/9de1fb28e5b44ab58190155f6b657349_160w_160h.jpg','/cook/10001975/');
-INSERT INTO `xiachufang_user` VALUES ('12','13905222870','123456','笑与鱼尾纹','img/avatar/4712f2683e374befa2a36a1031701db5_160w_160h.jpg','/cook/107476880/');
-INSERT INTO `xiachufang_user` VALUES ('13','13905220697','123456','美丽女神经','img/avatar/051ddae06819460d8ff1156ff8676d95_1080w_1080h.jpg','/cook/126334531/');
-INSERT INTO `xiachufang_user` VALUES ('14','15895255704','123456','冇伱灬冇我','img/avatar/4cc69abf020c409790c6f73407b8c184_160w_160h.jpg','/cook/102543668/');
-INSERT INTO `xiachufang_user` VALUES ('15','15895252715','123456','哈奇0328','img/avatar/76cc05305c0d4e069c73cf9b989f6511_1080w_1080h.jpg','/cook/103373575/');
-INSERT INTO `xiachufang_user` VALUES ('16','15895259353','123456','NancyChen耐C','img/avatar/762c50503c6f11e7bc9d0242ac110002_100w_100h.jpg','/cook/105832697/');
-INSERT INTO `xiachufang_user` VALUES ('17','15895258599','123456','千粟粟','img/avatar/0643fbb4d368435b8fba4a69a2c5a8fd_1124w_1124h.jpg','/cook/127947972/');
-INSERT INTO `xiachufang_user` VALUES ('18','15895259263','123456','欢某某的时光记','img/avatar/b61b4a8963cb408ca543b5d66c724bfa_1280w_1280h.jpg','/cook/100857621/');
-INSERT INTO `xiachufang_user` VALUES ('19','15895252934','123456','小七菇凉家','img/avatar/3ca42c7117184795a6a4030d453badf7_160w_160h.jpg','/cook/109300380/');
-INSERT INTO `xiachufang_user` VALUES ('20','13905225744','123456','暗黑小玉','img/avatar/6ba4d7a741074c818e4033d862508e18_1080w_1080h.jpg','/cook/125816358/');
-INSERT INTO `xiachufang_user` VALUES ('21','15895254540','123456','泳歌','img/avatar/c414eebae462406e82147cb39ef2d1af_640w_640h.jpg','/cook/101488719/');
-INSERT INTO `xiachufang_user` VALUES ('22','15152048564','123456','喵兒酱','img/avatar/d7181d1a3f9211e7bc9d0242ac110002_768w_768h.jpg','/cook/119269004/');
-INSERT INTO `xiachufang_user` VALUES ('23','15895259530','123456','隔壁万小厨','img/avatar/952e9979b63f4b499beea7d03651acd3_132w_132h.jpg','/cook/129456061/');
-INSERT INTO `xiachufang_user` VALUES ('24','15895250472','123456','金毛滋','img/avatar/5b2833b4e38547e8bbd4be26c60afe62_160w_160h.jpg','/cook/112494188/');
-INSERT INTO `xiachufang_user` VALUES ('25','15152047702','123456','红叶99','img/avatar/56f0df0c865a11e5966f1ff7b4e1f10d.jpg','/cook/102244884/');
-INSERT INTO `xiachufang_user` VALUES ('26','15152047108','123456','Tracy易彩','img/avatar/c609ec2ed7f54ec595b0b5cb1d89c46e_160w_160h.jpg','/cook/101653050/');
-INSERT INTO `xiachufang_user` VALUES ('27','13905223982','123456','布拉格的大叶子','img/avatar/b1a03124c5ee4558b96b931aef638a84_1080w_1080h.jpg','/cook/10656269/');
-INSERT INTO `xiachufang_user` VALUES ('28','15152049522','123456','Linda_Yue','img/avatar/61cfcaa4cd90498988433a9dd156925c_1280w_1280h.jpg','/cook/107167122/');
-INSERT INTO `xiachufang_user` VALUES ('29','13905228275','123456','认真吃饭的七仔','img/avatar/3bff778bb3e24b0ebbc47f0f3cef9844_719w_719h.jpg','/cook/137055308/');
-INSERT INTO `xiachufang_user` VALUES ('30','15152047952','123456','花凝雨嫣','img/avatar/76d3ce02d17111e6947d0242ac110002_500w_312h.jpg','/cook/115851651/');
-INSERT INTO `xiachufang_user` VALUES ('31','13905221911','123456','hui-33','img/avatar/64b9714085be11e593084188f460086c.jpg','/cook/101642467/');
-INSERT INTO `xiachufang_user` VALUES ('32','13905224589','123456','Haaaassicwy','img/avatar/1d54435d3d764aea9d4644f5476ba75e_828w_828h.jpg','/cook/138056075/');
-INSERT INTO `xiachufang_user` VALUES ('33','13905226292','123456','C_kaka','img/avatar/e35cf40bc1d94fb1b53cc147da75932b_180w_180h.jpg','/cook/122005489/');
-INSERT INTO `xiachufang_user` VALUES ('34','15895253370','123456','Tinng','img/avatar/956932b982dc40a2bd765d7e727d5994_1078w_1078h.jpg','/cook/100379322/');
-INSERT INTO `xiachufang_user` VALUES ('35','15895258865','123456','sweetlifeme','img/avatar/1fa5bc1c828a11e5b8f3f16e28b14388.jpg','/cook/103282046/');
-INSERT INTO `xiachufang_user` VALUES ('36','15152047593','123456','林Cici','img/avatar/769aeabb8ab54bb3be06e29df35a2a6c_624w_624h.jpg','/cook/115622242/');
-INSERT INTO `xiachufang_user` VALUES ('37','15895257570','123456','王美人2019','img/avatar/d97a56f8d9ae492ebb1f98402bc1deeb_1080w_1080h.jpg','/cook/114194529/');
-INSERT INTO `xiachufang_user` VALUES ('38','13905229668','123456','曼小曼__','img/avatar/f2e9dd8edda34cb1aef82cb36ab84ca9_1280w_1280h.jpg','/cook/101551142/');
-INSERT INTO `xiachufang_user` VALUES ('39','15152047695','123456','月梦kelly','img/avatar/bf3af180826b11e5872cd54bbe99b334.jpg','/cook/10720814/');
-INSERT INTO `xiachufang_user` VALUES ('40','15152043791','123456','新手美食学习者','img/avatar/f8fef9d0cfb24d87a5fe55fd872b7a2a_1080w_1080h.jpg','/cook/119432765/');
-INSERT INTO `xiachufang_user` VALUES ('41','13905227409','123456','西瓜不甜不要钱咯','img/avatar/d52e7a937a0f47d4b427300a157d4af0_1124w_1124h.jpg','/cook/110023461/');
-INSERT INTO `xiachufang_user` VALUES ('42','15895257991','123456','tangtang瑭瑭','img/avatar/74d00a9eb3c14d5fa3accd45eedc3c82_160w_160h.jpg','/cook/102979687/');
-INSERT INTO `xiachufang_user` VALUES ('43','15895259472','123456','可爱劲儿','img/avatar/b98bb0e59546442182d182cd1382a529_1280w_1280h.jpg','/cook/108074042/');
-INSERT INTO `xiachufang_user` VALUES ('44','15152040412','123456','爱吃de兔子','img/avatar/85144ba49924427085f3e13df5732d05_1080w_1080h.jpg','/cook/104596198/');
-INSERT INTO `xiachufang_user` VALUES ('45','15152047331','123456','瑾宁妈妈','img/avatar/19ccbbd55fe2481a88d6fbce03b1e7c2_160w_160h.jpg','/cook/105831269/');
-INSERT INTO `xiachufang_user` VALUES ('46','15152044637','123456','石榴和独角兽','img/avatar/4c109f28864411e58bf6872e9def2e57.jpg','/cook/102119010/');
-INSERT INTO `xiachufang_user` VALUES ('47','15895259458','123456','哈哈的犀牛jio','img/avatar/fb87f903102242808ce631f7ef284cd2_160w_160h.jpg','/cook/105502145/');
-INSERT INTO `xiachufang_user` VALUES ('48','15895254727','123456','爱下厨的小海','img/avatar/5ca652eab48d42d2b5db27f1f0486c1e_1080w_1080h.jpg','/cook/123456981/');
-INSERT INTO `xiachufang_user` VALUES ('49','13905229112','123456','米豆小姐mido','img/avatar/0e00865958b1479e86e9786519cc0922_1242w_1242h.jpg','/cook/111036636/');
-INSERT INTO `xiachufang_user` VALUES ('50','15152048786','123456','Mmmmmmmnm','img/avatar/c53b9aa2bcc644a4bf3c786205080aa4_160w_160h.jpg','/cook/103929613/');
-INSERT INTO `xiachufang_user` VALUES ('51','13905225340','123456','半日_雪','img/avatar/5077f0c5b2854246909b4b7158e77dbc_160w_160h.jpg','/cook/10934047/');
-INSERT INTO `xiachufang_user` VALUES ('52','15152045673','123456','金粒籽','img/avatar/4dd55a091b2944189b90af3692a12a24_1223w_1223h.jpg','/cook/120488884/');
-INSERT INTO `xiachufang_user` VALUES ('53','15152044347','123456','悠然爱烘焙','img/avatar/a6b867c14c204974a3c09b42e42f649e_960w_960h.jpg','/cook/113832234/');
-INSERT INTO `xiachufang_user` VALUES ('54','15895257719','123456','王光光光光','img/avatar/8ae5e70cc2c94a18bd6c065518103ffd_1184w_1184h.jpg','/cook/10021396/');
-INSERT INTO `xiachufang_user` VALUES ('55','13905224761','123456','爱上厨房的美丽','img/avatar/1ec7b0422b9a4169ad15a492d265f297_1125w_1125h.jpg','/cook/128588435/');
-INSERT INTO `xiachufang_user` VALUES ('56','13905222551','123456','阿姿妹','img/avatar/598b1044fe3b11e5bad2b82a72e00100.jpg','/cook/100802797/');
-INSERT INTO `xiachufang_user` VALUES ('57','15152044638','123456','安安爱吃面包','img/avatar/bc460214635b401fafd35657ff8d15f0_686w_686h.jpg','/cook/113701894/');
-INSERT INTO `xiachufang_user` VALUES ('58','15895254361','123456','ice-Bing冰','img/avatar/080ec43683ef4cef95faad664eb1ba9a_1080w_1080h.jpg','/cook/104630675/');
-INSERT INTO `xiachufang_user` VALUES ('59','13905228451','123456','糖宝麻麻-木木','img/avatar/a1ca711e30f340b1949341e696d1487c_1125w_1125h.jpg','/cook/115728870/');
-INSERT INTO `xiachufang_user` VALUES ('60','15152043834','123456','司马燕子','img/avatar/f5f94571fd5d4340a4a9cd7b16a8d977_1080w_1080h.jpg','/cook/120706769/');
-INSERT INTO `xiachufang_user` VALUES ('61','15895257592','123456','银河系爆炸可爱冠军','img/avatar/ddcb08e0930b4fdba4a2bf66d999fcc0_690w_690h.jpg','/cook/122085262/');
-INSERT INTO `xiachufang_user` VALUES ('62','15895255065','123456','KawyHoo','img/avatar/836e15a105fc47aca109da55458f15cb_160w_160h.jpg','/cook/101211389/');
-INSERT INTO `xiachufang_user` VALUES ('63','13905228484','123456','陈德华_','img/avatar/76ac6e572b0643c386a9a62d0c199884_1080w_1080h.jpg','/cook/134070058/');
-INSERT INTO `xiachufang_user` VALUES ('64','13905224185','123456','千寻树','img/avatar/6e02ae0f3c0a42c2a9ab49b3acda5ea8_160w_160h.jpg','/cook/122079365/');
-INSERT INTO `xiachufang_user` VALUES ('65','15895259553','123456','sabreen','img/avatar/9cf8978c47724700873c5641e45cc93f_160w_160h.jpg','/cook/11338525/');
-INSERT INTO `xiachufang_user` VALUES ('66','15152047910','123456','爱美食_爱手工_爱生活','img/avatar/6c08b88d263c46e1871fc0004e5f6f10_132w_132h.jpg','/cook/127133167/');
-INSERT INTO `xiachufang_user` VALUES ('67','15152046401','123456','依然爱n','img/avatar/ead7401f203949f8b29eccea5b74171f_1280w_1280h.jpg','/cook/124097465/');
-INSERT INTO `xiachufang_user` VALUES ('68','13905224543','123456','奚姥姥','img/avatar/7c81d76e43aa40ae8353ad0734649145_160w_160h.jpg','/cook/100527870/');
-INSERT INTO `xiachufang_user` VALUES ('69','15152041861','123456','私家小食堂','img/avatar/826da2de855911e5bb63e0db5512b208.jpg','/cook/101152928/');
-INSERT INTO `xiachufang_user` VALUES ('70','13905226156','123456','菠萝姐123','img/avatar/7f55bfddc91d42dbbbcd1fcf0b6132f0_1280w_1280h.jpg','/cook/123578728/');
-INSERT INTO `xiachufang_user` VALUES ('71','13905225069','123456','敌敌厨房','img/avatar/511a69e1a4714ecda2b6e66f5abe33b2_160w_160h.jpg','/cook/116105711/');
-INSERT INTO `xiachufang_user` VALUES ('72','15152043861','123456','大猪爱猪猪','img/avatar/f242e63782a147dfa3529597cad81c77_1080w_1080h.jpg','/cook/107877701/');
-INSERT INTO `xiachufang_user` VALUES ('73','15152044731','123456','莫言catlam','img/avatar/6b262191817011e5adbe81a4cec4e4e3.jpg','/cook/10210360/');
-INSERT INTO `xiachufang_user` VALUES ('74','13905225900','123456','奇遇cake','img/avatar/3f7d412e3a3046fab59dcc6683769b29_640w_640h.jpg','/cook/121626208/');
-INSERT INTO `xiachufang_user` VALUES ('75','13905220071','123456','佩奇仔仔','img/avatar/ba8aa745d0e54327b9a4a5c214c21763_1080w_1080h.jpg','/cook/134851705/');
-INSERT INTO `xiachufang_user` VALUES ('76','15152041097','123456','Miss扬','img/avatar/7f131688681141c58be5c79e3ee993dd_1242w_1242h.jpg','/cook/123513606/');
-INSERT INTO `xiachufang_user` VALUES ('77','15152040218','123456','小厨娘孙太太','img/avatar/984952b51a6b45b88e2c3d7387a11eaf_132w_132h.jpg','/cook/135336609/');
-INSERT INTO `xiachufang_user` VALUES ('78','15895257696','123456','倆妞妈','img/avatar/cd3ebe8a5bb34cd59c5c5107f0cb9840_1080w_1080h.jpg','/cook/117036588/');
-INSERT INTO `xiachufang_user` VALUES ('79','15895257731','123456','星星美食记','img/avatar/983307081c0b4d26a0fc14565ca59867_1080w_1080h.jpg','/cook/112133864/');
-INSERT INTO `xiachufang_user` VALUES ('80','13905222640','123456','日食记','img/avatar/91778f07e14111e591fb49a66669f8fa.jpg','/cook/101441929/');
-INSERT INTO `xiachufang_user` VALUES ('81','15895254343','123456','抹茶爱榴莲呀','img/avatar/b9f0aa6f31ac4995acc929c4265e127c_1124w_1124h.jpg','/cook/134507634/');
-INSERT INTO `xiachufang_user` VALUES ('82','13905221945','123456','蓝色海棠','img/avatar/a78424a085c011e5bf5fb82a72e00100.jpg','/cook/101651314/');
-INSERT INTO `xiachufang_user` VALUES ('83','15895257917','123456','惠妈妈hui','img/avatar/6213484b132d4af68c01f9c2780522bd_1080w_1080h.jpg','/cook/100026892/');
-INSERT INTO `xiachufang_user` VALUES ('84','15895254935','123456','jerryjan','img/avatar/7e746e5f1efe454e88ec55b0d30f0fe2_1080w_1080h.jpg','/cook/113734557/');
-INSERT INTO `xiachufang_user` VALUES ('85','15895254823','123456','爱下厨的春天','img/avatar/1b204fff2207410ea33748879f8f6905_750w_750h.jpg','/cook/115856591/');
-INSERT INTO `xiachufang_user` VALUES ('86','15152045909','123456','Skye思恺','img/avatar/fc8d5a4963a149f7b1e4a0442afe0754_1080w_1080h.jpg','/cook/100011457/');
-INSERT INTO `xiachufang_user` VALUES ('87','15895252693','123456','AbbAbb','img/avatar/12c129f9e8f7413f87afc784e518661c_1242w_1242h.jpg','/cook/130377653/');
-INSERT INTO `xiachufang_user` VALUES ('88','13905222888','123456','美食作家王刚','img/avatar/4a75bc8d281d4c9b92f086d5eb97be87_1080w_1080h.jpg','/cook/117571982/');
-INSERT INTO `xiachufang_user` VALUES ('89','15895258201','123456','向日葵尒尒熙','img/avatar/4040cbcc1aac43adacf1141f1500331e_1080w_1080h.jpg','/cook/131291172/');
-INSERT INTO `xiachufang_user` VALUES ('90','13905226597','123456','思佳Scarlett','img/avatar/71a8c44053ff11e68eb55967ab559b80.jpg','/cook/10483592/');
-INSERT INTO `xiachufang_user` VALUES ('91','13905222579','123456','粥小姐z','img/avatar/b3e6a0890ebc4b168473761c61d84a1f_180w_180h.jpg','/cook/136131581/');
-INSERT INTO `xiachufang_user` VALUES ('92','15895255652','123456','丫丫有英美国朋友的厨友加V','img/avatar/b2f360ba5e544a068406a015af8dc8c5_960w_960h.jpg','/cook/101145563/');
-INSERT INTO `xiachufang_user` VALUES ('93','13905229881','123456','美食台foodvideo','img/avatar/456cce70127f416d81ef42ce7a459b9b_160w_160h.jpg','/cook/102435312/');
-INSERT INTO `xiachufang_user` VALUES ('94','15895254622','123456','MIYAFUNNY米娅纷儿','img/avatar/4b0e4eec52fa43f2b20baace41116052_160w_160h.jpg','/cook/100825881/');
-INSERT INTO `xiachufang_user` VALUES ('95','13905225418','123456','8z-','img/avatar/2383ab7a41614070918d9f6897d9c831_1080w_1080h.jpg','/cook/125588949/');
-INSERT INTO `xiachufang_user` VALUES ('96','13905227409','123456','星杭妈','img/avatar/1c24e96572164e668dbcd165a1338481_1052w_1052h.jpg','/cook/110094546/');
-INSERT INTO `xiachufang_user` VALUES ('97','15152044343','123456','櫻糀Aries','img/avatar/468687ecf8b94fda85d20de456cabcbc_160w_160h.jpg','/cook/128922287/');
-INSERT INTO `xiachufang_user` VALUES ('98','15152041315','123456','夹心的饼干','img/avatar/461da6634f674c60955dd4b0bdf26075_1242w_1242h.jpg','/cook/103891572/');
-INSERT INTO `xiachufang_user` VALUES ('99','15895256251','123456','Eeeki小喵叶','img/avatar/f6ec8e851cbe475ea2eca7d96df62ff5_160w_160h.jpg','/cook/10887681/');
-INSERT INTO `xiachufang_user` VALUES ('100','15152045665','123456','Ww_Sid蘑菇','img/avatar/265a85c9f8b74243bc16fa9d3dfe733d_160w_160h.jpg','/cook/108791373/');
-INSERT INTO `xiachufang_user` VALUES ('101','13905225021','123456','ming47273211','img/avatar/eeb56ad9759a47f998ccf7e3fe00a230_1242w_1242h.jpg','/cook/109715869/');
-INSERT INTO `xiachufang_user` VALUES ('102','13905222610','123456','雅哲123','img/avatar/626f78ed71834580ae2263a34e6e0248_960w_960h.jpg','/cook/117808947/');
-INSERT INTO `xiachufang_user` VALUES ('103','15152044551','123456','杨妞私厨','img/avatar/a66356bfdd624f93be9467696ba88cd9_640w_640h.jpg','/cook/110757886/');
-INSERT INTO `xiachufang_user` VALUES ('104','13905229970','123456','-明日大厨-','img/avatar/851c92cd242c45418a725c32c2d12e37_160w_160h.jpg','/cook/120719362/');
-INSERT INTO `xiachufang_user` VALUES ('105','15152049912','123456','国平爱烘焙','img/avatar/e345d03685f411e5ad4be0db5512b208.jpg','/cook/101830309/');
-INSERT INTO `xiachufang_user` VALUES ('106','13905226182','123456','君之','img/avatar/bc7e3b0f7a45472e8514e8320a798aa2_800w_781h.jpg','/cook/10008395/');
-INSERT INTO `xiachufang_user` VALUES ('107','15895251294','123456','模样生活','img/avatar/2b51b366202e11e7bc9d0242ac110002_750w_750h.jpg','/cook/102903657/');
-INSERT INTO `xiachufang_user` VALUES ('108','15895259675','123456','小胖君','img/avatar/546b1aadd9ed4e4ca1ed1bab012b1533_160w_160h.jpg','/cook/11518535/');
-INSERT INTO `xiachufang_user` VALUES ('109','15152046817','123456','大丹521','img/avatar/d3c7275eaa104a7f95de7967662d5e3d_1242w_1242h.jpg','/cook/116633599/');
-INSERT INTO `xiachufang_user` VALUES ('110','13905224323','123456','Lili营养小厨','img/avatar/be2ab83346134184b94ef22803de83c1_1080w_1080h.jpg','/cook/106257626/');
-INSERT INTO `xiachufang_user` VALUES ('111','15895251816','123456','仙Reese','img/avatar/02742f9cbdd947c3baa51759ca18f671_160w_160h.jpg','/cook/120623698/');
-INSERT INTO `xiachufang_user` VALUES ('112','13905225976','123456','小辣椒椒椒','img/avatar/2b0f4899857611e5946e7757318cff63.jpg','/cook/101251491/');
-INSERT INTO `xiachufang_user` VALUES ('113','15895252080','123456','山竹味的竹子','img/avatar/7c691fff049a4f9a94d37e42434f80fc_1080w_1080h.jpg','/cook/124239757/');
-INSERT INTO `xiachufang_user` VALUES ('114','15895254134','123456','抹香鲸','img/avatar/a5ab91c94a6949e9875937fe50931a90_1080w_1080h.jpg','/cook/61386861/');
-INSERT INTO `xiachufang_user` VALUES ('115','15895256341','123456','珺珺3703','img/avatar/b081b9ec5e8c4ad386754abaa0df9bd9_1280w_1280h.jpg','/cook/127576554/');
-INSERT INTO `xiachufang_user` VALUES ('116','15152046899','123456','我叫何美丽','img/avatar/ef9cef64e94d11e6947d0242ac110002_640w_640h.jpg','/cook/116465793/');
-INSERT INTO `xiachufang_user` VALUES ('117','13905223787','123456','小至_','img/avatar/466ca7e98e5b4ebc9abf52759a34517d_160w_160h.jpg','/cook/10938686/');
-INSERT INTO `xiachufang_user` VALUES ('118','13905228542','123456','爸爸爱吃甜面包','img/avatar/4786aa1d66c54e548a0eb4f6983677d2_480w_480h.jpg','/cook/130610816/');
-INSERT INTO `xiachufang_user` VALUES ('119','13905225760','123456','萨拉球小朋友','img/avatar/567e610685e811e5a412b82a72e00100.jpg','/cook/101793243/');
-INSERT INTO `xiachufang_user` VALUES ('120','15152043886','123456','萌子食堂','img/avatar/e3421b4c7ac947f1b4f409c8ed599a95_1280w_1280h.jpg','/cook/107407663/');
-INSERT INTO `xiachufang_user` VALUES ('121','13905229650','123456','壮壮Mom','img/avatar/357a5cfb9e4744479738228c7c2c9bdf_160w_160h.jpg','/cook/124262297/');
-INSERT INTO `xiachufang_user` VALUES ('122','13905226035','123456','阿淺','img/avatar/399a930a81ab11e58dd1a3329284a6ce.jpg','/cook/10378733/');
-INSERT INTO `xiachufang_user` VALUES ('123','13905221925','123456','浅草君君kakun','img/avatar/186210d5a0374dbcb82e28b24f49d1ad_160w_160h.jpg','/cook/100170800/');
-INSERT INTO `xiachufang_user` VALUES ('124','15152049881','123456','Valder徐某某','img/avatar/dced11c3e8d4445fae6fa7089cab2939_1000w_1000h.jpg','/cook/123042537/');
-INSERT INTO `xiachufang_user` VALUES ('125','15152040034','123456','雨遇上烘焙','img/avatar/e84ac34434c34c14a242b5dd79bcff28_1080w_1080h.jpg','/cook/121016236/');
-INSERT INTO `xiachufang_user` VALUES ('126','13905227206','123456','坠入海的星','img/avatar/ae938744d82246778daba5d26d3580aa_1080w_1080h.jpg','/cook/102908224/');
-INSERT INTO `xiachufang_user` VALUES ('127','15152043818','123456','詹意丝','img/avatar/2e23de82a3cf4d17852746ef5c8726d4_750w_750h.jpg','/cook/124642645/');
-INSERT INTO `xiachufang_user` VALUES ('128','13905229810','123456','胶P糖','img/avatar/5a04bb103b7011e7947d0242ac110002_1080w_1080h.jpg','/cook/10438907/');
-INSERT INTO `xiachufang_user` VALUES ('129','13905222246','123456','懒饭App','img/avatar/59dfc5976aaa4a40869aa27bb039421f_512w_512h.png','/cook/126271064/');
-INSERT INTO `xiachufang_user` VALUES ('130','13905227235','123456','海曲夜场','img/avatar/9a23c642f32a11e58ce3a912f4d54afd.jpg','/cook/10476449/');
-INSERT INTO `xiachufang_user` VALUES ('131','15152049011','123456','远远的山那边','img/avatar/4cb064ba851311e5bacf6547122f36aa.jpg','/cook/100910222/');
-INSERT INTO `xiachufang_user` VALUES ('132','15152045305','123456','Sunny_Kreglo','img/avatar/0f1a490b37b945ae8e2df44ed0426e71_160w_160h.jpg','/cook/103280852/');
-INSERT INTO `xiachufang_user` VALUES ('133','15895258757','123456','yanyanfoodtube','img/avatar/8b61d9dfba774da683bac21947667b3e_2000w_1732h.png','/cook/104380702/');
-INSERT INTO `xiachufang_user` VALUES ('134','13905225291','123456','胃plus128G','img/avatar/f2ccaf4d88ef4fec932dd422f33d27e1_1080w_1080h.jpg','/cook/128596884/');
-INSERT INTO `xiachufang_user` VALUES ('135','15895256696','123456','好吃的味','img/avatar/ec97a1f688f84978a68f4c55dde1ab4e_1080w_1080h.jpg','/cook/138152557/');
-INSERT INTO `xiachufang_user` VALUES ('136','15152046255','123456','萝莉小小小小只','img/avatar/485c643024c811e7947d0242ac110002_160w_160h.jpg','/cook/10024008/');
-INSERT INTO `xiachufang_user` VALUES ('137','13905229637','123456','想想手作','img/avatar/a6dd235e308611e7bc9d0242ac110002_160w_160h.jpg','/cook/103382573/');
-INSERT INTO `xiachufang_user` VALUES ('138','13905229642','123456','小美的美食','img/avatar/f18edff7f8ca4286b7faaf93dcfcbe83_481w_481h.jpg','/cook/100351317/');
-INSERT INTO `xiachufang_user` VALUES ('139','13905220603','123456','小羽私厨','img/avatar/a30ffef4bc14494c8a7498bd39efa089_160w_160h.jpg','/cook/10098954/');
-INSERT INTO `xiachufang_user` VALUES ('140','15152044438','123456','王太家','img/avatar/b69cfa00538649a3af3113496a567b8e_750w_750h.jpg','/cook/101727162/');
-INSERT INTO `xiachufang_user` VALUES ('141','15895254622','123456','月牙w','img/avatar/6bfa0910b8ca4cacbaa52bdc35a559d2_160w_160h.jpg','/cook/101218250/');
-INSERT INTO `xiachufang_user` VALUES ('142','15152046749','123456','柠檬柠檬_','img/avatar/6718156ec6934fa381726dff20c18636_320w_320h.jpg','/cook/123451464/');
-INSERT INTO `xiachufang_user` VALUES ('143','15152042212','123456','一妈的厨房','img/avatar/5679542585824b5cb449d3cba30445fd_720w_720h.jpg','/cook/103344809/');
-INSERT INTO `xiachufang_user` VALUES ('144','15152041904','123456','金宇监控批发','img/avatar/db2374a6408f11e7947d0242ac110002_640w_640h.jpg','/cook/119304871/');
-INSERT INTO `xiachufang_user` VALUES ('145','15152045345','123456','秋月无边_4028','img/avatar/567d32fd9f1211e58eb377f5e497538b.jpg','/cook/107984311/');
-INSERT INTO `xiachufang_user` VALUES ('146','13905221256','123456','吃肥了','img/avatar/475c3e7e06264d60ab2b922002303fa7_160w_160h.jpg','/cook/100222434/');
-INSERT INTO `xiachufang_user` VALUES ('147','15152040961','123456','婧soul','img/avatar/1009927d32d941eb835659a45671fd38_769w_769h.jpg','/cook/132620816/');
-INSERT INTO `xiachufang_user` VALUES ('148','15895255022','123456','Bright丶cen','img/avatar/bed67f5f0c074d74820feeb63c5b7a9a_1080w_1080h.jpg','/cook/130418614/');
-INSERT INTO `xiachufang_user` VALUES ('149','15895257426','123456','昊昊宝贝的妈妈','img/avatar/7bbd66a4cc324dc2a9131f178d42cf47_1080w_1080h.jpg','/cook/115195645/');
-INSERT INTO `xiachufang_user` VALUES ('150','15895258141','123456','韩佳人的后厨房','img/avatar/3ba0fd24c51e4e3a9693b8c3ce3017be_648w_648h.jpg','/cook/120681164/');
-INSERT INTO `xiachufang_user` VALUES ('151','15895252843','123456','梨花和榆钱儿','img/avatar/65e24bc401f143aaba88a17a9a608ae9_160w_160h.jpg','/cook/100038478/');
-INSERT INTO `xiachufang_user` VALUES ('152','15895253647','123456','蝶影_','img/avatar/483e4176cd0640cfb9a705b5b92bb000_160w_160h.jpg','/cook/105480558/');
-INSERT INTO `xiachufang_user` VALUES ('153','13905222328','123456','简单亅','img/avatar/6b80df8dab00438cb0b8c73ffd9d124a_132w_132h.jpg','/cook/133893808/');
-INSERT INTO `xiachufang_user` VALUES ('154','15895259447','123456','金子-79','img/avatar/4317c612d4ec11e6bc9d0242ac110002_1080w_1080h.jpg','/cook/103547705/');
-INSERT INTO `xiachufang_user` VALUES ('155','15895258092','123456','小-妮-子','img/avatar/d635e96b097844e78f2f0f4c79f52bac_949w_949h.jpg','/cook/126932166/');
+INSERT INTO `xiachufang_user` VALUES (null,'18162536357','123456','ali','img/avatar/default.png',NULL);
+INSERT INTO `xiachufang_user` VALUES (null,'13405228240','123456','xujing','img/avatar/default.png',NULL);
+INSERT INTO `xiachufang_user` VALUES (null,'18595255953','123456','dingding','img/avatar/default.png',NULL);
+INSERT INTO `xiachufang_user` VALUES (null,'13905224025','123456','美美6375_xw19','img/avatar/b1bb6c125e274554ad4148d7d5ebec3a_640w_640h.jpg','/cook/121800372/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152042952','123456','文文就是个吃货','img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg','/cook/120338543/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229712','123456','悠悠食记','img/avatar/ff417d31295a4127ac3d962e735c43cc_799w_799h.jpg','/cook/118919309/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905228560','123456','洛阳李青霞','img/avatar/3a307c483a5e407fb8aa2e2592bd8bfa_720w_720h.jpg','/cook/127491656/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225423','123456','Tinrry甜悦','img/avatar/c70068b80259418a88ff1a2f5a2b406b_1200w_1200h.jpg','/cook/10411331/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905224783','123456','Yvonne徐','img/avatar/41839d76a3f1486599146237e67745b9_854w_854h.jpg','/cook/104059312/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895253904','123456','E路拾缘','img/avatar/23ac6dc946494dda8dc90bfa2665f624_824w_824h.jpg','/cook/103249930/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152048243','123456','小白素食记录','img/avatar/9de1fb28e5b44ab58190155f6b657349_160w_160h.jpg','/cook/10001975/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222870','123456','笑与鱼尾纹','img/avatar/4712f2683e374befa2a36a1031701db5_160w_160h.jpg','/cook/107476880/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905220697','123456','美丽女神经','img/avatar/051ddae06819460d8ff1156ff8676d95_1080w_1080h.jpg','/cook/126334531/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895255704','123456','冇伱灬冇我','img/avatar/4cc69abf020c409790c6f73407b8c184_160w_160h.jpg','/cook/102543668/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895252715','123456','哈奇0328','img/avatar/76cc05305c0d4e069c73cf9b989f6511_1080w_1080h.jpg','/cook/103373575/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259353','123456','NancyChen耐C','img/avatar/762c50503c6f11e7bc9d0242ac110002_100w_100h.jpg','/cook/105832697/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895258599','123456','千粟粟','img/avatar/0643fbb4d368435b8fba4a69a2c5a8fd_1124w_1124h.jpg','/cook/127947972/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259263','123456','欢某某的时光记','img/avatar/b61b4a8963cb408ca543b5d66c724bfa_1280w_1280h.jpg','/cook/100857621/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895252934','123456','小七菇凉家','img/avatar/3ca42c7117184795a6a4030d453badf7_160w_160h.jpg','/cook/109300380/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225744','123456','暗黑小玉','img/avatar/6ba4d7a741074c818e4033d862508e18_1080w_1080h.jpg','/cook/125816358/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254540','123456','泳歌','img/avatar/c414eebae462406e82147cb39ef2d1af_640w_640h.jpg','/cook/101488719/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152048564','123456','喵兒酱','img/avatar/d7181d1a3f9211e7bc9d0242ac110002_768w_768h.jpg','/cook/119269004/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259530','123456','隔壁万小厨','img/avatar/952e9979b63f4b499beea7d03651acd3_132w_132h.jpg','/cook/129456061/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895250472','123456','金毛滋','img/avatar/5b2833b4e38547e8bbd4be26c60afe62_160w_160h.jpg','/cook/112494188/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047702','123456','红叶99','img/avatar/56f0df0c865a11e5966f1ff7b4e1f10d.jpg','/cook/102244884/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047108','123456','Tracy易彩','img/avatar/c609ec2ed7f54ec595b0b5cb1d89c46e_160w_160h.jpg','/cook/101653050/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905223982','123456','布拉格的大叶子','img/avatar/b1a03124c5ee4558b96b931aef638a84_1080w_1080h.jpg','/cook/10656269/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152049522','123456','Linda_Yue','img/avatar/61cfcaa4cd90498988433a9dd156925c_1280w_1280h.jpg','/cook/107167122/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905228275','123456','认真吃饭的七仔','img/avatar/3bff778bb3e24b0ebbc47f0f3cef9844_719w_719h.jpg','/cook/137055308/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047952','123456','花凝雨嫣','img/avatar/76d3ce02d17111e6947d0242ac110002_500w_312h.jpg','/cook/115851651/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905221911','123456','hui-33','img/avatar/64b9714085be11e593084188f460086c.jpg','/cook/101642467/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905224589','123456','Haaaassicwy','img/avatar/1d54435d3d764aea9d4644f5476ba75e_828w_828h.jpg','/cook/138056075/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905226292','123456','C_kaka','img/avatar/e35cf40bc1d94fb1b53cc147da75932b_180w_180h.jpg','/cook/122005489/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895253370','123456','Tinng','img/avatar/956932b982dc40a2bd765d7e727d5994_1078w_1078h.jpg','/cook/100379322/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895258865','123456','sweetlifeme','img/avatar/1fa5bc1c828a11e5b8f3f16e28b14388.jpg','/cook/103282046/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047593','123456','林Cici','img/avatar/769aeabb8ab54bb3be06e29df35a2a6c_624w_624h.jpg','/cook/115622242/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257570','123456','王美人2019','img/avatar/d97a56f8d9ae492ebb1f98402bc1deeb_1080w_1080h.jpg','/cook/114194529/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229668','123456','曼小曼__','img/avatar/f2e9dd8edda34cb1aef82cb36ab84ca9_1280w_1280h.jpg','/cook/101551142/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047695','123456','月梦kelly','img/avatar/bf3af180826b11e5872cd54bbe99b334.jpg','/cook/10720814/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152043791','123456','新手美食学习者','img/avatar/f8fef9d0cfb24d87a5fe55fd872b7a2a_1080w_1080h.jpg','/cook/119432765/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905227409','123456','西瓜不甜不要钱咯','img/avatar/d52e7a937a0f47d4b427300a157d4af0_1124w_1124h.jpg','/cook/110023461/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257991','123456','tangtang瑭瑭','img/avatar/74d00a9eb3c14d5fa3accd45eedc3c82_160w_160h.jpg','/cook/102979687/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259472','123456','可爱劲儿','img/avatar/b98bb0e59546442182d182cd1382a529_1280w_1280h.jpg','/cook/108074042/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152040412','123456','爱吃de兔子','img/avatar/85144ba49924427085f3e13df5732d05_1080w_1080h.jpg','/cook/104596198/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047331','123456','瑾宁妈妈','img/avatar/19ccbbd55fe2481a88d6fbce03b1e7c2_160w_160h.jpg','/cook/105831269/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044637','123456','石榴和独角兽','img/avatar/4c109f28864411e58bf6872e9def2e57.jpg','/cook/102119010/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259458','123456','哈哈的犀牛jio','img/avatar/fb87f903102242808ce631f7ef284cd2_160w_160h.jpg','/cook/105502145/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254727','123456','爱下厨的小海','img/avatar/5ca652eab48d42d2b5db27f1f0486c1e_1080w_1080h.jpg','/cook/123456981/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229112','123456','米豆小姐mido','img/avatar/0e00865958b1479e86e9786519cc0922_1242w_1242h.jpg','/cook/111036636/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152048786','123456','Mmmmmmmnm','img/avatar/c53b9aa2bcc644a4bf3c786205080aa4_160w_160h.jpg','/cook/103929613/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225340','123456','半日_雪','img/avatar/5077f0c5b2854246909b4b7158e77dbc_160w_160h.jpg','/cook/10934047/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152045673','123456','金粒籽','img/avatar/4dd55a091b2944189b90af3692a12a24_1223w_1223h.jpg','/cook/120488884/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044347','123456','悠然爱烘焙','img/avatar/a6b867c14c204974a3c09b42e42f649e_960w_960h.jpg','/cook/113832234/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257719','123456','王光光光光','img/avatar/8ae5e70cc2c94a18bd6c065518103ffd_1184w_1184h.jpg','/cook/10021396/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905224761','123456','爱上厨房的美丽','img/avatar/1ec7b0422b9a4169ad15a492d265f297_1125w_1125h.jpg','/cook/128588435/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222551','123456','阿姿妹','img/avatar/598b1044fe3b11e5bad2b82a72e00100.jpg','/cook/100802797/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044638','123456','安安爱吃面包','img/avatar/bc460214635b401fafd35657ff8d15f0_686w_686h.jpg','/cook/113701894/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254361','123456','ice-Bing冰','img/avatar/080ec43683ef4cef95faad664eb1ba9a_1080w_1080h.jpg','/cook/104630675/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905228451','123456','糖宝麻麻-木木','img/avatar/a1ca711e30f340b1949341e696d1487c_1125w_1125h.jpg','/cook/115728870/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152043834','123456','司马燕子','img/avatar/f5f94571fd5d4340a4a9cd7b16a8d977_1080w_1080h.jpg','/cook/120706769/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257592','123456','银河系爆炸可爱冠军','img/avatar/ddcb08e0930b4fdba4a2bf66d999fcc0_690w_690h.jpg','/cook/122085262/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895255065','123456','KawyHoo','img/avatar/836e15a105fc47aca109da55458f15cb_160w_160h.jpg','/cook/101211389/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905228484','123456','陈德华_','img/avatar/76ac6e572b0643c386a9a62d0c199884_1080w_1080h.jpg','/cook/134070058/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905224185','123456','千寻树','img/avatar/6e02ae0f3c0a42c2a9ab49b3acda5ea8_160w_160h.jpg','/cook/122079365/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259553','123456','sabreen','img/avatar/9cf8978c47724700873c5641e45cc93f_160w_160h.jpg','/cook/11338525/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152047910','123456','爱美食_爱手工_爱生活','img/avatar/6c08b88d263c46e1871fc0004e5f6f10_132w_132h.jpg','/cook/127133167/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152046401','123456','依然爱n','img/avatar/ead7401f203949f8b29eccea5b74171f_1280w_1280h.jpg','/cook/124097465/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905224543','123456','奚姥姥','img/avatar/7c81d76e43aa40ae8353ad0734649145_160w_160h.jpg','/cook/100527870/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152041861','123456','私家小食堂','img/avatar/826da2de855911e5bb63e0db5512b208.jpg','/cook/101152928/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905226156','123456','菠萝姐123','img/avatar/7f55bfddc91d42dbbbcd1fcf0b6132f0_1280w_1280h.jpg','/cook/123578728/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225069','123456','敌敌厨房','img/avatar/511a69e1a4714ecda2b6e66f5abe33b2_160w_160h.jpg','/cook/116105711/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152043861','123456','大猪爱猪猪','img/avatar/f242e63782a147dfa3529597cad81c77_1080w_1080h.jpg','/cook/107877701/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044731','123456','莫言catlam','img/avatar/6b262191817011e5adbe81a4cec4e4e3.jpg','/cook/10210360/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225900','123456','奇遇cake','img/avatar/3f7d412e3a3046fab59dcc6683769b29_640w_640h.jpg','/cook/121626208/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905220071','123456','佩奇仔仔','img/avatar/ba8aa745d0e54327b9a4a5c214c21763_1080w_1080h.jpg','/cook/134851705/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152041097','123456','Miss扬','img/avatar/7f131688681141c58be5c79e3ee993dd_1242w_1242h.jpg','/cook/123513606/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152040218','123456','小厨娘孙太太','img/avatar/984952b51a6b45b88e2c3d7387a11eaf_132w_132h.jpg','/cook/135336609/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257696','123456','倆妞妈','img/avatar/cd3ebe8a5bb34cd59c5c5107f0cb9840_1080w_1080h.jpg','/cook/117036588/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257731','123456','星星美食记','img/avatar/983307081c0b4d26a0fc14565ca59867_1080w_1080h.jpg','/cook/112133864/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222640','123456','日食记','img/avatar/91778f07e14111e591fb49a66669f8fa.jpg','/cook/101441929/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254343','123456','抹茶爱榴莲呀','img/avatar/b9f0aa6f31ac4995acc929c4265e127c_1124w_1124h.jpg','/cook/134507634/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905221945','123456','蓝色海棠','img/avatar/a78424a085c011e5bf5fb82a72e00100.jpg','/cook/101651314/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257917','123456','惠妈妈hui','img/avatar/6213484b132d4af68c01f9c2780522bd_1080w_1080h.jpg','/cook/100026892/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254935','123456','jerryjan','img/avatar/7e746e5f1efe454e88ec55b0d30f0fe2_1080w_1080h.jpg','/cook/113734557/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254823','123456','爱下厨的春天','img/avatar/1b204fff2207410ea33748879f8f6905_750w_750h.jpg','/cook/115856591/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152045909','123456','Skye思恺','img/avatar/fc8d5a4963a149f7b1e4a0442afe0754_1080w_1080h.jpg','/cook/100011457/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895252693','123456','AbbAbb','img/avatar/12c129f9e8f7413f87afc784e518661c_1242w_1242h.jpg','/cook/130377653/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222888','123456','美食作家王刚','img/avatar/4a75bc8d281d4c9b92f086d5eb97be87_1080w_1080h.jpg','/cook/117571982/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895258201','123456','向日葵尒尒熙','img/avatar/4040cbcc1aac43adacf1141f1500331e_1080w_1080h.jpg','/cook/131291172/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905226597','123456','思佳Scarlett','img/avatar/71a8c44053ff11e68eb55967ab559b80.jpg','/cook/10483592/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222579','123456','粥小姐z','img/avatar/b3e6a0890ebc4b168473761c61d84a1f_180w_180h.jpg','/cook/136131581/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895255652','123456','丫丫有英美国朋友的厨友加V','img/avatar/b2f360ba5e544a068406a015af8dc8c5_960w_960h.jpg','/cook/101145563/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229881','123456','美食台foodvideo','img/avatar/456cce70127f416d81ef42ce7a459b9b_160w_160h.jpg','/cook/102435312/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254622','123456','MIYAFUNNY米娅纷儿','img/avatar/4b0e4eec52fa43f2b20baace41116052_160w_160h.jpg','/cook/100825881/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225418','123456','8z-','img/avatar/2383ab7a41614070918d9f6897d9c831_1080w_1080h.jpg','/cook/125588949/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905227409','123456','星杭妈','img/avatar/1c24e96572164e668dbcd165a1338481_1052w_1052h.jpg','/cook/110094546/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044343','123456','櫻糀Aries','img/avatar/468687ecf8b94fda85d20de456cabcbc_160w_160h.jpg','/cook/128922287/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152041315','123456','夹心的饼干','img/avatar/461da6634f674c60955dd4b0bdf26075_1242w_1242h.jpg','/cook/103891572/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895256251','123456','Eeeki小喵叶','img/avatar/f6ec8e851cbe475ea2eca7d96df62ff5_160w_160h.jpg','/cook/10887681/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152045665','123456','Ww_Sid蘑菇','img/avatar/265a85c9f8b74243bc16fa9d3dfe733d_160w_160h.jpg','/cook/108791373/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225021','123456','ming47273211','img/avatar/eeb56ad9759a47f998ccf7e3fe00a230_1242w_1242h.jpg','/cook/109715869/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222610','123456','雅哲123','img/avatar/626f78ed71834580ae2263a34e6e0248_960w_960h.jpg','/cook/117808947/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044551','123456','杨妞私厨','img/avatar/a66356bfdd624f93be9467696ba88cd9_640w_640h.jpg','/cook/110757886/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229970','123456','-明日大厨-','img/avatar/851c92cd242c45418a725c32c2d12e37_160w_160h.jpg','/cook/120719362/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152049912','123456','国平爱烘焙','img/avatar/e345d03685f411e5ad4be0db5512b208.jpg','/cook/101830309/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905226182','123456','君之','img/avatar/bc7e3b0f7a45472e8514e8320a798aa2_800w_781h.jpg','/cook/10008395/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895251294','123456','模样生活','img/avatar/2b51b366202e11e7bc9d0242ac110002_750w_750h.jpg','/cook/102903657/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259675','123456','小胖君','img/avatar/546b1aadd9ed4e4ca1ed1bab012b1533_160w_160h.jpg','/cook/11518535/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152046817','123456','大丹521','img/avatar/d3c7275eaa104a7f95de7967662d5e3d_1242w_1242h.jpg','/cook/116633599/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905224323','123456','Lili营养小厨','img/avatar/be2ab83346134184b94ef22803de83c1_1080w_1080h.jpg','/cook/106257626/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895251816','123456','仙Reese','img/avatar/02742f9cbdd947c3baa51759ca18f671_160w_160h.jpg','/cook/120623698/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225976','123456','小辣椒椒椒','img/avatar/2b0f4899857611e5946e7757318cff63.jpg','/cook/101251491/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895252080','123456','山竹味的竹子','img/avatar/7c691fff049a4f9a94d37e42434f80fc_1080w_1080h.jpg','/cook/124239757/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254134','123456','抹香鲸','img/avatar/a5ab91c94a6949e9875937fe50931a90_1080w_1080h.jpg','/cook/61386861/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895256341','123456','珺珺3703','img/avatar/b081b9ec5e8c4ad386754abaa0df9bd9_1280w_1280h.jpg','/cook/127576554/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152046899','123456','我叫何美丽','img/avatar/ef9cef64e94d11e6947d0242ac110002_640w_640h.jpg','/cook/116465793/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905223787','123456','小至_','img/avatar/466ca7e98e5b4ebc9abf52759a34517d_160w_160h.jpg','/cook/10938686/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905228542','123456','爸爸爱吃甜面包','img/avatar/4786aa1d66c54e548a0eb4f6983677d2_480w_480h.jpg','/cook/130610816/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225760','123456','萨拉球小朋友','img/avatar/567e610685e811e5a412b82a72e00100.jpg','/cook/101793243/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152043886','123456','萌子食堂','img/avatar/e3421b4c7ac947f1b4f409c8ed599a95_1280w_1280h.jpg','/cook/107407663/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229650','123456','壮壮Mom','img/avatar/357a5cfb9e4744479738228c7c2c9bdf_160w_160h.jpg','/cook/124262297/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905226035','123456','阿淺','img/avatar/399a930a81ab11e58dd1a3329284a6ce.jpg','/cook/10378733/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905221925','123456','浅草君君kakun','img/avatar/186210d5a0374dbcb82e28b24f49d1ad_160w_160h.jpg','/cook/100170800/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152049881','123456','Valder徐某某','img/avatar/dced11c3e8d4445fae6fa7089cab2939_1000w_1000h.jpg','/cook/123042537/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152040034','123456','雨遇上烘焙','img/avatar/e84ac34434c34c14a242b5dd79bcff28_1080w_1080h.jpg','/cook/121016236/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905227206','123456','坠入海的星','img/avatar/ae938744d82246778daba5d26d3580aa_1080w_1080h.jpg','/cook/102908224/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152043818','123456','詹意丝','img/avatar/2e23de82a3cf4d17852746ef5c8726d4_750w_750h.jpg','/cook/124642645/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229810','123456','胶P糖','img/avatar/5a04bb103b7011e7947d0242ac110002_1080w_1080h.jpg','/cook/10438907/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222246','123456','懒饭App','img/avatar/59dfc5976aaa4a40869aa27bb039421f_512w_512h.png','/cook/126271064/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905227235','123456','海曲夜场','img/avatar/9a23c642f32a11e58ce3a912f4d54afd.jpg','/cook/10476449/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152049011','123456','远远的山那边','img/avatar/4cb064ba851311e5bacf6547122f36aa.jpg','/cook/100910222/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152045305','123456','Sunny_Kreglo','img/avatar/0f1a490b37b945ae8e2df44ed0426e71_160w_160h.jpg','/cook/103280852/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895258757','123456','yanyanfoodtube','img/avatar/8b61d9dfba774da683bac21947667b3e_2000w_1732h.png','/cook/104380702/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905225291','123456','胃plus128G','img/avatar/f2ccaf4d88ef4fec932dd422f33d27e1_1080w_1080h.jpg','/cook/128596884/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895256696','123456','好吃的味','img/avatar/ec97a1f688f84978a68f4c55dde1ab4e_1080w_1080h.jpg','/cook/138152557/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152046255','123456','萝莉小小小小只','img/avatar/485c643024c811e7947d0242ac110002_160w_160h.jpg','/cook/10024008/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229637','123456','想想手作','img/avatar/a6dd235e308611e7bc9d0242ac110002_160w_160h.jpg','/cook/103382573/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905229642','123456','小美的美食','img/avatar/f18edff7f8ca4286b7faaf93dcfcbe83_481w_481h.jpg','/cook/100351317/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905220603','123456','小羽私厨','img/avatar/a30ffef4bc14494c8a7498bd39efa089_160w_160h.jpg','/cook/10098954/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152044438','123456','王太家','img/avatar/b69cfa00538649a3af3113496a567b8e_750w_750h.jpg','/cook/101727162/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895254622','123456','月牙w','img/avatar/6bfa0910b8ca4cacbaa52bdc35a559d2_160w_160h.jpg','/cook/101218250/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152046749','123456','柠檬柠檬_','img/avatar/6718156ec6934fa381726dff20c18636_320w_320h.jpg','/cook/123451464/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152042212','123456','一妈的厨房','img/avatar/5679542585824b5cb449d3cba30445fd_720w_720h.jpg','/cook/103344809/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152041904','123456','金宇监控批发','img/avatar/db2374a6408f11e7947d0242ac110002_640w_640h.jpg','/cook/119304871/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152045345','123456','秋月无边_4028','img/avatar/567d32fd9f1211e58eb377f5e497538b.jpg','/cook/107984311/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905221256','123456','吃肥了','img/avatar/475c3e7e06264d60ab2b922002303fa7_160w_160h.jpg','/cook/100222434/');
+INSERT INTO `xiachufang_user` VALUES (null,'15152040961','123456','婧soul','img/avatar/1009927d32d941eb835659a45671fd38_769w_769h.jpg','/cook/132620816/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895255022','123456','Bright丶cen','img/avatar/bed67f5f0c074d74820feeb63c5b7a9a_1080w_1080h.jpg','/cook/130418614/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895257426','123456','昊昊宝贝的妈妈','img/avatar/7bbd66a4cc324dc2a9131f178d42cf47_1080w_1080h.jpg','/cook/115195645/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895258141','123456','韩佳人的后厨房','img/avatar/3ba0fd24c51e4e3a9693b8c3ce3017be_648w_648h.jpg','/cook/120681164/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895252843','123456','梨花和榆钱儿','img/avatar/65e24bc401f143aaba88a17a9a608ae9_160w_160h.jpg','/cook/100038478/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895253647','123456','蝶影_','img/avatar/483e4176cd0640cfb9a705b5b92bb000_160w_160h.jpg','/cook/105480558/');
+INSERT INTO `xiachufang_user` VALUES (null,'13905222328','123456','简单亅','img/avatar/6b80df8dab00438cb0b8c73ffd9d124a_132w_132h.jpg','/cook/133893808/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895259447','123456','金子-79','img/avatar/4317c612d4ec11e6bc9d0242ac110002_1080w_1080h.jpg','/cook/103547705/');
+INSERT INTO `xiachufang_user` VALUES (null,'15895258092','123456','小-妮-子','img/avatar/d635e96b097844e78f2f0f4c79f52bac_949w_949h.jpg','/cook/126932166/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221748','123456','春殿w','img/avatar/f857c8a15c0d4c49b539249749c0656c_1115w_1115h.jpg','/cook/11203802/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222429','123456','海鲜巧达汤','img/avatar/23690fb5226e11e68c225b9d332d3670.jpg','/cook/110198059/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250306','123456','假如缘有天意','img/avatar/96280a4789a611e581fab70514544c2c.jpg','/cook/103958373/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259931','123456','美食噎死我','img/avatar/d1fd0d561cb811e7947d0242ac110002_720w_720h.jpg','/cook/117875032/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224842','123456','蘑菇小妹','img/avatar/faa79412837e11e5a718b82a72e00100.jpg','/cook/11191222/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224122','123456','吃货来找美食家','img/avatar/b862f06e8d6411e5ac21f91a778c9646.jpg','/cook/106729109/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221398','123456','烹小鲜儿','img/avatar/e260af8a81ce11e5bcef3d30994a3587.jpg','/cook/10479560/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258871','123456','温吃吃','img/avatar/ca6fa926c76e11e6bc9d0242ac110002_680w_680h.jpg','/cook/11184807/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257792','123456','scarsword','img/avatar/a7245d11a66411e59647cf7ec2e25b64.jpg','/cook/11158147/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152047008','123456','人在桥上走','img/avatar/eb39639e816611e5b09ea3fa27dc85ad.jpg','/cook/10185177/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258743','123456','三石三木','img/avatar/a904ac4a02ae4acfa65d3ef322343dcd_1080w_1080h.jpg','/cook/10919065/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257648','123456','阿布下厨房','img/avatar/16b7bce1843d11e5b2b2e0db5512b208.jpg','/cook/107879351/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221458','123456','南园','img/avatar/97f51c9c848011e5a2f64b9ce06014b2.jpg','/cook/100388263/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225436','123456','女超人Calla','img/avatar/303e8cfd65d94e15957b78bf07fb779f_1080w_1080h.jpg','/cook/10380608/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256483','123456','Judyjune','img/avatar/647d3de4879711e58352b82a72e00100.jpg','/cook/103446588/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152047574','123456','姜姜的厨忆','img/avatar/7aae477497354034a4cad18c9553045e_160w_160h.jpg','/cook/108559963/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257584','123456','ChloetheCAT','img/avatar/c3601742895d11e5abf7ff5d77d9ec91.jpg','/cook/103678700/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252857','123456','Jasmmmm','img/avatar/865f52de367f11e6870b8f87becbb4ef.jpg','/cook/101493065/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256429','123456','岁','img/avatar/89484c9500844482b05939ab2e3c64e4_1080w_1080h.jpg','/cook/10448252/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044808','123456','静御璃','img/avatar/d9b30328e5dd11e6947d0242ac110002_407w_407h.jpg','/cook/102094074/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252106','123456','Edew','img/avatar/097a13b589df11e5a8f5816c68be53f7.jpg','/cook/104152280/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223343','123456','故谷不负','img/avatar/4f364aab44ed11e6bd2c7bcf5dd0c074.jpg','/cook/107455755/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256987','123456','miao_w','img/avatar/7e743b07bc0a11e59006a70e24b0cb8a.jpg','/cook/101712750/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250510','123456','爱画画的咩咩子','img/avatar/0b8e39a8ec5011e6bc9d0242ac110002_417w_417h.jpg','/cook/100532766/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595254894','123456','闷声','img/avatar/285306e0817b11e5817eb82a72e00100.jpg','/cook/10239643/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223638','123456','魔神大帝','img/avatar/3d06209e8a6e11e58c5a7d3c2421a381.jpg','/cook/104644512/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252014','123456','孤傲的王子♂','img/avatar/a5691b3d82ec11e5929e217df549f1dd.jpg','/cook/10930148/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595251590','123456','小本牛儿','img/avatar/5d598432990c11e69ce70242ac110002_3264w_2448h.jpg','/cook/114517829/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256686','123456','psyche-6','img/avatar/67885646829611e585e3b82a72e00100.jpg','/cook/10807689/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595253041','123456','Scarlett山中白云','img/avatar/0f515483d21a49c58a0761b896e05f8e_1080w_1080h.jpg','/cook/100508947/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252999','123456','小骨eme328139em','img/avatar/725337c0464611e68ed2efc09afba581.jpg','/cook/112134603/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223123','123456','姒娓','img/avatar/e480fa608d6b11e5bb39b82a72e00100.jpg','/cook/106750242/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256739','123456','手机用户2302_2w5a','img/avatar/5d5b29a63e1011e683a08fe06a922f6a.jpg','/cook/111895420/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595254640','123456','Jewl女孩','img/avatar/0e210ab68ad44831aaf1074c66e20dc7_1440w_1440h.jpg','/cook/101157012/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152043217','123456','AprilCherry','img/avatar/90f7bae8d6044aa5b2b92d0d682e899e_160w_160h.jpg','/cook/10380783/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228712','123456','孔孔私房菜','img/avatar/8091254a984011e59d380d92e2ab1742.jpg','/cook/108262320/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405229625','123456','小米粥配长岛冰茶','img/avatar/e60eb3546be111e6a99337402bb42f53.jpg','/cook/11206226/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258228','123456','新二呀','img/avatar/a3fc5d0d47654782af0169b93d29bd77_1080w_1080h.jpg','/cook/100015247/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048887','123456','妖月幽语','img/avatar/edc01524874011e5bf7fb82a72e00100.jpg','/cook/103151387/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152046553','123456','爱厨房0w0','img/avatar/e6fdb674ac2911e6bc9d0242ac110002_100w_100h.jpg','/cook/114985600/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257604','123456','兔子姜','img/avatar/346ca094863f11e59a87b82a72e00100.jpg','/cook/102087036/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256018','123456','手机用户0708_5fpv','img/avatar/eae911d4730d11e688c5699c5b59daae.jpg','/cook/113539999/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252268','123456','Clefairy','img/avatar/2130b626840011e592c197ccc60f997e.jpg','/cook/11514037/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222505','123456','妈咪么么哒么','img/avatar/8bae594f48374940bef4c9f7c24f5fa2_1080w_1080h.jpg','/cook/111259365/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152047290','123456','不想被别人找到的小小小小号','img/avatar/d7447140a23a11e5a557d35a57225e4e.jpg','/cook/103004152/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225481','123456','0李大呆0','img/avatar/0e5128a1159145848e03f447128ff2d0_1124w_1724h.jpg','/cook/10808607/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152040442','123456','多多梦想家','img/avatar/9a97b4ac86bd11e5bd37e0db5512b208.jpg','/cook/102698916/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221400','123456','wkr蓉儿','img/avatar/ece103e2b1f211e6bc9d0242ac110002_1080w_1080h.jpg','/cook/115122404/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041721','123456','出前一宝','img/avatar/5cf3112e793d437d9ad7018021ceb806_1080w_1080h.jpg','/cook/103544812/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228609','123456','lacyya','img/avatar/66b67982813811e59309b82a72e00100.jpg','/cook/10063122/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225437','123456','毛豆学做饭','img/avatar/ad7ff259f4ab11e5b90da1c95b927d98.jpg','/cook/110154443/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044645','123456','sharon蓝9911','img/avatar/a4770372f3f111e6bc9d0242ac110002_160w_160h.jpg','/cook/105948053/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405227419','123456','熊小熊爱烘焙','img/avatar/d2f05cde813c11e5ab1095664b0337fb.jpg','/cook/10076011/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224625','123456','我爱子衡','img/avatar/79c957028ca911e59bb359db18f707d3.jpg','/cook/106366888/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256968','123456','辛仝','img/avatar/f2aa4eb36c9048f081b92716689d10fe_450w_324h.gif','/cook/11375257/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224679','123456','-星-','img/avatar/a24a031b1da54b9598ab92cc3a58f61d_1080w_1080h.jpg','/cook/111541787/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259856','123456','狱鳞','img/avatar/7d2e286004e311e7947d0242ac110002_480w_480h.jpg','/cook/117249020/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405227652','123456','李森LLAESONN','img/avatar/5886b1e84be044b79ba78d5be1c56eab_749w_749h.jpg','/cook/115976450/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405229941','123456','桃子爱折腾','img/avatar/2ce72ce82d4d11e7bc9d0242ac110002_1280w_1280h.jpg','/cook/101113250/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256572','123456','喜羊羊其其','img/avatar/ccac7f8f39d411e6bd48e14d097ab3c7.jpg','/cook/111771241/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250997','123456','皮卡皮卡丘噗噗','img/avatar/59e3238a99e54e32bd3c8322ac7520b9_1080w_1080h.jpg','/cook/109311551/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595251233','123456','寄棠。','img/avatar/c4b0e01483ee11e58c0eb82a72e00100.jpg','/cook/11451055/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258450','123456','油麦优美','img/avatar/6e9e1d2081d411e591f7b82a72e00100.jpg','/cook/10494100/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152045609','123456','那又怎样','img/avatar/90fab545814211e594352539baf78c68.jpg','/cook/10097420/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044660','123456','酷思淘-阿伯','img/avatar/05a86bb28a8b11e5be9db82a72e00100.jpg','/cook/104730506/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405227898','123456','瞳胖胖','img/avatar/0605972e898711e5bf9b9d0e3876b8d5.jpg','/cook/103836845/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258122','123456','觉枝书房','img/avatar/94cba9ee8cc011e5a989b82a72e00100.jpg','/cook/106439134/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257471','123456','萌萌鱼塘姐','img/avatar/07dccf178afe11e597f8f53f9d8f4e7f.jpg','/cook/105089790/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256001','123456','初级厨娘33','img/avatar/17ac1e97829b11e5aaa427f6f5ddcf08.jpg','/cook/10814240/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223164','123456','怡然自得201408','img/avatar/88c1186e898711e58277b1d92ec22bd4.jpg','/cook/103838690/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258763','123456','琼肴','img/avatar/2e472d26861011e585425bb7f62e42e8.jpg','/cook/101910821/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252112','123456','rll22','img/avatar/7da560cc39dc11e690fd2bfbe79f14d8.jpg','/cook/111772206/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250020','123456','小女人的幸福人生','img/avatar/bb7f6ab0893811e6b87c0242ac110003_100w_100h.jpg','/cook/114113494/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041096','123456','karon12341234','img/avatar/3bc5ff510f3311e6b6c2f159ffafa7bd.jpg','/cook/110754947/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041976','123456','爱与食不可辜负','img/avatar/a69e528b53fb4476aa244edd533bd720_640w_640h.jpg','/cook/121453241/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228592','123456','菜菜呷','img/avatar/a58eaecc81c911e5b8deb82a72e00100.jpg','/cook/10462456/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595255406','123456','烟火间','img/avatar/02808ee0c9164ee8b85e003fc2f77bb6_162w_162h.jpg','/cook/10140888/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152045114','123456','Dd逗cake','img/avatar/e52fdd2ab03211e5a336b82a72e00100.jpg','/cook/108678912/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228402','123456','本家路路','img/avatar/a247f59c755d11e6b96aa74d7b936e72.jpg','/cook/104346230/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041719','123456','眯眯眼小酒窝','img/avatar/349f0388de2011e6bc9d0242ac110002_160w_160h.jpg','/cook/103774395/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259480','123456','翻糖蛋糕','img/avatar/8b86d1c5cbea11e58dee579b00351f15.jpg','/cook/108706916/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595254077','123456','又鸟阿毛','img/avatar/7ad793ebca82487dbfe04ca013c4815f_750w_750h.jpg','/cook/10883780/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223354','123456','淘米睡起床了','img/avatar/dd86c461484f4c23811c679900c053e5_1080w_1080h.jpg','/cook/11136465/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225435','123456','迷糊蛋爱吃喝','img/avatar/3563d673840111e583857b3a74d730bb.jpg','/cook/11518008/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228128','123456','Z-20','img/avatar/1c4cc1232d8a11e6a60675b43d2dcdec.jpg','/cook/11195808/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048683','123456','笨笨猪3015991017','img/avatar/4caf81fa8d6d11e5b0d30fb4581948cc.jpg','/cook/106754581/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595254561','123456','洁洁_tnsx','img/avatar/e37cde548a5a11e5a6b80d8a1a0587b6.jpg','/cook/104577460/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405220390','123456','韵琳她爸','img/avatar/fabb4c6826434b339cd5ca007d2956e9_160w_160h.jpg','/cook/103583292/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405226828','123456','WannaBe','img/avatar/83aa8c88852811e5b931b82a72e00100.jpg','/cook/100990617/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250267','123456','手机用户4158_warc','img/avatar/afaa5454795811e681ba79fa6f489dbf.png','/cook/111466926/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595253363','123456','刷碗不能打瞌睡','img/avatar/e99ac1e3ad604245a417d362744383f0_1080w_1080h.jpg','/cook/104170380/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595251020','123456','风起蝶舞-3','img/avatar/2d7d20ee897111e58c0cb82a72e00100.jpg','/cook/103753280/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228756','123456','桃华SAMA','img/avatar/724437334d8a11e6b4547f5493b6bd56.jpg','/cook/112407351/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152049840','123456','嘵愛','img/avatar/c6c5e25486f111e5a64e83c0702b4127.jpg','/cook/102851494/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405220368','123456','西瓜西瓜红','img/avatar/f8007592609211e7947d0242ac110002_160w_160h.jpg','/cook/100761358/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224819','123456','红烧大大大排骨','img/avatar/7c585eec81db11e5a7a1b82a72e00100.jpg','/cook/10505481/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257462','123456','红茶温度007','img/avatar/35baf10c835211e594d8c348f4d4846f.jpg','/cook/11108391/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152042008','123456','手机用户5371_kb0l','img/avatar/64ce88ee2ac511e6a86d391821ad86d9.jpg','/cook/111402689/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252404','123456','洋流不孤寂','img/avatar/800786303c134d9f87f53a3b6cf7e858_1080w_1080h.jpg','/cook/113886158/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044483','123456','粽粽粽','img/avatar/375aa50781e911e581d2a3e0d220c047.jpg','/cook/10536579/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152042548','123456','景漠_','img/avatar/c346c2f975e0455fb44795c476af8b8a_1280w_1280h.jpg','/cook/10006833/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152040012','123456','惜残年','img/avatar/67d4c9fa0706472eadc06f977af7ba93_440w_600h.jpg','/cook/111789205/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152046966','123456','小丸子逗逗','img/avatar/7e67738c8b9311e59884219eddd9732d.jpg','/cook/105586167/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152042162','123456','Iris0_0','img/avatar/3b10dafd81b511e58c16995f5089d1b8.jpg','/cook/10405474/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250510','123456','kinawa-1','img/avatar/16ec6c149df611e6bc9d0242ac110002_160w_160h.jpg','/cook/11397774/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256337','123456','L-in','img/avatar/349ab6a2655f455fbba5edf743fdb7c5_160w_160h.jpg','/cook/104163772/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152043037','123456','坐巷口吃串串','img/avatar/7327eabc123111e7bc9d0242ac110002_220w_220h.jpg','/cook/113938219/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223734','123456','天空上一颗最闪亮的星','img/avatar/c8d064e8870f11e5aeacbbe6fa294e1a.jpg','/cook/102962151/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228134','123456','兔某人','img/avatar/62300b2c834411e58fb4b82a72e00100.jpg','/cook/11077282/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152047843','123456','悠风清吟','img/avatar/dba9d7a684ca11e58da9fb7925a4bac7.jpg','/cook/100645111/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152046940','123456','Hey_Colette','img/avatar/2271aef882f511e6b87c0242ac110003_160w_160h.jpg','/cook/10483877/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152045358','123456','fifi-烹饪','img/avatar/default.png','/cook/111497484/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259206','123456','青溪几度到云林','img/avatar/e84de0b582b411e5a363dd7a790c9b22.jpg','/cook/10860511/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222222','123456','X1Y1Z1','img/avatar/ea2d1e86cc3e11e6bc9d0242ac110002_720w_720h.jpg','/cook/115738544/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225587','123456','Null95','img/avatar/4ddb057c6bb011e7947d0242ac110002_1080w_1041h.jpg','/cook/110110804/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152040492','123456','时间煮雨我煮粥zz','img/avatar/6d7e48637fc911e584cbb35d467e6461.jpg','/cook/104241483/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222670','123456','小肥羊--吃吃','img/avatar/359b171e86f311e59b1583c0702b4127.jpg','/cook/102855969/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048965','123456','X1a0L0nG','img/avatar/3afe8f4083b411e5a515b82a72e00100.jpg','/cook/11292598/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258419','123456','麦兜andnemo','img/avatar/6052faf2e529498d80afc251883c5280_720w_720h.jpg','/cook/112172893/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258003','123456','莫离秋','img/avatar/40a2af92815911e59007b82a72e00100.jpg','/cook/10150377/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405229801','123456','土肥圆の兔叽君','img/avatar/cb704adc84bd11e5aa47b82a72e00100.jpg','/cook/100590933/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405220570','123456','天天吴三桂','img/avatar/e4f83000df8311e596b05d319f85508a.jpg','/cook/102886771/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041229','123456','外外外','img/avatar/1e54efe87d4611e5b907fd430257f48e.jpg','/cook/107780215/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041419','123456','爱吃鱼的蝎子','img/avatar/default.png','/cook/112153607/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222725','123456','萍影水踪','img/avatar/5de4fdfa897f11e5891f61e7c4a483e0.jpg','/cook/103808090/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595251214','123456','1998丨余生i','img/avatar/4cf0039684da11e6a9a10242ac110002_100w_100h.jpg','/cook/114018983/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250823','123456','凹尼击梨','img/avatar/655480eeb2ed4c0fa609f797288c4133_733w_733h.jpg','/cook/10327074/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225171','123456','nothisuser','img/avatar/d2cc21d1828f11e59bcb318cb9e85119.jpg','/cook/10794475/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223707','123456','周小洲','img/avatar/5908742ec1cb11e59f09d9614851ecef.jpg','/cook/109049907/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222116','123456','Wilma小怪兽','img/avatar/64ebdd7582ef11e5a01ef9c4bcb22979.jpg','/cook/10933576/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152046193','123456','球尐球','img/avatar/0f7cfd4fc2e44bad81e8dceab975796a_160w_160h.jpg','/cook/102877694/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256538','123456','手机用户7602_8eg9','img/avatar/1044ff0f3df011e686a9cf8b1de66b6d.jpg','/cook/111890284/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257625','123456','手机用户0605_bect','img/avatar/default.png','/cook/115309633/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223901','123456','我要小保护','img/avatar/c5d04f3d813211e5b4bc073a74372a9c.jpg','/cook/10033677/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258099','123456','蓝冰百合','img/avatar/72125eba845111e5a7d8b82a72e00100.jpg','/cook/100199215/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405229667','123456','小猩猩','img/avatar/0cbd709eaae411e6bc9d0242ac110002_440w_440h.jpg','/cook/10111886/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221278','123456','daisyshan','img/avatar/c3f93be4842011e59ad7b82a72e00100.jpg','/cook/100006820/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222478','123456','张艺璇_summer','img/avatar/user/0/b0/89/10847031.1','/cook/10847031/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044392','123456','Acoustic','img/avatar/6b94e51c57ed4a56b8aa6230605ea4a4_640w_640h.jpg','/cook/10161757/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595253472','123456','剑器长歌','img/avatar/ef08a3ee8b3f11e58deb092d4039025f.jpg','/cook/105327336/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152040515','123456','super厨神','img/avatar/default.png','/cook/113886245/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228088','123456','白白白马王子','img/avatar/301fd0805a0b11e69cafef61dc388861.jpg','/cook/112804095/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595251748','123456','加叻-卜鱼','img/avatar/cc8dde9a6b7d11e7bc9d0242ac110002_1080w_1080h.jpg','/cook/101721565/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256085','123456','狗屎嘿','img/avatar/1e456c2486ad11e5a87ae0db5512b208.jpg','/cook/102633592/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252622','123456','Coffee_Brunch_AfternoonTea','img/avatar/aa29f606831f11e59713b82a72e00100.jpg','/cook/10996138/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405225996','123456','沈荞麦西瓜面','img/avatar/a729ff755bca11e6aef817879494be34.jpg','/cook/112860962/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405227136','123456','沐睛LY','img/avatar/8d42b28086b742aa8840e6a72d791cb6_699w_699h.jpg','/cook/103804463/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048910','123456','暖冬沐雪','img/avatar/d13914a4934911e5969fb82a72e00100.jpg','/cook/101312112/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259899','123456','萌萌的猫团子','img/avatar/222a548a0ec011e68d36b82a72e00100.jpg','/cook/110750307/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405223144','123456','雷伏特','img/avatar/78a22828ba7f4f95bb227966df33bcfd_1080w_1080h.jpg','/cook/115074455/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152046570','123456','kellydj','img/avatar/960d3ad083b411e58b40b82a72e00100.jpg','/cook/11293310/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221809','123456','小下','img/avatar/b69892a3812f11e582c577654de970d2.jpg','/cook/10028043/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259027','123456','现在是怎样','img/avatar/9b14cddc902111e5a270e0db5512b208.jpg','/cook/108111142/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152041095','123456','陆小臻包子脸','img/avatar/825fe785814e11e58781c3d7034e20fd.jpg','/cook/10126228/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595252818','123456','再見ろ、虚伪','img/avatar/391fad00879f11e5b8a8a73f718f3e2d.jpg','/cook/103472693/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595250501','123456','_7d5l','img/avatar/d0782abcc2cf11e6bc9d0242ac110002_100w_100h.jpg','/cook/115533191/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048761','123456','每攵CARMEN','img/avatar/495397ce81d511e591f7b82a72e00100.jpg','/cook/10495376/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048758','123456','玛儿嘚','img/avatar/57b8c04c48df11e68595b1785a0770e5.jpg','/cook/112224823/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405220896','123456','陆七柒','img/avatar/329284411baf427b8d17dc802309b61b_160w_160h.jpg','/cook/10014426/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044923','123456','镰刀锤子party','img/avatar/6f344a90d28011e6bc9d0242ac110002_640w_641h.jpg','/cook/102570664/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224575','123456','AnGel假面','img/avatar/bc499638869a11e5ac5bd3f91050f1f1.jpg','/cook/102561115/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152040988','123456','SmileCherry_','img/avatar/58a363e834bd11e7947d0242ac110002_100w_100h.jpg','/cook/118920275/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595255696','123456','阳光不在依旧','img/avatar/8658cfd919ac11e6bab27dbc7b148a55.jpg','/cook/111000791/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221037','123456','jade玉蝴蝶','img/avatar/5512e7a6845e4f3eb1e974e16d38f8ee_638w_638h.jpg','/cook/11198771/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221579','123456','正义的天夏','img/avatar/e12bd811865111e596266bd971c18de8.jpg','/cook/102199007/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221767','123456','南国咖喱','img/avatar/9fadc0578e0311e586778348ba2e6243.jpg','/cook/107143112/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221022','123456','Freeze静','img/avatar/ca4ac9653e05422191b43d1abef5bff0_160w_160h.jpg','/cook/10003300/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152046967','123456','八宝棉花糖','img/avatar/07ef146b821c11e587013df603796a29.jpg','/cook/10600755/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256941','123456','Chang_PH','img/avatar/dde90be6899411e596ec09a1a78547d7.jpg','/cook/103890951/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152047187','123456','未來酱','img/avatar/d24a9cf162684604a40c8d129d801422_405w_405h.jpg','/cook/10911091/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048060','123456','索西与马戏团','img/avatar/05fdb2d600ad11e7947d0242ac110002_160w_160h.jpg','/cook/10419531/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221269','123456','yohag','img/avatar/21265eab36ee11e682c7af11827b4d7e.jpg','/cook/110472790/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405224454','123456','南浔_4at5','img/avatar/fce486288d9611e5b65c5922bc602723.jpg','/cook/106876101/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258469','123456','云的拥有者','img/avatar/27dd37a6c1cd11e6947d0242ac110002_720w_720h.jpg','/cook/115505663/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405226311','123456','手机用户6158_cto0','img/avatar/a263ac4abb6a11e598c8e0db5512b208.jpg','/cook/108909493/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405222476','123456','柒遇记','img/avatar/700d5ebaeff611e5b3bde0db5512b208.jpg','/cook/110044248/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152045112','123456','苏温醇','img/avatar/731f4bc2f18b11e5b9a4d5c51a5e153e.jpg','/cook/108472118/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405227066','123456','你的能量超乎你的想象','img/avatar/75458c23456211e6846ac7ee256d0258.jpg','/cook/112105146/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152049595','123456','晞晴','img/avatar/19ef5463819d4a06b69fa2fa4925acd7_1280w_1280h.jpg','/cook/102000347/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259758','123456','碧君','img/avatar/d3e64b2c864c11e5a836b82a72e00100.jpg','/cook/102171254/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595259604','123456','烟火味道0','img/avatar/5630dd59872511e5b9fb031b09ebec17.jpg','/cook/103044139/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152044963','123456','小米喵喵','img/avatar/f6f2b8fec58e11e5af68b82a72e00100.jpg','/cook/105051842/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048207','123456','手机用户7887_12d4','img/avatar/07a76638936e11e6a9a10242ac110002_1080w_1080h.jpg','/cook/113997727/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405220075','123456','Jing_H','img/avatar/9b1853c6445f11e7947d0242ac110002_160w_160h.jpg','/cook/11409643/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152047977','123456','烫手山芋','img/avatar/8aabfc62d86811e6947d0242ac110002_160w_160h.jpg','/cook/10163501/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152040850','123456','今天吃什么好','img/avatar/8d513899817e11e59f23471a12107f3b.jpg','/cook/10248593/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405228617','123456','Hannah1103','img/avatar/7723a8e28e0911e6a9a10242ac110002_1080w_1080h.jpg','/cook/114236778/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257831','123456','encey-','img/avatar/f47eb2c4abd14c06b86be964f66fe785_1080w_1080h.jpg','/cook/100805792/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595258472','123456','手机用户7236_5fvp','img/avatar/default.png','/cook/110531408/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595257664','123456','喵岚清','img/avatar/default.png','/cook/110695588/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405229639','123456','墨墨小馋猫','img/avatar/542175f4850e11e5904cb82a72e00100.jpg','/cook/100884534/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152049003','123456','cew_1989','img/avatar/43c96947cd5a11e5a24da515aa4a8991.jpg','/cook/109307038/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405227096','123456','嬅邇吥實','img/avatar/970fb48a0ef611e6882b7955e140e441.jpg','/cook/110756312/');
+INSERT INTO `xiachufang_user` VALUES (null,'18595256462','123456','德高望重老干部','img/avatar/92323226894511e59c0fb82a72e00100.jpg','/cook/103605261/');
+INSERT INTO `xiachufang_user` VALUES (null,'18152048742','123456','手机用户8383_381r','img/avatar/685b71518b9c11e596593f515d550d47.jpg','/cook/108020574/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405226601','123456','容遥遥','img/avatar/c6621b4a8a20488a84efed06730d0d3d_160w_160h.jpg','/cook/100199712/');
+INSERT INTO `xiachufang_user` VALUES (null,'13405221251','123456','lazo','img/avatar/5f84ee9c104711e7947d0242ac110002_1080w_1074h.jpg','/cook/114567064/');
+
 
 -- ----------------------------
 -- Table structure for `xiachufang_recipe_upload`
@@ -452,33 +648,347 @@ CREATE TABLE `xiachufang_menu_collect`(
 
 -- ----------------------------
 -- Table structure for `xiachufang_menu`
+-- 菜单
 -- ----------------------------
 DROP TABLE IF EXISTS `xiachufang_menu`;
 CREATE TABLE `xiachufang_menu` (
   `mid` int(11) NOT NULL auto_increment,
   `menu-title`  varchar(64) default NULL,
-  `menu_details`  varchar(256) default NULL,
-  `num_collected` int(8) default NULL,
+  `menu_details`  varchar(1024) default NULL COMMENT '菜单描述',
+  `cover_img` varchar(128) default NULL COMMENT '菜单封面',
+  `num_collected` int(8) default NULL COMMENT '收藏人数',
+  `num_contains` int(8) default NULL COMMENT '包含菜谱数',
   `user_id` int(11) default NULL,
+  `menu_href` varchar(128) default NULL,
   `date_created`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `date_changed`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `date_changed`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY  (`mid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of xiachufang_menu
--- ----------------------------
+INSERT INTO `xiachufang_menu` VALUES (null,'健身期间吃什么','摒弃掉之前的节食减肥开始健身希望能坚持','img/menu/b4153e6e879711e6a9a10242ac110002_640w_427h.jpg','49','14','156','/recipe_list/102421786/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'吃个饭简单点','在我心目中的比较容易做的菜~可以进便当的那种','img/menu/ce91790c882211e6b87c0242ac110003_650w_650h.jpg','28','72','157','/recipe_list/102697153/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'美味菜','你若安好，便是晴天！','img/menu/36ef8242682846d99e4c6aab5ddb6962_1870w_1242h.jpg','82','26','158','/recipe_list/101691229/','4年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'古人食','古人的美食，无污染，无添加','img/menu/f29dd2cc653111e7bc9d0242ac110002_1920w_1080h.jpg','199','61','159','/recipe_list/107895820/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'喜欢的糕点','各式各样的糕点，各式各样的颜色！','img/menu/1656ce643dfd11e7bc9d0242ac110002_1920w_1440h.jpg','31','81','160','/recipe_list/103576860/','3年前','5个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'汤','都是汤','img/menu/9795102a889b11e6a9a10242ac110002_640w_640h.jpg','27','19','161','/recipe_list/102336958/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'一人食家饭','下班匆匆忙忙跑回家半小时可以搞定又好吃的暖心饭','img/menu/7f294b1c881b11e6a9a10242ac110002_368w_402h.jpg','28','17','162','/recipe_list/102278549/','4年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'那些拿得出手的硬菜！','有时候办个聚会什么的
+还是需要两个菜来彰显技术的~?','img/menu/c4722f06870111e6a9a10242ac110002_640w_414h.jpg','53','33','163','/recipe_list/103637318/','3年前','10个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'Endless ToasT...','吃不完啊吃不完。。。','img/menu/7cf3907689a311e6b87c0242ac110003_1152w_1536h.jpg','48','21','164','/recipe_list/100056421/','6年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'好菜谱要供起来','做过之后赞不绝口，大概不是因为我厨艺好，而是菜谱高','img/menu/1758c6521f5b11e7bc9d0242ac110002_1227w_690h.png','40','19','165','/recipe_list/100006699/','6年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'致小情人的早餐Menu','3岁半的小情人是个挑嘴又矫情的家伙。不吃早餐就不会长成帅哥你造吗！','img/menu/aee12612880d11e6b87c0242ac110003_620w_413h.jpg','26','10','166','/recipe_list/100079844/','5年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'好吃的酱~~子','看到好吃的酱就忍不住收藏，最终形成了(¯▽¯)吼吼','img/menu/70976496870111e6b87c0242ac110003_450w_666h.jpg','48','30','167','/recipe_list/102358357/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'自制酱汁什么的，最有爱了','各种有意思的酱啊，我来了哦~','img/menu/9cc79f74855111e6a9a10242ac110002_1248w_936h.jpg','29','12','168','/recipe_list/100079242/','5年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'要做的杯子蛋糕！~~~','','img/menu/a96bb8828baf11e6a9a10242ac110002_1080w_1440h.jpg','27','15','169','/recipe_list/101409102/','5年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'LOOSE    F A T !','DO IT OR DIE','img/menu/aac63acc7e9a11e588fcb82a72e00100.jpg','22','16','170','/recipe_list/102313088/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'正餐','午餐或者晚餐','img/menu/1cad18e8001e413db1f373145c7e55bb_2584w_1724h.jpg','94','46','171','/recipe_list/102544867/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'小妞儿爱吃馅儿~','从小爱吃各种带馅儿的东西~~偏偏我麻麻做不好，所以自己动手丰衣足食~~','img/menu/af5c734a134911e7947d0242ac110002_1280w_960h.jpg','65','38','172','/recipe_list/102254835/','4年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'正儿八经的中餐味道','留学?坚持不懈走在复刻那些吃过的味道的小路上','img/menu/ad3e179686f211e6a9a10242ac110002_480w_640h.jpg','71','79','173','/recipe_list/101404255/','5年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'饭味','最平凡的食物，可容纳百川','img/menu/ad33321427a840e28f45da0fd9c3da90_1616w_1080h.jpg','33','31','174','/recipe_list/101598920/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'各种好吃哒','哈哈哈全部都做过，会经常更新','img/menu/f525715d5e4842f1a9ff605d0b142f95_949w_759h.jpg','105','146','175','/recipe_list/101574004/','4年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'Prior to Appetizer','自用，写了一篇美食文，把里面提到的吃的都放在一起啊哈哈','img/menu/8a6039aa889311e6b87c0242ac110003_636w_618h.jpg','24','16','176','/recipe_list/101938133/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'甜点o>_<o','★用时加查蛋糕，饼干，﹉
+细白砂糖，绵白糖，红糖，冰片糖，蜂蜜，糖霜，冰糖，黑糖，果糖，炼乳。
+20','img/menu/163b903f7f1146eda498118352aae14a_1242w_1656h.jpg','68','138','177','/recipe_list/103785748/','3年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'tips','tips','img/menu/677995008a1c11e6a9a10242ac110002_1920w_1599h.jpg','49','25','178','/recipe_list/102011840/','4年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'懒人痛风小菜谱','emm要不是痛风我可能不会学做素菜。','img/menu/f6fca0610c6c4f508a19d38c7fd10945_1024w_1024h.jpg','77','58','179','/recipe_list/100065724/','6年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'锅碗瓢盆跑起来！','乱七八糟，假期一定要做的！做给你们吃！','img/menu/679dd0d4353211e7947d0242ac110002_1280w_1280h.jpg','41','141','180','/recipe_list/89880/','6年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'红烧系列','龙利鱼粉丝','img/menu/705a595f43a545daa8ba79b04de1350a_1080w_1920h.jpg','91','72','181','/recipe_list/101957801/','4年前','24天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'餐后甜点','餐后外加上网时候的小零食','img/menu/7d09b9b087a911e6a9a10242ac110002_800w_533h.jpg','29','12','182','/recipe_list/94653/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'小甜甜','中式，西式，下午茶的宠儿...纸杯、π、蛋糕、解馋甜品','img/menu/24cd52fcbab746b08251412484080dd7_1124w_1124h.jpg','72','136','183','/recipe_list/104889090/','2年前','2个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'猫咪面包店','面包或许是最适合一个人的晚餐。','img/menu/95f2a46e889e11e6b87c0242ac110003_2000w_1333h.jpg','59','21','184','/recipe_list/96521/','6年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'欧包搭配，欧包吃法','马斯卡彭，浓汤，酱什么的，甚至奶冻。鹰嘴豆泥，番茄浓汤，南瓜酱……帕尼尼欧包制作 https://www.xiachufang.com/recipe_list/103435795/','img/menu/fcb1cdde876211e6a9a10242ac110002_800w_533h.jpg','1820','56','185','/recipe_list/106693309/','2年前','9个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'佳静苑','各种美食独家秘方都喜欢收藏','img/menu/fb052594288243a28c7d7dd356d7a144_1536w_2048h.jpg','32','63','186','/recipe_list/103944233/','3年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'三明治','很多的配方','img/menu/af11cb98877f11e6a9a10242ac110002_600w_450h.jpg','58','14','187','/recipe_list/102260945/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'请客','请客菜谱','img/menu/e8588aa6881811e6b87c0242ac110003_640w_640h.jpg','36','40','188','/recipe_list/102859211/','3年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'低GI健康食物','如果想吃糖水的时候拿个出来煮牛奶，加龟苓膏什么的好不好','img/menu/dede448ce727449a9974f8a0207a7201_1080w_1440h.jpg','232','269','189','/recipe_list/101711215/','4年前','7小时前');
+INSERT INTO `xiachufang_menu` VALUES (null,'天然酵母','✏️
+• 天然酵母种液
+•• 天然酵种 /酸酵种 /SOURDOUGH STARTER
+••• 天然酸酵头 /酸面团酵头 /SOURDOUGH /LEVAIN /LEAVEN /鲁邦种','img/menu/f6ac5e1cc42d4b62a2682139ed925bbd_2404w_3072h.jpg','82','38','190','/recipe_list/101675984/','4年前','7个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'海鲜哦','我最爱吃哒..','img/menu/25d935e4881711e6a9a10242ac110002_640w_640h.jpg','51','9','191','/recipe_list/102334750/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'烤箱菜菜','买这个烤箱，初衷是为了做某人一再要求的烤全鸡。几个月过去了，烤全鸡是一次都没尝试过，倒是做过几次烤鸡腿。再下来就遇上禽流感了，郁闷的某人天天在叫喊着鸡腿鸡腿。没有鸡腿，咱也不能让烤箱闲着是不？','img/menu/5ee18d1487ea11e6a9a10242ac110002_1280w_853h.jpg','33','14','192','/recipe_list/185614/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'私家小灶♡','都是做过多次的好评菜谱。
+偏好：
+1.下饭
+2.食材和烹调工具易得
+3.不能吃韭菜、洋葱；不喜欢芹菜、料酒；菜谱中有的话会少放或不放','img/menu/132e32f3f22143daa8e6aa87fcb8b1f5_775w_554h.jpg','44','24','193','/recipe_list/102212673/','4年前','2个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'唯美食与爱不可辜负','都是些收藏了想做，并且亲自尝试过，觉得简单美味的','img/menu/ea2de8d7e3b8466ca7e54a25c0b6c44d_1500w_1500h.jpg','42','39','194','/recipe_list/101741587/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'早餐什么的','额，就是早餐啦','img/menu/82bcf22a8ad111e6b87c0242ac110003_1421w_1184h.jpg','41','26','195','/recipe_list/104413668/','2年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'出国党的饮食功课','如题，一个中国胃的穷姑娘努力寻找能在异国买到自己又会做的菜。内容：家常菜只能自己做的泡菜和卤味面食等因为过敏所以不包括：带辣椒的，水产，羊肉，芒果。','img/menu/9c1fd07488b611e6a9a10242ac110002_640w_640h.jpg','29','26','196','/recipe_list/102415497/','3年前','5个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'胖子快放下吃肉的手','减肥餐','img/menu/2db18d74879611e6b87c0242ac110003_850w_564h.jpg','33','96','197','/recipe_list/103968155/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'C-H','高油高糖高热量，人类对Carbohydrates的本能','img/menu/4b431d5812e244af976af696f4e0e663_2768w_1560h.jpg','25','24','198','/recipe_list/100084857/','5年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'不吃不喝不减肥','如果你减肥的目的不是想当一具漂亮的干尸，那是不是最好还是正经吃饭，给自己留一点肌肉让周围人赏心悦目。','img/menu/4ab3d8ca89b511e6b87c0242ac110003_800w_533h.jpg','48','23','199','/recipe_list/102620175/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'烘焙草单','收集想做的，早晚给你拔了???','img/menu/17fa595add6443b2b3305f58d4f3c925_2000w_1325h.jpg','32','59','200','/recipe_list/103324577/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'After Graduation','Seventh months to go in London','img/menu/b88f5b1f0ed64797ada5cde7b5a49735_1688w_1124h.jpg','143','59','201','/recipe_list/100035569/','6年前','5个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'烤烤烤，用烤的！','烘焙！','img/menu/acfa873ec92c11e6bc9d0242ac110002_960w_1280h.jpg','78','44','202','/recipe_list/101680071/','4年前','10个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'甜品','各种小零食蛋糕','img/menu/11304d4e1a03484c86134f6ac741d047_1920w_1593h.jpg','44','16','203','/recipe_list/104518701/','2年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'便当','','img/menu/354fb6de877b11e6a9a10242ac110002_800w_600h.jpg','68','25','204','/recipe_list/103023054/','3年前','6个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'【主食控】就是如此爱主食','粥面饭馄饨饼——一切能填饱肚子的食物都是好食物！','img/menu/c48e415a701711e7947d0242ac110002_3264w_4484h.jpg','57','51','205','/recipe_list/101749646/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'Pipi减脂食谱第一周','根据Pipi减脂食物的推荐表安排第一周的食谱 
+周一 
+晚餐 
+香煎龙利鱼 + 芦荟 
+
+周二 
+早餐 
+蔬菜蒸蛋（蛋白） + 紫薯  + 低脂牛奶 
+晚餐 
+彩椒鸡丁 + 牛奶 
+
+周三 
+早餐 
+百合梨汁 + 煮鸡蛋 + 低脂牛奶 
+晚餐 
+盐水虾/开背蒜香虾 
+
+周四 
+早餐 
+青菜豆腐汤 + 鸡蛋白 /蛋白豆腐青菜汤 
+晚餐 
+木耳鸡胸肉 + 低脂牛奶 
+
+周五 
+早餐 
+麦片 + 鸡蛋白 + 猕猴桃 
+晚餐 
+无油嫩鸡胸肉 + 芦荟/花椰菜','img/menu/c951a60088e111e6b87c0242ac110003_1599w_1066h.jpg','99','9','206','/recipe_list/102435145/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'早餐吃什么','重新开始，这次要坚持下去，加油٩(๑^o^๑)۶','img/menu/dad2c0aa90b04016959c2cf3bb2f5e38_1688w_1124h.jpg','351','606','207','/recipe_list/103650107/','3年前','7小时前');
+INSERT INTO `xiachufang_menu` VALUES (null,'皮皮狗的小烤香（蛋糕篇）','喜欢经典、简单、美味的配方','img/menu/6c1f921601044f828ecf8f5c9a33e5dd_400w_225h.gif','53','25','208','/recipe_list/130743/','6年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'用心做的每一份美食','乱入！','img/menu/6036775e4bc3478a800b97e47b6a301f_1920w_818h.png','44','742','209','/recipe_list/102778007/','3年前','昨天');
+INSERT INTO `xiachufang_menu` VALUES (null,'【粤A】北漂党很想吃这些','粤菜','img/menu/303b45c392944e02abaf1f961b0089b5_937w_750h.jpg','144','122','210','/recipe_list/103114088/','3年前','5个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'下午茶','悠闲...悠哉...悠......悠然⋯⋯','img/menu/06a9e1a288e711e6b87c0242ac110003_5373w_3638h.jpg','63','63','211','/recipe_list/102766593/','3年前','9个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'糕点师','加油，','img/menu/79cc28b29b6a11e6b3cc0242ac110002_1616w_1080h.jpg','84','38','212','/recipe_list/105842249/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'主菜','真正能填饱肚子的食物','img/menu/70a42946890511e6b87c0242ac110003_1239w_1242h.jpg','75','32','213','/recipe_list/105063553/','2年前','8个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'面包专属','看中好多面包的方子，先收集起来，慢慢撸`=~=','img/menu/09ab1a23f24440669bc3ed5b032d961c_1650w_1100h.jpg','64','38','214','/recipe_list/101996186/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'技巧','技巧','img/menu/9149bd6c8b2d11e6a9a10242ac110002_640w_633h.jpg','64','11','215','/recipe_list/102825621/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'可撸的菜谱','试过觉得味道不错','img/menu/26ddf8ca896c11e6b87c0242ac110003_2000w_2000h.jpg','84','101','216','/recipe_list/102397150/','3年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'异域（日韩）','那些年。深夜食堂。','img/menu/90ba121287bc11e6b87c0242ac110003_593w_394h.jpg','40','15','217','/recipe_list/175581/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'阿库纳玛塔塔~~~','简单又好吃','img/menu/337a7a58873811e6b87c0242ac110003_600w_800h.jpg','86','12','218','/recipe_list/68164/','7年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'高分又好做面包','方便自己找，干脆放一个菜单了','img/menu/ac67432e898611e6b87c0242ac110003_1239w_1080h.jpg','121','15','219','/recipe_list/102745334/','3年前','11个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'異國風味','食勻全世界','img/menu/b35e62f088d911e6a9a10242ac110002_700w_460h.jpg','77','76','220','/recipe_list/102458132/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'粉！粉！粉！','热爱各种形式做法的粉！','img/menu/8cf51e028b7b11e6a9a10242ac110002_1280w_1280h.jpg','220','14','221','/recipe_list/102440956/','3年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'素食厨房','一个家庭，一间书房，一间厨房， 
+温暖心灵健康成长。
+返回首页：http://kdt.im/ymGlfKy0r
+素食烘焙：https://www.xiachufang.com/recipe_list/102287987/
+素食地图：http://www.sushixing.com/amap/index.php?v=1.9','img/menu/eb9c54d488f111e6a9a10242ac110002_640w_620h.jpg','379','40','222','/recipe_list/102211596/','4年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'必须学会的么么肉菜●﹏●','无肉不换～','img/menu/b01d9084881111e6b87c0242ac110003_3264w_2448h.jpg','51','10','223','/recipe_list/101909290/','4年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'美味面饼','面包以外的饼干、烧饼、点心等','img/menu/45e9add686f111e6a9a10242ac110002_450w_675h.jpg','44','26','224','/recipe_list/101725035/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'月饼','月饼','img/menu/6c2c4b528b7911e6a9a10242ac110002_5760w_3840h.jpg','35','27','225','/recipe_list/102014992/','4年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'清凉一夏','开胃菜凉拌菜集锦，专治各种没胃口、厌食症。','img/menu/84ac2f90886711e6b87c0242ac110003_320w_200h.jpg','33','9','226','/recipe_list/101432374/','5年前','5年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'主食','生活常常因为专注而美妙，喜爱美食是生活的态度。','img/menu/77d5d7a82fbb4f41b611538f2f7b2dc5_750w_1122h.jpg','44','65','227','/recipe_list/102814263/','3年前','16天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'美味小吃','烤生蚝、炒螺、鸭脖、鸡爪、、、~\(≧▽≦)/~','img/menu/306be8ec890911e6b87c0242ac110003_800w_533h.jpg','109','124','228','/recipe_list/104107010/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'喜欢～就做来吃↖(￣▽￣")','不管做不做，气势得先准备好ㄟ(￣▽￣ㄟ)','img/menu/4ac6773404314f419a78c8930c6ee1bf_2448w_2902h.jpg','54','155','229','/recipe_list/102471422/','3年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'孕妈妈营养食谱','怀小宝宝后口味偏清淡，为了TA健康出生，麻辣小龙虾们暂时委屈委屈啦~~~','img/menu/b7e3a470879411e6a9a10242ac110002_469w_701h.jpg','84','28','230','/recipe_list/108271203/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'神奇的自制','粉啊酱啊馅啊……','img/menu/8e74900c33e34a428e709b219a2d7bb4_2234w_1489h.jpg','534','167','231','/recipe_list/102237655/','4年前','16天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'烟火百味—年夜饭','每家都有一份属于自己特色的年夜饭菜单，你准备好了么~~','img/menu/da179c3e38bd4576aa2678354402e86d_1363w_1022h.jpg','182','75','232','/recipe_list/110937200/','1年前','7个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'饮品','，','img/menu/a048ec8e895211e6b87c0242ac110003_640w_640h.jpg','42','9','233','/recipe_list/102475730/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'我觉得我会想做的各类早餐','早餐很重要，孩子要健康要长高。要吃饱。','img/menu/4ba03b3b81ea4b788c26ef3d839f890c_810w_1080h.jpg','49','30','234','/recipe_list/103531893/','3年前','11天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'♥ღ 中式早餐 breakfast ღ♥','简单、快手、美味的早餐做给心爱的人。','img/menu/84bd7bca8a2811e6a9a10242ac110002_1836w_1837h.jpg','87','23','235','/recipe_list/101911165/','4年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'western food','delicious～～～','img/menu/ce1e69da881811e6b87c0242ac110003_646w_480h.jpg','64','25','236','/recipe_list/103792338/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'好好吃饭2.0','','img/menu/40f280b3470e43bd8b6e74dec186d0b7_1440w_1080h.jpg','77','108','237','/recipe_list/104596121/','2年前','4天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'收购各类高分豆浆','从今天起，我也是一个有豆浆机的土豪了','img/menu/80b9f7bc895411e6a9a10242ac110002_640w_640h.jpg','153','78','238','/recipe_list/102178798/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'这些年在吃的菜','从小到大百吃不厌的这些个菜
+美味又下饭~~可还行','img/menu/c7e0d5d486f211e6a9a10242ac110002_437w_652h.jpg','63','27','239','/recipe_list/187436/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'色拉星球','各色好吃的色拉配餐','img/menu/94031cd94e01482184d9d43b2dcfcc6e_1080w_864h.jpg','1615','19','240','/recipe_list/102399768/','3年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'想吃','哈哈','img/menu/80f961a0896211e6a9a10242ac110002_1280w_1280h.jpg','38','10','241','/recipe_list/102200088/','4年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'挤花曲奇OR饼干','挤花挤花挤花','img/menu/877b430ca6d411e5ba5ab82a72e00100.png','53','44','242','/recipe_list/102471636/','3年前','10个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'生活菜','主食','img/menu/61eb2fda872a11e6b87c0242ac110003_450w_650h.jpg','58','9','243','/recipe_list/101620408/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'早餐','等哥哥上学了～每天都要给他不一样的开始','img/menu/4a5f612b920a43a79c87fa6b8c015366_1124w_1688h.jpg','61','31','244','/recipe_list/102839993/','3年前','2个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'蛋黄酥～广式月饼','烘焙：喜欢的甜品，好的方子要收藏，归纳起来方便查找、制作……','img/menu/0dcdce01c0a84b568ee4e6c6e9cb248d_1688w_1124h.jpg','127','41','245','/recipe_list/103365561/','3年前','2个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'月饼的节日～','中秋快到了～外面的月饼不健康～有烤箱的童鞋自己在家动起来！','img/menu/49185910886a11e6a9a10242ac110002_2835w_2126h.jpg','35','47','246','/recipe_list/102242450/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'最爰','好吃','img/menu/db467b10876f11e6b87c0242ac110003_2604w_1638h.jpg','88','15','247','/recipe_list/102518603/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'肉食规划','啊 肉','img/menu/59a67930fd5711e6bc9d0242ac110002_1083w_867h.jpg','143','40','248','/recipe_list/103039576/','3年前','9个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'！！！','包子','img/menu/229709e6873711e6a9a10242ac110002_570w_380h.jpg','927','10','249','/recipe_list/101820227/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'中式糕点','都是我喜欢想尝试的菜谱，会一直不断的更新下去～','img/menu/8d7f226b8c214a9fa45cc1bc91824474_1080w_864h.jpg','167','33','250','/recipe_list/101637477/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'汤汤水水暖暖和和~','实在喜欢喝汤，但是盐分摄入就超啦，太纠结……','img/menu/d5f8440c883411e6b87c0242ac110003_4208w_2368h.jpg','92','29','251','/recipe_list/102262042/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'二餐','当然是早餐和午餐咯','img/menu/5c7ddc3c107b4be6a302dc1bbd0bfb8b_1080w_864h.jpg','75','72','252','/recipe_list/102043315/','4年前','22天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'嗯','好','img/menu/370f3bb8889b11e6b87c0242ac110003_2021w_1137h.jpg','81','36','253','/recipe_list/102858149/','3年前','11个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'实践冰箱里的食材','为食材挑选菜谱','img/menu/362e6c26895b11e6b87c0242ac110003_1200w_794h.jpg','58','209','254','/recipe_list/104968605/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'Bread bakers apprentice','结构之路','img/menu/96a52016882c11e6b87c0242ac110003_750w_788h.jpg','33','9','255','/recipe_list/102218992/','4年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'定期要做的零食清单','有些零食，做一次尝个鲜。
+有些零食，做一次飞速消灭一次，怎么也吃不够。','img/menu/af763f4887e211e6b87c0242ac110003_620w_380h.jpg','64','11','256','/recipe_list/101615735/','4年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'明节气，知菜肴','二十四节气（The 24 Solar Terms）是指中国农历中表示季节变迁的24个特定节令，是根据地球在黄道（即地球绕太阳公转的轨道）上的位置变化而制定的，每一个分别相应于地球在黄道上每运动15°所到达的一定位置。
+二十四节气是中国先秦时期开始订立、汉代完全确立的用来指导农事的补充历法，是通过观察太阳周年运动，认知一年中时令、气候、物候等方面变化规律所形成的知识体系。它把太阳周年运动轨迹划分为24等份，每一等份为一个节气，始于立春，终于大寒。因此每个节气时所匹配的食物并不是随意规定的，其中大有学问。','img/menu/a00993752476499fb0988f13feba30b8_600w_400h.jpg','175','214','257','/recipe_list/109272314/','2年前','6个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'饭饭','我尽力','img/menu/9aff4a3687c011e6b87c0242ac110003_600w_398h.jpg','68','10','258','/recipe_list/101998051/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'靠谱烘焙方子','经个人尝试过的靠谱方子。（当然靠谱也不是绝对的，比如很多方子的糖量都得减≥﹏≤）','img/menu/7d311a148b8711e6b87c0242ac110003_1080w_1080h.jpg','54','12','259','/recipe_list/101825439/','4年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'凉品','各种好做的凉拌菜，凉皮，凉面等','img/menu/12c39dc168554879beb8a225ab3df593_1210w_681h.jpg','119','93','260','/recipe_list/168160/','6年前','9天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'记忆中的南京味道','地道南京人 地道南京胃
+唤醒小时候的味觉记忆
+持续更新中','img/menu/626beffa89724006b044d6c17c167c73_1280w_1024h.jpg','3351','23','261','/recipe_list/103425370/','3年前','8个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'我爱南京大牌档～','离家在外，还好有南京大牌档这些美味小吃来慰藉我恋家的胃～美龄粥、糯米藕、盐水鸭，一段时间不吃就怪想的(*☻-☻*)','img/menu/de113ea0895e4efc98ef05940dbf199a_1280w_1280h.jpg','118','10','262','/recipe_list/106099958/','2年前','8个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'放开那杯饮料！','夏和冷饮，冬喝热饮','img/menu/cf381942874b11e6b87c0242ac110003_600w_400h.jpg','49','16','263','/recipe_list/102035443/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'易做美味中式凉菜','O(∩_∩)O~','img/menu/caa18a3055a14cc2bb7f6646c7c7196a_1215w_1215h.jpg','98','37','264','/recipe_list/100013530/','6年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'new health','健康，绿色， new health','img/menu/2afd321c893611e6b87c0242ac110003_1239w_927h.jpg','63','17','265','/recipe_list/101936304/','4年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'因爱之名','用爱去做，用心去品，就能正念进食。','img/menu/80165f064f23412fae4fe6748752d400_1199w_692h.jpg','160','51','266','/recipe_list/101200958/','5年前','21天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'宝宝菜单','好吃','img/menu/2e31a370899811e6a9a10242ac110002_1536w_2048h.jpg','49','28','267','/recipe_list/102733520/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'2017鸡年春节聚会','才过完圣诞节和元旦，中国新年便以迅雷不及掩耳盗铃之势😄，出现在一月的日历上。今年春节按照老规矩，再建一个新菜单吧！正在读一本泰国菜谱，今年的主题就加点泰式风味！差不多十几家人吧，老老小小总也有四五十人，按照8-10个冷盘（四荤六素）4-6热菜，汤，面，饭，甜点，和饮料。每家带一个菜，还有当晚大家动手包的饺子。','img/menu/2ab40e4a8a4c11e6a9a10242ac110002_1836w_1837h.jpg','48','45','268','/recipe_list/104980506/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'面食','慢慢','img/menu/62f5de021c5311e7947d0242ac110002_1280w_1024h.jpg','52','10','269','/recipe_list/105311090/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'东南亚之旅','（越泰之类的另开菜单）
+马来西亚菜Malaysian cuisine普遍运用咖哩、参拜 、阿三、冬炎四大香料调味烹制，以酸辣口味 ，颜色鲜丽丰富见长的菜肴 。多以牛、羊、鸡、鸭、鱼、虾为主料，少用或不用猪肉。普遍采用椰汁，是他们食品中的主料 。菜肴独具一格 。有名的菜品有阿三鱼头、冬炎花枝、沙爹串烧等。
+
+娘惹菜系是由中国菜系和马来菜系合并而成的马六甲菜肴，新加坡地道美食，传统中国菜烹饪法与马来香料完美结合，融会了甜酸、辛香、微辣等多种风味，口味浓重，所用的酱料都由起码十种以上香料调配而成。令人交口称赞的南洋最特别、最精致的佳肴之一，自成一派。叻沙(LAKSA)是娘惹美食中最具盛名的一种，中国素材的内敛遇上马来料理的奔放，调和出人间稀有的爱恋热情。许多马来西亚原驻民认为：“娘惹”美食见证了马来人与华人的联姻喜庆，代表了浪漫丰富的娘惹美食特色。除了马六甲地区，娘惹菜还流传到了槟榔屿、新加坡以及印尼和泰国。
+
+在我国，缅甸餐厅并不多见，缅甸和泰国美食都有一个共同点，就是以酸、辣见称。但虽然缅甸和泰国是邻居，但缅甸菜肴却远远不及泰国美食般风靡全世界；虽然同样是酸辣，但缅甸佳肴的酸辣风味吃起来却要含蓄且保守多了。
+
+菲律宾菜肴的特色就是它的甜，酸，咸口味的大胆组合。.虽然可能是一个更微妙的交付和演示的其他亚洲美食，菲律宾美食往往是一次交付在一个单一的演示。
+
+老挝人饮食简单清淡,多以香料调味,外国人不易适应,但是的确有风味。老挝人喜食糯米,老挝菜特点是酸、辣、生
+
+印尼菜同属于东南亚菜系，但与其他东南亚菜系最大的不同，就是会用到两款独有香料：石栗和黑栗。这两款香料几乎会出现在任何一款传统菜上。印尼咖喱和泰国咖喱以及印度的咖喱调味有些不同，泰国咖喱比较偏酸偏辣一点，印度的则有一点辛辣。
+
+柬埔寨人以大米为主食，喜食素菜，但逢年过节，他们的餐桌上还是有鱼有肉，菜肴十分丰富。他们偏爱辣、甜、酸的味道，辣椒、葱、姜、大蒜是不可缺少的调料。','img/menu/37f931ba4f6e11e7bc9d0242ac110002_6000w_4000h.jpg','873','305','257','/recipe_list/104537139/','2年前','6个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'减油和低卡甜点','有一段低卡（豆腐）甜点','img/menu/502a55674fc34279ae719dca0d3f7d6b_1800w_1200h.jpg','256','78','177','/recipe_list/103785814/','3年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'水饺','这是一个水饺的聚会，中国人，一切皆可成饺子！！！！','img/menu/ea064fcf1e6d44078232e86591285ef4_1944w_1944h.jpg','135','41','270','/recipe_list/105043283/','2年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'喵小婷的奶油泡芙店','这里有单身狗也可以烤的泡芙~提醒一下噢，烤好的泡芙冷却两分钟，再补馅，剩下的泡芙放冰箱冷藏能保存一个星期噢(>﹏<)。脆脆的才好吃哦','img/menu/55281fc288d011e6a9a10242ac110002_682w_463h.jpg','40','11','271','/recipe_list/102083566/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'简单，好味，不油不腻甜点','不爱太甜太腻，钟爱甜品不解释！日式中式好味简单甜点进碗里！','img/menu/a90675d487af11e6a9a10242ac110002_600w_400h.jpg','68','8','272','/recipe_list/101842124/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'下饭菜','“很下饭” 是对一道菜的最高赞誉啊','img/menu/57734e0c872011e6a9a10242ac110002_490w_367h.jpg','36','10','273','/recipe_list/169781/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'零食  炸薯条','好吃的炸薯条','img/menu/767baaf07e7b11e58f6423324456ce8a.jpg','46','24','274','/recipe_list/102991878/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'下油锅','油油油油油油油油炸！','img/menu/0dfe299c86f611e6a9a10242ac110002_500w_534h.jpg','56','15','275','/recipe_list/27932/','7年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'减肥周期里可以吃的','减肥周期前三天不能吃米饭面，不能吃甜的，含淀粉的不能吃。这些很适合','img/menu/fa6d167a8a4e11e6a9a10242ac110002_2048w_2048h.jpg','256','29','276','/recipe_list/102595488/','3年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'肉肉肉','人生在世短短几十年。','img/menu/83d5ab2889e311e6b87c0242ac110003_2048w_2048h.jpg','48','18','277','/recipe_list/102735807/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'面食·面点','山东人的胃，还是吃面吧。','img/menu/4f55799888fb11e6a9a10242ac110002_800w_533h.jpg','64','66','278','/recipe_list/102335691/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'烤箱','烤肉烤素菜类','img/menu/71efa8da883c11e6a9a10242ac110002_640w_480h.jpg','62','27','279','/recipe_list/102960088/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'经典烘焙方子','为了做出经典的好味道，不属于外面精品西餐店。追求高口感，不计较卡路里','img/menu/97d6b2d488b211e6a9a10242ac110002_800w_693h.jpg','162','45','280','/recipe_list/101821680/','4年前','9个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'鲜味 素菜','做得好  素菜也能流连忘返','img/menu/0ea0dc20873a11e6a9a10242ac110002_500w_372h.jpg','78','28','281','/recipe_list/103718947/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'肉：鸡胸为主','让鸡胸肉变得能入口！','img/menu/beef6862878511e6a9a10242ac110002_1024w_683h.jpg','144','15','282','/recipe_list/102905107/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'做一桌不一样的来招待我珍视的你们','说好毕业要请朋友们吃饭啦，现在不行，还太忙','img/menu/1052bfca87a811e6a9a10242ac110002_750w_496h.jpg','42','10','283','/recipe_list/102374177/','3年前','9个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'必做','','img/menu/9dc3e8a0873711e6b87c0242ac110003_680w_453h.jpg','88','19','284','/recipe_list/102381087/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'最爱虾虾','虾！子！','img/menu/5a1f894e873011e6b87c0242ac110003_459w_690h.jpg','84','9','285','/recipe_list/141497/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'孩子们哒','土豆麻麻有两个可爱的宝贝，土豆豆和小天天','img/menu/5cfa461fb5bb463dba01e176cb4ea114_2768w_1848h.jpg','228','71','286','/recipe_list/101524383/','5年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'甜品','好喝健康','img/menu/efc4827c87ff11e6b87c0242ac110003_600w_426h.jpg','69','61','287','/recipe_list/102867680/','3年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'养胃','为胃不好的亲人而学','img/menu/473402d0873311e6a9a10242ac110002_459w_690h.jpg','147','21','288','/recipe_list/104704090/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'时间是最好的调味料','别急，再等等啊。','img/menu/4203c44e874c11e6b87c0242ac110003_600w_499h.jpg','44','10','289','/recipe_list/100023294/','6年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'鸡腿','鸡腿','img/menu/f38224ce87b811e6a9a10242ac110002_1500w_1004h.jpg','46','16','290','/recipe_list/102837620/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'有你的时间。【素】','收藏自己喜欢的。无顺序。
+
+
+
+欢迎留言自荐自己制作的或是喜欢的。','img/menu/798fdb9e5e004dea9936aee749f36cb3_1062w_1888h.png','73','53','291','/recipe_list/9374/','7年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'简单面食','最烦有“适量”和“少许”，一切都要数据来指导！','img/menu/a893b22ffaff4275bb7beb298bb3d1be_1080w_1440h.jpg','220','113','292','/recipe_list/103439165/','3年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'下班速度菜','下班回家速度来2个炒菜，是一天的high light有木有！','img/menu/94031cd94e01482184d9d43b2dcfcc6e_1080w_864h.jpg','152','26','293','/recipe_list/105809/','6年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'Yao亲测^^','for myself','img/menu/c5796be4874c11e6b87c0242ac110003_500w_393h.jpg','37','12','294','/recipe_list/100975402/','5年前','5年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'一个人的甜蜜滋味','糖果','img/menu/e3382fe08a0c11e6b87c0242ac110003_1144w_748h.jpg','43','21','295','/recipe_list/102349454/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'lt爱吃的','全是我爱吃的！！！！！！','img/menu/df90d4a888c911e6a9a10242ac110002_640w_640h.jpg','32','75','296','/recipe_list/103993604/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'糕点','奶酪包','img/menu/9b1fa9739cb543c282dd14ec8c295001_2100w_2100h.jpg','41','23','297','/recipe_list/104150449/','2年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'卷卷','全是各种喜欢的卷。','img/menu/54498c6a86f211e6b87c0242ac110003_500w_722h.jpg','43','8','298','/recipe_list/101618418/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'wine','简单的酿酒','img/menu/5994776486f911e6a9a10242ac110002_675w_450h.jpg','81','12','299','/recipe_list/101728995/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'不得不做','一般不做菜 但偶尔有喜欢的呢','img/menu/9901cd708a0011e6b87c0242ac110003_2592w_1728h.jpg','75','9','300','/recipe_list/102221810/','4年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'我的LA厨师证','留学期间尝试的菜谱','img/menu/304df360873211e6b87c0242ac110003_459w_690h.jpg','99','26','301','/recipe_list/104442190/','2年前','3个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'酱料','沙拉酱','img/menu/3e255540218b42c7a0ce886cf8532200_1080w_864h.jpg','271','31','302','/recipe_list/101761976/','4年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'吃货减肥秘笈早餐篇','爱吃又要减肥，节食过度也不好，早餐好选择。','img/menu/e64834f1c2be48b6b81f0516a91090c6_2448w_3264h.jpg','82','17','303','/recipe_list/102246827/','4年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'蒸菜','然而并没有蒸锅','img/menu/a1cfc74c880011e6b87c0242ac110003_500w_752h.jpg','135','9','304','/recipe_list/102514815/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'轻食和饮品','三明治 沙拉 清爽果汁 营养粥，吃饭少一些负担','img/menu/89d3d37035ea11e7bc9d0242ac110002_1280w_914h.jpg','1245','48','305','/recipe_list/104536326/','2年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'蛋百制,not only 蛋白质','收集鸡蛋的100种制作方法','img/menu/6e48afce881e11e6b87c0242ac110003_622w_413h.jpg','66','9','306','/recipe_list/155896/','6年前','5年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'嘻嘻，偷师学厨。','嗯，基本上收录的都是自己喜欢的、自己少吃的。','img/menu/9152653e870411e6a9a10242ac110002_640w_479h.jpg','74','15','307','/recipe_list/1291/','8年前','6年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'桃酥饼干','桃酥 中层 180° 15-16分钟/160° 22、23分钟
+（16个）一锅               2锅
+面粉 250        500g
+油 90            180
+糖 70            140
+盐 1g            2
+鸡蛋 一个      2个
+小苏打 1-1.5g    2.5g','img/menu/ffc00088a0d44d5bbc997ac852739d32_900w_675h.jpg','125','55','308','/recipe_list/102920786/','3年前','7个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'大肉菜','肉类大菜 简称大肉菜……','img/menu/c2656904541c40b3bd4c99d161ab3c4c_485w_387h.jpg','65','17','309','/recipe_list/91223/','6年前','4天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'粥','美味养生','img/menu/bc403c5c86fb11e6b87c0242ac110003_450w_636h.jpg','59','10','310','/recipe_list/101599577/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'凉菜','凉菜','img/menu/b7e18f78874e11e6b87c0242ac110003_800w_533h.jpg','76','16','311','/recipe_list/104783825/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'烤箱-吐司面包法棍贝果pizza派','一个230g长方形吐司模具
+一个450g长方形吐司模具','img/menu/a761a3a689dc435d9a8b80b2554a18e5_1122w_750h.jpg','122','539','312','/recipe_list/104241949/','2年前','11天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'疯狂的茶','各种各样的茶','img/menu/755e1382888a11e6a9a10242ac110002_640w_1136h.jpg','72','24','313','/recipe_list/102989771/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'等假期在家我要当大厨','平时在学校，每次看菜谱都各种想做。但是在宿舍很多都不方便弄，也没那么多时间。先收着呗  各种长假在家的时候就轮到我当大厨啦~','img/menu/ee4719968b8311e6a9a10242ac110002_1280w_875h.jpg','73','27','314','/recipe_list/100080426/','5年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'蔬菜要换着吃','各种各样的蔬菜 不会吃腻~','img/menu/a673d1ae874b11e6a9a10242ac110002_600w_454h.jpg','75','8','315','/recipe_list/102408661/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'孕妇','10.29','img/menu/101cdd5887bf11e6a9a10242ac110002_525w_405h.jpg','49','11','316','/recipe_list/104147816/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'茶饮','奶茶一类','img/menu/6950fffc8b2111e6b87c0242ac110003_1440w_1080h.jpg','326','120','317','/recipe_list/106998562/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'早餐啊！','主要是好吃，容易，我会做。','img/menu/9e81d510881b11e6a9a10242ac110002_640w_480h.jpg','148','86','318','/recipe_list/102517223/','3年前','8个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'王后伯爵T55、T65法包粉','传统的欧包，外脆里润有嚼劲，少糖少油，','img/menu/4baa79d3a8d4422683bce83c42dc1de2_1616w_1080h.jpg','51','25','319','/recipe_list/109374606/','2年前','16小时前');
+INSERT INTO `xiachufang_menu` VALUES (null,'中式早点','各种馒头包子油条饼','img/menu/f525715d5e4842f1a9ff605d0b142f95_949w_759h.jpg','148','27','320','/recipe_list/103666799/','3年前','2天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'小吃','牛奶米糕','img/menu/b03520ba8aa911e6b87c0242ac110003_1776w_1184h.jpg','67','17','321','/recipe_list/102875028/','3年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'【炊烟食堂】便当常备菜','上班族做便当总有一个困惑，平时太忙早上不想起，时间太宝贵，又不想便当做的太寒酸……
+其实，解决这个问题很简单，就是善于利用常备菜的概念，所谓常备菜，就是一些可以一次料理，放在冰箱里三四天不会坏，不容易产生对身体不好的物质，而且随着时间的推移还会变得越来越美味的菜肴！
+常备菜分两种，一种是冷藏保存的小菜，还有一种是冷冻保存的半成品主菜，这个菜单会不定期更新一些好吃又好做并且创意十足的常备菜～','img/menu/1c471747c36b42b4aece889b4004587f_1000w_664h.jpg','311','22','322','/recipe_list/102448085/','3年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'面包机，烘焙中的战斗机','自从有了面包机中的劳斯莱斯松下pm105，我也敢挑战面包菜谱了！','img/menu/c0fa12188b2e11e6a9a10242ac110002_1200w_900h.jpg','163','35','323','/recipe_list/102324423/','3年前','2个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'玛德琳费南雪','玛德琳，，费南雪，，可露丽，，司康','img/menu/7027c42a881811e6b87c0242ac110003_524w_500h.jpg','70','21','324','/recipe_list/104897142/','2年前','6个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'一人食','一只即将毕业的大四狗，收录一下以后出租房僧活的菜单单单单~','img/menu/98a8744cbc9f4333998b2fe8656dca3f_3072w_2304h.jpg','65','48','325','/recipe_list/101677123/','4年前','5个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'<做过超好吃的方子>存档','会一直做下去的非常好的方子！！！','img/menu/da5c0ba0be5d11e6947d0242ac110002_854w_640h.jpg','87','29','326','/recipe_list/102231812/','4年前','9个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'各式各样的饭团 寿司','很适合便当外带很好看','img/menu/9779a86e889e11e6a9a10242ac110002_640w_620h.jpg','232','15','327','/recipe_list/102835812/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'情侣专属菜单','😍比起包包化妆品更让女朋友满意的礼物好的爱应该润物细无声','img/menu/913710eeea83447a8f915c2b3a562c61_3331w_3331h.jpg','42','13','328','/recipe_list/104867933/','2年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'稻香村','稻香村','img/menu/1ae9ad1a873311e6a9a10242ac110002_439w_659h.jpg','154','9','329','/recipe_list/105775687/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'自制材料','自已动手丰衣足食','img/menu/f93058aa87e011e6a9a10242ac110002_4928w_3264h.jpg','163','35','330','/recipe_list/102382636/','3年前','8个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'轻食沙拉','【轻食沙拉】一周的沙拉轻食，每天不一样的丰富食材搭配。七天为一个周期，中午或者晚上可以选择轻食沙拉作为一餐，保证营养摄入，还可以低油低盐低糖，顺利减脂瘦身。','img/menu/1c829bb6898411e6a9a10242ac110002_1242w_1242h.jpg','36','10','331','/recipe_list/102738322/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'瑞士卷','轻松可爱好味','img/menu/60d319f48a1411e6a9a10242ac110002_1280w_784h.jpg','74','31','332','/recipe_list/102403040/','3年前','7个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'减肥减脂','减肥减脂','img/menu/8d78b62a897511e6b87c0242ac110003_1280w_1280h.jpg','140','9','333','/recipe_list/103026297/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'靠谱','靠谱的方子','img/menu/3f81824a1aba11e7947d0242ac110002_1001w_1334h.jpg','173','162','334','/recipe_list/102311774/','3年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'柠檬蛋糕','买了那么多柠檬，不能浪费，加油↖(^ω^)↗','img/menu/71c3b703e0ad403d91b906c9fa92c178_1080w_864h.jpg','197','22','335','/recipe_list/101749634/','4年前','5个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'轻微甜品','微微的甜蜜','img/menu/138955d6a5464d91a860619bd48232c5_1280w_1024h.jpg','106','456','336','/recipe_list/103710973/','3年前','23小时前');
+INSERT INTO `xiachufang_menu` VALUES (null,'美美的蛋糕','打算送给老公生日快乐','img/menu/75d5b85e7d8847a1bb89b26793f036f8_6720w_3924h.jpg','41','15','337','/recipe_list/102433904/','3年前','6个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'外卖点心','点心','img/menu/22f44cbc422943e68ee94d6b4d161a43_744w_992h.jpg','110','44','338','/recipe_list/104483005/','2年前','4个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'糖水、甜品类（自己收藏版）','收藏太多，做个菜单方便自己查找','img/menu/860c27c48cf84f0e82cd527fcbdf9ab4_2048w_2048h.jpg','429','55','339','/recipe_list/102011257/','4年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'Bucket List の 烘焙篇','就是想记录一下自己想做的面包或者蛋糕……','img/menu/d7c05af28a4311e6a9a10242ac110002_5214w_3476h.jpg','104','260','340','/recipe_list/104838237/','2年前','2年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'厨房省事小技巧(ฅ>ω<*ฅ)','每次看到了省时省力的野生快手操作，或者脑洞出的小窍门，都要蹦跶的分享给大家。','img/menu/55373e8cf9df11e6947d0242ac110002_600w_402h.jpg','1817','16','238','/recipe_list/111028293/','1年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'自带酒水','爸爸妈妈都是老酒鬼，从小就是捞妈妈泡的酒杨梅酒葡萄长大的啊，现在好想自己也试一把','img/menu/58592274298f4d748801c1b1c4ef0d09_1080w_1604h.jpg','70','27','341','/recipe_list/27350/','7年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'爱面食到地老天荒','🍜🍝🌮🌯','img/menu/7b721df007fe4823965e128d513b901c_1242w_1656h.jpg','3967','84','342','/recipe_list/104154959/','2年前','1个月前');
+INSERT INTO `xiachufang_menu` VALUES (null,'鸡肉！！！','超级喜欢鸡肉！不管是鸡胸还是鸡腿都大爱！！！','img/menu/57a34156878011e6b87c0242ac110003_1632w_2464h.jpg','160','54','343','/recipe_list/102500351/','3年前','3年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'午餐','了了','img/menu/a49b260a88ba11e6a9a10242ac110002_3264w_1836h.jpg','40','76','344','/recipe_list/103652638/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'各式奶油喵~','纸杯蛋糕好帮手','img/menu/c1e2ee6d888b43fc867b8fd97fd44566_564w_432h.jpg','62','10','345','/recipe_list/104268138/','2年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'乱七八糟喜欢的','就是不知道怎么分类的。','img/menu/1f57a723d1f14fdf84f2c62b9f6ae5ac_1280w_1706h.jpg','38','15','346','/recipe_list/101761544/','4年前','11天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'皇帝的早餐','营养各类
+1.	碳水化合物，最好粗细搭配
+2.	优质蛋白质
+3.	新鲜蔬菜水果
+4.	一点坚果
+
+碳水化合物
+粥，面条，馒头，花卷，饺子，抄手，
+（蒸，煮）土豆，山药，藕，红薯，紫薯
+优质蛋白质
+鸡蛋、鸡胸肉，豆浆，牛奶，酸奶，豆干，豆皮
+新鲜蔬菜水果
+蔬菜：水煮法，少量水+油煮
+水果：每天一种
+坚果
+核桃，花生，板栗，杏仁，松子，腰果
+
+快捷
+面条+鸡蛋+青菜
+抄手/饺子+青菜
+常规
+杂粮（坚果）粥+水煮菜+煮鸡蛋
+各自搭配时令水果，坚果，牛奶
+
+能提前一天晚上准备的都提前准备
+粥：预约
+鸡蛋：晚上煮好，不剥壳
+青菜：洗好，滤水，放冰箱
+抄手，饺子：周末包好，冷冻
+面条：（水面）按一人份量分团，冷冻
+水果：晚上洗好，切好','img/menu/6209843c87f011e6b87c0242ac110003_526w_349h.jpg','97','95','347','/recipe_list/102420327/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'饼','共20分钟，上管：120，下管：140','img/menu/60a9c3566cfe425d907e2c56202bf1e7_1280w_960h.jpg','125','37','348','/recipe_list/103630107/','3年前','18天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'人生怎么能没有咖喱？٩(❛ัᴗ❛ั⁎)','咖喱就是一种吃上一口就满足感爆棚的食物。中毒太深，百吃不厌！','img/menu/259f9806873211e6a9a10242ac110002_690w_459h.jpg','86','15','349','/recipe_list/102188937/','4年前','4年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'樱菜谱','自制','img/menu/7e87bbd876394af4baab94a6dded0b40_500w_475h.jpg','112','397','350','/recipe_list/103565432/','3年前','6天前');
+INSERT INTO `xiachufang_menu` VALUES (null,'宴客菜','过年过节露一手！
+
+标准宴席应该包括：
+冷菜
+热菜
+点心：如果只有一道点心，建议上甜点，与之前咸味的菜做对比。如果两道点心，注意咸甜，荤素，干湿搭配。
+酒水饮料
+
+菜肴搭配16字真言：冷热荤素轻重干湿，煎炒蒸炸拌烧卤炖
+选主菜：天上（鸡鸭等）地下（猪牛羊等）水中（鱼虾蟹贝等）','img/menu/50c847a8e4b14a1b84c297ef04ae5cfa_1024w_683h.jpg','183','44','351','/recipe_list/102395272/','3年前','1年前');
+INSERT INTO `xiachufang_menu` VALUES (null,'空气炸锅菜单','试验','img/menu/b0e1d4568a2011e6b87c0242ac110003_4608w_3072h.jpg','104','14','352','/recipe_list/104120256/','2年前','2年前');
+
 
 -- ----------------------------
--- Table structure for `xiachufang_menu_details`
+-- Table structure for `xiachufang_menu_contains`
 -- 菜单详情
 -- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_menu_details`;
-CREATE TABLE `xiachufang_menu_details` (
-  `mdid` int(11) NOT NULL auto_increment,
+DROP TABLE IF EXISTS `xiachufang_menu_contains`;
+CREATE TABLE `xiachufang_menu_contains` (
+  `cid` int(11) NOT NULL auto_increment,
   `menu_id` int(11) default NULL,
   `recipe_id` int(11) default NULL,
-  PRIMARY KEY  (`mdid`)
+  PRIMARY KEY  (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -490,17 +1000,578 @@ CREATE TABLE `xiachufang_category`(
   `fid` int(11) NOT NULL auto_increment,
   `fname` varchar(32) default NULL,
   `food_img` varchar(128) default NULL,
-  `score` decimal(2,1) default NULL,
+  `score` decimal(3,1) default NULL,
   `is_season` tinyint(1) default NULL COMMENT '时令食材',
   `food_categary` VARCHAR(32) default NULL COMMENT '类别',
   `category_href` varchar(128) default NULL,
   PRIMARY KEY  (`fid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of xiachufang_category
--- ----------------------------
-INSERT INTO `xiachufang_category` VALUES (NULL,'螃蟹','img/category/螃蟹.jpg','9.8','1','螃蟹','水产','/category/1');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪肉','img/category/01e098617c9211e58dc39dc38687f4d3.jpg',NULL,NULL,'猪','/category/731/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'家常菜',NULL,NULL,NULL,'菜式','/category/40076/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'快手菜',NULL,NULL,NULL,'菜式','/category/40077/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'下饭菜',NULL,NULL,NULL,'菜式','/category/40078/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'早餐',NULL,NULL,NULL,'特殊场合','/category/40071/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'减肥',NULL,NULL,NULL,'功效','/category/30048/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'汤羹',NULL,NULL,NULL,'汤羹','/category/20130/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'烘焙',NULL,NULL,NULL,'烘焙','/category/51761/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'小吃',NULL,NULL,NULL,'特色食品','/category/40073/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡肉','img/category/103332807c9211e5bf2245d1d992f1cb.jpg',NULL,NULL,'鸡','/category/1136/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛肉','img/category/1e5756f07c9211e5a9df7f0741f94ddb.jpg',NULL,NULL,'牛','/category/1445/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼','img/category/099633457c9211e5986f45d1d992f1cb.jpg',NULL,NULL,'鱼','/category/957/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡蛋','img/category/f4c1467a7c9111e58c5d45d1d992f1cb.jpg',NULL,NULL,'蛋类','/category/394/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'土豆','img/category/edb10f517c9111e58866a9bfb5aebcdb.jpg',NULL,NULL,'根茎蔬菜','/category/206/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'茄子','img/category/ec6e10177c9111e5976345d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/178/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豆腐','img/category/e720fda17c9111e585d79dc38687f4d3.jpg',NULL,NULL,'豆制品','/category/80/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'螃蟹','img/category/1327c0a17c9211e595bc9dc38687f4d3.jpg','10.0','1','螃蟹','/category/1183/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'柚子','img/category/eeb5096c7c9111e5922bb82a72e00100.jpg','10.0','1','水果','/category/209/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蟹味菇','img/category/1e92dc707c9211e5949a9dc38687f4d3.jpg','7.9','1','菌菇类','/category/1461/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'小白菜','img/category/7cdf360a605e49cda8a5fa5f61bef253_300w_300h.jpg',NULL,NULL,'小白菜','/category/5316/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛腩','img/category/fcb994737c9111e599089dc38687f4d3.jpg','7.0','1','牛','/category/612/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'海带','img/category/e5437a6b7c9111e5930c9dc38687f4d3.jpg',NULL,NULL,'海带','/category/49/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'土鸡','img/category/fb6de4d97c9111e5933b9dc38687f4d3.jpg','6.4','1','鸡','/category/570/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡腿','img/category/20196a787c9211e587a17f0741f94ddb.jpg','6.3','1','鸡','/category/1509/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酱',NULL,NULL,NULL,'特色食品','/category/51276/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'沙拉',NULL,NULL,NULL,'特色食品','/category/20167/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'凉菜',NULL,NULL,NULL,'特色食品','/category/20137/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'下午茶',NULL,NULL,NULL,'特殊场合','/category/40072/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'便当',NULL,NULL,NULL,'特殊场合','/category/20171/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'圣诞节',NULL,NULL,NULL,'特殊场合','/category/51971/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'素菜',NULL,NULL,NULL,'菜式','/category/51848/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'大鱼大肉',NULL,NULL,NULL,'菜式','/category/52354/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'下酒菜',NULL,NULL,NULL,'菜式','/category/51743/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'美容',NULL,NULL,NULL,'功效','/category/52138/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'润肺抗燥',NULL,NULL,NULL,'功效','/category/30053/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'儿童',NULL,NULL,NULL,'人群','/category/30042/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'婴幼儿',NULL,NULL,NULL,'人群','/category/30044/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'老人',NULL,NULL,NULL,'人群','/category/30043/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'小清新',NULL,NULL,NULL,'菜式','/category/52351/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'创意菜',NULL,NULL,NULL,'菜式','/category/51940/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'零食',NULL,NULL,NULL,'特色食品','/category/40074/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'三明治',NULL,NULL,NULL,'特色食品','/category/20157/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'月饼',NULL,NULL,NULL,'特色食品','/category/20152/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蒸蛋',NULL,NULL,NULL,'特色食品','/category/52335/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'寿司',NULL,NULL,NULL,'特色食品','/category/20172/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'粽子',NULL,NULL,NULL,'特色食品','/category/51870/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡蛋羹',NULL,NULL,NULL,'特色食品','/category/1007463/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'年夜饭',NULL,NULL,NULL,'特殊场合','/category/40075/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'深夜食堂',NULL,NULL,NULL,'特殊场合','/category/52107/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'情人节',NULL,NULL,NULL,'特殊场合','/category/51822/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'宵夜',NULL,NULL,NULL,'特殊场合','/category/51865/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'补血',NULL,NULL,NULL,'功效','/category/30051/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'清热祛火',NULL,NULL,NULL,'功效','/category/52334/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'孕产妇',NULL,NULL,NULL,'人群','/category/52333/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'宝宝食谱',NULL,NULL,NULL,'人群','/category/1012138/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'味蕾工坊',NULL,NULL,NULL,'视频专题','/category/52353/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蛋糕',NULL,NULL,NULL,'烘焙','/category/20158/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'面包',NULL,NULL,NULL,'烘焙','/category/52411/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'饼干',NULL,NULL,NULL,'烘焙','/category/20160/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'吐司',NULL,NULL,NULL,'吐司','/category/52447/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'乳酪蛋糕',NULL,NULL,NULL,'乳酪蛋糕','/category/52435/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'曲奇',NULL,NULL,NULL,'曲奇','/category/51906/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'甜品',NULL,NULL,NULL,'甜品','/category/20135/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'布丁',NULL,NULL,NULL,'甜品','/category/20163/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'冷饮',NULL,NULL,NULL,'甜品','/category/51867/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'果酱',NULL,NULL,NULL,'甜品','/category/20165/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'糖水',NULL,NULL,NULL,'甜品','/category/50680/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'冰淇淋',NULL,NULL,NULL,'甜品','/category/20166/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'果冻',NULL,NULL,NULL,'甜品','/category/51871/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'饮品',NULL,NULL,NULL,'饮品','/category/20136/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咖啡',NULL,NULL,NULL,'饮品','/category/20168/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豆浆',NULL,NULL,NULL,'饮品','/category/52088/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶茶',NULL,NULL,NULL,'饮品','/category/20169/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酒',NULL,NULL,NULL,'饮品','/category/51942/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'果汁',NULL,NULL,NULL,'饮品','/category/51823/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'花草茶',NULL,NULL,NULL,'饮品','/category/52332/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'披萨',NULL,NULL,NULL,'烘焙','/category/51916/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'派',NULL,NULL,NULL,'烘焙','/category/20164/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'司康',NULL,NULL,NULL,'烘焙','/category/52464/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'塔',NULL,NULL,NULL,'烘焙','/category/52463/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'泡芙',NULL,NULL,NULL,'烘焙','/category/20162/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶油霜',NULL,NULL,NULL,'烘焙','/category/52465/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪',NULL,NULL,NULL,'猪','/category/5399/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'排骨','img/category/ef4ff60c7c9111e5922bb82a72e00100.jpg',NULL,NULL,'猪','/category/227/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪肉末','img/category/03f7b8807c9211e5b3e19dc38687f4d3.jpg',NULL,NULL,'猪','/category/792/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'五花肉','img/category/189704ec7c9211e5922bb82a72e00100.jpg',NULL,NULL,'猪','/category/1304/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪蹄','img/category/f66a42807c9111e58e2345d1d992f1cb.jpg',NULL,NULL,'猪','/category/423/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肉丝',NULL,NULL,NULL,'肉丝','/category/5357/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肋排',NULL,NULL,NULL,'肋排','/category/5392/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'瘦肉','img/category/fbffcbe87c9111e5922bb82a72e00100.jpg',NULL,NULL,'猪','/category/580/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡','img/category/e8caac147c9111e5b4a79dc38687f4d3.jpg',NULL,NULL,'鸡','/category/104/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡翅','img/category/17c0169e7c9211e58e579dc38687f4d3.jpg',NULL,NULL,'鸡','/category/1261/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡胸',NULL,NULL,NULL,'鸡','/category/5391/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡翅中','img/category/470e22874f47415ca119476dbd8d89b4_800w_736h.jpg',NULL,NULL,'鸡翅中','/category/5396/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡腿肉',NULL,NULL,NULL,'鸡腿肉','/category/5194/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡爪','img/category/1949c26b7c9211e5988845d1d992f1cb.jpg',NULL,NULL,'鸡','/category/1337/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛','img/category/db55cb8dc2734ce49ceb7b600555f5dd_600w_600h.jpg',NULL,NULL,'牛','/category/5443/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛排','img/category/091ee1917c9211e59a689dc38687f4d3.jpg',NULL,NULL,'牛','/category/938/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肥牛','img/category/2f3cb28c7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'牛','/category/2629/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛里脊',NULL,NULL,NULL,'牛','/category/5375/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛腱',NULL,NULL,NULL,'牛','/category/5403/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'羊','img/category/70d6105409cc4900ae6f5f7f9fa15c7c_800w_600h.jpg',NULL,NULL,'羊','/category/5418/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭','img/category/f01df1687c9111e5ad77a9bfb5aebcdb.jpg',NULL,NULL,'鸭','/category/275/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'里脊','img/category/3f8aec267c9211e5acea1975b1121eae.jpg',NULL,NULL,'猪','/category/3297/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪肝','img/category/01f322f27c9211e5922bb82a72e00100.jpg',NULL,NULL,'猪','/category/733/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪排',NULL,NULL,NULL,'猪','/category/5374/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪肚','img/category/01fcc4e17c9211e581ac9dc38687f4d3.jpg',NULL,NULL,'猪','/category/735/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪皮','img/category/08233f8f7c9211e5976e45d1d992f1cb.jpg',NULL,NULL,'猪','/category/898/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪骨','img/category/07c1fe737c9211e5bdd645d1d992f1cb.jpg',NULL,NULL,'猪','/category/883/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肥肠','img/category/2f1bb3f37c9211e5a1e67f0741f94ddb.jpg',NULL,NULL,'猪','/category/2618/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪油','img/category/28df97ba7c9211e591237f0741f94ddb.jpg',NULL,NULL,'猪','/category/2190/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪腰','img/category/064dfcb37c9211e5852345d1d992f1cb.jpg',NULL,NULL,'猪','/category/865/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪耳朵','img/category/ef4405857c9111e58ad59dc38687f4d3.jpg',NULL,NULL,'猪','/category/220/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪心','img/category/f376a9b07c9111e5bb7f45d1d992f1cb.jpg',NULL,NULL,'猪','/category/333/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪血','img/category/06ef35977c9211e5abada9bfb5aebcdb.jpg',NULL,NULL,'猪','/category/876/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猪肺','img/category/02e1d8ab7c9211e58e9245d1d992f1cb.jpg',NULL,NULL,'猪','/category/742/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肉末',NULL,NULL,NULL,'猪','/category/1003189/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'乌鸡','img/category/157693fd7c9211e5bac89dc38687f4d3.jpg',NULL,NULL,'鸡','/category/1222/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡胗','img/category/15f1d58c7c9211e597a19dc38687f4d3.jpg',NULL,NULL,'鸡','/category/1227/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'仔鸡','img/category/f499ad877c9111e5b496a9bfb5aebcdb.jpg',NULL,NULL,'鸡','/category/393/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'三黄鸡','img/category/f03ec8f57c9111e5b34ea9bfb5aebcdb.jpg',NULL,NULL,'鸡','/category/278/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡肝','img/category/10267a407c9211e5922bb82a72e00100.jpg',NULL,NULL,'鸡','/category/1131/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'老母鸡','img/category/3c4a275c7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'鸡','/category/3155/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡心','img/category/0ff20ca67c9211e5a387a9bfb5aebcdb.jpg',NULL,NULL,'鸡','/category/1127/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'柴鸡','img/category/02170e687c9211e5bf1c9dc38687f4d3.jpg',NULL,NULL,'鸡','/category/738/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'童子鸡',NULL,NULL,NULL,'鸡','/category/1004800/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛尾','img/category/37dbd30a7c9211e5b0a91975b1121eae.jpg',NULL,NULL,'牛','/category/2915/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛肉末','img/category/f85b28e67c9111e59c1e45d1d992f1cb.jpg',NULL,NULL,'牛','/category/479/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛筋','img/category/04368cf37c9211e59e3ba9bfb5aebcdb.jpg',NULL,NULL,'牛','/category/808/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛百叶','img/category/086b91267c9211e5b85245d1d992f1cb.jpg',NULL,NULL,'牛','/category/908/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛骨','img/category/0104815e7c9211e5bb2d45d1d992f1cb.jpg',NULL,NULL,'牛','/category/715/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛肉馅',NULL,NULL,NULL,'牛','/category/1012245/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'羊肉','img/category/ff6e04667c9111e5922bb82a72e00100.jpg',NULL,NULL,'羊','/category/674/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'羊排','img/category/ea40f47a7c9111e5bcc945d1d992f1cb.jpg',NULL,NULL,'羊','/category/145/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'羊腿','img/category/3e912a067c9211e5b66ab82a72e00100.jpg',NULL,NULL,'羊','/category/3249/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'羊肉片','img/category/eabe382e7c9111e599b49dc38687f4d3.jpg',NULL,NULL,'羊','/category/156/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'羊蝎子','img/category/16c040fc7c9211e5922bb82a72e00100.jpg',NULL,NULL,'羊','/category/1243/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭腿','img/category/13de694a7c9211e5922bb82a72e00100.jpg',NULL,NULL,'鸭','/category/1190/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭肉','img/category/f00489f07c9111e586b2a9bfb5aebcdb.jpg',NULL,NULL,'鸭','/category/274/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'老鸭','img/category/e90823b57c9111e596b59dc38687f4d3.jpg',NULL,NULL,'鸭','/category/115/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭胗','img/category/f46b99a17c9111e5b7fc45d1d992f1cb.jpg',NULL,NULL,'鸭','/category/374/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭血','img/category/fa7a48fd7c9111e5bf4545d1d992f1cb.jpg',NULL,NULL,'鸭','/category/533/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭掌','img/category/009c285e7c9211e58fb09dc38687f4d3.jpg',NULL,NULL,'鸭','/category/714/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭翅','img/category/2f4a75ca7c9211e587821975b1121eae.jpg',NULL,NULL,'鸭','/category/2653/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭舌','img/category/43d1629c7c9211e5b459e35152605765.jpg',NULL,NULL,'鸭','/category/4068/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭肠','img/category/efea85c07c9111e58befa9bfb5aebcdb.jpg',NULL,NULL,'鸭','/category/271/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭脖','img/category/0d642b407c9211e5b3b89dc38687f4d3.jpg',NULL,NULL,'鸭','/category/1081/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭肝','img/category/f033c3287c9111e59df045d1d992f1cb.jpg',NULL,NULL,'鸭','/category/277/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭爪',NULL,NULL,NULL,'鸭','/category/1012232/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸽子','img/category/1e43d3de7c9211e59c281975b1121eae.jpg',NULL,NULL,'鸽子','/category/1442/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛蛙','img/category/fc7549997c9111e593959dc38687f4d3.jpg',NULL,NULL,'牛蛙','/category/605/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鹅','img/category/4fd0d3167c9211e5b66ab82a72e00100.jpg',NULL,NULL,'鹅','/category/4628/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'兔肉','img/category/018a11517c9211e5aa869dc38687f4d3.jpg',NULL,NULL,'兔肉','/category/719/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'雪蛤','img/category/48bac51e7c9211e5b819e35152605765.jpg',NULL,NULL,'雪蛤','/category/4350/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'田鸡','img/category/4008e8757c9211e5bc621975b1121eae.jpg',NULL,NULL,'田鸡','/category/3314/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鹌鹑','img/category/51be4fb37c9211e5a83e7f0741f94ddb.jpg',NULL,NULL,'鹌鹑','/category/5151/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'火鸡','img/category/4af38b357c9211e5b13d1975b1121eae.jpg',NULL,NULL,'火鸡','/category/4458/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'驴肉','img/category/fba978ec7c9111e5922bb82a72e00100.jpg',NULL,NULL,'驴肉','/category/576/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鹿肉','img/category/378db8b37c9211e584697f0741f94ddb.jpg',NULL,NULL,'鹿肉','/category/2865/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'彩椒','img/category/fc4965637c9111e5af3f9dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/601/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'番茄','img/category/017bedae7c9211e5b6d145d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/718/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'南瓜','img/category/f74d8a2b7c9111e5938b45d1d992f1cb.jpg','5.9','1','果实类蔬菜','/category/455/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'玉米','img/category/ee34f66e7c9111e59a099dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/208/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红椒',NULL,NULL,NULL,'红椒','/category/449/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄瓜','img/category/1b133fd87c9211e5922bb82a72e00100.jpg',NULL,NULL,'果实类蔬菜','/category/1364/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'玉米粒',NULL,NULL,NULL,'玉米粒','/category/5318/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'萝卜','img/category/49739ad17c9211e5a9977f0741f94ddb.jpg',NULL,NULL,'根茎蔬菜','/category/4359/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'紫薯','img/category/fd1f300c7c9111e5973345d1d992f1cb.jpg',NULL,NULL,'根茎蔬菜','/category/632/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红薯','img/category/030c7d5c7c9211e5bd3845d1d992f1cb.jpg',NULL,NULL,'根茎蔬菜','/category/747/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'胡萝卜','img/category/104373827c9211e5a59c9dc38687f4d3.jpg',NULL,NULL,'根茎蔬菜','/category/1137/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'山药','img/category/fa65dd0c7c9111e5876fa9bfb5aebcdb.jpg','5.8','1','根茎蔬菜','/category/524/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'藕','img/category/f96825057c9111e5aea545d1d992f1cb.jpg','5.8','1','根茎蔬菜','/category/503/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芋头','img/category/07cef4ee7c9211e5ad73a9bfb5aebcdb.jpg',NULL,NULL,'根茎蔬菜','/category/886/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芹菜','img/category/019a6ff47c9211e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/725/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'白菜','img/category/0ecac1757c9211e5b14945d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1105/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'韭菜','img/category/08c063577c9211e5b1a345d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/918/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'香菇','img/category/f7d9e8c07c9111e5af86a9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/468/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'杏鲍菇','img/category/f71e8b6e7c9111e5a48ba9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/443/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'银耳','img/category/1be1b9d07c9211e5922bb82a72e00100.jpg','6.2','1','菌菇类','/category/1389/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豇豆','img/category/155577b37c9211e5892045d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/1215/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'青椒','img/category/fee7606e7c9111e5a70745d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/662/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'苦瓜','img/category/ea5ff51e7c9111e5a3209dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/155/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'冬瓜','img/category/ea4b23217c9111e591419dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/151/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'丝瓜','img/category/f73ca3117c9111e586099dc38687f4d3.jpg','5.3','1','果实类蔬菜','/category/454/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'秋葵','img/category/f9184cb57c9111e587149dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/501/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西葫芦','img/category/03e897ae7c9211e5a87c45d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/790/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'毛豆','img/category/04c4388f7c9211e5becc9dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/819/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豌豆','img/category/0903bd727c9211e5922bb82a72e00100.jpg',NULL,NULL,'果实类蔬菜','/category/935/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'四季豆','img/category/0c571e917c9211e5b0d845d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/1063/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'荷兰豆','img/category/1b1fd2007c9211e5bdeb1975b1121eae.jpg',NULL,NULL,'果实类蔬菜','/category/1370/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蚕豆','img/category/148e0a427c9211e5a5109dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/1209/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'圣女果','img/category/18445a127c9211e5922bb82a72e00100.jpg',NULL,NULL,'果实类蔬菜','/category/1292/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'扁豆','img/category/eed103917c9111e5926045d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/214/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'刀豆','img/category/12eb40ee7c9211e5abef45d1d992f1cb.jpg',NULL,NULL,'果实类蔬菜','/category/1163/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'瓠瓜','img/category/47e47f907c9211e5b66ab82a72e00100.jpg',NULL,NULL,'果实类蔬菜','/category/4219/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'玉米笋','img/category/f24f928f7c9111e5ba4f9dc38687f4d3.jpg',NULL,NULL,'果实类蔬菜','/category/298/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西红柿',NULL,NULL,NULL,'果实类蔬菜','/category/1009064/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'水果','img/category/2e0404247c9211e5b66ab82a72e00100.jpg',NULL,NULL,'水果','/category/2490/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'时令水果',NULL,NULL,NULL,'水果','/category/5464/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'柠檬','img/category/1886910c7c9211e5855245d1d992f1cb.jpg',NULL,NULL,'水果','/category/1299/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'椰子','img/category/36f61dc27c9211e5af73e35152605765.jpg',NULL,NULL,'水果','/category/2819/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'草莓','img/category/100f86977c9211e5a29ea9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/1128/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'橙','img/category/0d9fb0ab7c9211e59e199dc38687f4d3.jpg',NULL,NULL,'水果','/category/1082/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛油果','img/category/3c3dbcba7c9211e58f511975b1121eae.jpg',NULL,NULL,'水果','/category/3140/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'木瓜','img/category/13fb4ef07c9211e5978f9dc38687f4d3.jpg',NULL,NULL,'水果','/category/1195/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'山楂','img/category/f7fd2c997c9111e58c4ba9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/471/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蓝莓','img/category/05cd2fbd7c9211e59ce1a9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/833/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西瓜','img/category/0eadda307c9211e5b66845d1d992f1cb.jpg',NULL,NULL,'水果','/category/1101/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'火龙果','img/category/17f851577c9211e58c0345d1d992f1cb.jpg',NULL,NULL,'水果','/category/1280/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'樱桃','img/category/18e69f8c7c9211e58f751975b1121eae.jpg',NULL,NULL,'水果','/category/1311/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'榴莲','img/category/fc676f507c9111e5922bb82a72e00100.jpg',NULL,NULL,'水果','/category/602/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西柚','img/category/59e868c87c9211e5b66ab82a72e00100.jpg',NULL,NULL,'水果','/category/5364/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'桃','img/category/30b4c8177c9211e596939dc38687f4d3.jpg',NULL,NULL,'水果','/category/2687/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'葡萄','img/category/3f32da547c9211e5b66ab82a72e00100.jpg',NULL,NULL,'水果','/category/3286/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'金橘','img/category/f9f3a8eb7c9111e58580a9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/517/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄桃','img/category/0bd6d9127c9211e5922bb82a72e00100.jpg',NULL,NULL,'水果','/category/1032/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'百香果','img/category/16fcd4e87c9211e58a0f9dc38687f4d3.jpg',NULL,NULL,'水果','/category/1246/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'杨梅','img/category/e49593d47c9111e5922bb82a72e00100.jpg',NULL,NULL,'水果','/category/9/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'桔子','img/category/0d3ec3dc7c9211e5922bb82a72e00100.jpg',NULL,NULL,'水果','/category/1075/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'荔枝','img/category/3cac5f8a7c9211e5b0717f0741f94ddb.jpg',NULL,NULL,'水果','/category/3173/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'无花果','img/category/3b5b18567c9211e5b66ab82a72e00100.jpg',NULL,NULL,'水果','/category/3109/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'石榴','img/category/4c01e50c7c9211e5a0e91975b1121eae.jpg',NULL,NULL,'水果','/category/4471/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'杏子','img/category/2f1082477c9211e5b33a1975b1121eae.jpg',NULL,NULL,'水果','/category/2571/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'桑葚','img/category/374e17997c9211e5be4a7f0741f94ddb.jpg',NULL,NULL,'水果','/category/2825/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'哈密瓜','img/category/08f45a6e7c9211e59576a9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/925/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'柿子','img/category/38165fde7c9211e58cd97f0741f94ddb.jpg',NULL,NULL,'水果','/category/2948/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'李子','img/category/301b02ee7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'水果','/category/2669/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'青梅','img/category/4e9fb8237c9211e5bf197f0741f94ddb.jpg',NULL,NULL,'水果','/category/4595/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'枇杷','img/category/55c19de67c9211e5b66ab82a72e00100.jpg',NULL,NULL,'水果','/category/5158/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'香瓜','img/category/0ba6c0197c9211e597a6a9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/1028/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'甘蔗','img/category/04e3b60c7c9211e5a904a9bfb5aebcdb.jpg',NULL,NULL,'水果','/category/822/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'覆盆子','img/category/5503c5c07c9211e584471975b1121eae.jpg',NULL,NULL,'水果','/category/5157/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'杨桃','img/category/e98cf42b7c9111e5ad0245d1d992f1cb.jpg',NULL,NULL,'水果','/category/122/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'橘子','img/category/771fedc7603e4424a81d1624fc819a77_960w_640h.jpg',NULL,NULL,'水果','/category/1012312/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'金桔','img/category/4d92666aa16643a5b804f26f63f8d4c8_600w_600h.jpg',NULL,NULL,'水果','/category/1004542/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'杏',NULL,NULL,NULL,'水果','/category/1012315/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'笋','img/category/fa83bcde7c9111e5afe4a9bfb5aebcdb.jpg',NULL,NULL,'根茎蔬菜','/category/534/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'茭白','img/category/2028faa67c9211e598cf9dc38687f4d3.jpg',NULL,NULL,'根茎蔬菜','/category/1516/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'马蹄','img/category/fffa962e7c9111e5bfca45d1d992f1cb.jpg',NULL,NULL,'根茎蔬菜','/category/692/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛蒡','img/category/e9d209b87c9111e5a3e345d1d992f1cb.jpg',NULL,NULL,'根茎蔬菜','/category/132/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'菱角','img/category/06577a8c7c9211e5be549dc38687f4d3.jpg',NULL,NULL,'根茎蔬菜','/category/868/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'菠菜','img/category/eec1fa3a7c9111e5aaa9a9bfb5aebcdb.jpg',NULL,NULL,'叶类蔬菜','/category/211/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西兰花','img/category/03ce48177c9211e5b49ea9bfb5aebcdb.jpg',NULL,NULL,'叶类蔬菜','/category/787/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'圆白菜','img/category/fd0f8c757c9111e59ea89dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/622/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'花椰菜','img/category/ea0dd3117c9111e5bef09dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/133/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'莴苣','img/category/08e841b47c9211e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/923/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'青菜','img/category/1051d35c7c9211e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/1138/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'娃娃菜','img/category/131fc4357c9211e58b0b45d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1176/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'生菜','img/category/1adbdb917c9211e5a7b945d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1355/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'甘蓝','img/category/f2db3dae7c9111e5a62d9dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/306/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蒜薹','img/category/10cf11e37c9211e5bdae45d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1144/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'紫甘蓝','img/category/f6fe97477c9111e59903a9bfb5aebcdb.jpg',NULL,NULL,'叶类蔬菜','/category/435/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'空心菜','img/category/151374187c9211e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/1213/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'油菜','img/category/fef92fba7c9111e5bec59dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/666/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'荠菜','img/category/07ea8da67c9211e59893a9bfb5aebcdb.jpg',NULL,NULL,'叶类蔬菜','/category/894/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'香椿','img/category/161c27737c9211e5918d45d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1230/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'茼蒿','img/category/0a54bc807c9211e584ca9dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/981/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'菜心','img/category/3ab26b5c7c9211e5b66ab82a72e00100.jpg','5.1','1','叶类蔬菜','/category/3063/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芥兰','img/category/e98127f07c9111e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/121/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄花菜','img/category/1567f7387c9211e5ac9745d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1216/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'韭黄','img/category/eccc6b2b7c9111e5b76545d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/188/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'苋菜','img/category/3b6c6d7a7c9211e5b55ae35152605765.jpg',NULL,NULL,'叶类蔬菜','/category/3113/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'紫苏','img/category/1ad0cfa37c9211e580a11975b1121eae.jpg',NULL,NULL,'叶类蔬菜','/category/1343/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芥菜','img/category/140829427c9211e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/1196/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'油麦菜','img/category/1ed6061e7c9211e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/1469/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豌豆苗','img/category/f35bd0687c9111e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/328/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'苦菊','img/category/3867135c7c9211e5bbcee35152605765.jpg',NULL,NULL,'叶类蔬菜','/category/2959/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'青蒜','img/category/1861f8a37c9211e58a4f45d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/1295/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼腥草','img/category/4650734f7c9211e5b300e35152605765.jpg',NULL,NULL,'叶类蔬菜','/category/4120/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'马兰','img/category/efafca597c9111e580d045d1d992f1cb.jpg',NULL,NULL,'叶类蔬菜','/category/253/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蕨菜','img/category/ea25186a7c9111e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/139/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西洋菜','img/category/306c97577c9211e58c507f0741f94ddb.jpg',NULL,NULL,'叶类蔬菜','/category/2677/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'水芹','img/category/13124f357c9211e5a8a69dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/1171/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'儿菜','img/category/2f9c5f707c9211e5af049dc38687f4d3.jpg',NULL,NULL,'叶类蔬菜','/category/2657/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豌豆尖','img/category/fc85db707c9111e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/609/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芝麻菜','img/category/fd4ff2ca7c9111e5922bb82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/647/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芦蒿','img/category/477e01ca7c9211e5864c1975b1121eae.jpg',NULL,NULL,'叶类蔬菜','/category/4179/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'穿心莲','img/category/443305877c9211e5b8b41975b1121eae.jpg',NULL,NULL,'叶类蔬菜','/category/4086/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'孢子甘蓝','img/category/2f07d0e37c9211e584487f0741f94ddb.jpg',NULL,NULL,'叶类蔬菜','/category/2558/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'萝卜苗','img/category/3fc01ed17c9211e5aa4f1975b1121eae.jpg',NULL,NULL,'叶类蔬菜','/category/3298/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红菜苔','img/category/468471e67c9211e5819a7f0741f94ddb.jpg',NULL,NULL,'叶类蔬菜','/category/4127/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛至','img/category/39f4327c7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'叶类蔬菜','/category/3041/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蒿子杆','img/category/4c3bf3977c9211e59b9e7f0741f94ddb.jpg',NULL,NULL,'叶类蔬菜','/category/4475/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'包菜',NULL,NULL,NULL,'叶类蔬菜','/category/1008865/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'莴笋','img/category/b0fd1b703fd947299edfdcca4829e4db_605w_375h.jpg',NULL,NULL,'叶类蔬菜','/category/1010303/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'花菜',NULL,'5.4','1','叶类蔬菜','/category/1000901/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蒜苔','img/category/71207d25151943cebefda563c8dd83b6_300w_206h.jpg',NULL,NULL,'叶类蔬菜','/category/1003510/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豆苗',NULL,NULL,NULL,'叶类蔬菜','/category/1005601/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'披萨草',NULL,NULL,NULL,'叶类蔬菜','/category/1012331/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'木耳','img/category/1b3bf57d7c9211e5bbfd1975b1121eae.jpg',NULL,NULL,'菌菇类','/category/1383/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'金针菇','img/category/0adced447c9211e5922bb82a72e00100.jpg',NULL,NULL,'菌菇类','/category/998/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蘑菇','img/category/0795d8b07c9211e5be2045d1d992f1cb.jpg',NULL,NULL,'菌菇类','/category/881/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'茶树菇','img/category/f62653d77c9111e5bcbfa9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/416/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'平菇','img/category/ebe294f07c9111e596b09dc38687f4d3.jpg','5.5','1','菌菇类','/category/175/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'松茸','img/category/42e06fd47c9211e5aecd1975b1121eae.jpg',NULL,NULL,'菌菇类','/category/3885/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸡腿菇','img/category/137a60c77c9211e59009a9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/1187/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'草菇','img/category/160b9b0c7c9211e5922bb82a72e00100.jpg',NULL,NULL,'菌菇类','/category/1229/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'竹荪','img/category/48880b357c9211e5b2bd1975b1121eae.jpg',NULL,NULL,'菌菇类','/category/4314/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'花菇','img/category/f78279877c9111e595d1a9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/466/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'猴头菇','img/category/0f09f4f27c9211e5922bb82a72e00100.jpg',NULL,NULL,'菌菇类','/category/1109/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛肝菌','img/category/45542ee27c9211e5b66ab82a72e00100.jpg',NULL,NULL,'菌菇类','/category/4099/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'灵芝','img/category/49e830d47c9211e5ac52e35152605765.jpg',NULL,NULL,'菌菇类','/category/4379/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'榛蘑','img/category/e4a89a427c9111e5854ea9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/13/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'白玉菇','img/category/1f7fb42a7c9211e5922bb82a72e00100.jpg',NULL,NULL,'菌菇类','/category/1481/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'姬松茸','img/category/52995bfd7c9211e5bb5ae35152605765.jpg',NULL,NULL,'菌菇类','/category/5154/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'滑子菇','img/category/f69e11dc7c9111e59f87a9bfb5aebcdb.jpg',NULL,NULL,'菌菇类','/category/429/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'发菜','img/category/524fb1167c9211e5b66ab82a72e00100.jpg',NULL,NULL,'菌菇类','/category/5153/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'白灵菇','img/category/480c57177c9211e5a94b1975b1121eae.jpg',NULL,NULL,'菌菇类','/category/4270/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'袖珍菇','img/category/f972cbf87c9111e58ef79dc38687f4d3.jpg',NULL,NULL,'菌菇类','/category/508/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'双孢菇','img/category/3e391c617c9211e5bddc1975b1121eae.jpg',NULL,NULL,'菌菇类','/category/3234/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'秀珍菇',NULL,NULL,NULL,'菌菇类','/category/1006515/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'茶叶','img/category/22c922427c9211e5922bb82a72e00100.jpg',NULL,NULL,'花朵植物类','/category/1756/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'桂花','img/category/2cc12dc57c9211e5b1281975b1121eae.jpg',NULL,NULL,'花朵植物类','/category/2376/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'玫瑰','img/category/42f6520f7c9211e5b3a07f0741f94ddb.jpg',NULL,NULL,'花朵植物类','/category/3956/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'薄荷','img/category/26a35b577c9211e5934e1975b1121eae.jpg',NULL,NULL,'花朵植物类','/category/2004/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'菊花','img/category/e6de8ed47c9111e59f379dc38687f4d3.jpg',NULL,NULL,'花朵植物类','/category/74/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'洛神花','img/category/52d5076c7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'花朵植物类','/category/5155/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'茉莉花','img/category/53b932c07c9211e593e21975b1121eae.jpg',NULL,NULL,'花朵植物类','/category/5156/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'槐花','img/category/4034bcc47c9211e5b66ab82a72e00100.jpg',NULL,NULL,'花朵植物类','/category/3315/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'金银花','img/category/3b98903a7c9211e59f17e35152605765.jpg',NULL,NULL,'花朵植物类','/category/3117/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'饭',NULL,NULL,NULL,'饭','/category/20132/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'饼',NULL,NULL,NULL,'饼','/category/20134/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'粥',NULL,NULL,NULL,'粥','/category/20131/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'炒饭',NULL,NULL,NULL,'饭','/category/20143/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'焖',NULL,NULL,NULL,'饭','/category/51700/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'饭团',NULL,NULL,NULL,'饭','/category/50580/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'盖浇饭',NULL,NULL,NULL,'饭','/category/20140/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'煲仔饭',NULL,NULL,NULL,'饭','/category/51888/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'焗饭',NULL,NULL,NULL,'饭','/category/20144/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'烩饭',NULL,NULL,NULL,'饭','/category/20142/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'饺子',NULL,NULL,NULL,'饺子','/category/20148/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'馒头',NULL,NULL,NULL,'馒头','/category/20147/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'馄饨',NULL,NULL,NULL,'馄饨','/category/20150/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'包子',NULL,NULL,NULL,'包子','/category/50336/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'面条',NULL,NULL,NULL,'米面类','/category/1025/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'拌面',NULL,NULL,NULL,'面条','/category/20146/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'炒面',NULL,NULL,NULL,'面条','/category/51091/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'汤面',NULL,NULL,NULL,'面条','/category/52421/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'凉面',NULL,NULL,NULL,'面条','/category/52144/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'焖面',NULL,NULL,NULL,'面条','/category/20145/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'煎',NULL,NULL,NULL,'烹调方法','/category/51715/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蒸',NULL,NULL,NULL,'烹调方法','/category/51750/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'炖',NULL,NULL,NULL,'烹调方法','/category/40067/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红烧',NULL,NULL,NULL,'烹调方法','/category/51526/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'辣',NULL,NULL,NULL,'口味','/category/51359/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咖喱',NULL,NULL,NULL,'口味','/category/51922/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'糖醋',NULL,NULL,NULL,'口味','/category/40066/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蒜香',NULL,NULL,NULL,'口味','/category/52413/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'烤箱',NULL,NULL,NULL,'器具','/category/40057/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'烤箱菜',NULL,NULL,NULL,'烤箱菜','/category/52369/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'电饭煲',NULL,NULL,NULL,'器具','/category/51313/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'日式',NULL,NULL,NULL,'异国风味','/category/40081/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'韩式',NULL,NULL,NULL,'异国风味','/category/40080/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西式',NULL,NULL,NULL,'异国风味','/category/40079/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'炸',NULL,NULL,NULL,'烹调方法','/category/51329/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'卤',NULL,NULL,NULL,'烹调方法','/category/40068/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'干锅',NULL,NULL,NULL,'烹调方法','/category/40062/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'火锅',NULL,NULL,NULL,'烹调方法','/category/40063/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'免烤',NULL,NULL,NULL,'烹调方法','/category/51891/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸甜',NULL,NULL,NULL,'口味','/category/51449/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶香',NULL,NULL,NULL,'口味','/category/52407/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'孜然',NULL,NULL,NULL,'口味','/category/52401/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼香',NULL,NULL,NULL,'口味','/category/51875/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'五香',NULL,NULL,NULL,'口味','/category/52399/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'清淡',NULL,NULL,NULL,'口味','/category/51460/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'微波炉',NULL,NULL,NULL,'器具','/category/40059/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'平底锅',NULL,NULL,NULL,'器具','/category/40060/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'塔吉锅',NULL,NULL,NULL,'器具','/category/51909/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西餐',NULL,NULL,NULL,'异国风味','/category/51305/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'东南亚',NULL,NULL,NULL,'异国风味','/category/51965/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'海水鱼',NULL,NULL,NULL,'鱼','/category/5404/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'淡水鱼',NULL,NULL,NULL,'鱼','/category/5448/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'三文鱼','img/category/e6b484de7c9111e58e6ca9bfb5aebcdb.jpg',NULL,NULL,'三文鱼','/category/50/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鲫鱼','img/category/1fbfe9477c9211e5b0117f0741f94ddb.jpg',NULL,NULL,'鲫鱼','/category/1491/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'金枪鱼','img/category/1828525e7c9211e5bd259dc38687f4d3.jpg',NULL,NULL,'金枪鱼','/category/1285/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄鱼','img/category/e8b9859c7c9111e5922bb82a72e00100.jpg',NULL,NULL,'黄鱼','/category/100/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'带鱼','img/category/0afefd307c9211e5b8ea9dc38687f4d3.jpg',NULL,NULL,'带鱼','/category/1003/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鳕鱼','img/category/0d21b3827c9211e595379dc38687f4d3.jpg',NULL,NULL,'鳕鱼','/category/1072/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'虾','img/category/f7ef4fcc7c9111e59a3e45d1d992f1cb.jpg',NULL,NULL,'虾','/category/469/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'虾仁','img/category/05b433357c9211e5a9b645d1d992f1cb.jpg',NULL,NULL,'虾','/category/826/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'海米','img/category/0667cba87c9211e5a1f59dc38687f4d3.jpg',NULL,NULL,'虾','/category/875/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'虾皮','img/category/0c45ae457c9211e5bb3045d1d992f1cb.jpg','5.2','1','虾','/category/1053/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'明虾','img/category/13f113eb7c9211e5a5599dc38687f4d3.jpg',NULL,NULL,'虾','/category/1191/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'基围虾','img/category/e5187c057c9111e5a6eca9bfb5aebcdb.jpg','5.7','1','虾','/category/41/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'龙虾','img/category/37e9f7787c9211e5b66ab82a72e00100.jpg',NULL,NULL,'虾','/category/2918/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'小龙虾','img/category/5921e6f87c9211e59786e35152605765.jpg',NULL,NULL,'虾','/category/5322/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'河虾','img/category/e6ea98287c9111e5876545d1d992f1cb.jpg',NULL,NULL,'虾','/category/76/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蛤蜊',NULL,NULL,NULL,'贝','/category/5282/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'干贝','img/category/ec0ae6f07c9111e5823345d1d992f1cb.jpg',NULL,NULL,'贝','/category/176/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鲍鱼','img/category/e4c643bc7c9111e5922bb82a72e00100.jpg',NULL,NULL,'贝','/category/21/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'梭子蟹','img/category/09667bcc7c9211e5b02b9dc38687f4d3.jpg',NULL,NULL,'螃蟹','/category/953/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'大闸蟹','img/category/f829a1577c9111e5ab7ea9bfb5aebcdb.jpg',NULL,NULL,'螃蟹','/category/478/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蟹肉','img/category/f9baf61e7c9111e5bb6b9dc38687f4d3.jpg',NULL,NULL,'螃蟹','/category/515/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼头','img/category/fa22f3197c9111e5aa2f45d1d992f1cb.jpg',NULL,NULL,'鱼','/category/523/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼干','img/category/3a5027ba7c9211e5836de35152605765.jpg',NULL,NULL,'鱼','/category/3042/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼籽','img/category/f68f7c637c9111e58f3045d1d992f1cb.jpg',NULL,NULL,'鱼','/category/427/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼肚','img/category/520691f37c9211e58be4e35152605765.jpg',NULL,NULL,'鱼','/category/5152/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'海虾','img/category/407bb1ae7c9211e58b9d1975b1121eae.jpg',NULL,NULL,'虾','/category/3362/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'皮皮虾','img/category/40b8eff87c9211e590bb1975b1121eae.jpg',NULL,NULL,'虾','/category/3402/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'北极虾','img/category/0af556c27c9211e59556a9bfb5aebcdb.jpg',NULL,NULL,'虾','/category/1002/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'虾干','img/category/0b4366c77c9211e5a6f79dc38687f4d3.jpg',NULL,NULL,'虾','/category/1024/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'青虾','img/category/31f9145c7c9211e5b45a7f0741f94ddb.jpg',NULL,NULL,'虾','/category/2714/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'草虾','img/category/eee3c98c7c9111e59faf45d1d992f1cb.jpg',NULL,NULL,'虾','/category/215/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'海白虾','img/category/1181841e7c9211e58d189dc38687f4d3.jpg',NULL,NULL,'虾','/category/1159/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'虾米',NULL,NULL,NULL,'虾','/category/1007968/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'扇贝','img/category/1fb00de67c9211e5b5c77f0741f94ddb.jpg',NULL,NULL,'贝','/category/1488/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牡蛎','img/category/f36815947c9111e5913ca9bfb5aebcdb.jpg',NULL,NULL,'贝','/category/330/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'青口','img/category/4354eb707c9211e5a857e35152605765.jpg',NULL,NULL,'贝','/category/3992/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蛏子','img/category/1c8f41547c9211e591a67f0741f94ddb.jpg',NULL,NULL,'贝','/category/1411/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鲜贝','img/category/1ee6a7ee7c9211e58ecc9dc38687f4d3.jpg',NULL,NULL,'贝','/category/1476/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'北极贝','img/category/466ed5dc7c9211e5b1f27f0741f94ddb.jpg',NULL,NULL,'贝','/category/4126/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'河蚌','img/category/4d75278e7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'贝','/category/4556/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蟹黄','img/category/fd9798287c9111e5a6d445d1d992f1cb.jpg',NULL,NULL,'螃蟹','/category/649/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咸蛋','img/category/f710f9047c9111e5922bb82a72e00100.jpg',NULL,NULL,'蛋类','/category/441/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'皮蛋','img/category/ffed47267c9111e5a4dba9bfb5aebcdb.jpg',NULL,NULL,'蛋类','/category/689/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咸蛋黄',NULL,NULL,NULL,'咸蛋黄','/category/5343/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鹌鹑蛋','img/category/f230f9287c9111e58bdea9bfb5aebcdb.jpg',NULL,NULL,'蛋类','/category/292/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'土鸡蛋',NULL,NULL,NULL,'土鸡蛋','/category/5385/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'牛奶','img/category/2be65d407c9211e5b5057f0741f94ddb.jpg',NULL,NULL,'奶制品','/category/2316/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄油','img/category/25a9b2887c9211e5922bb82a72e00100.jpg',NULL,NULL,'奶制品','/category/1871/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'巧克力','img/category/0bba75a67c9211e5a464a9bfb5aebcdb.jpg',NULL,NULL,'奶制品','/category/1031/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶油',NULL,NULL,NULL,'奶制品','/category/5296/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶酪','img/category/2b5e9a4a7c9211e58a9d1975b1121eae.jpg',NULL,NULL,'奶制品','/category/2300/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸奶','img/category/284da1ca7c9211e597897f0741f94ddb.jpg',NULL,NULL,'奶制品','/category/2125/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'香干','img/category/1c17b97a7c9211e5b13d7f0741f94ddb.jpg',NULL,NULL,'豆制品','/category/1405/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豆渣','img/category/ec42e2bc7c9111e5922bb82a72e00100.jpg',NULL,NULL,'豆制品','/category/177/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'千张','img/category/01d0266c7c9211e5922bb82a72e00100.jpg',NULL,NULL,'豆制品','/category/730/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'北豆腐','img/category/1870bb8c7c9211e598369dc38687f4d3.jpg',NULL,NULL,'北豆腐','/category/1296/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'腐竹','img/category/094eecde7c9211e5a1fd9dc38687f4d3.jpg',NULL,NULL,'豆制品','/category/947/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鸭蛋','img/category/4a2e7e997c9211e5a765e35152605765.jpg',NULL,NULL,'蛋类','/category/4389/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咸鸭蛋',NULL,NULL,NULL,'蛋类','/category/1007600/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黑巧克力','img/category/0cbf224e7c9211e5922bb82a72e00100.jpg',NULL,NULL,'奶制品','/category/1068/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'淡奶油','img/category/286d6aee7c9211e5891f1975b1121eae.jpg',NULL,NULL,'奶制品','/category/2138/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶油奶酪','img/category/2a485c867c9211e5b66ab82a72e00100.jpg',NULL,NULL,'奶制品','/category/2248/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'炼乳','img/category/21f1b51e7c9211e5922bb82a72e00100.jpg',NULL,NULL,'奶制品','/category/1645/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'奶粉','img/category/2037db357c9211e591ff9dc38687f4d3.jpg',NULL,NULL,'奶制品','/category/1520/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'马苏里拉奶酪','img/category/2959ab737c9211e5acc21975b1121eae.jpg',NULL,NULL,'奶制品','/category/2246/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'白巧克力','img/category/f242dae67c9111e5b29345d1d992f1cb.jpg',NULL,NULL,'奶制品','/category/297/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸奶油','img/category/25ccc5827c9211e5af561975b1121eae.jpg',NULL,NULL,'奶制品','/category/1908/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酥油','img/category/500aa3de7c9211e58efb7f0741f94ddb.jpg',NULL,NULL,'奶制品','/category/4632/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芝士',NULL,NULL,NULL,'奶制品','/category/1007873/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'素鸡','img/category/f346e2e87c9111e5922bb82a72e00100.jpg',NULL,NULL,'豆制品','/category/315/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'油豆皮',NULL,NULL,NULL,'豆制品','/category/5446/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豆干',NULL,NULL,NULL,'豆制品','/category/1005208/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'豆腐皮',NULL,NULL,NULL,'豆制品','/category/1000426/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'面粉','img/category/01af670f7c9211e589dfa9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/727/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'大米','img/category/02f84d9c7c9211e596b4a9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/743/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'高筋面粉','img/category/004b032a7c9211e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/700/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'意大利面','img/category/fb0ee1577c9111e582ed9dc38687f4d3.jpg',NULL,NULL,'米面类','/category/559/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'糯米','img/category/060be11c7c9211e599ba9dc38687f4d3.jpg',NULL,NULL,'米面类','/category/846/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芝麻','img/category/241e26737c9211e5bf9d7f0741f94ddb.jpg',NULL,NULL,'干果类','/category/1807/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'花生','img/category/0c668eae7c9211e5b116a9bfb5aebcdb.jpg',NULL,NULL,'干果类','/category/1065/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'杏仁','img/category/f2c0cc237c9111e591c545d1d992f1cb.jpg',NULL,NULL,'干果类','/category/300/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红豆','img/category/ef74f0917c9111e587b2a9bfb5aebcdb.jpg',NULL,NULL,'干果类','/category/234/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'白芝麻',NULL,NULL,NULL,'白芝麻','/category/5334/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黑芝麻',NULL,NULL,NULL,'黑芝麻','/category/5344/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'火腿','img/category/ff52cc117c9111e5a112a9bfb5aebcdb.jpg',NULL,NULL,'腌咸制品','/category/671/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'香肠','img/category/f350cb517c9111e586459dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/324/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'培根','img/category/1e1e879e7c9211e5af6c7f0741f94ddb.jpg',NULL,NULL,'腌咸制品','/category/1437/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'火腿肠',NULL,NULL,NULL,'火腿肠','/category/5305/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'腊肉','img/category/0ab3bd7a7c9211e598269dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/997/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸菜','img/category/1109f6807c9211e5941e45d1d992f1cb.jpg',NULL,NULL,'腌咸制品','/category/1150/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'低筋面粉','img/category/1806d5a37c9211e58d8745d1d992f1cb.jpg',NULL,NULL,'米面类','/category/1282/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'年糕','img/category/0b33233a7c9211e5ba5aa9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/1022/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'西米','img/category/1b2f191a7c9211e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/1376/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'糯米粉','img/category/290cc3357c9211e591ae7f0741f94ddb.jpg',NULL,NULL,'米面类','/category/2238/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'粉丝','img/category/fd59828f7c9111e591859dc38687f4d3.jpg',NULL,NULL,'米面类','/category/648/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'燕麦','img/category/f45d274f7c9111e5a45b45d1d992f1cb.jpg',NULL,NULL,'米面类','/category/370/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'米粉','img/category/e50ef2b07c9111e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/35/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酒酿','img/category/23a760357c9211e581751975b1121eae.jpg',NULL,NULL,'米面类','/category/1780/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'燕麦片','img/category/f4d02dae7c9111e5bfd29dc38687f4d3.jpg',NULL,NULL,'米面类','/category/400/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'乌冬面','img/category/470b80787c9211e58889e35152605765.jpg',NULL,NULL,'米面类','/category/4159/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'小米','img/category/3af147b37c9211e5a22b1975b1121eae.jpg',NULL,NULL,'米面类','/category/3080/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'玉米面','img/category/0dcdc2307c9211e589eaa9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/1090/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'全麦粉','img/category/f8c1ab7d7c9111e5a2049dc38687f4d3.jpg',NULL,NULL,'米面类','/category/497/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黑米','img/category/f3bab5617c9111e5bb7b9dc38687f4d3.jpg',NULL,NULL,'米面类','/category/350/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'魔芋','img/category/e95e89c07c9111e5ab2ca9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/117/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'方便面','img/category/458f28ba7c9211e594c5e35152605765.jpg',NULL,NULL,'米面类','/category/4102/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'粉条','img/category/181764f87c9211e5bde91975b1121eae.jpg',NULL,NULL,'米面类','/category/1283/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'米线','img/category/fe7080c07c9111e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/657/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'荞麦面','img/category/062aae457c9211e58d2b45d1d992f1cb.jpg',NULL,NULL,'米面类','/category/854/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'油条','img/category/f8d40d807c9111e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/498/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄豆面','img/category/36864c5e7c9211e597d5e35152605765.jpg',NULL,NULL,'米面类','/category/2807/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'消化饼干','img/category/04525cb87c9211e5a98d9dc38687f4d3.jpg',NULL,NULL,'米面类','/category/816/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'面筋','img/category/e4eaffe17c9111e5a57c9dc38687f4d3.jpg',NULL,NULL,'米面类','/category/33/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'粘米粉','img/category/ecd884c07c9111e5acdc9dc38687f4d3.jpg',NULL,NULL,'米面类','/category/197/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'凉粉','img/category/e9c4e1e87c9111e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/129/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'糙米','img/category/1f8e6b8c7c9211e5922bb82a72e00100.jpg',NULL,NULL,'米面类','/category/1485/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'河粉','img/category/43ad07a87c9211e5b66ab82a72e00100.jpg',NULL,NULL,'米面类','/category/4020/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'紫米','img/category/e73f63d97c9111e5a487a9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/90/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'烤麸','img/category/379ded387c9211e580397f0741f94ddb.jpg',NULL,NULL,'米面类','/category/2885/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'小麦胚芽','img/category/1222a8dc7c9211e5b9c245d1d992f1cb.jpg',NULL,NULL,'米面类','/category/1162/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'澄面','img/category/4ac3f6647c9211e5b66ab82a72e00100.jpg',NULL,NULL,'米面类','/category/4450/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'粉皮','img/category/e461e08f7c9111e58a0945d1d992f1cb.jpg',NULL,NULL,'米面类','/category/7/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蕨根粉','img/category/2ea3241c7c9211e593197f0741f94ddb.jpg',NULL,NULL,'米面类','/category/2549/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'藕粉','img/category/3c9e52dc7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'米面类','/category/3172/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红曲米','img/category/142b384a7c9211e591e6a9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/1203/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'莜面','img/category/3bcc8f547c9211e5b66ab82a72e00100.jpg',NULL,NULL,'米面类','/category/3129/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄米','img/category/e53819f57c9111e5885145d1d992f1cb.jpg',NULL,NULL,'米面类','/category/45/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'荞麦','img/category/0a8f88917c9211e5b060a9bfb5aebcdb.jpg',NULL,NULL,'米面类','/category/989/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'大麦','img/category/4e7c92857c9211e59f42e35152605765.jpg',NULL,NULL,'米面类','/category/4582/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'高粱米','img/category/43166c077c9211e5972d7f0741f94ddb.jpg',NULL,NULL,'米面类','/category/3983/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红米',NULL,NULL,NULL,'米面类','/category/1012576/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'澄粉',NULL,NULL,NULL,'米面类','/category/1012512/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄豆粉',NULL,NULL,NULL,'米面类','/category/1011237/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'枣','img/category/2b922fcc7c9211e5b2591975b1121eae.jpg',NULL,NULL,'干果类','/category/2313/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'核桃','img/category/1da53db37c9211e5a3de7f0741f94ddb.jpg',NULL,NULL,'干果类','/category/1419/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'板栗','img/category/ef88380a7c9111e59917a9bfb5aebcdb.jpg',NULL,NULL,'干果类','/category/235/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蔓越莓','img/category/ffc9848a7c9111e5b7ef45d1d992f1cb.jpg',NULL,NULL,'干果类','/category/688/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'绿豆','img/category/e7ff470f7c9111e5b7e4a9bfb5aebcdb.jpg',NULL,NULL,'干果类','/category/98/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黄豆','img/category/f0a89b8a7c9111e5bf889dc38687f4d3.jpg',NULL,NULL,'干果类','/category/280/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'薏米','img/category/10b84aa67c9211e5b4ef45d1d992f1cb.jpg',NULL,NULL,'干果类','/category/1141/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'葡萄干','img/category/2331efb57c9211e5b5379dc38687f4d3.jpg',NULL,NULL,'干果类','/category/1757/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'莲子','img/category/0b2a9e7a7c9211e5a00945d1d992f1cb.jpg',NULL,NULL,'干果类','/category/1020/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'橄榄','img/category/46a125857c9211e588bce35152605765.jpg',NULL,NULL,'干果类','/category/4139/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'黑豆','img/category/ea1a2ca27c9111e5922bb82a72e00100.jpg',NULL,NULL,'干果类','/category/134/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蜜豆','img/category/5026f5337c9211e5a2a91975b1121eae.jpg',NULL,NULL,'干果类','/category/4634/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芸豆','img/category/f39ddc917c9111e5b3bc45d1d992f1cb.jpg',NULL,NULL,'干果类','/category/348/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'腰果','img/category/037b57667c9211e5922bb82a72e00100.jpg',NULL,NULL,'干果类','/category/769/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'桃胶','img/category/3d7436e17c9211e593d81975b1121eae.jpg',NULL,NULL,'干果类','/category/3222/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'乌梅','img/category/24540aa17c9211e58f209dc38687f4d3.jpg',NULL,NULL,'干果类','/category/1853/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'松仁','img/category/e47ad3007c9111e5bf699dc38687f4d3.jpg',NULL,NULL,'干果类','/category/8/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'银杏果','img/category/fc3415ba7c9111e5ad1e45d1d992f1cb.jpg',NULL,NULL,'干果类','/category/598/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'话梅','img/category/2b20fb687c9211e58b0f1975b1121eae.jpg',NULL,NULL,'干果类','/category/2291/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'榛子','img/category/f811f0197c9111e586ca45d1d992f1cb.jpg',NULL,NULL,'干果类','/category/474/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鹰嘴豆','img/category/560cd7c07c9211e5a0aa1975b1121eae.jpg',NULL,NULL,'干果类','/category/5159/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'罗汉果','img/category/4a552d1a7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'干果类','/category/4437/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芡实','img/category/22018c3c7c9211e5922bb82a72e00100.jpg',NULL,NULL,'干果类','/category/1657/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'开心果','img/category/38f677c27c9211e5805a7f0741f94ddb.jpg',NULL,NULL,'干果类','/category/2986/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'干山楂','img/category/47f2f73d7c9211e5acf9e35152605765.jpg',NULL,NULL,'干果类','/category/4221/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'南瓜子','img/category/563a7b4e7c9211e5b66ab82a72e00100.jpg',NULL,NULL,'干果类','/category/5160/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'瓜子仁','img/category/3ee221177c9211e5a7ede35152605765.jpg',NULL,NULL,'干果类','/category/3271/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'眉豆','img/category/18f3a54e7c9211e5922bb82a72e00100.jpg',NULL,NULL,'干果类','/category/1334/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'红腰豆','img/category/3f67b85c7c9211e597af7f0741f94ddb.jpg',NULL,NULL,'干果类','/category/3292/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'松子',NULL,NULL,NULL,'干果类','/category/1012410/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'山楂干',NULL,NULL,NULL,'干果类','/category/1012413/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'白果',NULL,NULL,NULL,'干果类','/category/1005848/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'泡菜','img/category/fdffd4b07c9111e5a3189dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/653/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肉松','img/category/0a379b457c9211e58d049dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/975/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'梅干菜','img/category/fea7d5787c9111e598259dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/658/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'雪里蕻','img/category/f6edfd287c9111e5922bb82a72e00100.jpg',NULL,NULL,'腌咸制品','/category/431/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'榨菜','img/category/093510707c9211e591b745d1d992f1cb.jpg',NULL,NULL,'腌咸制品','/category/940/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'辣白菜','img/category/0c290af37c9211e5a7bfa9bfb5aebcdb.jpg',NULL,NULL,'腌咸制品','/category/1049/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'笋干','img/category/1ca0579e7c9211e5bdc59dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/1415/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'鱼丸','img/category/1eb3cd4c7c9211e59e069dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/1463/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'橄榄菜','img/category/1afd49b07c9211e5a9281975b1121eae.jpg',NULL,NULL,'腌咸制品','/category/1356/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咸菜','img/category/19d310757c9211e5a9369dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/1338/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'萝卜干','img/category/05dd62e37c9211e5886e45d1d992f1cb.jpg',NULL,NULL,'腌咸制品','/category/838/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咸肉','img/category/17a9b0287c9211e5af249dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/1252/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸豇豆','img/category/fc152b947c9111e5adef9dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/586/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'肉丸','img/category/394acd707c9211e5a473e35152605765.jpg',NULL,NULL,'腌咸制品','/category/3035/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'午餐肉','img/category/4ab791117c9211e5b744e35152605765.jpg',NULL,NULL,'腌咸制品','/category/4444/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'蟹棒','img/category/f4ecd6487c9111e5922bb82a72e00100.jpg',NULL,NULL,'腌咸制品','/category/402/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'叉烧肉','img/category/fae6f4de7c9111e5922bb82a72e00100.jpg',NULL,NULL,'腌咸制品','/category/545/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'芽菜','img/category/f0caf37e7c9111e5922bb82a72e00100.jpg',NULL,NULL,'腌咸制品','/category/285/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'纳豆','img/category/3cdbea667c9211e59fe01975b1121eae.jpg',NULL,NULL,'腌咸制品','/category/3196/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'大头菜','img/category/166887a37c9211e5935445d1d992f1cb.jpg',NULL,NULL,'腌咸制品','/category/1238/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸笋','img/category/082d956b7c9211e5bd1d9dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/903/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'木鱼花','img/category/4a39a6a87c9211e589c97f0741f94ddb.jpg',NULL,NULL,'腌咸制品','/category/4404/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'冬菜','img/category/f47afa8c7c9111e58f1a9dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/391/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'玉兰片','img/category/e75b80f57c9111e5b4059dc38687f4d3.jpg',NULL,NULL,'腌咸制品','/category/93/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'泡萝卜','img/category/07a712307c9211e5bccca9bfb5aebcdb.jpg',NULL,NULL,'腌咸制品','/category/882/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'咸黄瓜','img/category/3b20b8647c9211e5b66ab82a72e00100.jpg',NULL,NULL,'腌咸制品','/category/3094/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'叉烧',NULL,NULL,NULL,'腌咸制品','/category/1011415/');
+INSERT INTO `xiachufang_category` VALUES (NULL,'酸豆角',NULL,NULL,NULL,'腌咸制品','/category/1007639/');
 
 -- ----------------------------
 -- Table structure for `xiachufang_search`
@@ -510,16 +1581,220 @@ INSERT INTO `xiachufang_category` VALUES (NULL,'螃蟹','img/category/螃蟹.jpg
 DROP TABLE IF EXISTS `xiachufang_search`;
 CREATE TABLE `xiachufang_search`(
   `sid` int(11) NOT NULL auto_increment,
-  `recipe_id` int(11) default NULL,
-  `menu_id` int(11) default NULL,
-  `user_id` int(11) default NULL,
+  `recipe_id_search` int(11) default NULL,
+  `menu_id_search` int(11) default NULL,
+  `user_id_search` int(11) default NULL,
   `date_visited`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '搜索时间',
   PRIMARY KEY  (`sid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'131',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'126',NULL,'126',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'94',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'126',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'94',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'103',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'109',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'56',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'112',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'96',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'139',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'87',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'130',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'143',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'93',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'109',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'96',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'112',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'126',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'138',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'122',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'124',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'142',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'44',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'112',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'127',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'147',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'141',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'119',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'145',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'133',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'100',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'40',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'99',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'128',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'107',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'115',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'142',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'93',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'104',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'138',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'127',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'5','5',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'113',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'129',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'118',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'145',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'124',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'148',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'72',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'106',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'145',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'121',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'144',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'128',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'32',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'72',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'118',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'130',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'119',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'141',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'71',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'85',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'104',NULL,'104',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'29','29',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'139',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'140',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'57',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'110',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'122',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'120',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'127',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'141',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'117',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'137',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'142',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'136',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'36',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'81',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'126',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'60',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'136',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'139',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'87',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'90',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'138',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'63','63',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'146',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'104',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'91',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'114',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'120',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'147',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'67',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'114',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'119',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'124',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'98',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'108',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'147',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'120',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'148',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'112',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'131',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'134',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'136',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'102',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'112',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'144',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'145',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'117',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'133',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'146',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'96',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'127',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'146',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'111',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'60',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'135',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'118',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'110',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'123',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'143',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'150',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'121',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'112',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'144',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'134',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'123',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'117',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'131',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'143',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'150',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'121',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'110',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'77',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'148',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'76',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'145',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'117',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'68',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'57',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'97',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'74',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'87',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'68',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'144',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'78',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'45',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'121',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'126',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'131',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'93',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'96',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'119',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'113',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'59',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'139',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'117',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'130',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'134',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'136',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'70',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'92',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'136',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'141',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'116',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'142',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'133',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'128',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'117',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'68',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'20',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'134',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'147',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'124',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'111',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'139',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'120',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'113',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'142',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'106',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'146',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'125',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'105',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'72',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'139',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'48',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'147',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'127',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'110',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'137',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'38',NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'111',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'109',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'115',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'147',NULL,NULL,NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'132',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'148',NULL);
+INSERT INTO `xiachufang_search` VALUES (NULL,'99',NULL,NULL,NULL);
 
 #用户在菜谱下上传作品后把最近一次date_upload更新到菜谱表
 UPDATE  xiachufang_recipe AS A SET A.date_newUsed =
   (SELECT date_upload from xiachufang_recipe_upload AS B WHERE B.recipe_id = A.rid
 ORDER BY date_upload DESC LIMIT 1);
 
+#用户在菜单下增加菜谱时修改菜单表menu_contains
+UPDATE xiachufang_menu AS A SET A.num_contains=(
+  SELECT COUNT(*) FROM xiachufang_menu_contains  AS B WHERE A.mid=B.menu_id 
+);
