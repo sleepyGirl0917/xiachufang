@@ -99,5 +99,16 @@ server.use("/menu",(req,res)=>{
 
 // 下厨房的厨友们
 server.use("/user", (req, res) => {
-  
+  var sql = `SELECT * FROM xiachufang_user AS A RIGHT JOIN xiachufang_search AS B ON A.uid=B.user_id_search`;
+  sql += ` WHERE user_id_search IS NOT NULL group by user_id_search ORDER BY COUNT(user_id_search) DESC LIMIT 7`;
+  pool.query(sql, (err, result) => {
+    if (err) throw err;
+    res.writeHead(200, {
+      "Access-Control-Allow-Origin": "*"
+    });
+    if (result.length > 0) {
+      res.write(JSON.stringify(result));
+      res.end()
+    }
+  })
 })

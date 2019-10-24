@@ -207,9 +207,9 @@ $(function () {
       $(".rencent-pop ul").html(html);
     }
   })
-  .then(function () {
-    getHeight($(".rencent-pop ul img"));
-  })
+    .then(function () {
+      getHeight($(".rencent-pop ul img"));
+    })
 
   // 时令食材
   $.ajax({
@@ -219,7 +219,7 @@ $(function () {
     success: function (data) {
       console.log(data)
       var html = "";
-      for (var i = 0; i < 12; i++){
+      for (var i = 0; i < 12; i++) {
         var list = data[i];
         html += `<li>
           <a href="${list.category_href}" class="homemenu-link">
@@ -229,16 +229,16 @@ $(function () {
         </li>`;
       }
       $(".seasonal-ingredients .season-bg ul").html(html);
-      for (var j = 0; j < 8; j++){
+      for (var j = 0; j < 8; j++) {
         var _list = data[j];
         var $li = $(`<li><a href="${_list.category_href}" class="head-link">${_list.fname}</a><span>${_list.score.toFixed(1)}</span></li>`);
         $li.appendTo($("header .season"));
       }
     }
   })
-  .then(function () {
-    getHeight($(".seasonal-ingredients .season-bg ul img"), 1)
-  })
+    .then(function () {
+      getHeight($(".seasonal-ingredients .season-bg ul img"), 1)
+    })
 
   // 流行菜单
   $.ajax({
@@ -263,7 +263,7 @@ $(function () {
     .then(function () {
       getHeight()
     })
-  
+
   // 下厨房的厨友们
   $.ajax({
     url: "http://localhost:3000/user",
@@ -272,15 +272,15 @@ $(function () {
     success: function (data) {
       console.log(data)
       var html = "";
-      for (var i = 0; i < 12; i++) {
+      for (var i = 0; i < 7; i++) {
         var list = data[i];
         html += `<li>
           <div class="cooker-container">
             <div class="avatar">
-              <a href="#"><img src="./img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg"></a>
+              <a href="${list.user_href}"><img src="${list.avatar}"></a>
             </div>
             <div class="detail">
-              <div class="text-truncate name"><a href="#" class="homemenu-link">文文就是个吃货</a></div>
+              <div class="text-truncate name"><a href="${list.user_href}" class="homemenu-link">${list.uname}</a></div>
               <div class="stats">680&nbsp;关注</div>
               <div class="stats">56&nbsp;个菜谱&nbsp;3973&nbsp;个作品</div>
             </div>
@@ -289,14 +289,15 @@ $(function () {
             </div>
           </div>
         </li>`;
+        // 修改用户数据表，增加关注的人，被关注，作品，收藏菜谱数量
       }
       $(".cookers ul").html(html);
     }
   })
     .then(function () {
-      getHeight($(".cookers img"),1)
+      getHeight($(".cookers img"), 1)
     })
-  
+
   // 宽高比例自适应
   function getHeight($img, n = 0.6) {
     console.log($img)
