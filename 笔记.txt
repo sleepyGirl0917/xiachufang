@@ -1,22 +1,4 @@
-
-本期最受欢迎	http://www.xiachufang.com/explore/	
-新秀菜谱		http://www.xiachufang.com/explore/rising/
-往期头条		http://www.xiachufang.com/explore/head/
-厨房101		  http://www.xiachufang.com/explore/honor/
-月度最佳		http://www.xiachufang.com/explore/monthhonor/
-最新创建		http://www.xiachufang.com/explore/created/
-流行菜单		http://www.xiachufang.com/explore/menu/pop/
-用户		    http://www.xiachufang.com/cook/10000025/
-
-轮播图的图片，取往期头条数据库的前5张
 正则	@(.*)|\?(.*)
-
-recipe/101874529	被大家加入到以下菜单	recipe_list/100080426 ...
-
-    每个recipe_list表，存储菜谱图，菜谱名，菜谱评分，菜谱链接，菜单创建人
-    用第一个菜谱图做recipe_list表的封面
-
-recipe/103951128	相关分类	 家常菜(导航） 下饭菜 鱼香	    3个分类都可以找到菜谱，点击进去导航分类固定为家常菜
 
 浏览器window对象
 本文链接：https://blog.csdn.net/u012681635/article/details/81194990
@@ -24,21 +6,10 @@ recipe/103951128	相关分类	 家常菜(导航） 下饭菜 鱼香	    3个分�
 各种 on事件触发js代码
 本文链接：https://www.cnblogs.com/ssrsblogs/p/on_js.html
 
-1.搜索功能（搜索用户/菜谱，模糊查询）：
-  先精确查找，category/...
-  查不到，再模糊查找，搜索返回的网址 search/?keyword=***&cat=1001
-2.注册，登录，用户中心，退出
-  登录后首页登录框变为用户信息，出现创建菜谱入口
-
-3.用户表
-4.用户作品展示
-5.分类可以写模板
-
 AccessKeyID：
 LTAI4Fo6Xjni9hY1XCWvyzpi
 AccessKeySecret：
 0HmE4InzQuCAs2XRAGbIpGBxmX5ZVh
-
 
 //配置session
 server.use(session({

@@ -444,6 +444,11 @@ ul img:hover{
   margin:4px;
   font-size:12px;
 }
+@media screen and (max-width:576px){
+  .seasonal-ingredients .season-bg ul li a span{
+    font-size:10px;
+  }
+}
 /* 大家的作品 */
 .col-12{
   padding:0;

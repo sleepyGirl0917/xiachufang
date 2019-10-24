@@ -66,7 +66,7 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       for (var i = 0; i < 5; i++) {
         var list = data[i];
         //复制轮播图第一张图的HTML片段，并用模板字符串，填充其中动态生成的部分
@@ -116,7 +116,7 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       for (var i = 0; i < 15; i++) {
         var list = data[i];
         var html = `<a href="${list.recipe_href}" class="d-block">
@@ -129,54 +129,54 @@ $(function () {
       }
     }
   })
-    .then(function () {
-      getHeight($(".rookie-recipe-item img"));
-      // 记录移动次数
-      var step = 0;
-      var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
-      var $btnRight = $btnLeft.next();
-      var width = $(".rookie-recipe-list").width();
-      var $ul = $(".rookie-recipe-list>ul");
-      // 拉伸窗口时，width和ul的外边距跟随改变
-      $(window).resize(function () {
-        width = $(".rookie-recipe-list").width();
-        $ul.css("margin-left", -width * step);
-      })
-      // $ul左外边距为0时，禁用左边按钮
-      if ($ul.css("margin-left") == '0px') {
-        $btnLeft.addClass("disabled");
-      }
-      // 图片数量<=3时，禁用右边按钮
-      if ($ul.find("img").length <= 3) {
-        $btnRight.addClass("disabled");
-      }
-      // 右边按钮不是disabled时，点击按钮ul向左移动一次
-      $btnRight.click(function () {
-        if ($(this).is(":not(.disabled)")) {
-          step++;
-          $ul.css("margin-left", -width * step);
-          // console.log(step)
-          // 启用左边按钮
-          $btnLeft.removeClass("disabled");
-          if (3 * step + 3 == 15) {
-            $(this).addClass("disabled");
-          }
-        }
-      })
-      // 左边按钮不是disabled时，点击按钮ul向右移动一次
-      $btnLeft.click(function () {
-        if ($(this).is(":not(.disabled)")) {
-          step--;
-          $ul.css("margin-left", -width * step);
-          // console.log(step)
-          // 启用右边按钮
-          $btnRight.removeClass("disabled");
-          if (step == 0) {
-            $(this).addClass("disabled");
-          }
-        }
-      })
+  .then(function () {
+    getHeight($(".rookie-recipe-item img"));
+    // 记录移动次数
+    var step = 0;
+    var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
+    var $btnRight = $btnLeft.next();
+    var width = $(".rookie-recipe-list").width();
+    var $ul = $(".rookie-recipe-list>ul");
+    // 拉伸窗口时，width和ul的外边距跟随改变
+    $(window).resize(function () {
+      width = $(".rookie-recipe-list").width();
+      $ul.css("margin-left", -width * step);
     })
+    // $ul左外边距为0时，禁用左边按钮
+    if ($ul.css("margin-left") == '0px') {
+      $btnLeft.addClass("disabled");
+    }
+    // 图片数量<=3时，禁用右边按钮
+    if ($ul.find("img").length <= 3) {
+      $btnRight.addClass("disabled");
+    }
+    // 右边按钮不是disabled时，点击按钮ul向左移动一次
+    $btnRight.click(function () {
+      if ($(this).is(":not(.disabled)")) {
+        step++;
+        $ul.css("margin-left", -width * step);
+        // console.log(step)
+        // 启用左边按钮
+        $btnLeft.removeClass("disabled");
+        if (3 * step + 3 == 15) {
+          $(this).addClass("disabled");
+        }
+      }
+    })
+    // 左边按钮不是disabled时，点击按钮ul向右移动一次
+    $btnLeft.click(function () {
+      if ($(this).is(":not(.disabled)")) {
+        step--;
+        $ul.css("margin-left", -width * step);
+        // console.log(step)
+        // 启用右边按钮
+        $btnRight.removeClass("disabled");
+        if (step == 0) {
+          $(this).addClass("disabled");
+        }
+      }
+    })
+  })
 
   // 最近流行
   $.ajax({
@@ -184,7 +184,7 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       var html = "";
       for (var i = 0; i < 12; i++) {
         var list = data[i];
@@ -207,9 +207,9 @@ $(function () {
       $(".rencent-pop ul").html(html);
     }
   })
-    .then(function () {
-      getHeight($(".rencent-pop ul img"));
-    })
+  .then(function () {
+    getHeight($(".rencent-pop ul img"));
+  })
 
   // 时令食材
   $.ajax({
@@ -217,14 +217,14 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       var html = "";
       for (var i = 0; i < 12; i++) {
         var list = data[i];
         html += `<li>
           <a href="${list.category_href}" class="homemenu-link">
             <img src="${list.food_img}" alt="${list.fname}"><br>
-            <span>${list.fname}</span>
+            <span class="text-truncate">${list.fname}</span>
           </a>
         </li>`;
       }
@@ -236,9 +236,9 @@ $(function () {
       }
     }
   })
-    .then(function () {
-      getHeight($(".seasonal-ingredients .season-bg ul img"), 1)
-    })
+  .then(function () {
+    getHeight($(".seasonal-ingredients .season-bg ul img"), 1);
+  })
 
   // 流行菜单
   $.ajax({
@@ -246,23 +246,23 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       var html = "";
       for (var i = 0; i < 4; i++) {
         var list = data[i];
         html += `<li>
-          <a href="#" class="text-center recipe-pop-border d-block homemenu-link" title="那些拿得出手的硬菜">
-            <img src="./img/recipe/pop/c4722f06870111e6a9a10242ac110002_640w_414h.jpg">
-            <div class="pop-recipe-title text-truncate">那些拿得出手的硬菜</div>
+          <a href="${list.menu_href}" class="text-center recipe-pop-border d-block homemenu-link" title="${list.menu_title}">
+            <img src="${list.cover_img}">
+            <div class="pop-recipe-title text-truncate">${list.menu_title}</div>
           </a>
         </li>`;
       }
       $(".pop-recipe ul").html(html);
     }
   })
-    .then(function () {
-      getHeight()
-    })
+  .then(function () {
+    getHeight($(".pop-recipe ul img"));
+  })
 
   // 下厨房的厨友们
   $.ajax({
@@ -270,7 +270,7 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
       var html = "";
       for (var i = 0; i < 7; i++) {
         var list = data[i];
@@ -281,32 +281,31 @@ $(function () {
             </div>
             <div class="detail">
               <div class="text-truncate name"><a href="${list.user_href}" class="homemenu-link">${list.uname}</a></div>
-              <div class="stats">680&nbsp;关注</div>
-              <div class="stats">56&nbsp;个菜谱&nbsp;3973&nbsp;个作品</div>
+              <div class="stats">${list.num_concerned}&nbsp;关注</div>
+              <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
             </div>
             <div class="concern">
               <a href="#" class="button">关注</a>
             </div>
           </div>
         </li>`;
-        // 修改用户数据表，增加关注的人，被关注，作品，收藏菜谱数量
       }
       $(".cookers ul").html(html);
     }
   })
     .then(function () {
-      getHeight($(".cookers img"), 1)
+      getHeight($(".cookers img"), 1);
     })
 
   // 宽高比例自适应
   function getHeight($img, n = 0.6) {
-    console.log($img)
+    // console.log($img)
     var width = $img.width();
     $img.css("height", width * n)
     $(window).resize(function () {
       width = $img.width();
       $img.css("height", $img.width() * n)
-      console.log('width：' + width + '，height：' + width * n)
+      // console.log('width：' + width + '，height：' + width * n)
     })
   }
 
