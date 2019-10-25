@@ -200,7 +200,7 @@ $(function () {
     success: function (data) {
       // console.log(data)
       var html = "";
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < 6; i++) {
         var list = data[i];
         html += `<li>
           <a href="${list.menu_href}" class="text-center recipe-pop-border d-block homemenu-link" title="${list.menu_title}">
@@ -224,7 +224,7 @@ $(function () {
     success: function (data) {
       // console.log(data)
       var html = "";
-      for (var i = 0; i < 7; i++) {
+      for (var i = 0; i < 8; i++) {
         var list = data[i];
         html += `<li>
           <div class="cooker-container">
