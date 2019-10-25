@@ -85,9 +85,9 @@ $(function () {
       }
     }
   })
-    .then(function () {
-      // getHeight($("#home-carousel .carousel-item img"),0.5); //和轮播图冲突
-    });
+  .then(function () {
+    // getHeight($("#home-carousel .carousel-item img"),0.5); //和轮播图冲突
+  });
 
   /* var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
@@ -293,9 +293,9 @@ $(function () {
       $(".cookers ul").html(html);
     }
   })
-    .then(function () {
-      getHeight($(".cookers img"), 1);
-    })
+  .then(function () {
+    getHeight($(".cookers img"), 1);
+  })
 
   // 搜索框
   
@@ -303,10 +303,10 @@ $(function () {
   function getHeight($img, n = 0.6) {
     // console.log($img)
     var width = $img.width();
-    $img.css("height", width * n)
+    $img.css("height", width * n);
     $(window).resize(function () {
       width = $img.width();
-      $img.css("height", $img.width() * n)
+      $img.css("height", $img.width() * n);
       // console.log('width：' + width + '，height：' + width * n)
     })
   }

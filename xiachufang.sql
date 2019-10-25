@@ -1838,27 +1838,3 @@ INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'36',NULL,NULL);
 INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'81',NULL);
 INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'126',NULL,NULL);
 INSERT INTO `xiachufang_search` VALUES (NULL,NULL,NULL,'60',NULL);
-
-#用户在菜谱下上传作品后把最近一次date_upload更新到菜谱表
-UPDATE  xiachufang_recipe AS A SET A.date_newUsed =
-  (SELECT date_upload from xiachufang_recipe_upload AS B WHERE B.recipe_id = A.rid
-ORDER BY date_upload DESC LIMIT 1);
-
-#用户在菜单下增加菜谱时修改菜单表menu_contains
-UPDATE xiachufang_menu AS A SET A.num_contains=(
-  SELECT COUNT(*) FROM xiachufang_menu_contains  AS B WHERE A.mid=B.menu_id 
-);
-
-#查询关注数
-#select user_id,count(user_concern_id) from xiachufang_user_concern group by user_id;
-#查询被关注数
-#select user_concern_id,count(user_id) from xiachufang_user_concern group by user_concern_id;
-
-#关注后更新用户表里num_concetn和num_concerned
-UPDATE xiachufang_user AS A SET A.num_concern=
-  (select count(user_concern_id) from xiachufang_user_concern AS B WHERE B.user_id=A.uid group by user_id) where uid=1;
-
-#不写where uid=1会更新全部数据，B表只有少量测试数据，B表中没有的数据A表显示为NULL
-
-UPDATE xiachufang_user AS A SET A.num_concerned=
-  (select count(user_id) from xiachufang_user_concern AS B WHERE B.user_concern_id=A.uid group by user_concern_id) where uid=1;
