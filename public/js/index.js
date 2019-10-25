@@ -60,6 +60,18 @@ $(function () {
     })
   } */
 
+  // 宽高比例自适应
+  function getHeight($img, n = 0.6) {
+    // console.log($img)
+    var width = $img.width();
+    $img.css("height", width * n);
+    $(window).resize(function () {
+      width = $img.width();
+      $img.css("height", $img.width() * n);
+      // console.log('width：' + width + '，height：' + width * n)
+    })
+  }
+
   // 轮播图
   $.ajax({
     url: "http://localhost:3000/carousel",
@@ -297,18 +309,16 @@ $(function () {
     getHeight($(".cookers img"), 1);
   })
 
-  // 搜索框
-  
-  // 宽高比例自适应
-  function getHeight($img, n = 0.6) {
-    // console.log($img)
-    var width = $img.width();
-    $img.css("height", width * n);
-    $(window).resize(function () {
-      width = $img.width();
-      $img.css("height", $img.width() * n);
-      // console.log('width：' + width + '，height：' + width * n)
-    })
-  }
+  // 搜索
+  $.ajax({
+    url: "http://localhost:3000/search",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data)
+    }
+  })
+  .then(function(){
 
+  })
 })
