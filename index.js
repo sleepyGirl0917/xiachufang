@@ -75,7 +75,7 @@ server.get("/explore", (req, res) => {
 })
 
 // 时令食材：综合评分前12
-server.use("/season", (req, res) => {
+server.get("/season", (req, res) => {
   var sql = `SELECT * FROM xiachufang_category WHERE is_season=1 ORDER BY score DESC LIMIT 12`;
   pool.query(sql, (err, result) => {
     if (err) throw err;
@@ -90,7 +90,7 @@ server.use("/season", (req, res) => {
 })
 
 // 流行菜单：近7天访问次数前5的菜单
-server.use("/menu",(req,res)=>{
+server.get("/menu",(req,res)=>{
   var sql=`SELECT menu_id_search,menu_title,cover_img,menu_href,COUNT(*) FROM xiachufang_menu AS A RIGHT JOIN xiachufang_search AS B ON A.mid=B.menu_id_search`; 
   sql+=` WHERE  DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(date_visited) AND menu_id_search is not null`;
   sql+=` GROUP BY menu_id_search ORDER BY COUNT(*) DESC LIMIT 5`;
@@ -107,7 +107,7 @@ server.use("/menu",(req,res)=>{
 })
 
 // 下厨房的厨友们
-server.use("/user", (req, res) => {
+server.get("/user", (req, res) => {
   var sql = `SELECT * FROM xiachufang_user AS A RIGHT JOIN xiachufang_search AS B ON A.uid=B.user_id_search`;
   sql += ` WHERE user_id_search IS NOT NULL group by user_id_search ORDER BY COUNT(user_id_search) DESC LIMIT 7`;
   pool.query(sql, (err, result) => {
@@ -122,4 +122,12 @@ server.use("/user", (req, res) => {
   })
 })
 
-// 搜索框
+// 搜索相关用户/菜单
+server.get("/search", (req, res) => {
+  var obj = req.query;
+  res.writeHead(200, {
+    "Access-Control-Allow-Origin": "*"
+  });
+  res.write(JSON.stringify(obj))
+  res.end()
+})
