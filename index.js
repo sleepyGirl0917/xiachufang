@@ -30,8 +30,8 @@ server.use('/user', userRouter);
 // 轮播图
 server.get("/carousel",(req,res)=>{
   // 取往期头条表的前5条
-  var sql=`(SELECT * FROM (xiachufang_headline as A LEFT JOIN xiachufang_recipe as B ON A.recipe_id=B.rid)`
-  sql+=` LEFT JOIN xiachufang_user as C ON B.user_id=C.uid ) ORDER BY date_recommend DESC LIMIT 5`;
+  var sql = `SELECT * FROM xiachufang_headline a,xiachufang_recipe b,xiachufang_user c`;
+  sql+=` WHERE a.recipe_id=b.rid AND b.user_id=c.uid ORDER BY date_recommend DESC LIMIT 5`;
   pool.query(sql,(err,result)=>{
     if (err) throw err;
     // 允许跨域
@@ -40,15 +40,14 @@ server.get("/carousel",(req,res)=>{
     });
     res.write(JSON.stringify(result));
     res.end()
-    // result：对象数组
   })
 });
 
 // 新秀菜谱
 server.get("/explore/rising", (req, res) => {
   // 菜谱表按最近使用时间（有用户在菜谱下上传作品）排序，取前15条数据
-  var sql =`SELECT * FROM xiachufang_recipe as A RIGHT JOIN xiachufang_recipe_upload as B ON A.rid=B.recipe_id`;
-  sql += ` ORDER BY date_upload DESC LIMIT 15`;
+  var sql = `SELECT * FROM xiachufang_recipe a,xiachufang_recipe_upload b`;
+  sql +=` WHERE a.rid=b.recipe_id ORDER BY date_upload DESC LIMIT 15`;
   pool.query(sql, (err, result) => {
     if (err) throw err;
     res.writeHead(200, {
@@ -61,9 +60,9 @@ server.get("/explore/rising", (req, res) => {
 
 // 最近流行（菜谱）
 server.get("/explore", (req, res) => {
-  var sql = `SELECT * FROM (xiachufang_recipe RIGHT JOIN xiachufang_search ON rid=recipe_id_search)`;
-  sql+=` LEFT JOIN xiachufang_user ON user_id = uid`;
-  sql+=` GROUP BY recipe_id_search ORDER BY COUNT(recipe_id_search) DESC limit 12`;
+  var sql = `SELECT * FROM xiachufang_recipe a,xiachufang_search b, xiachufang_user c`;
+  sql += ` WHERE a.rid=b.recipe_id_search AND a.user_id=c.uid GROUP BY recipe_id_search`;
+  sql +=` ORDER BY COUNT(recipe_id_search) DESC LIMIT 12`;
   pool.query(sql, (err, result) => {
     if (err) throw err;
     res.writeHead(200, {
@@ -91,9 +90,9 @@ server.get("/season", (req, res) => {
 
 // 流行菜单：近7天访问次数前6的菜单
 server.get("/menu",(req,res)=>{
-  var sql=`SELECT menu_id_search,menu_title,cover_img,menu_href,COUNT(*) FROM xiachufang_menu AS A RIGHT JOIN xiachufang_search AS B ON A.mid=B.menu_id_search`; 
-  sql+=` WHERE  DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(date_visited) AND menu_id_search is not null`;
-  sql+=` GROUP BY menu_id_search ORDER BY COUNT(*) DESC LIMIT 6`;
+  var sql = `SELECT  menu_id_search,menu_title,cover_img,menu_href,COUNT(*) FROM xiachufang_menu a,xiachufang_search b`;
+  sql += ` WHERE a.mid=b. menu_id_search AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(date_visited)`;
+  sql +=` AND b.menu_id_search IS NOT NULL GROUP BY b.menu_id_search ORDER BY COUNT(*) DESC LIMIT 6`;
   pool.query(sql, (err, result) => {
     if (err) throw err;
     res.writeHead(200, {
@@ -108,8 +107,8 @@ server.get("/menu",(req,res)=>{
 
 // 下厨房的厨友们
 server.get("/user", (req, res) => {
-  var sql = `SELECT * FROM xiachufang_user AS A RIGHT JOIN xiachufang_search AS B ON A.uid=B.user_id_search`;
-  sql += ` WHERE user_id_search IS NOT NULL group by user_id_search ORDER BY COUNT(user_id_search) DESC LIMIT 8`;
+  var sql = `SELECT * FROM xiachufang_user a , xiachufang_search b WHERE a.uid=b.user_id_search`;
+  sql +=` AND b.user_id_search IS NOT NULL group by user_id_search ORDER BY COUNT(user_id_search) DESC LIMIT 8`;
   pool.query(sql, (err, result) => {
     if (err) throw err;
     res.writeHead(200, {
