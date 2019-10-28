@@ -94,8 +94,19 @@ $(function () {
     $("header input[type=submit]").click(function () {
       // 将隐藏域的值改为在后台获取
       $("header input[type=hidden]").attr("value", "1");
-      window.location.href = $(this).attr("href");
+      // window.location.href = $(this).attr("href");
+      $.ajax({
+        url: "http://localhost:3000/search",
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+          
+        }
+      })
     })
   })
 
 })
+
+// 点击搜索框，生成跳转网址，即内容页
+// 跳转的网址页动态生成数据

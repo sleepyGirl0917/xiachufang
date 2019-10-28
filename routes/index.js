@@ -26,9 +26,3 @@ WHERE a.mid=b. menu_id_search AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(da
 });
 
 module.exports = router;
-
-// // 搜索框
-// router.get("/search", (req, res) => {
-//   var obj = req.query;
-//   res.send(result);
-// })
