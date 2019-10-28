@@ -91,14 +91,10 @@ $(function () {
       window.location.href =$(this).attr("href");
     })
     // 搜索相关菜谱
-  /*   $.ajax({
-      url: "http://localhost:3000/search",
-      type: "post",
-      data: { mode: 1, keyword: $("header input[type=text]").val()},
-      dataType: "json",
-      success: function (data) {
-
-      }
-    }) */
+    $("header input[type=submit]").click(function () {
+      // 将隐藏域的值改为在后台获取
+      $("header input[type=hidden]").attr("value", "1");
+      window.location.href = $(this).attr("href");
+    })
   })
 })

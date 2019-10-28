@@ -26,11 +26,11 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-9 p-0 d-flex align-items-center">
-          <form action="/search/" class="search w-100" method="POST">
+          <form action="/search/" class="search w-100">
             <div class="input-group mr-3" style="position: relative;">
-              <input type="text" placeholder="搜索菜谱、食材">
-              <!-- 隐藏域，传递参数 -->
-              <input type="hidden" name="mode" value="1">
+              <input type="text" placeholder="搜索菜谱、食材" name="keyword">
+              <!-- 隐藏域的value改为在后台获取，防止在浏览器篡改 -->
+              <input type="hidden" name="mode">
               <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
               <div class="search-menu">
                 <!-- <div class="search-item">

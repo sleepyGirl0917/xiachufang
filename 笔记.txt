@@ -11,6 +11,16 @@ LTAI4Fo6Xjni9hY1XCWvyzpi
 AccessKeySecret：
 0HmE4InzQuCAs2XRAGbIpGBxmX5ZVh
 
+
+form.omsumbit
+// 先验证，验证通过后提交
+// 有多个提交按钮时，通过隐藏域的value使程序能够分清楚到底用户是按那一个按钮提交上来
+// 后台接到数据后先检查command的值就会知道用户是按的那个按钮提交上来的。
+// document.form.command.value =”xx”
+// 防止前台篡改隐藏域的值：
+// 将隐藏域的值改为在后台获取，后台增加对下拉框选中的值进行校验，先校验值数据库中是否存在，再校验当前登录用户与选中值的关系
+
+
 //配置session
 server.use(session({
   secret: 'keyboard cat', //秘钥，自定义，一般用不到

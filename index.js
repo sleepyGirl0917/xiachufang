@@ -122,7 +122,7 @@ server.get("/user", (req, res) => {
   })
 })
 
-// 搜索相关用户/菜单
+// 搜索框
 server.get("/search", (req, res) => {
   var obj = req.query;
   res.writeHead(200, {
