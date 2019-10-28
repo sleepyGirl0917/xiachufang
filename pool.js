@@ -6,7 +6,9 @@ var pool = mysql.createPool({
   user: 'root',
   password: '',
   database: 'xiachufang',
-  connectionLimit: 20
+  connectionLimit: 20,
+  // 执行多条查询语句
+  multipleStatements: true
 });
 // 导出连接池对象
 module.exports = pool;
