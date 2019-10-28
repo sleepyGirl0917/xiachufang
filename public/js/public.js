@@ -88,15 +88,7 @@ $(function () {
     })
     // 搜索相关用户/菜单
     $("header .search-menu").on("mousedown","a", function () {
-      /* $.ajax({
-        url: "http://localhost:3000"+$(this).attr("href"),
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-          console.log(data)
-        }
-      }) */
-      window.location.href = "http://localhost:3000" + $(this).attr("href");
+      window.location.href =$(this).attr("href");
     })
     // 搜索相关菜谱
   /*   $.ajax({

@@ -19,21 +19,28 @@ $(function () {
     dataType: "json",
     success: function (data) {
       // console.log(data)
+      var html = "";
       for (var i = 0; i < 5; i++) {
         var list = data[i];
-        //复制轮播图第一张图的HTML片段，并用模板字符串，填充其中动态生成的部分
-        var html = `<a href="${list.recipe_href}">
-          <img src="${list.recipe_img}" title="${list.recipe_title}" alt="${list.recipe_title}">
-        </a>
-        <div class="carousel-caption p-0" title="${list.recipe_title}">
-          <a href="${list.recipe_href}" class="d-block text-white carousel-title">${list.recipe_title}</a>
-          <div>
-            <a href="${list.recipe_href}" class="text-white carousel-num">${list.num_used} 人做过这道菜&nbsp;&nbsp;</a>
-            <a href="${list.user_href}" class="text-white carousel-author">&nbsp;&nbsp;by ${list.uname}</a>
+        //复制轮播图的HTML片段，并用模板字符串，填充其中动态生成的部分
+        if (i == 0) {
+          html += `<div class="carousel-item active">`;
+        }else{
+          html += `<div class="carousel-item">`;
+        }
+        html += `<a href="${list.recipe_href}">
+            <img src="${list.recipe_img}" title="${list.recipe_title}" alt="${list.recipe_title}">
+          </a>
+          <div class="carousel-caption p-0" title="${list.recipe_title}">
+            <a href="${list.recipe_href}" class="d-block text-white carousel-title">${list.recipe_title}</a>
+            <div>
+              <a href="${list.recipe_href}" class="text-white carousel-num">${list.num_used} 人做过这道菜&nbsp;&nbsp;</a>
+              <a href="${list.user_href}" class="text-white carousel-author">&nbsp;&nbsp;by ${list.uname}</a>
+            </div>
           </div>
         </div>`;
         //将片段填充回页面中原父元素内 
-        $("#home-carousel .carousel-inner .carousel-item").eq(i).html(html);
+        $("#home-carousel .carousel-inner").html(html);
       }
     }
   })
