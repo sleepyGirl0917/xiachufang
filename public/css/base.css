@@ -114,6 +114,9 @@ header .search-menu{
   padding: 10px 0 10px;
 }
 /* footer */
+footer{
+  margin-top:5rem;
+}
 @media screen and (max-width:768px){
   footer .col-md-3{
     display: none;
@@ -861,4 +864,30 @@ ul img:hover{
 }
 .search-page .menu-items{
   width:300px;
+}
+/* 搜索详情 */
+.search-result-menu .search-result-list .info{
+  padding:4px;
+}
+.search-result-menu .search-result-list .info p{
+  margin:0;
+}
+.search-result-menu .search-result-list .info p.name{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  padding-bottom: 5px;
+}
+.search-result-menu .search-result-list .info a{
+  color:#222;
+}
+.search-result-menu .search-result-list .info .stats{
+  color: #909090;
+  font-size: 14px;
+}
+.search-result-menu .search-result-list .info p.name a:hover,.search-result-menu .search-result-list .info a.author:hover{
+  color:#dd3915;
+}
+.search-result-menu{
+  padding-right:40px;
 }
