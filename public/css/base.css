@@ -405,7 +405,7 @@ ul img:hover{
 .rencent-pop ul li .stats span{
   color:#a5a7a6;
 }
-.recipe-pop-border{
+.item-border{
   border:1px solid #f3f3f3;
 }
 .recipe-title{
@@ -590,25 +590,25 @@ ul img:hover{
   padding-right: 8px;
 }
 /* 流行菜单 */
-.pop-recipe ul li{
+.pop-menu ul li{
   margin-bottom: 20px;
 }
-.pop-recipe ul li img{
+.pop-menu ul li img{
   object-fit: cover;
   width:100%;
   height:170px;
 }
-.pop-recipe ul li .pop-recipe-title{
+.pop-menu ul li .menu-items-title{
   padding: 14px 10px;
   font-size: 16px;
 }
 @media screen and (min-width:300px) and (max-width:991px){
-  .pop-recipe ul li:nth-child(odd){
+  .pop-menu ul li:nth-child(odd){
     float:left;
     padding-right:5px;
     width:50%;
   }
-  .pop-recipe ul li:nth-child(even){
+  .pop-menu ul li:nth-child(even){
     float:right;
     padding-left:5px;
     width:50%;
@@ -738,21 +738,21 @@ ul img:hover{
   margin-bottom: 40px;
 }
 /* 右侧：相关菜单 */
-.menu-related ul li{
+.search-page .menu-items ul li{
   margin-bottom: 28px;
   width:300px;
 }
-.menu-related ul li img{
+.search-page .menu-items ul li img{
   object-fit: cover;
   width:300px;
   height:140px;
 }
-.menu-related ul li .menu-related-title{
+.search-page .menu-items ul li .menu-items-title{
   padding: 14px 10px;
   font-size: 16px;
 }
 @media screen and (max-width:991px){
-  .menu-related,.download{
+  .search-page .menu-items,.download{
     padding-left:25%;
   }
 }
@@ -816,3 +816,49 @@ ul img:hover{
 
 /* search_menu.html */
 /* 菜单搜索 */
+.search-result-menu.search-result-menu .list li{
+  margin-bottom: 1.5rem;
+}
+.search-result-menu .serach-title{
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.search-result-menu .search-result-list .list-item-float>*{
+  float: left;
+  display: block;
+}
+.search-result-menu .search-result-list img{
+  width:100%;
+  height: 140px;
+}
+.search-result-menu .search-result-list .info{
+  padding:4px;
+}
+.search-result-menu .search-result-list .info p{
+  margin:0;
+}
+.search-result-menu .search-result-list .info p.name{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  padding-bottom: 5px;
+}
+.search-result-menu .search-result-list .info p.name a{
+  color:#222;
+}
+.search-result-menu .search-result-list .info p.details{
+  color: #9c6730;
+  font-size: 14px;
+}
+.search-result-menu .search-result-list .info p.stats,.search-result-menu .search-result-list .info p.author a{
+  color: #909090;
+  font-size: 13px;
+}
+.search-result-menu .search-result-list .info p.name a:hover,.search-result-menu .search-result-list .info p.author a:hover{
+  color:#dd3915;
+}
+.search-page .menu-items{
+  width:300px;
+}
