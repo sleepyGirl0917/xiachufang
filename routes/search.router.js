@@ -10,17 +10,12 @@ router.get('/', (req, res) => {
   var output={};
   // 获取参数
   var mode = req.query.mode;
+  console.log(mode)
+  console.log(typeof(mode))
   var key = req.query.keyword;
   var pno = req.query.pno;
   var pageSize = req.query.pageSize;
-  var offset = (pno-1) * pageSize;
-  pageSize = parseInt(pageSize);
-  // 判断有无搜索关键词
-  if(!key){
-    res.send({code:400,msg:"keyword required"});
-    return;
-  }
-  // 设置默认值 pno=1 pageSize 7 mode=1
+  // 设置默认值pno=1 pageSize=7 mode=1
   if(!pno){
     pno=1;
   }
@@ -28,8 +23,18 @@ router.get('/', (req, res) => {
     pageSize = 7;
   }
   if(!mode){
-    // console.log('mode=1')
     mode=1;
+  }
+
+  var offset = (pno-1) * pageSize;
+  pageSize = parseInt(pageSize);
+
+  // 判断有无搜索关键词
+  if(!key){
+    res.send({code:400,msg:"keyword required"});
+    return;
+  }
+  if(mode==1){
     var sql = " SELECT recipe_title,recipe_img FROM xiachufang_recipe ";
     sql += " WHERE recipe_title LIKE ?";
     sql += " LIMIT ?,?";
@@ -37,14 +42,14 @@ router.get('/', (req, res) => {
       if (err) throw err;
       if (result.length > 0) {
         // console.log('mode=1')
-        output.recipeItems=result;
+        output.recipeItems=result[0];
         // 查询右边关联菜单
         var sql2="SELECT * FROM xiachufang_recipe a,xiachufang_menu b,xiachufang_menu_contains c ";
         sql2+=" WHERE a.rid=c.recipe_id AND b.mid=c.menu_id ";
         sql2+=" AND recipe_title LIKE ? LIMIT 3";
         pool.query(sql2, ["%" + key + "%"], (err, result) => {
           if (err) throw err;
-          output.menuItems=result;
+          output.menuItems=result[0];
           res.send(output);
         })
       } else { //没有查询到对应的菜谱
@@ -52,11 +57,7 @@ router.get('/', (req, res) => {
         res.send({code:401,msg:"no recipe found"});
       }
     })
-  }/* else if(mode==2){
-    
-  }else if(mode==3){
-    
-  } */
+  }
 
 });
 
