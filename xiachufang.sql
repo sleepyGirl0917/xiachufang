@@ -1019,6 +1019,17 @@ CREATE TABLE `xiachufang_menu_contains` (
   PRIMARY KEY  (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+INSERT INTO xiachufang_menu_contains VALUES (NULL,1,3);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,1,4);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,1,5);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,1,6);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,1,7);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,2,3);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,2,4);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,2,5);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,2,6);
+INSERT INTO xiachufang_menu_contains VALUES (NULL,2,7);
+
 -- ----------------------------
 -- Table structure for `xiachufang_category`
 -- 食材（肉类，水产，蔬菜，水果）

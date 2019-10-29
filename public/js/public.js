@@ -65,10 +65,10 @@ $(function () {
       // 搜索框的值
       var input = $("header input[type=text]").val();
       var html = `<div class="search-item">
-                  <a href="/search/?mode=2&keyword=${input}">搜“${input}”相关用户</a>
+                  <a href="/search.html?mode=2&keyword=${input}">搜“${input}”相关用户</a>
                 </div>
                 <div class="search-item">
-                  <a href="/search/?mode=3&keyword=${input}">搜“${input}”相关菜单</a>
+                  <a href="/search.html?mode=3&keyword=${input}">搜“${input}”相关菜单</a>
                 </div>`;
       if (input) {
         // 搜索框有值时，显示下拉列表，内容和值绑定
@@ -91,18 +91,20 @@ $(function () {
       window.location.href =$(this).attr("href");
     })
     // 搜索相关菜谱
+    var input = $("header input[type=text]").val();
     $("header input[type=submit]").click(function () {
       // 将隐藏域的值改为在后台获取
       $("header input[type=hidden]").attr("value", "1");
       // window.location.href = $(this).attr("href");
-      $.ajax({
+      window.location.href = `/search.html?mode=1&keyword=${input}`;
+      /* $.ajax({
         url: "http://localhost:3000/search",
         type: "get",
         dataType: "json",
         success: function (data) {
-          
+          console.log(data)
         }
-      })
+      }) */
     })
   })
 

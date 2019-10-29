@@ -1,5 +1,5 @@
 $(function () {
-  $.ajax({
+/*   $.ajax({
     url: "http://localhost:3000/index",
     type: "get",
     dataType: "json",
@@ -40,9 +40,34 @@ $(function () {
       $(".cookers ul").html(html);
     }
   })
-    .then(function () {
-      
-      getHeight($(".cookers img"), 1);
-      
+  .then(function () {
+    getHeight($(".cookers img"), 1);
+  }) */
+
+  $(function(){
+    if(location.search!==""){
+      // 获取地址栏参数
+      var str = location.search;
+      var pttr = [];
+      var strs=[];
+      strs+='{'
+      pttr = str.split('?')[1].split('&');
+      for(var i = 0;len= pttr.length,i<len;i++){
+        strs+="\""+pttr[i].split("=").join("\":\"")+"\",";   
+      }
+      strs+='}';
+      strs = strs.replace(',}','}');
+      console.log(strs);
+    }
+    $.ajax({
+      url:"http://localhost:3000/search/",
+      type:"get",
+      data:strs,
+      dataType:"json",
+      success:function(data){
+        console.log(data)
+  
+      }
     })
+  })
 })
