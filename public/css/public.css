@@ -63,10 +63,10 @@ input.button,input.button:hover{
   background: #dd3915;
   color:#fff;
 }
-.head-link,.login-link,.registe-link{
+.head-link,.login-link,.registe-link,.jump-link{
   color:#dd3915;
 }
-.head-link:hover,.login-link:hover,.registe-link:hover{
+.head-link:hover,.login-link:hover,.registe-link:hover,.jump-link:hover{
   color:#fff;
   background: #dd3915;
 }
@@ -78,6 +78,9 @@ input.button,input.button:hover{
 }
 .w-60{
   width:60% !important;
+}
+.w-66{
+  width:66.666% !important;
 }
 .mb10{
   margin-bottom: 10px !important;
