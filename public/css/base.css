@@ -898,3 +898,12 @@ ul img:hover{
 .has-result,.no-result{
   display: none;
 }
+.search-result .search-title{
+  font-weight: 700;
+  font-size:34px;
+  padding:1rem 0;
+}
+.search-result div{
+  background: #f5f6f5;
+  padding:2rem;
+}
