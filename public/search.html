@@ -27,7 +27,7 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-9 p-0 d-flex align-items-center">
-          <form action="/search.html" class="search w-100">
+          <form action="/search_recipe.html" class="search w-100">
             <div class="input-group mr-3" style="position: relative;">
               <input type="text" placeholder="搜索菜谱、食材" name="keyword">
               <!-- 隐藏域的value改为在后台获取，防止在浏览器篡改 -->
@@ -35,10 +35,10 @@
               <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
               <div class="search-menu">
                 <!-- <div class="search-item">
-                  <a href="/search/?mode=2&keyword=1">搜“1”相关用户</a>
+                  <a href="/search_user/?mode=2&keyword=1">搜“1”相关用户</a>
                 </div>
                 <div class="search-item">
-                  <a href="/search/?mode=3&keyword=1">搜“1”相关菜单</a>
+                  <a href="/search_menu?mode=3&keyword=1">搜“1”相关菜单</a>
                 </div> -->
               </div>
             </div>
@@ -171,45 +171,7 @@
           </div>
           <!-- 中：本周最受欢迎，分页 -->
           <div class="w-75 search-result-recipe">
-            <!-- 查询结果：有 -->
-            <div class="search-result-list">
-              <h1 class="serach-title text-truncate">keyword</h1>
-              <ul class="list-unstyled list">
-                <li>
-                  <div class="list-item-float clearfix">
-                    <a href="#" class="w-40 pr-3">
-                      <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                    </a>
-                    <div class="info w-60">
-                      <p class="name text-truncate"><a href="#">咸鸭蛋的3种腌法</a></p>
-                      <p class="details text-truncate">新鲜鸭蛋、红土、凉开水、盐、高度白</p>
-                      <p class="stats text-truncate">
-                        综合评分&nbsp;<span class="score bold green-font">8.8</span>&nbsp;（<span class="bold score">61</span>&nbsp;做过）
-                      </p>
-                      <p class="author text-truncate">
-                        <a href="#" target="_blank">金粒籽</a>
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <div class="pager">
-                <span class="prev">上一页</span>
-                <span class="now">1</span>
-                <a href="/search/?keyword=3&cat=1001&page=2">2</a>
-                <a href="/search/?keyword=3&cat=1001&page=3">3</a>
-                <a href="/search/?keyword=3&cat=1001&page=4">4</a>
-                <a href="/search/?keyword=3&cat=1001&page=5">5</a>
-                ...
-                <a href="/search/?keyword=3&cat=1001&page=2" class="next">下一页</a>
-              </div>
-            </div>
-            <!-- 查询结果：无 -->
-            <!-- <div class="search-result-list">
-              <p>下厨房没有这个菜谱......你可以</p>
-              <span>&gt;&gt;&nbsp;&nbsp;<a href="#" class="jump-link">创建一个“3”菜谱</a></span>
-            </div> -->
-          </div> 
+          </div>
         </div>
       </div>
       <!-- 右：相关菜单 -->
@@ -221,24 +183,12 @@
             <h3 class="title">相关菜单</h3>
           </div>
           <ul class="list-unstyled clearfix">
-            <li>
+            <!-- <li>
               <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
                 <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
                 <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
               </a>
-            </li>
-            <li>
-              <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
-                <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
-                <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
-              </a>
-            </li>
+            </li> -->
           </ul>
         </div>
         <!-- 下载二维码 -->

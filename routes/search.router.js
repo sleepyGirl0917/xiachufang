@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   // 获取参数
   var mode = req.query.mode;
   var key = req.query.keyword;
-  var pno = req.query.pno;
+  var page = req.query.page;
   var pageSize = req.query.pageSize;
 
   // 判断有无搜索关键词
@@ -19,9 +19,9 @@ router.get('/', (req, res) => {
     return;
   }
 
-  // 设置默认值 pno=1 pageSize=7 mode=1
-  if(!pno){
-    pno=1;
+  // 设置默认值 page=1 pageSize=7 mode=1
+  if(!page){
+    page=1;
   }
   if (!pageSize) {
     pageSize = 7;
@@ -29,12 +29,12 @@ router.get('/', (req, res) => {
   if(!mode){
     mode=1;
   }
-  var offset = (pno-1) * pageSize;
+  var offset = (page-1) * pageSize;
   pageSize = parseInt(pageSize);
 
   if(mode==1){//查询菜谱
-    var sql = " SELECT recipe_title,recipe_img FROM xiachufang_recipe ";
-    sql += " WHERE recipe_title LIKE ?";
+    var sql = " SELECT recipe_title,recipe_img,score,category,num_used,uname FROM xiachufang_recipe a,xiachufang_user b ";
+    sql += " WHERE a.user_id=b.uid AND recipe_title LIKE ?";
     sql += " LIMIT ?,?";
     pool.query(sql, ["%" + key + "%", offset, pageSize], (err, result) => {
       if (err) throw err;
@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
       pool.query(sql, ["%" + key + "%"], (err, result) => {
         if (err) throw err;
         output.menuItems = result;
-        res.send(output);
+        res.send({ code:200,mode: 1, data: output});
       })
     })
   } else if (mode == 2) {//查询用户
@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
       pool.query(sql, [], (err, result) => {
         if (err) throw err;
         output.popUsers = result;
-        res.send(output);
+        res.send({ code:200,mode: 2, data: output });
       })
     })
   } else if (mode == 3) {//查询菜单
@@ -79,7 +79,7 @@ router.get('/', (req, res) => {
       pool.query(sql, ["%" + key + "%", offset, pageSize], (err, result) => {
         if (err) throw err;
         output.popmenus = result;
-        res.send(output);
+        res.send({ code:200,mode: 3, data: output });
       })
     })
   }

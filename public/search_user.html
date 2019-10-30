@@ -27,7 +27,7 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-9 p-0 d-flex align-items-center">
-          <form action="/search.html" class="search w-100">
+          <form action="/search_recipe.html" class="search w-100">
             <div class="input-group mr-3" style="position: relative;">
               <input type="text" placeholder="搜索菜谱、食材" name="keyword">
               <!-- 隐藏域的value改为在后台获取，防止在浏览器篡改 -->
@@ -35,10 +35,10 @@
               <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
               <div class="search-menu">
                 <!-- <div class="search-item">
-                  <a href="/search/?mode=2&keyword=1">搜“1”相关用户</a>
+                  <a href="/search_user/?mode=2&keyword=1">搜“1”相关用户</a>
                 </div>
                 <div class="search-item">
-                  <a href="/search/?mode=3&keyword=1">搜“1”相关菜单</a>
+                  <a href="/search_menu/?mode=3&keyword=1">搜“1”相关菜单</a>
                 </div> -->
               </div>
             </div>
@@ -119,7 +119,7 @@
     <div class="row">
       <!-- 查询结果 -->
       <div class="col-lg-8 col-md-7">
-        <form action="/search.html" method="get" class="cooker-search">
+        <form action="/search_user.html" method="get" class="cooker-search">
           <span>搜厨师:&nbsp;&nbsp;</span>
           <input type="hidden" name="mode" value="2">
           <input type="text" name="keyword" title="搜厨友" value="">
