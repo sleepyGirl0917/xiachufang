@@ -39,7 +39,6 @@ $(function () {
         var mode = data.mode;
 
         if (code == 400) {
-          // 没有keyword
           window.location.href = "/search.html";
         } else {
           if (mode == 1) {
