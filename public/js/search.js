@@ -64,6 +64,68 @@ $(function () {
         dataType: "json",
         success: function (data) {
           console.log(data)
+          var code = data.code;
+          var mode = data.mode;
+          
+          if (code == 400) {
+            // 没有keyword
+          } else {
+            if (mode == 1) {
+              var { menuItems, recipeItems } = data.data;
+              if (recipeItems.length > 0) {
+                $(".search-result-list .has-result").css("display", "block")
+                $(".has-result .serach-title").html(`${param.keyword}`);
+                var html = "";
+                for (var i = 0; i < recipeItems.length; i++) {
+                  var list = recipeItems[i];
+                  html += `<li>
+                    <div class="list-item-float clearfix">
+                      <a href="#" class="w-40 pr-3">
+                        <img src="${list.recipe_img}" alt="">
+                      </a>
+                      <div class="info w-60">
+                        <p class="name text-truncate"><a href="#">${list.recipe_title}</a></p>
+                        <p class="details text-truncate">${list.category}</p>
+                        <p class="stats text-truncate">
+                          综合评分&nbsp;<span class="score bold green-font">${list.score}</span>&nbsp;（<span class="bold score">${list.num_used}</span>&nbsp;做过）
+                        </p>
+                        <p class="author text-truncate">
+                          <a href="#" target="_blank">${list.uname}</a>
+                        </p>
+                      </div>
+                    </div>
+                  </li>`;
+                }
+                $(".search-result-recipe ul").html(html);
+                // 右侧
+                var html = "";
+                if (menuItems.length > 0) {
+                  for (var i = 0; i < menuItems.length; i++) {
+                    var list = menuItems[i];
+                    html += `<li>
+                      <a href="${list.menu_href}" class="text-center item-border d-block homemenu-link" title="${list.menu_title}">
+                        <img src="${list.cover_img}" alt="">
+                        <div class="menu-items-title text-truncate">${list.menu_title}</div>
+                      </a>
+                    </li>`;
+                  }
+                  $(".search-page .title").html("相关菜单");
+                  $(".search-page ul").html(html);
+                } else {
+                  $(".search-page .title").html("没有相关菜单");
+                }
+              } else {
+                $(".search-result-list .no-result").css("display", "block");
+                $(".search-page .menu-items").html("");
+              }
+            }
+            if (mode == 2) {
+              
+            }
+            if (mode == 3) {
+              
+            }
+          }
         }
       })
     }

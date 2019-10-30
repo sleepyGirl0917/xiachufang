@@ -891,3 +891,7 @@ ul img:hover{
 .search-result-menu{
   padding-right:40px;
 }
+
+.has-result,.no-result{
+  display: none;
+}
