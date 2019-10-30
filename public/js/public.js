@@ -81,31 +81,25 @@ $(function () {
       }
     })
     // 失去焦点时，仅隐藏下拉菜单
-    // 问题：blur事件会优先于click事件执行，导致click事件无效
-    // 解决：使用mousedown替换click使点击选择事件优先执行
     $("header input[type=text]").blur(function () {
       $(".search-menu").css("display", "none");
     })
-    // 搜索相关用户/菜单
+    // 搜索相关用户/菜单：a标签跳转
+    // 问题：下拉菜单无法点击
+    // 原因：blur事件会优先于click事件执行，导致click事件无效
+    // 解决：使用mousedown替换click使点击选择事件优先执行
     $("header .search-menu").on("mousedown","a", function () {
       window.location.href =$(this).attr("href");
     })
-    // 搜索相关菜谱
+    // 搜索相关菜谱：form提交
     $("header input[type=submit]").click(function () {
-      var input = $("header input[type=text]").val();
-      // 将隐藏域的值改为在后台获取
+      // 将隐藏域的值改为在后台获取，避免在浏览器篡改
       $("header input[type=hidden]").attr("value", "1");
-      // window.location.href = $(this).attr("href");
-      // window.location.href = `/search.html?mode=1&keyword=${input}`;
-      /* $.ajax({
-        url: "http://localhost:3000/search/",
-        type: "get",
-        data:{mode:1,keyword:input},
-        dataType: "json",
-        success: function (data) {
-          console.log(data)
-        }
-      }) */
+    })
+    // 用户搜索框：form提交
+    $(".cooker-search input[type=submit]").click(function () {
+      // 将隐藏域的值改为在后台获取，避免在浏览器篡改
+      $(".cooker-search input[type=hidden]").attr("value", "2");
     })
   })
 
