@@ -1,48 +1,48 @@
 $(function () {
-  /*   $.ajax({
-      url: "http://localhost:3000/index",
-      type: "get",
-      dataType: "json",
-      success: function (data) {
-        console.log(data);
-        var { carouselItems, risingItems, exploreItems, seasonItems, menuItems, userItems } = data;
-        
-        // 时令食材
-        var html = "";
-        
-        for (var i = 0; i < 8; i++) {
-          var _list = seasonItems[i];
-          var $li = $(`<li><a href="${_list.category_href}" class="head-link">${_list.fname}</a><span>${_list.score.toFixed(1)}</span></li>`);
-          $li.appendTo($("header .season"));
-        }
-        $(".seasonal-ingredients .season-bg ul").html(html);
-        
-        // 下厨房的厨友们
-        var html = "";
-        for (var i = 0; i < 8; i++) {
-          var list = userItems[i];
-          html += `<li>
-            <div class="cooker-container">
-              <div class="avatar">
-                <a href="${list.user_href}"><img src="${list.avatar}"></a>
-              </div>
-              <div class="detail">
-                <div class="text-truncate name"><a href="${list.user_href}" class="homemenu-link">${list.uname}</a></div>
-                <div class="stats">${list.num_concerned}&nbsp;关注</div>
-                <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
-              </div>
-              <div class="concern">
-                <a href="#" class="button">关注</a>
-              </div>
-            </div>
-          </li>`;
-        }
-        $(".cookers ul").html(html);
+  $.ajax({
+    url: "http://localhost:3000/index",
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      var { carouselItems, risingItems, exploreItems, seasonItems, menuItems, userItems } = data;
+      
+      // 时令食材
+      var html = "";
+      
+      for (var i = 0; i < 8; i++) {
+        var _list = seasonItems[i];
+        var $li = $(`<li><a href="${_list.category_href}" class="head-link">${_list.fname}</a><span>${_list.score.toFixed(1)}</span></li>`);
+        $li.appendTo($("header .season"));
       }
-    })
-    .then(function () {
-      getHeight($(".cookers img"), 1);
-    }) */
+      $(".seasonal-ingredients .season-bg ul").html(html);
+      
+      // 下厨房的厨友们
+      var html = "";
+      for (var i = 0; i < 8; i++) {
+        var list = userItems[i];
+        html += `<li>
+          <div class="cooker-container">
+            <div class="avatar">
+              <a href="${list.user_href}"><img src="${list.avatar}"></a>
+            </div>
+            <div class="detail">
+              <div class="text-truncate name"><a href="${list.user_href}" class="homemenu-link">${list.uname}</a></div>
+              <div class="stats">${list.num_concerned}&nbsp;关注</div>
+              <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
+            </div>
+            <div class="concern">
+              <a href="#" class="button">关注</a>
+            </div>
+          </div>
+        </li>`;
+      }
+      $(".cookers ul").html(html);
+    }
+  })
+  .then(function () {
+    getHeight($(".cookers img"), 1);
+  })
 
   $(function () {
     if (location.search !== "") {
@@ -80,7 +80,7 @@ $(function () {
                   var list = recipeItems[i];
                   html += `<li>
                     <div class="list-item-float clearfix">
-                      <a href="#" class="w-40 pr-3">
+                      <a href="#" class="w-40 pr-3" title="${list.recipe_title}">
                         <img src="${list.recipe_img}" alt="">
                       </a>
                       <div class="info w-60">
@@ -116,6 +116,7 @@ $(function () {
                 }
               } else {
                 $(".search-result-list .no-result").css("display", "block");
+                $(".no-result .jump-link").html(`创建一个“${param.keyword}”菜谱`);
                 $(".search-page .menu-items").html("");
               }
             }
@@ -168,6 +169,45 @@ $(function () {
             }
             if (mode == 3) {
               var { menuItems, popMenus } = data.data;
+              if (menuItems.length > 0) {
+                $(".search-result-menu .has-result").css("display", "block");
+                $(".search-result-list .title").html(`${param.keyword}`)
+                var html = "";
+                for (var i = 0; i < menuItems.length; i++){
+                  var list = menuItems[i];
+                  html += `<li>
+                    <div class="list-item-float clearfix item-border">
+                      <a href="${list.menu_href}" class="w-40 pr-3" title="${list.menu_title}">
+                        <img src="${list.cover_img}" alt="">
+                      </a>
+                      <div class="info w-60">
+                        <p class="name text-truncate"><a href="${list.menu_href}">${list.menu_title}</a></p>
+                        <div class="stats">
+                          <p class="time green-font">${list.num_contains}菜谱</p>
+                          <a href="${list.user_href}" class="gray-font author">${list.uname}</a>
+                          <span>&nbsp;创建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${list.num_collected}&nbsp;收藏</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>`;
+                }
+                $(".search-result-menu ul").html(html);
+                // 右侧
+                var html = "";
+                for (var i = 0; i < popMenus.length; i++){
+                  var list = popMenus[i];
+                  html += `<li>
+                    <a href="${list.menu_href}" class="text-center item-border d-block homemenu-link" title="${list.menu_title}">
+                      <img src="${list.cover_img}" alt="">
+                      <div class="menu-items-title text-truncate">${list.menu_title}</div>
+                    </a>
+                  </li>`;
+                }
+                $(".search-page ul").html(html);
+              } else {
+                $(".search-result-menu .no-result").css("display", "block");
+                $(".no-result .jump-link").html(`创建一个“${param.keyword}”菜单`);
+              }
             }
           }
         }

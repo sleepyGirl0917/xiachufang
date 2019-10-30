@@ -170,73 +170,45 @@
             </div>
           </div>
           <!-- 中：查询结果 -->
-          <div class="w-75 search-result-menu">
-            <!-- 查询结果：有 -->
+          <div class="w-75 search-result-menu">   
             <div class="search-result-list">
-              <h1 class="serach-title text-truncate">keyword</h1>
-              <ul class="list-unstyled list">
-                <li>
-                  <div class="list-item-float clearfix item-border">
-                    <a href="#" class="w-40 pr-3">
-                      <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                    </a>
-                    <div class="info w-60">
-                      <p class="name text-truncate"><a href="#">咸鸭蛋的3种腌法</a></p>
-                      <div class="stats">
-                        <p class="time green-font">17菜谱</p>
-                        <a href="#" class="gray-font author">手机用户9159_523c</a>
-                        <span>&nbsp;创建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;收藏</span>
+              <!-- 查询结果：有 -->
+              <div class="has-result">
+                <h1 class="serach-title text-truncate"></h1>
+                <ul class="list-unstyled list">
+                  <!-- <li>
+                    <div class="list-item-float clearfix item-border">
+                      <a href="#" class="w-40 pr-3">
+                        <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
+                      </a>
+                      <div class="info w-60">
+                        <p class="name text-truncate"><a href="#">咸鸭蛋的3种腌法</a></p>
+                        <div class="stats">
+                          <p class="time green-font">17菜谱</p>
+                          <a href="#" class="gray-font author">手机用户9159_523c</a>
+                          <span>&nbsp;创建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;收藏</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="list-item-float clearfix item-border">
-                    <a href="#" class="w-40 pr-3">
-                      <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                    </a>
-                    <div class="info w-60">
-                      <p class="name text-truncate"><a href="#">咸鸭蛋的3种腌法</a></p>
-                      <div class="stats">
-                        <p class="time green-font">17菜谱</p>
-                        <a href="#" class="gray-font author">手机用户9159_523c</a>
-                        <span>&nbsp;创建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;收藏</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="list-item-float clearfix item-border">
-                    <a href="#" class="w-40 pr-3">
-                      <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                    </a>
-                    <div class="info w-60">
-                      <p class="name text-truncate"><a href="#">咸鸭蛋的3种腌法</a></p>
-                      <div class="stats">
-                        <p class="time green-font">17菜谱</p>
-                        <a href="#" class="gray-font author">手机用户9159_523c</a>
-                        <span>&nbsp;创建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;收藏</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <div class="pager">
-                <span class="prev">上一页</span>
-                <span class="now">1</span>
-                <a href="/search/?keyword=3&cat=1001&page=2">2</a>
-                <a href="/search/?keyword=3&cat=1001&page=3">3</a>
-                <a href="/search/?keyword=3&cat=1001&page=4">4</a>
-                <a href="/search/?keyword=3&cat=1001&page=5">5</a>
-                ...
-                <a href="/search/?keyword=3&cat=1001&page=2" class="next">下一页</a>
+                  </li> -->
+                </ul>
+                <div class="pager">
+                  <span class="prev">上一页</span>
+                  <span class="now">1</span>
+                  <a href="/search/?keyword=3&cat=1001&page=2">2</a>
+                  <a href="/search/?keyword=3&cat=1001&page=3">3</a>
+                  <a href="/search/?keyword=3&cat=1001&page=4">4</a>
+                  <a href="/search/?keyword=3&cat=1001&page=5">5</a>
+                  ...
+                  <a href="/search/?keyword=3&cat=1001&page=2" class="next">下一页</a>
+                </div>
+              </div>
+              <!-- 查询结果：无 -->
+              <div class="no-result">
+                <p>下厨房没有这个菜谱......你可以</p>
+                <span>&gt;&gt;&nbsp;&nbsp;<a href="#" class="jump-link">创建一个“ ”菜单</a></span>
               </div>
             </div>
-            <!-- 查询结果：无 -->
-            <!-- <div class="search-result-list">
-              <p>下厨房没有这个菜谱......你可以</p>
-              <span>&gt;&gt;&nbsp;&nbsp;<a href="#" class="jump-link">创建一个“3”菜单</a></span>
-            </div> -->
           </div>
         </div>
       </div>
@@ -250,24 +222,12 @@
             <a href="#" class="head-link">全部</a>
           </div>
           <ul class="list-unstyled clearfix">
-            <li>
+            <!-- <li>
               <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
                 <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
                 <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
               </a>
-            </li>
-            <li>
-              <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
-                <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
-                <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
-                <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
-              </a>
-            </li>
+            </li> -->
           </ul>
         </div>
         <!-- 下载二维码 -->
