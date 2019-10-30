@@ -623,6 +623,9 @@ ul img:hover{
   }
 }
 /* 下厨房的厨友们 */
+.search-result-cookers{
+  display:none;
+}
 .cookers .cookers-list ul li{
   border-bottom: 1px solid #f3f3f3;
   padding-bottom:1rem;

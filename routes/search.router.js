@@ -78,7 +78,7 @@ router.get('/', (req, res) => {
       sql += " ORDER BY RAND() LIMIT 11";
       pool.query(sql, ["%" + key + "%", offset, pageSize], (err, result) => {
         if (err) throw err;
-        output.popmenus = result;
+        output.popMenus = result;
         res.send({ code:200,mode: 3, data: output });
       })
     })

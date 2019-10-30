@@ -120,10 +120,54 @@ $(function () {
               }
             }
             if (mode == 2) {
-              
+              var { userItems, popUsers } = data.data;
+              if (userItems.length > 0) {
+                $(".search-result-cookers").css("display", "block");
+                var html = "";
+                for (var i = 0; i < userItems.length; i++) {
+                  var list = userItems[i];
+                  html += `<li>
+                    <div class="cooker-container">
+                      <div class="avatar">
+                        <a href="${list.user_href}"><img src="${list.avatar}"></a>
+                      </div>
+                      <div class="detail">
+                        <div class="text-truncate name"><a href="${list.user_href}" class="homemenu-link">${list.uname}</a></div>
+                        <div class="stats">${list.num_concerned}&nbsp;关注</div>
+                        <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
+                      </div>
+                      <div class="concern">
+                        <a href="#" class="button">关注</a>
+                      </div>
+                    </div>
+                  </li>`;
+                }
+                $(".search-result-cookers ul").html(html);
+              }
+              // 右侧
+              var html = "";
+              for (var i = 0; i < popUsers.length; i++) {
+                var list = popUsers[i];
+                html += `<li>
+                    <div class="cooker-container">
+                      <div class="avatar">
+                        <a href="${list.user_href}"><img src="${list.avatar}"></a>
+                      </div>
+                      <div class="detail">
+                        <div class="text-truncate name"><a href="${list.user_href}" class="homemenu-link">${list.uname}</a></div>
+                        <div class="stats">${list.num_concerned}&nbsp;关注</div>
+                        <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
+                      </div>
+                      <div class="concern">
+                        <a href="#" class="button">关注</a>
+                      </div>
+                    </div>
+                  </li>`;
+              }
+              $(".search-cookers .cookers-list ul").html(html);
             }
             if (mode == 3) {
-              
+              var { menuItems, popMenus } = data.data;
             }
           }
         }

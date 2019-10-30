@@ -65,10 +65,10 @@ $(function () {
       // 搜索框的值
       var input = $("header input[type=text]").val();
       var html = `<div class="search-item">
-                  <a href="/search.html?mode=2&keyword=${input}">搜“${input}”相关用户</a>
+                  <a href="/search_user.html?mode=2&keyword=${input}">搜“${input}”相关用户</a>
                 </div>
                 <div class="search-item">
-                  <a href="/search.html?mode=3&keyword=${input}">搜“${input}”相关菜单</a>
+                  <a href="/search_menu.html?mode=3&keyword=${input}">搜“${input}”相关菜单</a>
                 </div>`;
       if (input) {
         // 搜索框有值时，显示下拉列表，内容和值绑定
