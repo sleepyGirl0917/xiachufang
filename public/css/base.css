@@ -707,31 +707,34 @@ ul img:hover{
   height: 140px;
 }
 .search-result .search-result-list .info{
-  padding:4px;
+  padding:12px;
 }
 .search-result .search-result-list .info p{
   margin:0;
 }
-.search-result .search-result-list .info p.name{
+.search-result .search-result-list .info .name{
   font-size: 20px;
   font-weight: 700;
   line-height: 1.4;
   padding-bottom: 5px;
 }
-.search-result .search-result-list .info p.name a{
+.search-result .search-result-list .info .name a{
   color:#222;
 }
-.search-result .search-result-list .info p.details{
+.search-result .search-result-list .info .details{
   color: #9c6730;
   font-size: 14px;
 }
-.search-result .search-result-list .info p.stats,.search-result .search-result-list .info p.author a{
+.search-result .search-result-list .info .stats,
+.search-result .search-result-list .info .author,
+.search-result .search-result-list .info .author a{
   color: #909090;
   font-size: 13px;
 }
-.search-result .search-result-list .info p.name a:hover,.search-result .search-result-list .info p.author a:hover{
+.search-result .search-result-list .info .name a:hover,.search-result .search-result-list .info a:hover{
   color:#dd3915;
 }
+/* .search-result .search-result-list */
 .bold {
   font-weight: 700;
 }
@@ -746,9 +749,11 @@ ul img:hover{
   margin-bottom: 40px;
 }
 /* 右侧：相关菜单 */
+.search-page .menu-items{
+  width:300px;
+}
 .search-page .menu-items ul li{
   margin-bottom: 28px;
-  width:300px;
 }
 .search-page .menu-items ul li img{
   object-fit: cover;
@@ -760,7 +765,7 @@ ul img:hover{
   font-size: 16px;
 }
 @media screen and (max-width:991px){
-  .search-page .menu-items ul li img{
+  .search-page .menu-items ul li img,.search-page .menu-items{
     width:100%;
   }
   .search-page .menu-items ul li:nth-child(odd){

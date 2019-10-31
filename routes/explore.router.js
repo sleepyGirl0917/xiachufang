@@ -6,6 +6,7 @@ var router = express.Router();
 var output = {};
 
 router.get('/', (req, res) => {
+  output.name = '本周最受欢迎';
   var page = req.query.page;
   var pageSize = req.query.pageSize;
   if (!page) {
@@ -16,8 +17,8 @@ router.get('/', (req, res) => {
   }
   var offset = (page - 1) * pageSize;
   pageSize = parseInt(pageSize);
-  // 中间：最近流行菜谱
-  var sql = "SELECT recipe_title,recipe_img,score,category,num_used,uname ";
+  // 中间：本周最受欢迎
+  var sql = "SELECT recipe_title,recipe_img,category,sevenday_used,uname ";
   sql += " FROM xiachufang_recipe a,xiachufang_search b, xiachufang_user c ";
   sql += " WHERE a.rid=b.recipe_id_search AND a.user_id=c.uid ";
   sql += " GROUP BY recipe_id_search ORDER BY COUNT(recipe_id_search) DESC LIMIT ?,?";
@@ -36,6 +37,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/head', (req, res) => {
+  output.name = '往期头条';
   var page = req.query.page;
   var pageSize = req.query.pageSize;
   if (!page) {
@@ -47,10 +49,10 @@ router.get('/head', (req, res) => {
   var offset = (page - 1) * pageSize;
   pageSize = parseInt(pageSize);
   // 中间：往期头条，分页
-  var sql = "SELECT recipe_title,recipe_img,score,category,num_used,uname ";
-  sql += " FROM xiachufang_recipe a,xiachufang_search b, xiachufang_user c ";
-  sql += " WHERE a.rid=b.recipe_id_search AND a.user_id=c.uid ";
-  sql += " GROUP BY recipe_id_search ORDER BY COUNT(recipe_id_search) DESC LIMIT ?,?";
+  var sql = "SELECT recipe_title,recipe_img,category,date_format(date_recommend,'%Y年%m月%d日') AS date ,uname ";
+  sql += " FROM xiachufang_recipe a,xiachufang_headline b, xiachufang_user c ";
+  sql += " WHERE a.rid=b.recipe_id AND a.user_id=c.uid ";
+  sql += " ORDER BY date_recommend DESC LIMIT ?,?";
   pool.query(sql, [offset, pageSize], (err, result) => {
     if (err) throw err;
     output.firstList = result;
@@ -66,6 +68,7 @@ router.get('/head', (req, res) => {
 })
 
 router.get('/rising', (req, res) => {
+  output.name = '新秀菜谱';
   var page = req.query.page;
   var pageSize = req.query.pageSize;
   if (!page) {
@@ -77,10 +80,10 @@ router.get('/rising', (req, res) => {
   var offset = (page - 1) * pageSize;
   pageSize = parseInt(pageSize);
   // 中间：新秀菜谱，分页
-  var sql = "SELECT recipe_title,recipe_img,score,category,num_used,uname ";
-  sql += " FROM xiachufang_recipe a,xiachufang_search b, xiachufang_user c ";
-  sql += " WHERE a.rid=b.recipe_id_search AND a.user_id=c.uid ";
-  sql += " GROUP BY recipe_id_search ORDER BY COUNT(recipe_id_search) DESC LIMIT ?,?";
+  var sql = " SELECT recipe_title,recipe_img,category,date_format(date_upload,'%Y年%m月%d日') AS date,num_used,uname ";
+  sql += " FROM xiachufang_recipe a,xiachufang_recipe_upload b, xiachufang_user c ";
+  sql += " WHERE a.rid=b.recipe_id AND a.user_id=c.uid ";
+  sql += " ORDER BY date_upload DESC LIMIT ?,?";
   pool.query(sql, [offset, pageSize], (err, result) => {
     if (err) throw err;
     output.firstList = result;
@@ -96,6 +99,7 @@ router.get('/rising', (req, res) => {
 })
 
 router.get('/popmenu', (req, res) => {
+  output.name = '流行菜单';
   var page = req.query.page;
   var pageSize = req.query.pageSize;
   if (!page) {
