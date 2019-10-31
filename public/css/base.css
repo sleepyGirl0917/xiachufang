@@ -389,7 +389,7 @@ ul img:hover{
   width:50%;
 }
 .rencent-pop ul li:nth-child(odd) .recipe-width{
-  margin-right:0.8rem;
+  margin-right:6px;
 }
 /*第偶数个li */
 .rencent-pop ul li:nth-child(even){
@@ -397,7 +397,7 @@ ul img:hover{
   width:50%;
 }
 .rencent-pop ul li:nth-child(even) .recipe-width{
-  margin-left: 0.8rem;
+  margin-left: 6px;
 }
 /* .rencent-pop ul li .font-recipe{
   font-size: 18px;
@@ -608,12 +608,12 @@ ul img:hover{
 @media screen and (min-width:300px) and (max-width:991px){
   .pop-menu ul li:nth-child(odd){
     float:left;
-    padding-right:5px;
+    padding-right:6px;
     width:50%;
   }
   .pop-menu ul li:nth-child(even){
     float:right;
-    padding-left:5px;
+    padding-left:6px;
     width:50%;
   }
 }
@@ -746,24 +746,35 @@ ul img:hover{
   margin-bottom: 40px;
 }
 /* 右侧：相关菜单 */
-.search-page .menu-items{
-  width:300px;
-}
 .search-page .menu-items ul li{
   margin-bottom: 28px;
+  width:300px;
 }
 .search-page .menu-items ul li img{
   object-fit: cover;
   width:300px;
-  height:140px;
+  /* height:140px; */
 }
 .search-page .menu-items ul li .menu-items-title{
   padding: 14px 10px;
   font-size: 16px;
 }
 @media screen and (max-width:991px){
-  .search-page .menu-items,.download{
-    padding-left:25%;
+  .search-page .menu-items ul li img{
+    width:100%;
+  }
+  .search-page .menu-items ul li:nth-child(odd){
+    float:left;
+    width:50%;
+    padding-right: 6px;
+  }
+  .search-page .menu-items ul li:nth-child(even){
+    float:right;
+    width:50%;
+    padding-left: 6px;
+  }
+  .search-page .download{
+    display: none;
   }
 }
 @media screen and (min-width:992px){
@@ -794,7 +805,6 @@ ul img:hover{
     font-size:14px;
   }
 }
-
 
 /* search_user.html */
 .cooker-search{

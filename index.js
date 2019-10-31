@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const userRouter = require('./routes/user.router');
 const indexRouter = require('./routes/index.router');
 const searchRouter = require('./routes/search.router');
+const exploreRouter = require('./routes/explore.router');
 
 // 创建web服务器
 var server = express();
@@ -43,4 +44,5 @@ server.get('/registe',(req,res)=>{
 // 将用户路由器挂载到/user
 server.use('/user', userRouter);
 server.use('/search', searchRouter);
+server.use('/explore', exploreRouter);
 server.use(indexRouter);

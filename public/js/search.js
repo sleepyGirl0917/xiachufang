@@ -16,6 +16,18 @@ $(function () {
     }
   })
 
+  // 宽高比例自适应
+  function getHeight($img, n = 0.6) {
+    // console.log($img)
+    var width = $img.width();
+    $img.css("height", width * n);
+    $(window).resize(function () {
+      width = $img.width();
+      $img.css("height", $img.width() * n);
+      // console.log('width：' + width + '，height：' + width * n)
+    })
+  }
+
   if (location.search !== "") {
     // 对编码的url进行解码，获取地址栏参数
     var str = decodeURI(location.search);
@@ -37,18 +49,17 @@ $(function () {
         console.log(data)
         var code = data.code;
         var mode = data.mode;
-
         if (code == 400) {
           window.location.href = "/search.html";
         } else {
+          var { firstList, secondList } = data.data;
           if (mode == 1) {
-            var { menuItems, recipeItems } = data.data;
-            if (recipeItems.length > 0) {
+            if (firstList.length > 0) {
               $(".search-result-list .has-result").css("display", "block")
               $(".has-result .search-title").html(`${param.keyword}`);
               var html = "";
-              for (var i = 0; i < recipeItems.length; i++) {
-                var list = recipeItems[i];
+              for (var i = 0; i < firstList.length; i++) {
+                var list = firstList[i];
                 html += `<li>
                     <div class="list-item-float clearfix">
                       <a href="#" class="w-40 pr-3" title="${list.recipe_title}">
@@ -70,9 +81,9 @@ $(function () {
               $(".search-result ul").html(html);
               // 右侧
               var html = "";
-              if (menuItems.length > 0) {
-                for (var i = 0; i < menuItems.length; i++) {
-                  var list = menuItems[i];
+              if (secondList.length > 0) {
+                for (var i = 0; i < secondList.length; i++) {
+                  var list = secondList[i];
                   html += `<li>
                       <a href="${list.menu_href}" class="text-center item-border d-block homemenu-link" title="${list.menu_title}">
                         <img src="${list.cover_img}" alt="">
@@ -92,12 +103,11 @@ $(function () {
             }
           }
           if (mode == 2) {
-            var { userItems, popUsers } = data.data;
-            if (userItems.length > 0) {
+            if (firstList.length > 0) {
               $(".search-result-cookers").css("display", "block");
               var html = "";
-              for (var i = 0; i < userItems.length; i++) {
-                var list = userItems[i];
+              for (var i = 0; i < firstList.length; i++) {
+                var list = firstList[i];
                 html += `<li>
                     <div class="cooker-container">
                       <div class="avatar">
@@ -118,8 +128,8 @@ $(function () {
             }
             // 右侧
             var html = "";
-            for (var i = 0; i < popUsers.length; i++) {
-              var list = popUsers[i];
+            for (var i = 0; i < secondList.length; i++) {
+              var list = secondList[i];
               html += `<li>
                     <div class="cooker-container">
                       <div class="avatar">
@@ -139,13 +149,12 @@ $(function () {
             $(".search-cookers .cookers-list ul").html(html);
           }
           if (mode == 3) {
-            var { menuItems, popMenus } = data.data;
-            if (menuItems.length > 0) {
+            if (firstList.length > 0) {
               $(".search-result .has-result").css("display", "block");
               $(".search-result-list .search-title").html(`${param.keyword}`)
               var html = "";
-              for (var i = 0; i < menuItems.length; i++) {
-                var list = menuItems[i];
+              for (var i = 0; i < firstList.length; i++) {
+                var list = firstList[i];
                 html += `<li>
                     <div class="list-item-float clearfix item-border">
                       <a href="${list.menu_href}" class="w-40 pr-3" title="${list.menu_title}">
@@ -165,8 +174,8 @@ $(function () {
               $(".search-result ul").html(html);
               // 右侧
               var html = "";
-              for (var i = 0; i < popMenus.length; i++) {
-                var list = popMenus[i];
+              for (var i = 0; i < secondList.length; i++) {
+                var list = secondList[i];
                 html += `<li>
                     <a href="${list.menu_href}" class="text-center item-border d-block homemenu-link" title="${list.menu_title}">
                       <img src="${list.cover_img}" alt="">
@@ -182,6 +191,9 @@ $(function () {
           }
         }
       }
+    })
+    .then(function () {
+      getHeight($(".search-page ul img"),0.47)
     })
   }
 
