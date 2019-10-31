@@ -670,8 +670,7 @@ ul img:hover{
   text-align: center;
 }
 
-/* search_recipe.html */
-/* 菜谱搜索 */
+/* search_recipe.html,search_menu.html */
 /* 左侧：导航 */
 .search-nav ul li:first-child:before {
     content: "";
@@ -687,47 +686,50 @@ ul img:hover{
   margin-bottom: 0.5rem;
 }
 /* 中间：搜索结果 */
-.search-result-recipe .list li{
+.search-result .list li{
   margin-bottom: 1.5rem;
 }
-.search-result-recipe .serach-title{
+.search-result .search-title{
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.8;
   margin-bottom: 1rem;
 }
-.search-result-recipe .search-result-list .list-item-float>*{
+.search-result .has-result,.search-result .no-result{
+  display: none;
+}
+.search-result .search-result-list .list-item-float>*{
   float: left;
   display: block;
 }
-.search-result-recipe .search-result-list img{
+.search-result .search-result-list img{
   width:100%;
   height: 140px;
 }
-.search-result-recipe .search-result-list .info{
+.search-result .search-result-list .info{
   padding:4px;
 }
-.search-result-recipe .search-result-list .info p{
+.search-result .search-result-list .info p{
   margin:0;
 }
-.search-result-recipe .search-result-list .info p.name{
+.search-result .search-result-list .info p.name{
   font-size: 20px;
   font-weight: 700;
   line-height: 1.4;
   padding-bottom: 5px;
 }
-.search-result-recipe .search-result-list .info p.name a{
+.search-result .search-result-list .info p.name a{
   color:#222;
 }
-.search-result-recipe .search-result-list .info p.details{
+.search-result .search-result-list .info p.details{
   color: #9c6730;
   font-size: 14px;
 }
-.search-result-recipe .search-result-list .info p.stats,.search-result-recipe .search-result-list .info p.author a{
+.search-result .search-result-list .info p.stats,.search-result .search-result-list .info p.author a{
   color: #909090;
   font-size: 13px;
 }
-.search-result-recipe .search-result-list .info p.name a:hover,.search-result-recipe .search-result-list .info p.author a:hover{
+.search-result .search-result-list .info p.name a:hover,.search-result .search-result-list .info p.author a:hover{
   color:#dd3915;
 }
 .bold {
@@ -744,9 +746,11 @@ ul img:hover{
   margin-bottom: 40px;
 }
 /* 右侧：相关菜单 */
+.search-page .menu-items{
+  width:300px;
+}
 .search-page .menu-items ul li{
   margin-bottom: 28px;
-  width:300px;
 }
 .search-page .menu-items ul li img{
   object-fit: cover;
@@ -791,8 +795,8 @@ ul img:hover{
   }
 }
 
+
 /* search_user.html */
-/* 用户搜索 */
 .cooker-search{
   padding:2rem;
   background-color: #f5f6f5;
@@ -818,92 +822,4 @@ ul img:hover{
     padding:0 2rem;
     margin-right: 20px;
   }
-}
-
-/* search_menu.html */
-/* 菜单搜索 */
-.search-result-menu.search-result-menu .list li{
-  margin-bottom: 1.5rem;
-}
-.search-result-menu .serach-title{
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-.search-result-menu .search-result-list .list-item-float>*{
-  float: left;
-  display: block;
-}
-.search-result-menu .search-result-list img{
-  width:100%;
-  height: 140px;
-}
-.search-result-menu .search-result-list .info{
-  padding:4px;
-}
-.search-result-menu .search-result-list .info p{
-  margin:0;
-}
-.search-result-menu .search-result-list .info p.name{
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.4;
-  padding-bottom: 5px;
-}
-.search-result-menu .search-result-list .info p.name a{
-  color:#222;
-}
-.search-result-menu .search-result-list .info p.details{
-  color: #9c6730;
-  font-size: 14px;
-}
-.search-result-menu .search-result-list .info p.stats,.search-result-menu .search-result-list .info p.author a{
-  color: #909090;
-  font-size: 13px;
-}
-.search-result-menu .search-result-list .info p.name a:hover,.search-result-menu .search-result-list .info p.author a:hover{
-  color:#dd3915;
-}
-.search-page .menu-items{
-  width:300px;
-}
-/* 搜索详情 */
-.search-result-menu .search-result-list .info{
-  padding:4px;
-}
-.search-result-menu .search-result-list .info p{
-  margin:0;
-}
-.search-result-menu .search-result-list .info p.name{
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.4;
-  padding-bottom: 5px;
-}
-.search-result-menu .search-result-list .info a{
-  color:#222;
-}
-.search-result-menu .search-result-list .info .stats{
-  color: #909090;
-  font-size: 14px;
-}
-.search-result-menu .search-result-list .info p.name a:hover,.search-result-menu .search-result-list .info a.author:hover{
-  color:#dd3915;
-}
-.search-result-menu{
-  padding-right:40px;
-}
-
-.has-result,.no-result{
-  display: none;
-}
-.search-result .search-title{
-  font-weight: 700;
-  font-size:34px;
-  padding:1rem 0;
-}
-.search-result div{
-  background: #f5f6f5;
-  padding:2rem;
 }

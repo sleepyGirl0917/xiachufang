@@ -13,148 +13,267 @@
   <link rel="stylesheet" href="./css/public.css">
   <link rel="stylesheet" href="./css/base.css">
   <script src="./js/public.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="./js/search.js"></script>
 </head>
 <body>
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-sm-3">
-            <a href="./index.html" class="logo">
-              <img src="./img/logo.png" class="img-fluid">
-            </a>
-          </div>
-          <div class="col-md-4 col-sm-9 p-0 d-flex align-items-center">
-            <form action="/search/" class="search w-100">
-              <div class="input-group mr-3" style="position: relative;">
-                <input type="text" placeholder="搜索菜谱、食材" name="keyword">
-                <!-- 隐藏域的value改为在后台获取，防止在浏览器篡改 -->
-                <input type="hidden" name="mode">
-                <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
-                <div class="search-menu">
-                  <!-- <div class="search-item">
-                      <a href="/search/?mode=2&keyword=1">搜“1”相关用户</a>
-                    </div>
-                    <div class="search-item">
-                      <a href="/search/?mode=3&keyword=1">搜“1”相关菜单</a>
-                    </div> -->
-                </div>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-3">
+          <a href="./index.html" class="logo">
+            <img src="./img/logo.png" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-9 p-0 d-flex align-items-center">
+          <form action="/search_recipe.html" class="search w-100">
+            <div class="input-group mr-3" style="position: relative;">
+              <input type="text" placeholder="搜索菜谱、食材" name="keyword">
+              <!-- 隐藏域的value改为在后台获取，防止在浏览器篡改 -->
+              <input type="hidden" name="mode" value="11">
+              <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
+              <div class="search-menu">
+                <!-- <div class="search-item">
+                    <a href="/search_user.html/?mode=2&keyword=1">搜“1”相关用户</a>
+                  </div>
+                  <div class="search-item">
+                    <a href="/search_menu.html/?mode=3&keyword=1">搜“1”相关菜单</a>
+                  </div> -->
               </div>
-            </form>
-          </div>
-          <div class="col-md-4 col-sm-6 p-0 d-flex align-items-center">
-            <ul class="list-unstyled m-0 d-flex head-ul">
-              <li class="pl-3">
-                <a href="#" class="head-link">首页</a>
-              </li>
-              <li class="pl-3">
-                <a href="#" class="head-link">菜谱分类</a>
-                <!-- 隐藏列表 -->
-                <div class="head-submenu" style="display: none;" data-list="submenu">
-                  <!-- 给内部div设置背景色，外部div设置padding，配合onmousemove事件 -->
-                  <div>
-                    <ul class="list-unstyled">
-                      <li class="gray-font">常用主题</li>
-                      <li><a href="#" class="head-link">家常菜</a></li>
-                      <li><a href="#" class="head-link">快手菜</a></li>
-                      <li><a href="#" class="head-link">下饭菜</a></li>
-                      <li><a href="#" class="head-link">早餐</a></li>
-                      <li><a href="#" class="head-link">减肥</a></li>
-                      <li><a href="#" class="head-link">汤羹</a></li>
-                      <li><a href="#" class="head-link">烘焙</a></li>
-                      <li><a href="#" class="head-link">小吃</a></li>
-                    </ul>
-                    <ul class="list-unstyled">
-                      <li class="gray-font">常见食材</li>
-                      <li><a href="#" class="head-link">猪肉</a></li>
-                      <li><a href="#" class="head-link">鸡肉</a></li>
-                      <li><a href="#" class="head-link">牛肉</a></li>
-                      <li><a href="#" class="head-link">鱼</a></li>
-                      <li><a href="#" class="head-link">鸡蛋</a></li>
-                      <li><a href="#" class="head-link">土豆</a></li>
-                      <li><a href="#" class="head-link">茄子</a></li>
-                      <li><a href="#" class="head-link">豆腐</a></li>
-                    </ul>
-                    <!-- 时令食材动态生成 -->
-                    <ul class="list-unstyled season">
-                      <li class="gray-font">时令食材</li>
-                      <!-- <li><a href="#" class="head-link">螃蟹</a><span>9.9</span></li>
-                        <li><a href="#" class="head-link">猪油</a><span>9.8</span></li>
-                        <li><a href="#" class="head-link">丝瓜</a><span>9.8</span></li>
-                        <li><a href="#" class="head-link">秋葵</a><span>9.5</span></li>
-                        <li><a href="#" class="head-link">鸡腿</a><span>7.9</span></li>
-                        <li><a href="#" class="head-link">无花果</a><span>7.9</span></li>
-                        <li><a href="#" class="head-link">鸭</a><span>7.5</span></li>
-                        <li><a href="#" class="head-link">冬瓜</a><span>7.5</span></li> -->
-                    </ul>
-                    <div class="head-submenu-bottom head-top-line">
-                      <a href="#" class="head-link">查看全部分类</a>
-                    </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4 col-sm-6 p-0 d-flex align-items-center">
+          <ul class="list-unstyled m-0 d-flex head-ul">
+            <li class="pl-3">
+              <a href="#" class="head-link">首页</a>
+            </li>
+            <li class="pl-3">
+              <a href="#" class="head-link">菜谱分类</a>
+              <!-- 隐藏列表 -->
+              <div class="head-submenu" style="display: none;" data-list="submenu">
+                <!-- 给内部div设置背景色，外部div设置padding，配合onmousemove事件 -->
+                <div>
+                  <ul class="list-unstyled">
+                    <li class="gray-font">常用主题</li>
+                    <li><a href="#" class="head-link">家常菜</a></li>
+                    <li><a href="#" class="head-link">快手菜</a></li>
+                    <li><a href="#" class="head-link">下饭菜</a></li>
+                    <li><a href="#" class="head-link">早餐</a></li>
+                    <li><a href="#" class="head-link">减肥</a></li>
+                    <li><a href="#" class="head-link">汤羹</a></li>
+                    <li><a href="#" class="head-link">烘焙</a></li>
+                    <li><a href="#" class="head-link">小吃</a></li>
+                  </ul>
+                  <ul class="list-unstyled">
+                    <li class="gray-font">常见食材</li>
+                    <li><a href="#" class="head-link">猪肉</a></li>
+                    <li><a href="#" class="head-link">鸡肉</a></li>
+                    <li><a href="#" class="head-link">牛肉</a></li>
+                    <li><a href="#" class="head-link">鱼</a></li>
+                    <li><a href="#" class="head-link">鸡蛋</a></li>
+                    <li><a href="#" class="head-link">土豆</a></li>
+                    <li><a href="#" class="head-link">茄子</a></li>
+                    <li><a href="#" class="head-link">豆腐</a></li>
+                  </ul>
+                  <!-- 时令食材动态生成 -->
+                  <ul class="list-unstyled season">
+                    <li class="gray-font">时令食材</li>
+                    <!-- <li><a href="#" class="head-link">螃蟹</a><span>9.9</span></li>
+                      <li><a href="#" class="head-link">猪油</a><span>9.8</span></li>
+                      <li><a href="#" class="head-link">丝瓜</a><span>9.8</span></li>
+                      <li><a href="#" class="head-link">秋葵</a><span>9.5</span></li>
+                      <li><a href="#" class="head-link">鸡腿</a><span>7.9</span></li>
+                      <li><a href="#" class="head-link">无花果</a><span>7.9</span></li>
+                      <li><a href="#" class="head-link">鸭</a><span>7.5</span></li>
+                      <li><a href="#" class="head-link">冬瓜</a><span>7.5</span></li> -->
+                  </ul>
+                  <div class="head-submenu-bottom head-top-line">
+                    <a href="#" class="head-link">查看全部分类</a>
                   </div>
                 </div>
-              </li>
-              <li class="pl-3">
-                <a href="#" class="head-link">菜单</a>
-              </li>
-              <li class="pl-3">
-                <a href="#" class="head-link">作品动态</a>
-              </li>
+              </div>
+            </li>
+            <li class="pl-3">
+              <a href="#" class="head-link">菜单</a>
+            </li>
+            <li class="pl-3">
+              <a href="#" class="head-link">作品动态</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 d-flex justify-content-end align-items-center">
+          <a href="./login.html" class="head-link ml-3">登录</a>
+          <a href="./registe.html" class="head-link ml-3">注册</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- 顶部广告位 -->
+  <div class="top-ad"></div>
+    
+  <div class="container">
+    <!-- 广告位 空-->
+    <div class="row">
+      <div class="col-lg-8 left-side">
+        <div class="menu-float clearfix">
+          <!-- 左：全部分类+流行搜索，两个ul -->
+          <div class="w-25 search-nav">
+            <ul class="list-unstyled list">
+              <li><a href="#" class="homemenu-link">全部分类</a></li>
+              <li><a href="#" class="homemenu-link">本周最受欢迎</a></li>
+              <li><a href="#" class="homemenu-link">新秀菜谱</a></li>
+              <li><a href="#" class="homemenu-link">往期头条</a></li>
+              <li><a href="#" class="homemenu-link">厨房101</a></li>
+              <li><a href="#" class="homemenu-link">月度最佳</a></li>
+              <li><a href="#" class="homemenu-link">最新创建</a></li>
+              <li><a href="#" class="homemenu-link">流行菜单</a></li>
             </ul>
+            <div class="mt-5">
+              <div class="mt-3 mb-3">
+                <h3 class="title">当前热门</h3>
+              </div>
+              <ul class="list-unstyled list">
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">板栗</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">虾</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">豆腐</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">红烧肉</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">鱼香肉丝</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">牛肉</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">可乐鸡翅</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">鸡胸肉</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">西兰花</span></a>
+                </li>
+                <li>
+                  <a href="#" class="homemenu-link"><span class="text-truncate">大闸蟹</span></a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-md-2 col-sm-6 d-flex justify-content-end align-items-center">
-            <a href="./login.html" class="head-link ml-3">登录</a>
-            <a href="./registe.html" class="head-link ml-3">注册</a>
+          <!-- 中：本周最受欢迎，分页 -->
+          <div class="w-75 search-result">
+            <div class="search-result-list">
+              <div class="has-result">
+                <h1 class="serach-title text-truncate"></h1>
+                <ul class="list-unstyled list">
+                  <!-- <li>
+                        <div class="list-item-float clearfix">
+                          <a href="#" class="w-40 pr-3">
+                            <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
+                          </a>
+                          <div class="info w-60">
+                            <p class="name text-truncate"><a href="#">咸鸭蛋的3种腌法</a></p>
+                            <p class="details text-truncate">新鲜鸭蛋、红土、凉开水、盐、高度白</p>
+                            <p class="stats text-truncate">
+                              综合评分&nbsp;<span class="score bold green-font">8.8</span>&nbsp;（<span class="bold score">61</span>&nbsp;做过）
+                            </p>
+                            <p class="author text-truncate">
+                              <a href="#" target="_blank">金粒籽</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li> -->
+                </ul>
+                <div class="pager">
+                  <span class="prev">上一页</span>
+                  <span class="now">1</span>
+                  <a href="/search/?keyword=3&cat=1001&page=2">2</a>
+                  <a href="/search/?keyword=3&cat=1001&page=3">3</a>
+                  <a href="/search/?keyword=3&cat=1001&page=4">4</a>
+                  <a href="/search/?keyword=3&cat=1001&page=5">5</a>
+                  ...
+                  <a href="/search/?keyword=3&cat=1001&page=2" class="next">下一页</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </header>
-
-    <!-- 顶部广告位 -->
-    <div class="top-ad"></div>
-    
-    <div class="container">
-<!-- 左：全部分类+流行搜索，两个ul -->
-<!-- 中：本周最受欢迎，分页 -->
-<!-- 右：流行菜单，每次刷新变化 -->
+      <!-- 右：流行菜单 -->
+      <div class="col-lg-4 right-side search-page">
+        <!-- 右侧广告位 -->
+        <div class="right-ad"></div>
+        <div class="menu-items">
+          <div class="mt-3 mb-3 d-flex align-items-center justify-content-between">
+            <h3 class="title">流行菜单</h3>
+            <a href="#" class="head-link">全部</a>
+          </div>
+          <ul class="list-unstyled clearfix">
+            <!-- <li>
+                    <a href="#" class="text-center item-border d-block homemenu-link" title="那些拿得出手的硬菜">
+                      <img src="./img/recipe/08c8968a88e311e6a9a10242ac110002_746w_560h.jpg" alt="">
+                      <div class="menu-items-title text-truncate">那些拿得出手的硬菜</div>
+                    </a>
+                  </li> -->
+          </ul>
+        </div>
+        <!-- 下载二维码 -->
+        <div class="mt-5 download">
+          <a href="#" target="_blank">
+            <img src="./img/download2.png" border="0">
+          </a>
+        </div>
+      </div>
     </div>
 
-    <footer class="container">
-        <div class="clearfix">
-          <div class="foot-div float-left">
-            <a href="#" class="foot-link">入驻下厨房市集</a>
-          </div>
-          <div class="foot-div float-left">
-            <a href="#">广告合作</a>
-          </div>
+
+
+  </div>
+
+  <footer class="container">
+      <div class="clearfix">
+        <div class="foot-div float-left">
+          <a href="#" class="foot-link">入驻下厨房市集</a>
         </div>
-      
-        <div class="row">
-          <div class="col-md-9">
-            <a href="#" title="美食生活杂志">美食生活杂志</a>&nbsp;
-            <a href="#" title="厨房工作">厨房工作</a>&nbsp;
-            <a href="#" title="社区指导原则">社区指导原则</a>&nbsp;
-            <a href="#" title="下厨房出版的书">下厨房出版的书</a>&nbsp;
-            <a href="#" title="帮助中心">帮助中心</a>&nbsp;
-            <a href="#" title="联系我们">联系我们</a>&nbsp;
-            <a href="#" title="意见反馈">意见反馈</a>&nbsp;
-            <a href="#" title="隐私政策">隐私政策</a>&nbsp;
-          </div>
-          <div class="col-md-3 text-right">
-            <img src="./img/sinaweibo.svg" title="微博">&nbsp;&nbsp;
-            <img src="./img/twitter.svg" title="twitter">
-          </div>
+        <div class="foot-div float-left">
+          <a href="#">广告合作</a>
         </div>
-      
-        <div class="row">
-          <div class="col-md-9">
-            Copyright&nbsp;&copy;&nbsp;xiachufang.com&nbsp;&nbsp;京B2-20180499&nbsp;&nbsp;京ICP备13009078号-1&nbsp;&nbsp;京公网安备11010802022310号<br>违法和不良信息举报电话：010-52800126&nbsp;举报邮箱：talk@xiachufang.com
-          </div>
-          <div class="col-md-3 text-right">唯有美食与爱不可辜负</div>
-        </div>
-    </footer>
+      </div>
     
-    <div id="toTop">
-        <img src="./img/scroll_top.png" alt="">
-    </div>
+      <div class="row">
+        <div class="col-md-9">
+          <a href="#" title="美食生活杂志">美食生活杂志</a>&nbsp;
+          <a href="#" title="厨房工作">厨房工作</a>&nbsp;
+          <a href="#" title="社区指导原则">社区指导原则</a>&nbsp;
+          <a href="#" title="下厨房出版的书">下厨房出版的书</a>&nbsp;
+          <a href="#" title="帮助中心">帮助中心</a>&nbsp;
+          <a href="#" title="联系我们">联系我们</a>&nbsp;
+          <a href="#" title="意见反馈">意见反馈</a>&nbsp;
+          <a href="#" title="隐私政策">隐私政策</a>&nbsp;
+        </div>
+        <div class="col-md-3 text-right">
+          <img src="./img/sinaweibo.svg" title="微博">&nbsp;&nbsp;
+          <img src="./img/twitter.svg" title="twitter">
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-9">
+          Copyright&nbsp;&copy;&nbsp;xiachufang.com&nbsp;&nbsp;京B2-20180499&nbsp;&nbsp;京ICP备13009078号-1&nbsp;&nbsp;京公网安备11010802022310号<br>违法和不良信息举报电话：010-52800126&nbsp;举报邮箱：talk@xiachufang.com
+        </div>
+        <div class="col-md-3 text-right">唯有美食与爱不可辜负</div>
+      </div>
+  </footer>
+  
+  <div id="toTop">
+    <img src="./img/scroll_top.png" alt="">
+  </div>
 </body>
 </html>

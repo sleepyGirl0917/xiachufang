@@ -4,7 +4,7 @@ $(function () {
     type: "get",
     dataType: "json",
     success: function (data) {
-      var {seasonItems} = data;
+      var { seasonItems } = data;
       // header:时令食材
       var html = "";
       for (var i = 0; i < 8; i++) {
@@ -15,7 +15,7 @@ $(function () {
       $(".seasonal-ingredients .season-bg ul").html(html);
     }
   })
-  
+
   if (location.search !== "") {
     // 对编码的url进行解码，获取地址栏参数
     var str = decodeURI(location.search);
@@ -45,7 +45,7 @@ $(function () {
             var { menuItems, recipeItems } = data.data;
             if (recipeItems.length > 0) {
               $(".search-result-list .has-result").css("display", "block")
-              $(".has-result .serach-title").html(`${param.keyword}`);
+              $(".has-result .search-title").html(`${param.keyword}`);
               var html = "";
               for (var i = 0; i < recipeItems.length; i++) {
                 var list = recipeItems[i];
@@ -67,7 +67,7 @@ $(function () {
                     </div>
                   </li>`;
               }
-              $(".search-result-recipe ul").html(html);
+              $(".search-result ul").html(html);
               // 右侧
               var html = "";
               if (menuItems.length > 0) {
@@ -141,8 +141,8 @@ $(function () {
           if (mode == 3) {
             var { menuItems, popMenus } = data.data;
             if (menuItems.length > 0) {
-              $(".search-result-menu .has-result").css("display", "block");
-              $(".search-result-list .title").html(`${param.keyword}`)
+              $(".search-result .has-result").css("display", "block");
+              $(".search-result-list .search-title").html(`${param.keyword}`)
               var html = "";
               for (var i = 0; i < menuItems.length; i++) {
                 var list = menuItems[i];
@@ -162,7 +162,7 @@ $(function () {
                     </div>
                   </li>`;
               }
-              $(".search-result-menu ul").html(html);
+              $(".search-result ul").html(html);
               // 右侧
               var html = "";
               for (var i = 0; i < popMenus.length; i++) {
@@ -176,7 +176,7 @@ $(function () {
               }
               $(".search-page ul").html(html);
             } else {
-              $(".search-result-menu .no-result").css("display", "block");
+              $(".search-result .no-result").css("display", "block");
               $(".no-result .jump-link").html(`创建一个“${param.keyword}”菜单`);
             }
           }
