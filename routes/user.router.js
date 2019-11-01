@@ -142,7 +142,18 @@ router.post('/login', (req, res) => {
   })
 })
 
-// 3、阿里云接口发送验证码
+// 3、用户列表
+router.get('/list', (req, res) => {
+  var sql = " SELECT * FROM xiachufang_user A , xiachufang_search B ";
+  sql += " WHERE A.uid = B.user_id_search GROUP BY user_id_search ";
+  sql += " ORDER BY COUNT(user_id_search) DESC LIMIT 16 ";
+  pool.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  })
+})
+
+// 4、阿里云接口发送验证码
 const SMSClient = require('@alicloud/sms-sdk');
 // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
 const accessKeyId = 'LTAI4Fo6Xjni9hY1XCWvyzpi';

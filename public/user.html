@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./css/public.css">
   <link rel="stylesheet" href="./css/base.css">
   <script src="./js/public.js"></script>
+  <script src="./js/user.js"></script>
   <script src="./js/search.js"></script>
 </head>
 
@@ -117,74 +118,42 @@
   <div class="container">
     <!-- 广告位 空-->
     <div class="row">
-      <!-- 查询结果 -->
-      <div class="col-lg-8 col-md-7">
-        <form action="/search_user.html" method="get" class="cooker-search">
-          <span>搜厨师:&nbsp;&nbsp;</span>
-          <input type="hidden" name="mode" value="2">
-          <input type="text" name="keyword" title="搜厨友" value="">
-          <input type="submit" value="搜厨友" class="button">
-        </form>
-        <div class="search-result-cookers cookers">
-          <div class="cookers-list">
-            <ul class="list-unstyled">
-              <!-- <li>
-                <div class="cooker-container">
-                  <div class="avatar">
-                    <a href="#"><img src="./img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg"></a>
-                  </div>
-                  <div class="detail">
-                    <div class="text-truncate name"><a href="#" class="homemenu-link">文文就是个吃货</a></div>
-                    <div class="stats">680&nbsp;关注</div>
-                    <div class="stats">56&nbsp;个菜谱&nbsp;3973&nbsp;个作品</div>
-                  </div>
-                  <div class="concern">
-                    <a href="#" class="button">关注</a>
-                  </div>
-                </div>
-              </li> -->
-            </ul>
-          </div>
-          <div class="pager">
-            <span class="prev">上一页</span>
-            <span class="now">1</span>
-            <a href="/search/?keyword=3&cat=1001&page=2">2</a>
-            <a href="/search/?keyword=3&cat=1001&page=3">3</a>
-            <a href="/search/?keyword=3&cat=1001&page=4">4</a>
-            <a href="/search/?keyword=3&cat=1001&page=5">5</a>
-            ...
-            <a href="/search/?keyword=3&cat=1001&page=2" class="next">下一页</a>
+      <!-- 左边：列表 -->
+      <div class="col-md-7">
+        <div class="block">
+          <div class="cookers">
+            <div class="title">下厨房的厨友们</div>
+            <div class="cookers-list">
+              <ul class="list-unstyled columns">
+                <!-- <li class="no-border">
+                          <div class="cooker-container">
+                            <div class="avatar">
+                              <a href="#"><img src="./img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg"></a>
+                            </div>
+                            <div class="detail">
+                              <div class="text-truncate name"><a href="#" class="homemenu-link">文文就是个吃货</a></div>
+                              <div class="stats">680&nbsp;关注</div>
+                              <div class="stats">56&nbsp;个菜谱&nbsp;3973&nbsp;个作品</div>
+                            </div>
+                            <div class="concern">
+                              <a href="#" class="button">关注</a>
+                            </div>
+                          </div>
+                        </li> -->
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <!-- 受欢迎的厨师 -->
-      <div class="col-lg-4 col-md-5">
-        <div class="cookers search-cookers">
-          <div class="mt30 mb30 d-flex align-items-center">
-            <h3 class="title">受欢迎的厨师</h3>
-          </div>
-          <div class="cookers-list">
-            <ul class="list-unstyled">
-              <!-- <li>
-                <div class="cooker-container">
-                  <div class="avatar">
-                    <a href="#"><img src="./img/avatar/17bd56df7a8a444b964066809df10a46_460w_460h.jpg"></a>
-                  </div>
-                  <div class="detail">
-                    <div class="text-truncate name"><a href="#" class="homemenu-link">文文就是个吃货</a></div>
-                    <div class="stats">680&nbsp;关注</div>
-                    <div class="stats">56&nbsp;个菜谱&nbsp;3973&nbsp;个作品</div>
-                  </div>
-                  <div class="concern">
-                    <a href="#" class="button">关注</a>
-                  </div>
-                </div>
-              </li> -->
-            </ul>
-            <div class="more">
-              <a href="#" class="head-link">查看更多</a>
-            </div>
-          </div>
+      <!-- 右边：搜索 -->
+      <div class="col-md-5">
+        <div class="block ml-3">
+          <div class="title">厨房里有 42310225 位厨友供你搜索</div>
+          <form action="/search_user.html" method="get">
+            <input type="hidden" name="mode" value="2">
+            <input type="text" name="keyword" title="搜厨友" placeholder="搜厨友" value="">
+            <input type="submit" value="搜厨友" class="button">
+          </form>
         </div>
       </div>
     </div>

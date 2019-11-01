@@ -104,7 +104,7 @@ $(function () {
           }
           if (mode == 2) {
             if (firstList.length > 0) {
-              $(".search-result-cookers").css("display", "block");
+              $(".search-result").css("display", "block");
               var html = "";
               for (var i = 0; i < firstList.length; i++) {
                 var list = firstList[i];
@@ -124,7 +124,7 @@ $(function () {
                     </div>
                   </li>`;
               }
-              $(".search-result-cookers ul").html(html);
+              $(".search-result ul").html(html);
             }
             // 右侧
             var html = "";
@@ -192,9 +192,9 @@ $(function () {
         }
       }
     })
-    .then(function () {
-      getHeight($(".search-page ul img"),0.47)
-    })
+      .then(function () {
+        getHeight($(".search-page ul img"), 0.47)
+      })
   }
 
 })

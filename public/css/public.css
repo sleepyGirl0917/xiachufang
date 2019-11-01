@@ -114,6 +114,9 @@ input.button,input.button:hover{
 .gray-font{
   color:#909090;
 }
+.no-border{
+  border:none !important;
+}
 .float_g>*{
   float:left;
   display: block;
