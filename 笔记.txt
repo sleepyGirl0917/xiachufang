@@ -11,6 +11,9 @@ LTAI4Fo6Xjni9hY1XCWvyzpi
 AccessKeySecret：
 0HmE4InzQuCAs2XRAGbIpGBxmX5ZVh
 
+手机号存在--注册时拒绝发验证码
+手机号不存在--登录时拒绝发验证码
+---滑动验证时发送请求，先判断手机号
 
 form.omsumbit
 // 先验证，验证通过后提交

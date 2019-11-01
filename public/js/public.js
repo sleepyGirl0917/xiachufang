@@ -103,5 +103,15 @@ $(function () {
     })
   })
 
+  /* $(".concern .button").click(function () {
+    $.ajax({
+      url: "http://localhost:3000/user/concern",
+      type: "get",
+      dataTyep: "json",
+      success: function (data) {
+        console.log(data)
+      }
+    })
+  }) */
 })
 

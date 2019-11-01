@@ -20,8 +20,8 @@ server.use(cors({
 // 使用 session 中间件
 server.use(session({
   secret: 'secret', // 对session id 相关的cookie 进行签名
-  resave: true,
-  saveUninitialized: false, // 是否保存未初始化的会话
+  resave: true,     // 每次请求是否都更新数据
+  saveUninitialized: true, // 初始化时是否保存数据
   cookie: {
     maxAge: 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
   },
@@ -32,17 +32,9 @@ server.use(express.static('public'));
 server.use(bodyParser.urlencoded({
   extended: false
 }));
-/* server.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
-});
-server.get('/login',(req,res)=>{
-  res.sendFile(__dirname + '/public/login.html')
-})
-server.get('/registe',(req,res)=>{
-  res.sendFile(__dirname + '/public/registe.html')
-}) */
 // 将用户路由器挂载到/user
 server.use('/user', userRouter);
 server.use('/search', searchRouter);
 server.use('/explore', exploreRouter);
 server.use(indexRouter);
+

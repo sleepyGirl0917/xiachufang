@@ -50,14 +50,14 @@ router.get('/', (req, res) => {
       })
     })
   } else if (mode == 2) {//查询用户
-    var sql = " SELECT uname,avatar,num_concerned,num_recipe,num_upload FROM xiachufang_user ";
+    var sql = " SELECT uid,uname,avatar,num_concerned,num_recipe,num_upload FROM xiachufang_user ";
     sql += " WHERE uname LIKE ?";
     sql += " LIMIT ?,?";
     pool.query(sql, ["%" + key + "%", offset, pageSize], (err, result) => {
       if (err) throw err;
       output.firstList = result;
       // 查询右边受欢迎的厨师（随机）
-      var sql = "SELECT uname,avatar,num_concerned,num_recipe,num_upload FROM xiachufang_user ";
+      var sql = "SELECT uid,uname,avatar,num_concerned,num_recipe,num_upload FROM xiachufang_user ";
       sql += " WHERE num_concerned>10000 ORDER BY RAND() LIMIT 5 ";
       pool.query(sql, [], (err, result) => {
         if (err) throw err;

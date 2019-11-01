@@ -186,6 +186,7 @@ $(function () {
       // dataType:"json",
       success:function(res){
         console.log('验证码发送成功，并接收到验证码' + res);
+        console.log(typeof (res));
       }
     })
     /* var xhr = new XMLHttpRequest();
@@ -328,9 +329,8 @@ $(function () {
       dataType:"json",
       success:function(res){
         console.log(res);
-        console.log(typeof(res));
         if(res.code == 200){
-          window.location.href = '/index.html';
+          // window.location.href = '/index.html';
         }else{
           $("form>.error").html(res.msg);
         }
