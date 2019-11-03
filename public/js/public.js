@@ -10,21 +10,20 @@ $(function () {
         $(this).find('[data-list=submenu]').css("display", "none");
       }  //mouseleave
     )
+    /* window.onload = function () {
+      var elems = document.querySelectorAll("[data-list=submenu]");
+      for (let elem of elems) {
+        let parent = elem.parentElement;
+        // 添加事件监听对象
+        parent.addEventListener("mouseover",function () {
+          elem.setAttribute("style","display:block;")
+        });
+        parent.addEventListener("mouseout",function () {
+          elem.setAttribute("style","display:none;")
+        });
+      }
+    } */
   })
-
-  /* window.onload = function () {
-    var elems = document.querySelectorAll("[data-list=submenu]");
-    for (let elem of elems) {
-      let parent = elem.parentElement;
-      // 添加事件监听对象
-      parent.addEventListener("mouseover",function () {
-        elem.setAttribute("style","display:block;")
-      });
-      parent.addEventListener("mouseout",function () {
-        elem.setAttribute("style","display:none;")
-      });
-    }
-  } */
 
   // JQ实现点击返回顶部（有动画过渡）
   $(function () {
@@ -39,25 +38,24 @@ $(function () {
     $("#toTop").click(function () {
       $('body,html').animate({ scrollTop: 0 }, 20);
     });
+    /* window.onscroll = function () {
+      // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
+      var scrollTop = document.body.scrollTop
+        || document.documentElement.scrollTop;
+      // console.log(scrollTop);
+      if (scrollTop >= 800)
+        toTop.style.display = "block";
+      else
+        toTop.style.display = "none";
+      }
+      
+      window.onload=function() {
+        var toTop = document.getElementById("toTop");
+        toTop.addEventListener("click", function () {
+          scrollTo(0, 0);
+        })
+      } */
   });
-
-  /* window.onscroll = function () {
-  // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
-  var scrollTop = document.body.scrollTop
-    || document.documentElement.scrollTop;
-  // console.log(scrollTop);
-  if (scrollTop >= 800)
-    toTop.style.display = "block";
-  else
-    toTop.style.display = "none";
-  }
-  
-  window.onload=function() {
-    var toTop = document.getElementById("toTop");
-    toTop.addEventListener("click", function () {
-      scrollTo(0, 0);
-    })
-  } */
 
   $(function () {
     // 为搜索框绑定oninput，onfocus
@@ -113,5 +111,35 @@ $(function () {
       }
     })
   }) */
+  
+  // 头部登录/推出
+  $.ajax({
+    url:"http:localhost:3000/user/islogin",
+    type:"get",
+    dataType:"json",
+    success:function(data){
+      console.log(data);
+      if(data.uname){
+        $('.login_info').html('<li>&nbsp;欢迎:'+result.uname+' <a href="logout.html" title="退出登录">退出</a><b>|</b></li><li><a href="uc_basic.html" title="用户中心">用户中心</a></li>');
+        $('[href="logout.html"]').click(function(e){
+          e.preventDefault();
+            $.ajax({
+                url: 'data/user/logout.php',
+                success: function(result){
+                    if(result.code===200){
+                        alertMsg('<h4>退出成功</h4>点击确定重新返回登录页面');
+                        $('#alertMsg').on('click', '#alertMsg_btn1 cite', function (e) {
+                            e.preventDefault();
+                            location.href = 'login.html';
+                        })
+                    }else {
+                        alertMsg('登录退出失败！原因：'+result.msg);
+                    }
+                }
+            })
+        });
+      }
+    }
+  })
 })
 

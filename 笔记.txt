@@ -632,3 +632,38 @@ app.get("/search",(req,res)=>{
   //5:发送sql
   //7:执行成功 {code:1,data:}
 });
+
+
+//判断是否登录
+router.get('/islogin',(req,res)=>{
+  res.writeHead(200)
+  //没登录
+  // if(req.session.uid===undefined){
+  //   res.write(JSON.stringify({
+  //     code:201
+  //   }))
+  //   res.end();
+  // }
+  //else{
+    pool.query('select * from user where uid=?',[req.session.uid],(err,result)=>{
+      if(err) console(err)
+      if(result.length>0){
+        res.write(JSON.stringify({
+          code:200,uname:result[0].uname
+        }))
+      }
+      else{
+        res.write(JSON.stringify({
+          code:201
+        }))
+      }
+      res.end();
+    })
+  //}
+})
+//注销
+router.get('/loginout',(req,res)=>{
+  res.writeHead(200)
+  req.session.uid=undefined;
+  res.end();
+})
