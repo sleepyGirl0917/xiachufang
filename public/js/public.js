@@ -71,45 +71,18 @@ $(function () {
       }
     }
   })
-
-  // 控制二级列表的显示/隐藏
-  $('[data-list=submenu]').parent().bind({
-    mouseenter:function() {
-      $(this).find('[data-list=submenu]').css("display", "block");
-    },
-    mouseleave: function () {
-      $(this).find('[data-list=submenu]').css("display", "none");
-    }
-  })
-
-/* window.onload = function () {
-  var elems = document.querySelectorAll("[data-list=submenu]");
-  for (let elem of elems) {
-    let parent = elem.parentElement;
-    // 添加事件监听对象
-    parent.addEventListener("mouseover",function () {
-      elem.setAttribute("style","display:block;")
-    });
-    parent.addEventListener("mouseout",function () {
-      elem.setAttribute("style","display:none;")
-    });
-  }
-}
-*/
   
   // JQ实现点击返回顶部（有动画过渡）
-  $(function () {
-    $(window).scroll(function () {
-      if ($(window).scrollTop() > 800) {
-        $("#toTop").fadeIn(500);
-      }
-      else {
-        $("#toTop").fadeOut(500);
-      }
-    });
-    $("#toTop").click(function () {
-      $('body,html').animate({ scrollTop: 0 }, 20);
-    });
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 800) {
+      $("#toTop").fadeIn(500);
+    }
+    else {
+      $("#toTop").fadeOut(500);
+    }
+  });
+  $("#toTop").click(function () {
+    $('body,html').animate({ scrollTop: 0 }, 20);
   });
 
   /* window.onscroll = function () {
@@ -130,7 +103,6 @@ $(function () {
       })
     } */
 
-  
   // 为搜索框绑定oninput，onfocus
   $("header input[type=text]").bind("input focus", () => {
     // 搜索框的值
@@ -172,7 +144,6 @@ $(function () {
     // 将隐藏域的值改为在后台获取，避免在浏览器篡改
     $(".cooker-search input[type=hidden]").attr("value", "2");
   })
-  
 
   /* $(".concern .button").click(function () {
     $.ajax({
@@ -187,3 +158,36 @@ $(function () {
 
 })
 
+
+
+// 问题：在js中使用 $(window).load(function(){…}) 报错
+// Uncaught TypeError: a.indexOf is not a function at r.fn.init.r.fn.load
+// 原因：jquery 的版本
+// 解决：用 on("load",...) 来侦听回调
+
+$(window).on("load",function(){
+  // 控制二级列表的显示/隐藏
+  $('[data-list=submenu]').parent().bind({
+    mouseenter:function() {
+      $(this).find('[data-list=submenu]').css("display", "block");
+    },
+    mouseleave: function () {
+      $(this).find('[data-list=submenu]').css("display", "none");
+    }
+  })
+})
+
+/* window.onload = function () {
+  var elems = document.querySelectorAll("[data-list=submenu]");
+  for (let elem of elems) {
+    let parent = elem.parentElement;
+    // 添加事件监听对象
+    parent.addEventListener("mouseover",function () {
+      elem.setAttribute("style","display:block;")
+    });
+    parent.addEventListener("mouseout",function () {
+      elem.setAttribute("style","display:none;")
+    });
+  }
+}
+*/
