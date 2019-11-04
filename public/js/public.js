@@ -112,8 +112,8 @@ $(function () {
     })
   }) */
   
-  // 头部登录/推出
-  $.ajax({
+  // 头部登录/退出
+  /* $.ajax({
     url:"http:localhost:3000/user/islogin",
     type:"get",
     dataType:"json",
@@ -140,6 +140,6 @@ $(function () {
         });
       }
     }
-  })
+  }) */
 })
 

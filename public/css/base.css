@@ -44,6 +44,7 @@
 .head-ul{
   position: relative;
 }
+/* 下拉列表的样式 */
 .head-submenu{
   position: absolute;
   text-align: center;
@@ -76,6 +77,47 @@
 .head-submenu-bottom{
   padding:0.5rem 0;
 }
+/* 登录成功后 */
+.user-nav{
+  position: relative;
+  border-right: 1px solid #4a4a49;
+}
+.user-collect{
+  display: block;
+  padding:0.5rem 0 0 1rem;
+}
+.user-nav .avatar{
+  display: block;
+  padding:0 1rem;
+}
+.user-nav .avatar img{
+  border-radius: 50%;
+  width:35px;
+  height:35px;
+}
+.user-nav .head-submenu{
+  position: absolute;
+  text-align: center;
+  width:120px;
+  top: 40px;
+  left: -20px;
+  padding:0;
+  z-index:30;
+  background: #fff;
+}
+.home-icon{
+  display: inline-block;
+  background: url(../img/icon-arrow.png) no-repeat;
+}
+.home-icon-collect{
+  background-position: -30px -240px;
+  width: 23px;
+  height: 30px;
+}
+.home-icon-collect:hover{
+  background-position: 0 -240px;
+}
+
 /* 搜索框 */
 header input[type=text]{
   display: block;
@@ -210,10 +252,6 @@ ul.homemenu li.homemenu-16 .home-ul-icon{
 }
 ul.homemenu li.homemenu-17 .home-ul-icon{
   background-position: 0 -680px;
-}
-.home-icon{
-  display: inline-block;
-  background: url(../img/icon-arrow.png) no-repeat;
 }
 .home-icon-arrow{
   position: absolute;
@@ -513,27 +551,49 @@ ul img:hover{
   width:100%;
 }
 /* 登录卡片 */
-.login-part{
-  padding: 4rem 2rem 2rem;
+.user-info{
+  position:relative;
   background:#f5f5f5;
   text-align: center;
-  position: relative;
+  height:260px;
+  padding:30px 10px;
   margin-bottom:30px;
+  line-height: 1.2;
 }
-.login-part .button{
-  background: #dd3915;
+.user-info .login{
+  font-size: 14px;
+}
+.user-info .login .button{
   display: block;
   color:#fff;
-  width:170px;
+  background: #dd3915;
+  width:150px;
   margin:5px auto;
   padding:10px 10px;
 }
-.login-part a{
-  font-size:14px;
+.user-info .login .no-login{
+  padding-top: 30px;
 }
-.login-part .report-link{
+.user-info .login .is-login .name {
+  font-size: 18px;
+  padding: 15px 5px 10px;
+}
+.user-info .login .is-login .stats {
+  font-size: 12px;
+  margin-top: 4px;
+}
+.user-info .login .is-login .action {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-size: 13px;
+  bottom: 40px;
+  left: 0;
+}
+.user-info .report-link{
   position: absolute;
   width:100%;
+  font-size: 14px;
   text-align: center;
   left:0;
   bottom:16px;
@@ -551,6 +611,11 @@ ul img:hover{
 }
 .login-icon-webo{
   background-position: 0 -30px;
+}
+.user-info .avatar img{
+  border-radius: 50%;
+  width:60px;
+  height:60px;
 }
 /* 流行搜索 */
 .home-icon-euqal{

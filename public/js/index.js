@@ -88,7 +88,7 @@ $(function () {
       }
       for (var i = 0; i < 8; i++) {
         var _list = seasonItems[i];
-        var $li = $(`<li><a href="${_list.category_href}" class="head-link">${_list.fname}</a><span>${_list.score.toFixed(1)}</span></li>`);
+        var $li = $(`<li><a href="${_list.category_href}" class="link">${_list.fname}</a><span>${_list.score.toFixed(1)}</span></li>`);
         $li.appendTo($("header .season"));
       }
       $(".seasonal-ingredients .season-bg ul").html(html);

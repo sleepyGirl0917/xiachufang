@@ -9,7 +9,7 @@ $(function () {
       var html = "";
       for (var i = 0; i < 8; i++) {
         var list = seasonItems[i];
-        var $li = $(`<li><a href="${list.category_href}" class="head-link">${list.fname}</a><span>${list.score.toFixed(1)}</span></li>`);
+        var $li = $(`<li><a href="${list.category_href}" class="link">${list.fname}</a><span>${list.score.toFixed(1)}</span></li>`);
         $li.appendTo($("header .season"));
       }
       $(".seasonal-ingredients .season-bg ul").html(html);
@@ -98,7 +98,7 @@ $(function () {
               }
             } else {
               $(".search-result-list .no-result").css("display", "block");
-              $(".no-result .jump-link").html(`创建一个“${param.keyword}”菜谱`);
+              $(".no-result .link").html(`创建一个“${param.keyword}”菜谱`);
               $(".search-page .menu-items").html("");
             }
           }
@@ -186,7 +186,7 @@ $(function () {
               $(".search-page ul").html(html);
             } else {
               $(".search-result .no-result").css("display", "block");
-              $(".no-result .jump-link").html(`创建一个“${param.keyword}”菜单`);
+              $(".no-result .link").html(`创建一个“${param.keyword}”菜单`);
             }
           }
         }
