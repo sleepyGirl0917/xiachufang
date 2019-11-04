@@ -78,7 +78,7 @@
   padding:0.5rem 0;
 }
 /* 登录成功后 */
-.user-nav{
+.user-avatar{
   position: relative;
   border-right: 1px solid #4a4a49;
 }
@@ -86,23 +86,30 @@
   display: block;
   padding:0.5rem 0 0 1rem;
 }
-.user-nav .avatar{
+.user-avatar .avatar{
   display: block;
-  padding:0 1rem;
+  padding:0 1rem 0 0;
 }
-.user-nav .avatar img{
+.user-avatar .avatar img{
   border-radius: 50%;
   width:35px;
   height:35px;
 }
-.user-nav .head-submenu{
+@media screen and (max-width:991px){
+  .user-avatar .avatar img{
+  border-radius: 50%;
+  width:30px;
+  height:30px;
+}
+}
+.user-avatar .head-submenu{
   position: absolute;
   text-align: center;
   width:120px;
   top: 40px;
-  left: -20px;
+  left: -35px;
   padding:0;
-  z-index:30;
+  z-index:20;
   background: #fff;
 }
 .home-icon{

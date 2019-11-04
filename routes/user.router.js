@@ -39,7 +39,7 @@ router.post('/registe', (req, res) => {
   var $code = obj.code;
   var code_valid = /^\d{6}$/;
   if (!$code) {
-    res.send({code: 405, msg: '验证码不能为空'});
+    res.send({ code: 405, msg: '验证码不能为空' });
     return;
   } else if (!code_valid.test($code)) {
     res.send({ code: 406, msg: '验证码格式错误' });
@@ -49,7 +49,7 @@ router.post('/registe', (req, res) => {
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
-      res.send({ code: 407, msg: '用户已存在'});
+      res.send({ code: 407, msg: '用户已存在' });
     } else {
       // 验证码是否正确
       if ($codeSend == $code && $PhoneNum == $tel) {
@@ -84,13 +84,13 @@ router.post('/login', (req, res) => {
   // 验证码
   var $code = obj.code;
   var code_valid = /^\d{6}$/;
-  if (!$code) {
+  /* if (!$code) {
     res.send({ code: 405, msg: '验证码不能为空' });
     return;
   } else if (!code_valid.test($code)) {
     res.send({ code: 406, msg: '验证码格式错误' });
     return;
-  }
+  } */
   // 执行SQL语句，查看手机号是否注册
   pool.query('SELECT * FROM xiachufang_user WHERE tel=?', [$tel], (err, result) => {
     if (err) throw err;
@@ -98,11 +98,20 @@ router.post('/login', (req, res) => {
       res.send({ code: 409, msg: '该手机尚未绑定' });
     } else {
       // 验证码是否正确
-      if ($codeSend == $code && $PhoneNum == $tel) {
+      /* if ($codeSend == $code && $PhoneNum == $tel) {
         //将用户登录凭证保存在服务器端 session对象中
         var id = result[0].uid;//获取当前用户id
         req.session.uid = id;//将用户id保存到session
-        console.log(req.session.uid);
+        console.log(req.session);
+        res.send({ code: 200, msg: '登录成功' });
+      } else {
+        res.send({ code: 410, msg: '登录失败' });
+      } */
+      if (true) {
+        //将用户登录凭证保存在服务器端 session对象中
+        var id = result[0].uid;//获取当前用户id
+        req.session.uid = id;//将用户id保存到session
+        console.log(req.session);
         res.send({ code: 200, msg: '登录成功' });
       } else {
         res.send({ code: 410, msg: '登录失败' });
@@ -124,7 +133,7 @@ router.get('/list', (req, res) => {
 
 // 4、用户退出
 router.get('/logout', (req, res) => {
-  req.session.uid = null; // 清空uid
+  req.session.destroy();
   res.send({ code: 200, msg: "已退出" });
 })
 
@@ -157,7 +166,7 @@ function sendCode(options) {
 router.post('/code', (req, res) => {
   var obj = req.body;
   $PhoneNum = obj.tel; // 把验证码对应的手机号存储到全局变量$PhoneNum
-  $codeSend = Math.random().toFixed(6).slice(-6)+""; // 随机生成6位验证码，为方便验证，$codeSend设为全局变量
+  $codeSend = Math.random().toFixed(6).slice(-6) + ""; // 随机生成6位验证码，为方便验证，$codeSend设为全局变量
   var time = 1000 * 60 * 5; //验证码有效时间
   sendCode({ PhoneNum: $PhoneNum, code: $codeSend }); // 发送验证码
   res.send($codeSend);   //向客户端返回发送的验证码
@@ -180,6 +189,23 @@ router.get('/concern', (req, res) => {
   var uid = req.session.uid;  //登录用户id
   var cooker_id = req.query.uid;  // 被关注的用户id
   res.send({ code: 1, msg: "关注成功" });
+})
+
+// 7、判断是否登录
+router.get("/islogin", (req, res) => {
+  console.log(req.session.uid);
+  res.writeHead(200);
+  if (req.session.uid === undefined) {
+    res.write(JSON.stringify({ code: -1, msg: "请登录" }));
+    res.end()
+  } else {
+    var sql = " SELECT * from xiachufang_user WHERE uid=? ";
+    pool.query(sql, [req.session.uid] ,(err, result) => {
+      if (err) throw err;
+      res.write(JSON.stringify({ code: 200, msg: result[0] }));
+      res.end()
+    })
+  }
 })
 
 // 导出路由

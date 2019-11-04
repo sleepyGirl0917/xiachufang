@@ -15,15 +15,15 @@ server.listen(3000, () =>{
 // 配置跨域
 server.use(cors({
   'credentials': true,
-  'origin': '*'
+  'origin': ['http://127.0.0.1:3000','http://localhost:3000'],
 }));
 // 使用 session 中间件
 server.use(session({
   secret: 'secret', // 对session id 相关的cookie 进行签名
-  resave: true,     // 每次请求是否都更新数据
-  saveUninitialized: true, // 初始化时是否保存数据
+  resave: false,     // 每次请求是否都重新设置session cookie
+  saveUninitialized: false, 
   cookie: {
-    maxAge: 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
+    maxAge: 1000 * 60 * 30, // 设置 session 的有效时间，单位毫秒
   },
 }));
 // 托管静态资源到public目录下

@@ -304,12 +304,12 @@ $(function () {
       return;
     }
     // 3、验证码格式
-    code_valid();
+    /* code_valid();
     if (!successCode) {
       // console.log('验证码格式错误');
       $("form>.error").html('验证码格式错误');
       return;
-    }
+    } */
     // 4、判断滑动验证
     if (!successDrag) {
       // console.log('没有进行滑动验证或验证失败');
@@ -320,17 +320,21 @@ $(function () {
     }
     // 5、向服务器发送登录请求
     $.ajax({
-      url:"http://localhost:3000/user/login",
+      url: "http://localhost:3000/user/login",
       type:"post",
       data:{
         tel:$("input.tel").val(),
         code:$("input.code").val(),
       },
-      dataType:"json",
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      dataType: "json",
       success:function(res){
         console.log(res);
-        if(res.code == 200){
-          // window.location.href = '/index.html';
+        if (res.code == 200) {
+          window.location.href = '/index.html';
         }else{
           $("form>.error").html(res.msg);
         }

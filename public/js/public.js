@@ -1,30 +1,29 @@
 $(function () {
   // 控制二级列表的显示/隐藏
-  $(function () {
-    var $submenu = $("[data-list=submenu]");
-    $submenu.parent().hover(
-      function () {
-        $(this).find('[data-list=submenu]').css("display", "block");
-      }, //mouseenter
-      function () {
-        $(this).find('[data-list=submenu]').css("display", "none");
-      }  //mouseleave
-    )
-    /* window.onload = function () {
-      var elems = document.querySelectorAll("[data-list=submenu]");
-      for (let elem of elems) {
-        let parent = elem.parentElement;
-        // 添加事件监听对象
-        parent.addEventListener("mouseover",function () {
-          elem.setAttribute("style","display:block;")
-        });
-        parent.addEventListener("mouseout",function () {
-          elem.setAttribute("style","display:none;")
-        });
-      }
-    } */
+  $('[data-list=submenu]').parent().bind({
+    mouseenter:function() {
+      $(this).find('[data-list=submenu]').css("display", "block");
+    },
+    mouseleave: function () {
+      $(this).find('[data-list=submenu]').css("display", "none");
+    }
   })
 
+/* window.onload = function () {
+  var elems = document.querySelectorAll("[data-list=submenu]");
+  for (let elem of elems) {
+    let parent = elem.parentElement;
+    // 添加事件监听对象
+    parent.addEventListener("mouseover",function () {
+      elem.setAttribute("style","display:block;")
+    });
+    parent.addEventListener("mouseout",function () {
+      elem.setAttribute("style","display:none;")
+    });
+  }
+}
+*/
+  
   // JQ实现点击返回顶部（有动画过渡）
   $(function () {
     $(window).scroll(function () {
@@ -38,6 +37,7 @@ $(function () {
     $("#toTop").click(function () {
       $('body,html').animate({ scrollTop: 0 }, 20);
     });
+    
     /* window.onscroll = function () {
       // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
       var scrollTop = document.body.scrollTop
@@ -86,8 +86,8 @@ $(function () {
     // 问题：下拉菜单无法点击
     // 原因：blur事件会优先于click事件执行，导致click事件无效
     // 解决：使用mousedown替换click使点击选择事件优先执行
-    $("header .search-menu").on("mousedown","a", function () {
-      window.location.href =$(this).attr("href");
+    $("header .search-menu").on("mousedown", "a", function () {
+      window.location.href = $(this).attr("href");
     })
     // 搜索相关菜谱：form提交
     $("header input[type=submit]").click(function () {
@@ -107,39 +107,57 @@ $(function () {
       type: "get",
       dataTyep: "json",
       success: function (data) {
-        console.log(data)
+        alert(data)
       }
     })
   }) */
-  
+
   // 头部登录/退出
-  /* $.ajax({
-    url:"http:localhost:3000/user/islogin",
-    type:"get",
-    dataType:"json",
-    success:function(data){
+  $.ajax({
+    url: "http://localhost:3000/user/islogin",
+    type: "get",
+    dataType: "json",
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
+    success: function (data) {
       console.log(data);
-      if(data.uname){
-        $('.login_info').html('<li>&nbsp;欢迎:'+result.uname+' <a href="logout.html" title="退出登录">退出</a><b>|</b></li><li><a href="uc_basic.html" title="用户中心">用户中心</a></li>');
-        $('[href="logout.html"]').click(function(e){
+      if (data.code == 200) {
+        var list = data.msg;
+        var html = `<div class="user-avatar">
+            <a href="${list.user_href}" class="avatar">
+              <img src="${list.avatar}" alt="">
+              <div class="head-submenu" style="display: none;" data-list="submenu">
+                <ul class="list-unstyled">
+                  <li><a href="#" class="link">我的厨房</a></li>
+                  <li><a href="#" class="link">我的菜单</a></li>
+                  <li><a href="#" class="link">账号设置</a></li>
+                  <li><a href="#" class="link">发现好友 </a></li>
+                  <li><a href="/logout.html" class="link">退出</a></li>
+                </ul>
+              </div>
+            </a>
+          </div>
+          <a href="#" class="user-collect">
+            <i class="home-icon home-icon-collect"></i>
+          </a>`;
+        $("header .user-action").html(html);
+        $('[href="/logout.html"]').click(function (e) {
           e.preventDefault();
-            $.ajax({
-                url: 'data/user/logout.php',
-                success: function(result){
-                    if(result.code===200){
-                        alertMsg('<h4>退出成功</h4>点击确定重新返回登录页面');
-                        $('#alertMsg').on('click', '#alertMsg_btn1 cite', function (e) {
-                            e.preventDefault();
-                            location.href = 'login.html';
-                        })
-                    }else {
-                        alertMsg('登录退出失败！原因：'+result.msg);
-                    }
-                }
-            })
+          $.ajax({
+            url: "http://localhost:3000/user/logout",
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+              if (data.code == 200) {
+                window.location.href = "/index.html"
+              }
+            }
+          })
         });
       }
     }
-  }) */
+  })
 })
 
