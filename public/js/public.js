@@ -125,6 +125,7 @@ $(function () {
       console.log(data);
       if (data.code == 200) {
         var list = data.msg;
+        // header .user-action
         var html = `<div class="user-avatar">
             <a href="${list.user_href}" class="avatar">
               <img src="${list.avatar}" alt="">
@@ -156,6 +157,30 @@ $(function () {
             }
           })
         });
+        // .user-info .login
+        var html=`<div class="is-login">
+            <div class="avatar">
+            <a href="${list.user_href}">
+                <img src="${list.avatar}" alt="">
+            </a>
+            </div>
+            <div class="name">
+            <a href="#" class="link">${list.uname}的厨房</a>
+            </div>
+            <div class="stats">
+            <a href="#" class="link">1 收藏</a>
+            &nbsp;|&nbsp;
+            <a href="#" class="link">${list.num_upload} 作品</a>
+            &nbsp;|&nbsp;
+            <a href="#" class="link">${list.num_recipe} 菜谱</a>
+            &nbsp;|&nbsp;
+            <a href="#" class="link">草稿箱</a>
+            </div>
+            <div class="action">
+            <a href="#" class="button">创建菜谱</a>
+            </div>
+        </div>`;
+        $(".user-info .login").html(html);
       }
     }
   })
