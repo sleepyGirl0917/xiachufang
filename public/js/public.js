@@ -149,19 +149,19 @@ $(window).on("load", function () {
       url: "http://localhost:3000/user/concern",
       type: "get",
       data: "cookerId=" + cookerId,
-      dataTyep: "json",
+      dataType: "json",
       xhrFields: {
         withCredentials: true
       },
       crossDomain: true,
-      success: function (data) {
-        console.log(data)
-        if (data.code == -1) {
-          alert(`<h3>请先登录！</h3>`);
-          setTimeout(() => {
+      success: function (result) {
+        alert(result)
+        if (result.code == -1) {
+          alert('请先登录！');
+          /* setTimeout(() => {
             window.location.href = "/login.html";
-          }, 3000)
-        } else if (data.code == 1) {
+          }, 3000) */
+        } else if (result.code == 1) {
           // $(`[data-user-id=${cookerId}]`).html("已关注").css("background", "#ccc7c2")
         } else {
           // $(`[data-user-id=${cookerId}]`).html("关注").css("background", "#dd3915")
