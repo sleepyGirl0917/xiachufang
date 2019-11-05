@@ -16,7 +16,8 @@ $(function () {
         var html = `<div class="user-avatar">
             <a href="${list.user_href}" class="avatar">
               <img src="${list.avatar}" alt="">
-              <div class="head-submenu" style="display: none;" data-list="submenu">
+            </a>
+            <div class="head-submenu" data-list="submenu">
                 <ul class="list-unstyled">
                   <li><a href="#" class="link">我的厨房</a></li>
                   <li><a href="#" class="link">我的菜单</a></li>
@@ -25,7 +26,6 @@ $(function () {
                   <li><a href="/logout.html" class="link">退出</a></li>
                 </ul>
               </div>
-            </a>
           </div>
           <a href="#" class="user-collect">
             <i class="home-icon home-icon-collect"></i>
@@ -37,6 +37,10 @@ $(function () {
             url: "http://localhost:3000/user/logout",
             type: "get",
             dataType: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
             success: function (data) {
               if (data.code == 200) {
                 window.location.href = "/index.html"
@@ -157,8 +161,6 @@ $(function () {
   }) */
 
 })
-
-
 
 // 问题：在js中使用 $(window).load(function(){…}) 报错
 // Uncaught TypeError: a.indexOf is not a function at r.fn.init.r.fn.load

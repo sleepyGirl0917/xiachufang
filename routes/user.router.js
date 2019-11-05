@@ -8,7 +8,47 @@ var $codeSend;
 var $PhoneNum;
 // 添加路由
 
-// 1、用户注册
+// 1、阿里云接口发送验证码
+const SMSClient = require('@alicloud/sms-sdk');
+// ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
+const accessKeyId = 'LTAI4Fo6Xjni9hY1XCWvyzpi';
+const secretAccessKey = '0HmE4InzQuCAs2XRAGbIpGBxmX5ZVh';
+
+//初始化sms_client
+let smsClient = new SMSClient({ accessKeyId, secretAccessKey })
+//发送短信
+function sendCode(options) {
+  smsClient.sendSMS({
+    PhoneNumbers: options.PhoneNum, //必填:待发送手机号，发送国际/港澳台消息时，接收号码格式为：国际区号+号码，如“85200000000”
+    SignName: 'Ali', //必填:短信签名-可在短信控制台中找到
+    TemplateCode: 'SMS_175536849', //必填:短信模板-可在短信控制台中找到，发送国际/港澳台消息时，请使用国际/港澳台短信模版
+    TemplateParam: '{code:' + options.code + '}' //可选:模板中的变量替换JSON串
+  }).then(function (res) {
+    let { Code } = res;
+    if (Code === 'OK') {
+      // 处理返回参数
+      // console.log(res);
+    }
+  }, function (err) {
+    // console.log(err)
+  })
+}
+
+router.post('/code', (req, res) => {
+  var obj = req.body;
+  $PhoneNum = obj.tel; // 把验证码对应的手机号存储到全局变量$PhoneNum
+  $codeSend = Math.random().toFixed(6).slice(-6) + ""; // 随机生成6位验证码，为方便验证，$codeSend设为全局变量
+  var time = 1000 * 60 * 5; //验证码有效时间
+  sendCode({ PhoneNum: $PhoneNum, code: $codeSend }); // 发送验证码
+  res.send($codeSend);   //向客户端返回发送的验证码
+  // 验证码5分钟后失效
+  setTimeout(function () {
+    $codeSend = null;
+    $PhoneNum = null;
+  }, time)
+})
+
+// 2、用户注册
 router.post('/registe', (req, res) => {
   // 获取post请求的数据
   var obj = req.body;
@@ -68,7 +108,7 @@ router.post('/registe', (req, res) => {
 
 })
 
-// 2、用户登录
+// 3、用户登录
 router.post('/login', (req, res) => {
   var obj = req.body;
   // 手机号
@@ -120,7 +160,7 @@ router.post('/login', (req, res) => {
   })
 })
 
-// 3、用户列表
+// 4、用户列表
 router.get('/list', (req, res) => {
   var sql = " SELECT * FROM xiachufang_user A , xiachufang_search B ";
   sql += " WHERE A.uid = B.user_id_search GROUP BY user_id_search ";
@@ -131,53 +171,7 @@ router.get('/list', (req, res) => {
   })
 })
 
-// 4、用户退出
-router.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.send({ code: 200, msg: "已退出" });
-})
-
-// 5、阿里云接口发送验证码
-const SMSClient = require('@alicloud/sms-sdk');
-// ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
-const accessKeyId = 'LTAI4Fo6Xjni9hY1XCWvyzpi';
-const secretAccessKey = '0HmE4InzQuCAs2XRAGbIpGBxmX5ZVh';
-
-//初始化sms_client
-let smsClient = new SMSClient({ accessKeyId, secretAccessKey })
-//发送短信
-function sendCode(options) {
-  smsClient.sendSMS({
-    PhoneNumbers: options.PhoneNum, //必填:待发送手机号，发送国际/港澳台消息时，接收号码格式为：国际区号+号码，如“85200000000”
-    SignName: 'Ali', //必填:短信签名-可在短信控制台中找到
-    TemplateCode: 'SMS_175536849', //必填:短信模板-可在短信控制台中找到，发送国际/港澳台消息时，请使用国际/港澳台短信模版
-    TemplateParam: '{code:' + options.code + '}' //可选:模板中的变量替换JSON串
-  }).then(function (res) {
-    let { Code } = res;
-    if (Code === 'OK') {
-      // 处理返回参数
-      // console.log(res);
-    }
-  }, function (err) {
-    // console.log(err)
-  })
-}
-
-router.post('/code', (req, res) => {
-  var obj = req.body;
-  $PhoneNum = obj.tel; // 把验证码对应的手机号存储到全局变量$PhoneNum
-  $codeSend = Math.random().toFixed(6).slice(-6) + ""; // 随机生成6位验证码，为方便验证，$codeSend设为全局变量
-  var time = 1000 * 60 * 5; //验证码有效时间
-  sendCode({ PhoneNum: $PhoneNum, code: $codeSend }); // 发送验证码
-  res.send($codeSend);   //向客户端返回发送的验证码
-  // 验证码5分钟后失效
-  setTimeout(function () {
-    $codeSend = null;
-    $PhoneNum = null;
-  }, time)
-})
-
-// 6、用户点击关注
+// 5、用户点击关注
 router.get('/concern', (req, res) => {
   // 判断用户是否登录成功
   // 如果session对象中uid不存在，原因:当前没有登录
@@ -191,7 +185,7 @@ router.get('/concern', (req, res) => {
   res.send({ code: 1, msg: "关注成功" });
 })
 
-// 7、判断是否登录
+// 6、判断是否登录
 router.get("/islogin", (req, res) => {
   console.log(req.session.uid);
   res.writeHead(200);
@@ -206,6 +200,12 @@ router.get("/islogin", (req, res) => {
       res.end()
     })
   }
+})
+
+// 4、用户退出
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.send({ code: 200, msg: "已退出" });
 })
 
 // 导出路由

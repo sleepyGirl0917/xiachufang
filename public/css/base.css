@@ -45,6 +45,9 @@
   position: relative;
 }
 /* 下拉列表的样式 */
+.head-submenu,.home-submenu{
+  display:none;
+}
 .head-submenu{
   position: absolute;
   text-align: center;
@@ -81,6 +84,7 @@
 .user-avatar{
   position: relative;
   border-right: 1px solid #4a4a49;
+  /* height:35px; */
 }
 .user-collect{
   display: block;
@@ -88,7 +92,7 @@
 }
 .user-avatar .avatar{
   display: block;
-  padding:0 1rem 0 0;
+  padding:0 1rem 0;
 
 }
 .user-avatar .avatar img{
@@ -97,9 +101,6 @@
   height:35px;
 }
 @media screen and (max-width:991px){
-  .user-avatar{
-    padding:5px 0;
-  }
   .user-avatar .avatar img{
     border-radius: 50%;
     width:30px;
@@ -111,7 +112,7 @@
   text-align: center;
   width:120px;
   top: 35px;
-  left: -35px;
+  left: -30px;
   padding:0;
   z-index:20;
   background: #fff;
@@ -280,6 +281,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   left:100%;
   padding: 1rem 2rem;
   z-index: 20;
+  display: none;
 }
 @media screen and (max-width:576px){
   .home-submenu{
