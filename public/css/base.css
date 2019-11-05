@@ -84,7 +84,6 @@
 .user-avatar{
   position: relative;
   border-right: 1px solid #4a4a49;
-  /* height:35px; */
 }
 .user-collect{
   display: block;
@@ -571,7 +570,6 @@ ul img:hover{
   height:260px;
   padding:30px 10px;
   margin-bottom:30px;
-  line-height: 1.2;
 }
 .user-info .login{
   font-size: 14px;
@@ -593,7 +591,6 @@ ul img:hover{
 }
 .user-info .login .is-login .stats {
   font-size: 12px;
-  margin-top: 4px;
 }
 .user-info .login .is-login .action {
   position: absolute;
@@ -609,7 +606,7 @@ ul img:hover{
   font-size: 14px;
   text-align: center;
   left:0;
-  bottom:16px;
+  bottom:12px;
 }
 .login-icon{
   display: inline-block;

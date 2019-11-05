@@ -19,15 +19,15 @@ $(function () {
             </a>
             <div class="head-submenu" data-list="submenu">
                 <ul class="list-unstyled">
-                  <li><a href="#" class="link">我的厨房</a></li>
-                  <li><a href="#" class="link">我的菜单</a></li>
-                  <li><a href="#" class="link">账号设置</a></li>
-                  <li><a href="#" class="link">发现好友 </a></li>
+                  <li><a href="javascript:;" class="link">我的厨房</a></li>
+                  <li><a href="javascript:;" class="link">我的菜单</a></li>
+                  <li><a href="javascript:;" class="link">账号设置</a></li>
+                  <li><a href="javascript:;" class="link">发现好友 </a></li>
                   <li><a href="/logout.html" class="link">退出</a></li>
                 </ul>
               </div>
           </div>
-          <a href="#" class="user-collect">
+          <a href="javascript:;" class="user-collect">
             <i class="home-icon home-icon-collect"></i>
           </a>`;
         $("header .user-action").html(html);
@@ -43,39 +43,50 @@ $(function () {
             crossDomain: true,
             success: function (data) {
               if (data.code == 200) {
-                window.location.href = "/index.html"
+                window.location.href = "/login.html"
               }
             }
           })
         });
         // .user-info .login
-        var html=`<div class="is-login">
+        var html = `<div class="is-login">
             <div class="avatar">
             <a href="${list.user_href}">
                 <img src="${list.avatar}" alt="">
             </a>
             </div>
             <div class="name">
-            <a href="#" class="link">${list.uname}的厨房</a>
+            <a href="javascript:;" class="link">${list.uname}的厨房</a>
             </div>
             <div class="stats">
-            <a href="#" class="link">1 收藏</a>
+            <a href="javascript:;" class="link">1 收藏</a>
             &nbsp;|&nbsp;
-            <a href="#" class="link">${list.num_upload} 作品</a>
+            <a href="javascript:;" class="link">${list.num_upload} 作品</a>
             &nbsp;|&nbsp;
-            <a href="#" class="link">${list.num_recipe} 菜谱</a>
+            <a href="javascript:;" class="link">${list.num_recipe} 菜谱</a>
             &nbsp;|&nbsp;
-            <a href="#" class="link">草稿箱</a>
+            <a href="javascript:;" class="link">草稿箱</a>
             </div>
             <div class="action">
-            <a href="#" class="button">创建菜谱</a>
+            <a href="javascript:;" class="button">创建菜谱</a>
             </div>
         </div>`;
         $(".user-info .login").html(html);
-      }
+      } 
     }
   })
-  
+    .then(function () {
+      // 控制二级列表的显示/隐藏
+      $('[data-list=submenu]').parent().bind({
+        mouseenter: function () {
+          $(this).find('[data-list=submenu]').css("display", "block");
+        },
+        mouseleave: function () {
+          $(this).find('[data-list=submenu]').css("display", "none");
+        }
+      })
+    })
+
   // JQ实现点击返回顶部（有动画过渡）
   $(window).scroll(function () {
     if ($(window).scrollTop() > 800) {
@@ -88,24 +99,6 @@ $(function () {
   $("#toTop").click(function () {
     $('body,html').animate({ scrollTop: 0 }, 20);
   });
-
-  /* window.onscroll = function () {
-    // 获得滚动过的距离——网页顶部超出文档显示区顶部的距离
-    var scrollTop = document.body.scrollTop
-      || document.documentElement.scrollTop;
-    // console.log(scrollTop);
-    if (scrollTop >= 800)
-      toTop.style.display = "block";
-    else
-      toTop.style.display = "none";
-    }
-    
-    window.onload=function() {
-      var toTop = document.getElementById("toTop");
-      toTop.addEventListener("click", function () {
-        scrollTo(0, 0);
-      })
-    } */
 
   // 为搜索框绑定oninput，onfocus
   $("header input[type=text]").bind("input focus", () => {
@@ -149,47 +142,35 @@ $(function () {
     $(".cooker-search input[type=hidden]").attr("value", "2");
   })
 
-  /* $(".concern .button").click(function () {
+})
+
+$(window).on("load", function () {
+  $(".concern .button").click(function (e) {
+    e.preventDefault();
+    var cookerId = $(this).attr("data-user-id");
     $.ajax({
       url: "http://localhost:3000/user/concern",
       type: "get",
+      data: "cookerId=" + cookerId,
       dataTyep: "json",
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
       success: function (data) {
-        alert(data)
+        if (data.code == -1) {
+          alert(`<h3>请先登录！</h3>`);
+          setTimeout(() => {
+            window.location.href = "/login.html";
+          }, 3000)
+        }else
+        if (data.code == 1) {
+          $(`[data-user-id=${cookerId}]`).html("取消关注").css({
+            background: "gray",
+            color:"#fff",
+          })
+        }
       }
     })
-  }) */
-
-})
-
-// 问题：在js中使用 $(window).load(function(){…}) 报错
-// Uncaught TypeError: a.indexOf is not a function at r.fn.init.r.fn.load
-// 原因：jquery 的版本
-// 解决：用 on("load",...) 来侦听回调
-
-$(window).on("load",function(){
-  // 控制二级列表的显示/隐藏
-  $('[data-list=submenu]').parent().bind({
-    mouseenter:function() {
-      $(this).find('[data-list=submenu]').css("display", "block");
-    },
-    mouseleave: function () {
-      $(this).find('[data-list=submenu]').css("display", "none");
-    }
   })
 })
-
-/* window.onload = function () {
-  var elems = document.querySelectorAll("[data-list=submenu]");
-  for (let elem of elems) {
-    let parent = elem.parentElement;
-    // 添加事件监听对象
-    parent.addEventListener("mouseover",function () {
-      elem.setAttribute("style","display:block;")
-    });
-    parent.addEventListener("mouseout",function () {
-      elem.setAttribute("style","display:none;")
-    });
-  }
-}
-*/

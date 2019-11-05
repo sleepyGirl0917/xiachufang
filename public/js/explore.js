@@ -53,17 +53,17 @@ $(function () {
             var list = firstList[i];
             html += `<li>
               <div class="list-item-float clearfix">
-                <a href="#" class="w-40 pr-3" title="${list.recipe_title}">
+                <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
                   <img src="${list.recipe_img}" alt="">
                 </a>
                 <div class="info w-60">
-                  <p class="name text-truncate"><a href="#">${list.recipe_title}</a></p>
+                  <p class="name text-truncate"><a href="javascript:;">${list.recipe_title}</a></p>
                   <p class="details text-truncate">${list.category}</p>
                   <p class="stats text-truncate">
                     <span class="green-font font16">${list.date}&nbsp;头条推荐</span>
                   </p>
                   <p class="author text-truncate">
-                    <a href="#" target="_blank">${list.uname}</a>
+                    <a href="javascript:;" target="_blank">${list.uname}</a>
                   </p>
                 </div>
               </div>
@@ -105,17 +105,17 @@ $(function () {
             var list = firstList[i];
             html += `<li>
               <div class="list-item-float clearfix">
-                <a href="#" class="w-40 pr-3" title="${list.recipe_title}">
+                <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
                   <img src="${list.recipe_img}" alt="">
                 </a>
                 <div class="info w-60">
-                  <p class="name text-truncate"><a href="#">${list.recipe_title}</a></p>
+                  <p class="name text-truncate"><a href="javascript:;">${list.recipe_title}</a></p>
                   <p class="details text-truncate">${list.category}</p>
                   <p class="stats text-truncate">
                     <span class="green-font font16">${list.date}&nbsp;第${list.num_used}人做过</span>
                   </p>
                   <p class="author text-truncate">
-                    <a href="#" target="_blank">${list.uname}</a>
+                    <a href="javascript:;" target="_blank">${list.uname}</a>
                   </p>
                 </div>
               </div>
@@ -209,17 +209,17 @@ $(function () {
           var list = firstList[i];
           html += `<li>
               <div class="list-item-float clearfix">
-                <a href="#" class="w-40 pr-3" title="${list.recipe_title}">
+                <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
                   <img src="${list.recipe_img}" alt="">
                 </a>
                 <div class="info w-60">
-                  <p class="name text-truncate"><a href="#">${list.recipe_title}</a></p>
+                  <p class="name text-truncate"><a href="javascript:;">${list.recipe_title}</a></p>
                   <p class="details text-truncate">${list.category}</p>
                   <p class="stats text-truncate">
                     7天内&nbsp;<span class="bold">${list.sevenday_used}</span>&nbsp;人做过
                   </p>
                   <p class="author text-truncate">
-                    <a href="#" target="_blank">${list.uname}</a>
+                    <a href="javascript:;" target="_blank">${list.uname}</a>
                   </p>
                 </div>
               </div>

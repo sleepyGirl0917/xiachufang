@@ -20,12 +20,12 @@ $(function () {
                   <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
                 </div>
                 <div class="concern">
-                  <a href="#" class="button">关注</a>
+                  <a href="javascript:;" class="button"  data-user-id="${list.uid}">关注</a>
                 </div>
               </div>
             </li>`;
       }
       $(".cookers ul").html(html);
     }
-  }) 
+  })
 })

@@ -174,15 +174,45 @@ router.get('/list', (req, res) => {
 // 5、用户点击关注
 router.get('/concern', (req, res) => {
   // 判断用户是否登录成功
-  // 如果session对象中uid不存在，原因:当前没有登录
+  res.writeHead(200);
   if (!req.session.uid) {
-    res.send({ code: -1, msg: "请登录" });
+    res.write(JSON.stringify({ code: -1, msg: "请登录" }));
+    res.end();
     return;
   }
   // 获取参数
   var uid = req.session.uid;  //登录用户id
-  var cooker_id = req.query.uid;  // 被关注的用户id
-  res.send({ code: 1, msg: "关注成功" });
+  var cookerId = parseInt(req.query.cookerId);  // 被关注的用户id
+  console.log(req.url)
+  // 查询用户关注表
+  var sql = "SELECT ? from xiachufang_user_concern WHERE user_id=?";
+  pool.query(sql, [cookerId, uid], (err, result) => {
+    if (err) throw err;
+    if (result.length == 0) {// 之前没有关注
+      var sql = ` INSERT INTO xiachufang_user_concern VALUES (NULL,${uid},${cookerId}); `;
+      sql += ` UPDATE xiachufang_user SET num_concern=num_concern+1 WHERE uid=${uid}; `;
+      sql += ` UPDATE xiachufang_user SET num_concerned=num_concerned+1 WHERE uid=${cookerId}; `
+      pool.query(sql, (err, result) => {
+        if (err) throw err;
+        if (result.affectedRows > 0) {
+          res.write(JSON.stringify({ code: 1, msg: "关注成功" }));
+          res.end();
+        }
+      })
+    } else {// 之前已经关注--取消关注
+      var sql = ` DELETE FROM xiachufang_user_concern WHERE user_id=${uid} AND user_concern_id=${cookerId};`;
+      sql += ` UPDATE xiachufang_user SET num_concern=num_concern-1 WHERE uid=${uid}; `;
+      sql += ` UPDATE xiachufang_user SET num_concerned=num_concerned-1 WHERE uid=${cookerId}; `
+      pool.query(sql, (err, result) => {
+        if (err) throw err;
+        if (result.affectedRows > 0) {
+          res.write(JSON.stringify({ code: 2, msg: "取消关注成功" }));
+          res.end();
+        }
+      })
+    }
+  })
+  
 })
 
 // 6、判断是否登录

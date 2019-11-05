@@ -62,17 +62,17 @@ $(function () {
                 var list = firstList[i];
                 html += `<li>
                     <div class="list-item-float clearfix">
-                      <a href="#" class="w-40 pr-3" title="${list.recipe_title}">
+                      <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
                         <img src="${list.recipe_img}" alt="">
                       </a>
                       <div class="info w-60">
-                        <p class="name text-truncate"><a href="#">${list.recipe_title}</a></p>
+                        <p class="name text-truncate"><a href="javascript:;">${list.recipe_title}</a></p>
                         <p class="details text-truncate">${list.category}</p>
                         <p class="stats text-truncate">
                           综合评分&nbsp;<span class="score bold green-font">${list.score}</span>&nbsp;（<span class="bold score">${list.num_used}</span>&nbsp;做过）
                         </p>
                         <p class="author text-truncate">
-                          <a href="#" target="_blank">${list.uname}</a>
+                          <a href="javascript:;" target="_blank">${list.uname}</a>
                         </p>
                       </div>
                     </div>
@@ -119,7 +119,7 @@ $(function () {
                         <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
                       </div>
                       <div class="concern">
-                        <a href="#" class="button">关注</a>
+                        <a href="javascript:;" class="button" data-user-id="${list.uid}">关注</a>
                       </div>
                     </div>
                   </li>`;
@@ -141,7 +141,7 @@ $(function () {
                         <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
                       </div>
                       <div class="concern">
-                        <a href="#" class="button">关注</a>
+                        <a href="javascript:;" class="button"  data-user-id="${list.uid}">关注</a>
                       </div>
                     </div>
                   </li>`;
