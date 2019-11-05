@@ -24,20 +24,20 @@
             <img src="./img/logo.png" class="img-fluid">
           </a>
         </div>
-        <div class="col-md-4 col-sm-9 p-0 d-flex align-items-center">
+        <div class="col-md-4 col-sm-9 pl-0 d-flex align-items-center">
           <form action="/search_recipe.html" class="search w-100">
             <div class="input-group mr-3" style="position: relative;">
               <input type="text" placeholder="搜索菜谱、食材" name="keyword">
               <!-- 隐藏域的value改为在后台获取，防止在浏览器篡改 -->
-              <input type="hidden" name="mode" value="1">
+              <input type="hidden" name="mode" value="11">
               <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
               <div class="search-menu">
                 <!-- <div class="search-item">
-                  <a href="/search_user/?mode=2&keyword=1">搜“1”相关用户</a>
-                </div>
-                <div class="search-item">
-                  <a href="/search_menu/?mode=3&keyword=1">搜“1”相关菜单</a>
-                </div> -->
+                    <a href="/search_user.html/?mode=2&keyword=1">搜“1”相关用户</a>
+                  </div>
+                  <div class="search-item">
+                    <a href="/search_menu.html/?mode=3&keyword=1">搜“1”相关菜单</a>
+                  </div> -->
               </div>
             </div>
           </form>
@@ -50,7 +50,7 @@
             <li class="pl-3">
               <a href="javascript:;" class="link">菜谱分类</a>
               <!-- 隐藏列表 -->
-              <div class="head-submenu" style="display: none;" data-list="submenu">
+              <div class="head-submenu" data-list="submenu">
                 <!-- 给内部div设置背景色，外部div设置padding，配合onmousemove事件 -->
                 <div>
                   <ul class="list-unstyled">
@@ -79,13 +79,13 @@
                   <ul class="list-unstyled season">
                     <li class="gray-font">时令食材</li>
                     <!-- <li><a href="javascript:;" class="link">螃蟹</a><span>9.9</span></li>
-                    <li><a href="javascript:;" class="link">猪油</a><span>9.8</span></li>
-                    <li><a href="javascript:;" class="link">丝瓜</a><span>9.8</span></li>
-                    <li><a href="javascript:;" class="link">秋葵</a><span>9.5</span></li>
-                    <li><a href="javascript:;" class="link">鸡腿</a><span>7.9</span></li>
-                    <li><a href="javascript:;" class="link">无花果</a><span>7.9</span></li>
-                    <li><a href="javascript:;" class="link">鸭</a><span>7.5</span></li>
-                    <li><a href="javascript:;" class="link">冬瓜</a><span>7.5</span></li> -->
+                      <li><a href="javascript:;" class="link">猪油</a><span>9.8</span></li>
+                      <li><a href="javascript:;" class="link">丝瓜</a><span>9.8</span></li>
+                      <li><a href="javascript:;" class="link">秋葵</a><span>9.5</span></li>
+                      <li><a href="javascript:;" class="link">鸡腿</a><span>7.9</span></li>
+                      <li><a href="javascript:;" class="link">无花果</a><span>7.9</span></li>
+                      <li><a href="javascript:;" class="link">鸭</a><span>7.5</span></li>
+                      <li><a href="javascript:;" class="link">冬瓜</a><span>7.5</span></li> -->
                   </ul>
                   <div class="head-submenu-bottom head-top-line">
                     <a href="javascript:;" class="link">查看全部分类</a>
@@ -101,9 +101,26 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-2 col-sm-6 d-flex justify-content-end align-items-center">
+        <div class="user-action col-md-2 col-sm-6 d-flex justify-content-end align-items-center">
           <a href="./login.html" class="link ml-3">登录</a>
           <a href="./registe.html" class="link ml-3">注册</a>
+          <!-- <div class="user-avatar">
+              <a href="javascript:;" class="avatar">
+                <img src="./img/avatar/default.png" alt="">
+              </a>
+              <div class="head-submenu" data-list="submenu">
+                <ul class="list-unstyled">
+                  <li><a href="javascript:;" class="link">我的厨房</a></li>
+                  <li><a href="javascript:;" class="link">我的菜单</a></li>
+                  <li><a href="javascript:;" class="link">账号设置</a></li>
+                  <li><a href="javascript:;" class="link">发现好友 </a></li>
+                  <li><a href="javascript:;" class="link">退出</a></li>
+                </ul>
+              </div>
+            </div>
+            <a href="javascript:;" class="user-collect">
+              <i class="home-icon home-icon-collect"></i>
+            </a> -->
         </div>
       </div>
     </div>

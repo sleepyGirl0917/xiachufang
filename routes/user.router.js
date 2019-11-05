@@ -175,20 +175,21 @@ router.get('/list', (req, res) => {
 router.get('/concern', (req, res) => {
   // 判断用户是否登录成功
   res.writeHead(200);
+  console.log('concern')
   if (!req.session.uid) {
     res.write(JSON.stringify({ code: -1, msg: "请登录" }));
     res.end();
     return;
   }
   // 获取参数
-  var uid = req.session.uid;  //登录用户id
+  var uid = req.session.uid;  // 登录用户id
   var cookerId = parseInt(req.query.cookerId);  // 被关注的用户id
   console.log(req.url)
   // 查询用户关注表
   var sql = "SELECT ? from xiachufang_user_concern WHERE user_id=?";
   pool.query(sql, [cookerId, uid], (err, result) => {
     if (err) throw err;
-    if (result.length == 0) {// 之前没有关注
+    if (result.length == 0) {// 之前没有关注 --> 关注
       var sql = ` INSERT INTO xiachufang_user_concern VALUES (NULL,${uid},${cookerId}); `;
       sql += ` UPDATE xiachufang_user SET num_concern=num_concern+1 WHERE uid=${uid}; `;
       sql += ` UPDATE xiachufang_user SET num_concerned=num_concerned+1 WHERE uid=${cookerId}; `
@@ -199,7 +200,7 @@ router.get('/concern', (req, res) => {
           res.end();
         }
       })
-    } else {// 之前已经关注--取消关注
+    } else {// 之前已经关注 --> 取消关注
       var sql = ` DELETE FROM xiachufang_user_concern WHERE user_id=${uid} AND user_concern_id=${cookerId};`;
       sql += ` UPDATE xiachufang_user SET num_concern=num_concern-1 WHERE uid=${uid}; `;
       sql += ` UPDATE xiachufang_user SET num_concerned=num_concerned-1 WHERE uid=${cookerId}; `

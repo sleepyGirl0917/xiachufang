@@ -72,7 +72,7 @@ $(function () {
             </div>
         </div>`;
         $(".user-info .login").html(html);
-      } 
+      }
     }
   })
     .then(function () {
@@ -124,10 +124,7 @@ $(function () {
   $("header input[type=text]").blur(function () {
     $(".search-menu").css("display", "none");
   })
-  // 搜索相关用户/菜单：a标签跳转
-  // 问题：下拉菜单无法点击
-  // 原因：blur事件会优先于click事件执行，导致click事件无效
-  // 解决：使用mousedown替换click使点击选择事件优先执行
+
   $("header .search-menu").on("mousedown", "a", function () {
     window.location.href = $(this).attr("href");
   })
@@ -141,9 +138,9 @@ $(function () {
     // 将隐藏域的值改为在后台获取，避免在浏览器篡改
     $(".cooker-search input[type=hidden]").attr("value", "2");
   })
-
 })
 
+// 关注/取消关注
 $(window).on("load", function () {
   $(".concern .button").click(function (e) {
     e.preventDefault();
@@ -158,17 +155,16 @@ $(window).on("load", function () {
       },
       crossDomain: true,
       success: function (data) {
+        console.log(data)
         if (data.code == -1) {
           alert(`<h3>请先登录！</h3>`);
           setTimeout(() => {
             window.location.href = "/login.html";
           }, 3000)
-        }else
-        if (data.code == 1) {
-          $(`[data-user-id=${cookerId}]`).html("取消关注").css({
-            background: "gray",
-            color:"#fff",
-          })
+        } else if (data.code == 1) {
+          // $(`[data-user-id=${cookerId}]`).html("已关注").css("background", "#ccc7c2")
+        } else {
+          // $(`[data-user-id=${cookerId}]`).html("关注").css("background", "#dd3915")
         }
       }
     })
