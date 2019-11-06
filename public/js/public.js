@@ -139,34 +139,3 @@ $(function () {
     $(".cooker-search input[type=hidden]").attr("value", "2");
   })
 })
-
-// 关注/取消关注
-$(window).on("load", function () {
-  $(".concern .button").click(function (e) {
-    e.preventDefault();
-    var cookerId = $(this).attr("data-user-id");
-    $.ajax({
-      url: "http://localhost:3000/user/concern",
-      type: "get",
-      data: "cookerId=" + cookerId,
-      dataType: "json",
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
-      success: function (result) {
-        alert(result)
-        if (result.code == -1) {
-          alert('请先登录！');
-          /* setTimeout(() => {
-            window.location.href = "/login.html";
-          }, 3000) */
-        } else if (result.code == 1) {
-          // $(`[data-user-id=${cookerId}]`).html("已关注").css("background", "#ccc7c2")
-        } else {
-          // $(`[data-user-id=${cookerId}]`).html("关注").css("background", "#dd3915")
-        }
-      }
-    })
-  })
-})

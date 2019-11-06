@@ -91,7 +91,7 @@
 }
 .user-avatar .avatar{
   display: block;
-  padding:0 1rem 0;
+  padding:0 1rem 0 0;
 
 }
 .user-avatar .avatar img{
@@ -111,7 +111,7 @@
   text-align: center;
   width:120px;
   top: 35px;
-  left: -30px;
+  left: -42px;
   padding:0;
   z-index:20;
   background: #fff;

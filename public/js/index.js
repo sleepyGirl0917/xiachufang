@@ -127,57 +127,100 @@ $(function () {
       $(".cookers ul").html(html);
     }
   })
-    .then(function () {
-      getHeight($(".rookie-recipe-item img"));
-      getHeight($(".rencent-pop ul img"));
-      getHeight($(".seasonal-ingredients .season-bg ul img"), 1);
-      getHeight($(".pop-menu ul img"));
-      getHeight($(".cookers img"), 1);
-      // 记录移动次数
-      var step = 0;
-      var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
-      var $btnRight = $btnLeft.next();
-      var width = $(".rookie-recipe-list").width();
-      var $ul = $(".rookie-recipe-list>ul");
-      // 拉伸窗口时，width和ul的外边距跟随改变
-      $(window).resize(function () {
-        width = $(".rookie-recipe-list").width();
-        $ul.css("margin-left", -width * step);
-      })
-      // $ul左外边距为0时，禁用左边按钮
-      if ($ul.css("margin-left") == '0px') {
-        $btnLeft.addClass("disabled");
-      }
-      // 图片数量<=3时，禁用右边按钮
-      if ($ul.find("img").length <= 3) {
-        $btnRight.addClass("disabled");
-      }
-      // 右边按钮不是disabled时，点击按钮ul向左移动一次
-      $btnRight.click(function () {
-        if ($(this).is(":not(.disabled)")) {
-          step++;
-          $ul.css("margin-left", -width * step);
-          // console.log(step)
-          // 启用左边按钮
-          $btnLeft.removeClass("disabled");
-          if (3 * step + 3 == 15) {
-            $(this).addClass("disabled");
-          }
-        }
-      })
-      // 左边按钮不是disabled时，点击按钮ul向右移动一次
-      $btnLeft.click(function () {
-        if ($(this).is(":not(.disabled)")) {
-          step--;
-          $ul.css("margin-left", -width * step);
-          // console.log(step)
-          // 启用右边按钮
-          $btnRight.removeClass("disabled");
-          if (step == 0) {
-            $(this).addClass("disabled");
-          }
-        }
-      })
+  .then(function () {
+    getHeight($(".rookie-recipe-item img"));
+    getHeight($(".rencent-pop ul img"));
+    getHeight($(".seasonal-ingredients .season-bg ul img"), 1);
+    getHeight($(".pop-menu ul img"));
+    getHeight($(".cookers img"), 1);
+    // 记录移动次数
+    var step = 0;
+    var $btnLeft = $(".rookie-recipe .rookie-recipe-title .home-icon-left-arrow");
+    var $btnRight = $btnLeft.next();
+    var width = $(".rookie-recipe-list").width();
+    var $ul = $(".rookie-recipe-list>ul");
+    // 拉伸窗口时，width和ul的外边距跟随改变
+    $(window).resize(function () {
+      width = $(".rookie-recipe-list").width();
+      $ul.css("margin-left", -width * step);
     })
-    
+    // $ul左外边距为0时，禁用左边按钮
+    if ($ul.css("margin-left") == '0px') {
+      $btnLeft.addClass("disabled");
+    }
+    // 图片数量<=3时，禁用右边按钮
+    if ($ul.find("img").length <= 3) {
+      $btnRight.addClass("disabled");
+    }
+    // 右边按钮不是disabled时，点击按钮ul向左移动一次
+    $btnRight.click(function () {
+      if ($(this).is(":not(.disabled)")) {
+        step++;
+        $ul.css("margin-left", -width * step);
+        // console.log(step)
+        // 启用左边按钮
+        $btnLeft.removeClass("disabled");
+        if (3 * step + 3 == 15) {
+          $(this).addClass("disabled");
+        }
+      }
+    })
+    // 左边按钮不是disabled时，点击按钮ul向右移动一次
+    $btnLeft.click(function () {
+      if ($(this).is(":not(.disabled)")) {
+        step--;
+        $ul.css("margin-left", -width * step);
+        // console.log(step)
+        // 启用右边按钮
+        $btnRight.removeClass("disabled");
+        if (step == 0) {
+          $(this).addClass("disabled");
+        }
+      }
+    })
+  }) 
 }) 
+
+
+$(window).on('load', function () {
+  var $btn = $(".concern a.button")
+  $btn.click(function () {
+    var cookerId = $(this).attr("data-user-id");
+    // var onOff = $(this).attr("data-state");
+    if (onOff==true) {
+      $(this).css("background", "#ccc7c2").html("已关注");
+      $(this).onOff = false;
+      // 发送关注请求
+      $.ajax({
+        url: "http://localhost:3000/user/addconcern",
+        type: "get",
+        data: "cookerId=" + cookerId,
+        dataType: "json",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (result) {
+          alert(result.msg)
+        }
+      })
+    } else {
+      $(this).css("background", "#dd3915").html("关注");
+      $(this).onOff = true;
+      // 发送取消关注请求
+      $.ajax({
+        url: "http://localhost:3000/user/delconcern",
+        type: "get",
+        data: "cookerId=" + cookerId,
+        dataType: "json",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (result) {
+          alert(result.msg)
+        }
+      })
+    }
+  })
+})

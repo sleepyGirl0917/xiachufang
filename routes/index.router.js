@@ -21,7 +21,6 @@ WHERE a.mid=b. menu_id_search  GROUP BY b.menu_id_search ORDER BY COUNT(menu_id_
     output.seasonItems = result[3];   // 时令食材：综合评分前12
     output.menuItems = result[4];     // 流行菜单：近7天访问次数前6的菜单 DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(date_visited)
     output.userItems = result[5];     // 下厨房的厨友们：用户表前8
-      
     res.send(output);
   })
 });
