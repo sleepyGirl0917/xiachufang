@@ -139,3 +139,46 @@ $(function () {
     $(".cooker-search input[type=hidden]").attr("value", "2");
   })
 })
+
+/* $(window).on('load', function () {
+  var $btn = $(".concern a.button")
+  var onOff = true;
+  $btn.click(function () {
+    var cookerId = $(this).attr("data-user-id");
+    if (onOff == true) {
+      $(this).css("background", "#ccc7c2").html("已关注");
+      onOff = false;
+      // 发送关注请求
+      $.ajax({
+        url: "http://localhost:3000/user/addconcern",
+        type: "get",
+        data: "cookerId=" + cookerId,
+        dataType: "json",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (result) {
+          alert(result.msg)
+        }
+      })
+    } else {
+      $(this).css("background", "#dd3915").html("关注");
+      onOff = true;
+      // 发送取消关注请求
+      $.ajax({
+        url: "http://localhost:3000/user/delconcern",
+        type: "get",
+        data: "cookerId=" + cookerId,
+        dataType: "json",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (result) {
+          alert(result.msg)
+        }
+      })
+    }
+  })
+}) */
