@@ -13,7 +13,7 @@ $(function () {
   }
 
   $.ajax({
-    url: "http://localhost:3000/index",
+    url: "/index",
     type: "get",
     dataType: "json",
     success: function (data) {

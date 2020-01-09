@@ -4,7 +4,7 @@ const express = require('express');
 // 创建空路由器
 var router = express.Router();
 
-// http://localhost:3000/search?mode=*&keyword=*
+// /search?mode=*&keyword=*
 router.get('/', (req, res) => {
   var output = {};
   // 获取参数

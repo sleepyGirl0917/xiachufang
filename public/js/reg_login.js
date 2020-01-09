@@ -180,7 +180,7 @@ $(function () {
     }, 1000);
     // 向服务器发送请求
     $.ajax({
-      url:"http://localhost:3000/user/code",
+      url:"/user/code",
       type:"post",
       data:{tel:$("input.tel").val()},
       // dataType:"json",
@@ -254,7 +254,7 @@ $(function () {
     }
     // 5、向服务器发送注册请求
     $.ajax({
-      url:"http://localhost:3000/user/registe",
+      url:"/user/registe",
       type:"post",
       data:{
         tel:$("input.tel").val(),
@@ -320,7 +320,7 @@ $(function () {
     }
     // 5、向服务器发送登录请求
     $.ajax({
-      url: "http://localhost:3000/user/login",
+      url: "/user/login",
       type:"post",
       data:{
         tel:$("input.tel").val(),

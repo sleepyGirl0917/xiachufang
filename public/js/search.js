@@ -1,6 +1,6 @@
 $(function () {
   $.ajax({
-    url: "http://localhost:3000/index",
+    url: "/index",
     type: "get",
     dataType: "json",
     success: function (data) {
@@ -41,7 +41,7 @@ $(function () {
 
     // 向服务器发送请求
     $.ajax({
-      url: "http://localhost:3000/search",
+      url: "/search",
       type: "get",
       data: param,
       dataType: "json",

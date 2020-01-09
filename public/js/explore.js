@@ -1,6 +1,6 @@
 $(function () {
   $.ajax({
-    url: "http://localhost:3000/index",
+    url: "/index",
     type: "get",
     dataType: "json",
     success: function (data) {
@@ -38,9 +38,9 @@ $(function () {
       param[str[i].split("=")[0]] = str[i].split("=")[1]
     }
 
-    if (param.class == 'head') { // http://localhost:3000/explore.html?class=head 
+    if (param.class == 'head') { // /explore.html?class=head 
       $.ajax({
-        url: "http://localhost:3000/explore/head",
+        url: "/explore/head",
         type: "get",
         dataType: "json",
         success: function (data) {
@@ -90,9 +90,9 @@ $(function () {
         getHeight($(".search-page ul img"), 0.47)
       })
     }
-    if (param.class == 'rising') { // http://localhost:3000/explore.html?class=rising
+    if (param.class == 'rising') { // /explore.html?class=rising
       $.ajax({
-        url: "http://localhost:3000/explore/rising",
+        url: "/explore/rising",
         type: "get",
         dataType: "json",
         success: function (data) {
@@ -143,9 +143,9 @@ $(function () {
         getHeight($(".search-page ul img"), 0.47)
       })
     }
-    if (param.class == 'popmenu') { // http://localhost:3000/explore.html?class=popmenu
+    if (param.class == 'popmenu') { // /explore.html?class=popmenu
       $.ajax({
-        url: "http://localhost:3000/explore/popmenu",
+        url: "/explore/popmenu",
         type: "get",
         dataType: "json",
         success: function (data) {
@@ -194,9 +194,9 @@ $(function () {
       })
     }
 
-  } else { // http://localhost:3000/explore.html
+  } else { // /explore.html
     $.ajax({
-      url: "http://localhost:3000/explore",
+      url: "/explore",
       type: "get",
       dataType: "json",
       success: function (data) {

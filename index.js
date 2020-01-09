@@ -15,7 +15,7 @@ server.listen(3000, () =>{
 // 配置跨域
 server.use(cors({
   'credentials': true,
-  'origin': ['http://127.0.0.1:3000','http://localhost:3000'],
+  'origin': ['http://127.0.0.1:3000', 'http://localhost:3000'],
 }));
 // 使用 session 中间件
 server.use(session({

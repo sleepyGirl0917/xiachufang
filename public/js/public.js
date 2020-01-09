@@ -1,7 +1,7 @@
 $(function () {
   // 是否登录
   $.ajax({
-    url: "http://localhost:3000/user/islogin",
+    url: "/user/islogin",
     type: "get",
     dataType: "json",
     xhrFields: {
@@ -34,7 +34,7 @@ $(function () {
         $('[href="/logout.html"]').click(function (e) {
           e.preventDefault();
           $.ajax({
-            url: "http://localhost:3000/user/logout",
+            url: "/user/logout",
             type: "get",
             dataType: "json",
             xhrFields: {
@@ -150,7 +150,7 @@ $(function () {
       onOff = false;
       // 发送关注请求
       $.ajax({
-        url: "http://localhost:3000/user/addconcern",
+        url: "/user/addconcern",
         type: "get",
         data: "cookerId=" + cookerId,
         dataType: "json",
@@ -167,7 +167,7 @@ $(function () {
       onOff = true;
       // 发送取消关注请求
       $.ajax({
-        url: "http://localhost:3000/user/delconcern",
+        url: "/user/delconcern",
         type: "get",
         data: "cookerId=" + cookerId,
         dataType: "json",
