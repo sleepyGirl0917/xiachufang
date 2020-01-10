@@ -1,0 +1,32 @@
+2020-01-10 15:18:38 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Administrator\Documents\myProject\github\xiachufang\node_modules\node-windows\lib\wrapper.js --file C:\Users\Administrator\Documents\myProject\github\xiachufang\index.js --log "node_xiachufang wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-10 15:18:38 - Started 3308
+2020-01-10 15:25:32 - Stopping node_xiachufang.exe
+2020-01-10 15:25:32 - ProcessKill 3308
+2020-01-10 15:25:32 - Found child process: 7288 Name: conhost.exe
+2020-01-10 15:25:32 - Found child process: 11348 Name: node.exe
+2020-01-10 15:25:33 - Stopping process 7288
+2020-01-10 15:25:33 - Send SIGINT 7288
+2020-01-10 15:25:33 - SIGINT to 7288 failed - Killing as fallback
+2020-01-10 15:25:33 - Stopping process 11348
+2020-01-10 15:25:33 - Send SIGINT 11348
+2020-01-10 15:25:33 - SIGINT to 11348 failed - Killing as fallback
+2020-01-10 15:25:33 - Stopping process 3308
+2020-01-10 15:25:33 - Send SIGINT 3308
+2020-01-10 15:25:33 - SIGINT to 3308 failed - Killing as fallback
+2020-01-10 15:25:33 - Finished node_xiachufang.exe
+2020-01-10 15:40:39 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Administrator\Documents\myProject\github\xiachufang\node_modules\node-windows\lib\wrapper.js --file C:\Users\Administrator\Documents\myProject\github\xiachufang\index.js --log "node_xiachufang wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-10 15:40:39 - Started 6532
+2020-01-10 15:54:19 - Stopping node_xiachufang.exe
+2020-01-10 15:54:19 - ProcessKill 6532
+2020-01-10 15:54:20 - Found child process: 3308 Name: conhost.exe
+2020-01-10 15:54:20 - Found child process: 2568 Name: node.exe
+2020-01-10 15:54:20 - Stopping process 3308
+2020-01-10 15:54:20 - Send SIGINT 3308
+2020-01-10 15:54:20 - SIGINT to 3308 failed - Killing as fallback
+2020-01-10 15:54:20 - Stopping process 2568
+2020-01-10 15:54:20 - Send SIGINT 2568
+2020-01-10 15:54:20 - SIGINT to 2568 failed - Killing as fallback
+2020-01-10 15:54:20 - Stopping process 6532
+2020-01-10 15:54:20 - Send SIGINT 6532
+2020-01-10 15:54:20 - SIGINT to 6532 failed - Killing as fallback
+2020-01-10 15:54:20 - Finished node_xiachufang.exe
