@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const userRouter = require('./routes/user.router');
@@ -9,21 +8,29 @@ const exploreRouter = require('./routes/explore.router');
 
 // 创建web服务器
 var server = express();
-server.listen(3000, () =>{
-  console.log('running--------')
+server.listen(80, () =>{
+  console.log('server is running on port 80')
 });
+
 // 配置跨域
-server.use(cors({
-  'credentials': true,
-  'origin': ['http://127.0.0.1:3000', 'http://localhost:3000'],
-}));
+server.all('*', (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Credentials", true); 
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 // 使用 session 中间件
 server.use(session({
-  secret: 'secret', // 对session id 相关的cookie 进行签名
-  resave: false,     // 每次请求是否都重新设置session cookie
-  saveUninitialized: false, 
+  secret: 'secret',               // 对session id 相关的cookie 进行签名
+  resave: false,                  // 每次请求是否都更新session
+  saveUninitialized: true,        // 初始化时是否保存数据 
   cookie: {
-    maxAge: 1000 * 60 * 30, // 设置 session 的有效时间，单位毫秒
+    maxAge: 1000 * 60 * 60 * 24,  // 依靠cookie保存24小时
   },
 }));
 // 托管静态资源到public目录下
@@ -32,7 +39,7 @@ server.use(express.static('public'));
 server.use(bodyParser.urlencoded({
   extended: false
 }));
-// 将用户路由器挂载到/user
+// 挂载路由
 server.use('/user', userRouter);
 server.use('/search', searchRouter);
 server.use('/explore', exploreRouter);

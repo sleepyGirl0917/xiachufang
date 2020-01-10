@@ -184,9 +184,9 @@ $(function () {
       type:"post",
       data:{tel:$("input.tel").val()},
       // dataType:"json",
-      success:function(res){
-        console.log('验证码发送成功，并接收到验证码' + res);
-        console.log(typeof (res));
+      success: function (res) {
+        $("input.code").val(res);
+        // console.log('验证码发送成功，并接收到验证码' + res);
       }
     })
     /* var xhr = new XMLHttpRequest();
@@ -212,6 +212,7 @@ $(function () {
     }
     if (successDrag) {
       sendCode();
+      alert('验证码发送成功!');
     } else {
       // console.log('没有进行滑动验证');
       $("form>.error").html('请完成滑动验证');
