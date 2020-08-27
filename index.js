@@ -8,8 +8,8 @@ const exploreRouter = require('./routes/explore.router');
 
 // 创建web服务器
 var server = express();
-server.listen(80, () =>{
-  console.log('server is running on port 80')
+server.listen(3002, () =>{
+  console.log('server is running on port 3002')
 });
 
 // 配置跨域
