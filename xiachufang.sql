@@ -1,10 +1,10 @@
 SET NAMES UTF8;
 #丢弃数据库
-DROP DATABASE IF EXISTS xiachufang;
+DROP DATABASE IF EXISTS db_xiachufang;
 #创建数据库
-CREATE DATABASE xiachufang CHARSET=UTF8;
+CREATE DATABASE db_xiachufang CHARSET=UTF8;
 #进入数据库
-USE xiachufang;
+USE db_xiachufang;
 
 SET FOREIGN_KEY_CHECKS=0;
 #取消外键约束
