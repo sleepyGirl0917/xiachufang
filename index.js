@@ -24,6 +24,7 @@ server.all('*', (req, res, next) => {
     next();
   }
 });
+
 // 使用 session 中间件
 server.use(session({
   secret: 'secret',               // 对session id 相关的cookie 进行签名
@@ -33,12 +34,13 @@ server.use(session({
     maxAge: 1000 * 60 * 60 * 24,  // 依靠cookie保存24小时
   },
 }));
+
 // 托管静态资源到public目录下
 server.use(express.static('public'));
+
 // 使用body-parser中间件将post请求数据解析为对象
-server.use(bodyParser.urlencoded({
-  extended: false
-}));
+server.use(bodyParser.urlencoded({extended: false}));
+
 // 挂载路由
 server.use('/user', userRouter);
 server.use('/search', searchRouter);

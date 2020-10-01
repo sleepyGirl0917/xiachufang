@@ -1,8 +1,7 @@
-let path = require('path');
+const path = require('path');
+const Service = require('node-windows').Service;
 
-let Service = require('node-windows').Service;
-
-let svc = new Service({
+const svc = new Service({
   name: 'node_xiachufang',  // 服务名称          
   description: '下厨房项目服务器',  // 描述
   script: path.resolve('./index.js'),  //  nodejs项目要启动的文件路径
