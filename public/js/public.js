@@ -13,24 +13,33 @@ $(function () {
       if (data.code == 200) {
         var list = data.msg;
         // header .user-action
-        var html = `<div class="user-avatar">
+        var html = `<div class="visible-xs">
+          <a href="javascript:;" class="link">个人中心</a>
+          <a href="/logout.html" class="link">退出</a>
+        </div>
+        <div class="hidden-xs">
+          <div class="user-avatar">
             <a href="${list.user_href}" class="avatar">
               <img src="${list.avatar}" alt="">
             </a>
             <div class="head-submenu" data-list="submenu">
-                <ul class="list-unstyled">
-                  <li><a href="javascript:;" class="link">我的厨房</a></li>
-                  <li><a href="javascript:;" class="link">我的菜单</a></li>
-                  <li><a href="javascript:;" class="link">账号设置</a></li>
-                  <li><a href="javascript:;" class="link">发现好友 </a></li>
-                  <li><a href="/logout.html" class="link">退出</a></li>
-                </ul>
-              </div>
+              <ul class="list-unstyled">
+                <li><a href="javascript:;" class="link">我的厨房</a></li>
+                <li><a href="javascript:;" class="link">我的菜单</a></li>
+                <li><a href="javascript:;" class="link">账号设置</a></li>
+                <li><a href="javascript:;" class="link">发现好友 </a></li>
+                <li><a href="/logout.html" class="link">退出</a></li>
+              </ul>
+            </div>
           </div>
-          <a href="javascript:;" class="user-collect">
-            <i class="home-icon home-icon-collect"></i>
-          </a>`;
+          <div class="user-collect">
+            <a href="javascript:;" class="collect">
+              <i class="home-icon home-icon-collect"></i>
+            </a>
+          </div>
+        </div>`;          
         $("header .user-action").html(html);
+
         $('[href="/logout.html"]').click(function (e) {
           e.preventDefault();
           $.ajax({
@@ -48,6 +57,7 @@ $(function () {
             }
           })
         });
+
         // .user-info .login
         var html = `<div class="is-login">
             <div class="avatar">
@@ -86,6 +96,11 @@ $(function () {
         }
       })
     })
+
+  // $(window).resize(function(){
+  //   var w_width = $(window).width();
+  //   console.log(w_width);
+  // })
 
   // JQ实现点击返回顶部（有动画过渡）
   $(window).scroll(function () {
@@ -138,9 +153,10 @@ $(function () {
     // 将隐藏域的值改为在后台获取，避免在浏览器篡改
     $(".cooker-search input[type=hidden]").attr("value", "2");
   })
+
 })
 
-/* $(window).on('load', function () {
+$(window).on('load', function () {
   var $btn = $(".concern a.button")
   var onOff = true;
   $btn.click(function () {
@@ -181,4 +197,4 @@ $(function () {
       })
     }
   })
-}) */
+})

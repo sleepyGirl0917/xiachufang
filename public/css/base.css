@@ -1,7 +1,7 @@
 /* index.html,search.html,explore.html共用 */
 /* header */
 @media (min-width:1200px){
-  header .row .search{
+  header .search{
     margin:0 20px 0 -20px;
   }
 }
@@ -41,7 +41,7 @@
     top:50px;
     left:0;
   }
-  .navbar-nav>li>a,.navbar-nav>a{
+  .navbar-nav>li>a,.navbar-nav>a,.navbar-nav>.visible-xs>a{
     display: block;
     padding:0.5rem 1rem;
     border-radius:5px;
@@ -57,6 +57,7 @@
 }
 .head-ul{
   position: relative;
+  margin-right:0.5rem;
 }
 /* 下拉列表的样式 */
 .head-submenu,.home-submenu{
@@ -95,23 +96,34 @@
   padding:0.5rem 0;
 }
 /* 登录成功后 */
+.user-action .hidden-xs{
+  display: inline-flex;
+}
 .user-avatar{
   position: relative;
   border-right: 1px solid #4a4a49;
-}
-.user-collect{
-  display: block;
-  padding:0.5rem 0 0 1rem;
+  display: flex;
+  align-items: center;
 }
 .user-avatar .avatar{
   display: block;
   padding:0 1rem 0 0;
-
 }
 .user-avatar .avatar img{
   border-radius: 50%;
   width:35px;
   height:35px;
+}
+.user-collect{
+  display: flex;
+  align-items: center;
+}
+.user-collect .collect{
+  padding-left:1rem;
+}
+.user-collect .collect i{
+  display: inline-block;
+  vertical-align: middle;
 }
 @media (max-width:991.98px){
   .user-avatar .avatar img{
@@ -123,9 +135,9 @@
 .user-avatar .head-submenu{
   position: absolute;
   text-align: center;
-  width:120px;
-  top: 35px;
-  left: -42px;
+  width:7.5rem;
+  top: 2.2rem;
+  left: -2.5rem;
   padding:0;
   z-index:20;
   background: #fff;
