@@ -1,19 +1,8 @@
 body{
-  min-width:960px;
-}
-header{
-  display: block;
-  padding:6px;
-}
-.header-container,.page-container{
-  width:1000px;
-  margin:auto;
-}
-.registe{
-  height:56px;
+  min-width: 576px;
 }
 .reg-box{
-  width:33.333%;
+  width:350px;
   margin:auto;
 }
 input{

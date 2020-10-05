@@ -7,10 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>下厨房</title>
   <link rel="icon" href="./img/favicon.ico">
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/bootstrap.css" />
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/popper.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="./css/public.css">
   <link rel="stylesheet" href="./css/base.css">
 </head>
@@ -18,13 +16,13 @@
 <body>
   <header>
     <div class="container">
-      <div class="row">
+      <nav class="navbar navbar-expand-md navbar-light p-0 text-nowrap flex-nowrap">
         <div class="col-md-2 col-sm-3">
           <a href="./index.html" class="logo">
             <img src="./img/logo.png" class="img-fluid">
           </a>
         </div>
-        <div class="col-md-4 col-sm-9 pl-0 d-flex align-items-center">
+        <div class="col-md-4 col-sm-7 pl-0 d-flex align-items-center">
           <form action="/search_recipe.html" class="search w-100">
             <div class="input-group mr-3" style="position: relative;">
               <input type="text" placeholder="搜索菜谱、食材" name="keyword">
@@ -33,24 +31,27 @@
               <input type="submit" value="搜菜谱" class="button pl-3 pr-3">
               <div class="search-menu">
                 <!-- <div class="search-item">
-                    <a href="/search_user.html/?mode=2&keyword=1">搜“1”相关用户</a>
-                  </div>
-                  <div class="search-item">
-                    <a href="/search_menu.html/?mode=3&keyword=1">搜“1”相关菜单</a>
-                  </div> -->
+                  <a href="/search_user.html/?mode=2&keyword=1">搜“1”相关用户</a>
+                </div>
+                <div class="search-item">
+                  <a href="/search_menu.html/?mode=3&keyword=1">搜“1”相关菜单</a>
+                </div> -->
               </div>
             </div>
           </form>
         </div>
-        <div class="col-md-4 col-sm-6 p-0 d-flex align-items-center">
-          <ul class="list-unstyled m-0 d-flex head-ul">
-            <li class="pl-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse col-md-6 p-0 justify-content-between" id="navbarContent">
+          <ul class="navbar-nav head-ul">
+            <li>
               <a href="/" class="link">首页</a>
             </li>
-            <li class="pl-3">
+            <li>
               <a href="javascript:;" class="link">菜谱分类</a>
               <!-- 隐藏列表 -->
-              <div class="head-submenu" data-list="submenu">
+              <div class="head-submenu hidden-xs" data-list="submenu">
                 <!-- 给内部div设置背景色，外部div设置padding，配合onmousemove事件 -->
                 <div>
                   <ul class="list-unstyled">
@@ -79,13 +80,13 @@
                   <ul class="list-unstyled season">
                     <li class="gray-font">时令食材</li>
                     <!-- <li><a href="javascript:;" class="link">螃蟹</a><span>9.9</span></li>
-                      <li><a href="javascript:;" class="link">猪油</a><span>9.8</span></li>
-                      <li><a href="javascript:;" class="link">丝瓜</a><span>9.8</span></li>
-                      <li><a href="javascript:;" class="link">秋葵</a><span>9.5</span></li>
-                      <li><a href="javascript:;" class="link">鸡腿</a><span>7.9</span></li>
-                      <li><a href="javascript:;" class="link">无花果</a><span>7.9</span></li>
-                      <li><a href="javascript:;" class="link">鸭</a><span>7.5</span></li>
-                      <li><a href="javascript:;" class="link">冬瓜</a><span>7.5</span></li> -->
+                    <li><a href="javascript:;" class="link">猪油</a><span>9.8</span></li>
+                    <li><a href="javascript:;" class="link">丝瓜</a><span>9.8</span></li>
+                    <li><a href="javascript:;" class="link">秋葵</a><span>9.5</span></li>
+                    <li><a href="javascript:;" class="link">鸡腿</a><span>7.9</span></li>
+                    <li><a href="javascript:;" class="link">无花果</a><span>7.9</span></li>
+                    <li><a href="javascript:;" class="link">鸭</a><span>7.5</span></li>
+                    <li><a href="javascript:;" class="link">冬瓜</a><span>7.5</span></li> -->
                   </ul>
                   <div class="head-submenu-bottom head-top-line">
                     <a href="javascript:;" class="link">查看全部分类</a>
@@ -93,18 +94,17 @@
                 </div>
               </div>
             </li>
-            <li class="pl-3">
+            <li>
               <a href="javascript:;" class="link">菜单</a>
             </li>
-            <li class="pl-3">
+            <li>
               <a href="javascript:;" class="link">作品动态</a>
             </li>
           </ul>
-        </div>
-        <div class="user-action col-md-2 col-sm-6 d-flex justify-content-end align-items-center">
-          <a href="./login.html" class="link ml-3">登录</a>
-          <a href="./registe.html" class="link ml-3">注册</a>
-          <!-- <div class="user-avatar">
+          <div class="navbar-nav user-action">
+            <a href="./login.html" class="link">登录</a>
+            <a href="./registe.html" class="link">注册</a>
+            <!-- <div class="user-avatar">
               <a href="javascript:;" class="avatar">
                 <img src="./img/avatar/default.png" alt="">
               </a>
@@ -121,8 +121,9 @@
             <a href="javascript:;" class="user-collect">
               <i class="home-icon home-icon-collect"></i>
             </a> -->
-        </div>
-      </div>
+          </div>
+        </div>       
+      </nav>
     </div>
   </header>
 
@@ -135,7 +136,7 @@
       <div class="col-lg-8 left-side">
         <div class="menu-float clearfix">
           <!-- 左：全部分类+流行搜索，两个ul -->
-          <div class="w-25 search-nav">
+          <div class="col-md-3 search-nav hidden-xs">
             <ul class="list-unstyled list">
               <li><a href="javascript:;" class="homemenu-link">全部分类</a></li>
               <li><a href="/explore.html" class="homemenu-link">本周最受欢迎</a></li>
@@ -185,7 +186,7 @@
             </div>
           </div>
           <!-- 中：本周最受欢迎，分页 -->
-          <div class="w-75 search-result">
+          <div class="col-md-9 search-result">
             <div class="search-result-list">
               <h1 class="search-title text-truncate"></h1>
               <ul class="list-unstyled list">
@@ -288,7 +289,8 @@
   <div id="toTop">
     <img src="./img/scroll_top.png" alt="">
   </div>
-
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="./js/public.js"></script>
   <script src="./js/explore.js"></script>
 </body>

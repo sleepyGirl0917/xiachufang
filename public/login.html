@@ -7,10 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>登录_下厨房</title>
   <link rel="icon" href="./img/favicon.ico">
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/bootstrap.css" />
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/popper.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="./css/public.css">
   <link rel="stylesheet" href="./css/login.css">
 </head>
@@ -18,13 +16,13 @@
 <body>
   <header>
     <div class="container">
-      <div class="row">
+      <div class="row flex-nowrap">
         <div class="col">
           <a href="./index.html" class="logo">
             <img src="./img/logo.png">
           </a>
         </div>
-        <div class="col d-flex align-items-center justify-content-end login">
+        <div class="col d-flex align-items-center justify-content-end text-nowrap">
           <span>没有账号？</span>
           <a href="./registe.html" class="link">注册</a>
         </div>
@@ -33,14 +31,14 @@
   </header>
 
   <div class="container">
-    <div class="row justify-content-center pt-3 mb30 font34">
+    <div class="text-center text-truncate pt-3 mb30 font34">
       经常登录的同志是好同志
     </div>
     <div class="login-box float_g clearfix">
       <div class="social-login-box">
-        <a href="javascript:;" class="social-login-icon social-login-icon-qq"></a>
-        <a href="javascript:;" class="social-login-icon social-login-icon-weibo"></a>
-        <a href="javascript:;" class="social-login-icon social-login-icon-douban"></a>
+        <a href="javascript:;" class="social-login-icon social-login-icon-qq mb-3"></a>
+        <a href="javascript:;" class="social-login-icon social-login-icon-weibo mb-3"></a>
+        <a href="javascript:;" class="social-login-icon social-login-icon-douban mb-3"></a>
       </div>
       <div class="form-container">
         <form action="" method="post">
@@ -167,6 +165,8 @@
       </div>
     </div>
   </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="./js/reg_login.js"></script>
 </body>
 

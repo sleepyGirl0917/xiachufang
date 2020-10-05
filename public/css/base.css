@@ -1,24 +1,16 @@
 /* index.html,search.html,explore.html共用 */
 /* header */
-@media screen and (max-width:768px){
-  header{
-    height:100px;
-  }
-  body{
-    padding:100px 0 0;
-  }
-}
-@media screen and (min-width:1200px){
+@media (min-width:1200px){
   header .row .search{
     margin:0 20px 0 -20px;
   }
 }
-@media  (max-width:991px){
-  html{
+@media (max-width:991.98px){
+  /* html{
     font-size:14px;
-  }
+  } */
 }
-@media screen and (max-width:576px){
+@media (max-width: 575.98px){
   .col-sm-3 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 25%;
@@ -41,6 +33,28 @@
     font-size:1rem;
   }
 }
+/* 折叠导航条 */
+@media (max-width:767.98px){
+  #navbarContent{
+    background-color: #F5F6F5;
+    position: absolute;
+    top:50px;
+    left:0;
+  }
+  .navbar-nav>li>a,.navbar-nav>a{
+    display: block;
+    padding:0.5rem 1rem;
+    border-radius:5px;
+  }
+}
+@media (min-width:768px){
+  .navbar-nav>li{
+    padding-left: 0.8rem;
+  }
+  .navbar-nav>a{
+    margin-left:0.8rem;
+  }
+}
 .head-ul{
   position: relative;
 }
@@ -51,7 +65,7 @@
 .head-submenu{
   position: absolute;
   text-align: center;
-  width:400px;
+  width:25rem;
   top:1.2rem;
   left:1rem;
   padding:1rem;
@@ -99,7 +113,7 @@
   width:35px;
   height:35px;
 }
-@media screen and (max-width:991px){
+@media (max-width:991.98px){
   .user-avatar .avatar img{
     border-radius: 50%;
     width:30px;
@@ -170,7 +184,7 @@ header .search-menu{
 footer{
   margin-top:5rem;
 }
-@media screen and (max-width:768px){
+@media (max-width:767.98px){
   footer .col-md-3{
     display: none;
   }
@@ -282,7 +296,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   z-index: 21;
   display: none;
 }
-@media screen and (max-width:576px){
+@media (max-width: 575.98px){
   .home-submenu{
     width:350px;
   }
@@ -332,7 +346,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   height: 220px;
   object-fit: cover;
 }
-@media screen and (min-width:768px){
+@media (min-width:768px){
   .carousel-item img{
     height: 300px;
   }
@@ -347,7 +361,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   bottom:-20px;
   z-index:20;
 }
-@media screen and (max-width:768px){
+@media (max-width:767.98px){
   .carousel-title{
     font-size:20px;;
     font-weight: 600;
@@ -411,7 +425,7 @@ ul.homemenu li.homemenu-17 .home-ul-icon{
   height: 76px;
   object-fit: cover;
 }
-@media screen and (min-width:768px){
+@media (min-width:768px){
   .rookie-recipe-item img{
     height: 108px;
   }
@@ -490,7 +504,7 @@ ul img:hover{
   margin:4px;
   font-size:12px;
 }
-@media screen and (max-width:576px){
+@media (max-width: 575.98px){
   .seasonal-ingredients .season-bg ul li a span{
     font-size:10px;
   }
@@ -509,12 +523,12 @@ ul img:hover{
   line-height: 2;
   height:48px;
 }
-@media screen and (max-width:768px){
+@media (max-width:767.98px){
   .opus h3{
     font-size:20px;
   }
 }
-@media screen and (max-width:576px){
+@media (max-width: 575.98px){
   .opus h3{
     font-size:16px;
   }
@@ -680,7 +694,7 @@ ul img:hover{
   padding: 14px 10px;
   font-size: 16px;
 }
-@media screen and (min-width:300px) and (max-width:991px){
+@media (min-width:300px) and (max-width:991.98px){
   .pop-menu ul li:nth-child(odd){
     float:left;
     padding-right:6px;
@@ -692,7 +706,7 @@ ul img:hover{
     width:50%;
   }
 }
-@media screen and (min-width:992px){
+@media (min-width:992px){
   .right-side{
     padding-left:20px;
   }
@@ -839,7 +853,7 @@ ul img:hover{
   padding: 14px 10px;
   font-size: 16px;
 }
-@media screen and (max-width:991px){
+@media (max-width:991.98px){
   .search-page .menu-items ul li img,.search-page .menu-items{
     width:100%;
   }
@@ -857,7 +871,7 @@ ul img:hover{
     display: none;
   }
 }
-@media screen and (min-width:992px){
+@media (min-width:992px){
   .right-side{
     padding-left:20px;
   }
@@ -880,7 +894,7 @@ ul img:hover{
   background-color: #dd3915;
   color: #fff;
 }
-@media screen and (max-width:576px){
+@media (max-width: 575.98px){
   .pager{
     font-size:14px;
   }
@@ -902,12 +916,12 @@ ul img:hover{
 .search-result .cookers-list ul li,.search-cookers .cookers-list ul li{
   border:none;
 }
-@media screen and (min-width:991px){
+@media (min-width:992px){
   .search-cookers{
     margin-right:20px;
   }
 }
-@media screen and (max-width:768px){
+@media (max-width:767.98px){
   .search-cookers .cookers-list{
     padding:0 2rem;
     margin-right: 20px;
@@ -923,7 +937,7 @@ ul img:hover{
 .cookers .cookers-list ul.columns{
   margin-bottom:40px;
 }
-@media screen and (min-width:991px){
+@media (min-width:992px){
   .cookers .cookers-list ul.columns::after{
     display: block;
     clear: both;
@@ -943,7 +957,7 @@ ul img:hover{
     margin-top:75px;
   }
 }
-@media screen and (min-width:991px) and (max-width:1200px){
+@media (min-width:992px) and (max-width: 1199.98px){
   .cookers .cookers-list ul.columns li .cooker-container .detail .name{
     max-width:70px;
   }
