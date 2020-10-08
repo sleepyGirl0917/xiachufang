@@ -9,8 +9,7 @@ $(function () {
     },
     crossDomain: true,
     success: function (data) {
-      console.log(data);
-      if (data.code == 200) {
+      if (data.code == 200) { // 登录
         var list = data.msg;
         // header .user-action
         var html = `<div class="visible-xs">
@@ -37,7 +36,7 @@ $(function () {
               <i class="home-icon home-icon-collect"></i>
             </a>
           </div>
-        </div>`;          
+        </div>`;
         $("header .user-action").html(html);
 
         $('[href="/logout.html"]').click(function (e) {
@@ -52,6 +51,7 @@ $(function () {
             crossDomain: true,
             success: function (data) {
               if (data.code == 200) {
+                $.cookie('islogin', null);
                 window.location.href = "/login.html"
               }
             }
@@ -157,30 +157,36 @@ $(function () {
 })
 
 $(window).on('load', function () {
-  var $btn = $(".concern a.button")
-  var onOff = true;
-  $btn.click(function () {
+  // 获取用户关注列表
+  $.ajax({
+    url: "/user/concernlist",
+    type: "get",
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
+    success: function (result) {
+      var concernlist = result.concernlist;
+      if ($.cookie('islogin')) {
+        $(".concern a.button").attr("data-follow",function(){
+          var cookerId = parseInt($(this).attr("data-user-id"));
+          if (concernlist.includes(cookerId)){
+            return true
+          }else{
+            return false
+          }
+        })
+        $("[data-follow=true]").css("background", "#ccc7c2").html("已关注");
+        $("[data-follow=false]").css("background", "#dd3915").html("关注");
+      }
+    }
+  })
+
+  // 关注按钮绑定点击事件
+  $(".concern a.button").click(function () {
     var cookerId = $(this).attr("data-user-id");
-    if (onOff == true) {
-      $(this).css("background", "#ccc7c2").html("已关注");
-      onOff = false;
-      // 发送关注请求
-      $.ajax({
-        url: "/user/addconcern",
-        type: "get",
-        data: "cookerId=" + cookerId,
-        dataType: "json",
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (result) {
-          alert(result.msg)
-        }
-      })
-    } else {
-      $(this).css("background", "#dd3915").html("关注");
-      onOff = true;
+    var status = $(this).attr("data-follow");
+    if (status == true) {
       // 发送取消关注请求
       $.ajax({
         url: "/user/delconcern",
@@ -192,6 +198,25 @@ $(window).on('load', function () {
         },
         crossDomain: true,
         success: function (result) {
+          // status = false;
+          $(this).css("background", "#dd3915").html("关注");
+          alert(result.msg)
+        }
+      })
+    } else {
+      // 发送关注请求
+      $.ajax({
+        url: "/user/addconcern",
+        type: "get",
+        data: "cookerId=" + cookerId,
+        dataType: "json",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (result) {
+          // status = true;
+          $(this).css("background", "#ccc7c2").html("已关注");
           alert(result.msg)
         }
       })

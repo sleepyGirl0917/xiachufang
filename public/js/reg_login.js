@@ -335,6 +335,7 @@ $(function () {
       success:function(res){
         console.log(res);
         if (res.code == 200) {
+          $.cookie('islogin', 'true', { expires: 7 });
           window.location.href = '/index.html';
         }else{
           $("form>.error").html(res.msg);

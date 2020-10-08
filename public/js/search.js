@@ -108,6 +108,7 @@ $(function () {
               var html = "";
               for (var i = 0; i < firstList.length; i++) {
                 var list = firstList[i];
+                var islogin = $.cookie('islogin');
                 html += `<li>
                     <div class="cooker-container">
                       <div class="avatar">
@@ -119,7 +120,7 @@ $(function () {
                         <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
                       </div>
                       <div class="concern">
-                        <a href="javascript:;" class="button" data-user-id="${list.uid}">关注</a>
+                        <a href="${islogin ? 'javascript:;' : '/login.html'}" class="button" data-user-id="${list.uid}">关注</a>
                       </div>
                     </div>
                   </li>`;
@@ -130,6 +131,7 @@ $(function () {
             var html = "";
             for (var i = 0; i < secondList.length; i++) {
               var list = secondList[i];
+              var islogin = $.cookie('islogin');
               html += `<li>
                     <div class="cooker-container">
                       <div class="avatar">
@@ -141,7 +143,7 @@ $(function () {
                         <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
                       </div>
                       <div class="concern">
-                        <a href="javascript:;" class="button"  data-user-id="${list.uid}">关注</a>
+                        <a href="${islogin ? 'javascript:;' : '/login.html'}" class="button"  data-user-id="${list.uid}">关注</a>
                       </div>
                     </div>
                   </li>`;

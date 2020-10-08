@@ -9,6 +9,7 @@ $(function () {
       var html = "";
       for (var i = 0; i < 16; i++) {
         var list = data[i];
+        var islogin = $.cookie('islogin');
         html += `<li class="no-border">
               <div class="cooker-container">
                 <div class="avatar">
@@ -20,7 +21,7 @@ $(function () {
                   <div class="stats">${list.num_recipe}&nbsp;个菜谱&nbsp;${list.num_upload}&nbsp;个作品</div>
                 </div>
                 <div class="concern">
-                  <a href="javascript:;" class="button"  data-user-id="${list.uid}">关注</a>
+                  <a href="${islogin ? 'javascript:;' : '/login.html'}" class="button" data-user-id="${list.uid}">关注</a>
                 </div>
               </div>
             </li>`;
