@@ -29,13 +29,14 @@ $(function () {
       $.ajax({
         url: "/explore/head",
         type: "get",
+        data: "pageSize=7&page="+page,
         success: function (data) {
           console.log(data)
-          var { name,firstList, secondList } = data;
+          var { name, firstList, secondList, page, pageSize, count, total } = data;
 
           // 中间
           var html = "";
-          for (var i = 0;i < firstList.length;i++) {
+          for (var i = 0; i < firstList.length; i++) {
             var list = firstList[i];
             html += `<li>
               <div class="list-item-float clearfix">
@@ -70,11 +71,27 @@ $(function () {
               </li>`;
           }
           $(".search-page ul").html(html);
+
+          // 分页 
+          var html = "";
+          var str = `<a class="prev">上一页</a>`
+          for (var i = 1; i <= total; i++) {
+            str += `<a class="page" href="/explore.html?class=head?page=${i}">${i}</a>`
+          }
+          str += `<a class="next">下一页</a>`
+          $(".pager").html(str)
+          $('.pager .page').eq(page - 1).addClass('active')
+          if (page > 1) {
+            $(".pager .prev").attr("href", "/explore.html?class=head?page=" + page)
+          } 
+          if(page<total){
+            $(".pager .next").attr("href", "/explore.html?class=head?page=" + `${parseInt(page)+1}`)
+          }
         }
       })
-      .then(function () {
-        getHeight($(".search-page ul img"), 0.47)
-      })
+        .then(function () {
+          getHeight($(".search-page ul img"), 0.47)
+        })
     }
     if (param.class == 'rising') { // /explore.html?class=rising
       $.ajax({
@@ -82,7 +99,7 @@ $(function () {
         type: "get",
         success: function (data) {
           console.log(data)
-          var { name,firstList, secondList } = data;
+          var { name, firstList, secondList } = data;
 
           // 中间
           var html = "";
@@ -122,11 +139,11 @@ $(function () {
           }
           $(".search-page ul").html(html);
         }
-        
+
       })
-      .then(function () {
-        getHeight($(".search-page ul img"), 0.47)
-      })
+        .then(function () {
+          getHeight($(".search-page ul img"), 0.47)
+        })
     }
     if (param.class == 'popmenu') { // /explore.html?class=popmenu
       $.ajax({
@@ -173,9 +190,9 @@ $(function () {
           $(".search-page ul").html(html);
         }
       })
-      .then(function () {
-        getHeight($(".search-page ul img"), 0.47)
-      })
+        .then(function () {
+          getHeight($(".search-page ul img"), 0.47)
+        })
     }
 
   } else { // /explore.html
@@ -184,7 +201,7 @@ $(function () {
       type: "get",
       success: function (data) {
         console.log(data)
-        var { name,firstList, secondList } = data;
+        var { name, firstList, secondList } = data;
 
         // 中间
         var html = "";
@@ -225,8 +242,9 @@ $(function () {
         $(".search-page ul").html(html);
       }
     })
-    .then(function () {
-      getHeight($(".search-page ul img"), 0.47)
-    })
+      .then(function () {
+        getHeight($(".search-page ul img"), 0.47)
+      })
   }
+
 })

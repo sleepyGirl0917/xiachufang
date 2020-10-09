@@ -901,11 +901,11 @@ ul img:hover{
     margin: 0 0.3em;
     padding: 0.2em 0.5em;
     vertical-align: top;
-    color:#dd3915;
+    color:#dd3915 !important;
 }
-.pager .now ,.pager>*:hover{
+.pager .avtive ,.pager>*:hover{
   background-color: #dd3915;
-  color: #fff;
+  color: #fff !important;
 }
 @media (max-width: 575.98px){
   .pager{
