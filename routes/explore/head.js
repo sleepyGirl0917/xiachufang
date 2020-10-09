@@ -6,12 +6,15 @@ module.exports = (req, res) => {
   var count = 0;
   output.name = '往期头条';
   var { page, pageSize } = req.query;
-  if (!page) {
+
+  if (!page || parseInt(page) == 'NAN' || parseInt(page) < 1) {
     page = 1;
   }
-  if (!pageSize) {
+
+  if (!pageSize || parseInt(pageSize) == 'NAN' || parseInt(pageSize) < 1) {
     pageSize = 7;
   }
+
   // 页码对应的数据查询开始位置
   var offset = (page - 1) * pageSize;
   pageSize = parseInt(pageSize);
@@ -22,7 +25,9 @@ module.exports = (req, res) => {
   Promise.all([
     // 查询数据的总数
     new Promise((resolve, reject) => {
-      pool.query('SELECT COUNT(*) as length FROM xiachufang_headline', (err, result) => {
+      var sql = "SELECT COUNT(*) as length FROM xiachufang_recipe a,xiachufang_headline b, xiachufang_user c";
+      sql+=" WHERE a.rid=b.recipe_id AND a.user_id=c.uid";
+      pool.query(sql, (err, result) => {
         if (err) throw err;
         count = result[0].length;
         output.count = count;

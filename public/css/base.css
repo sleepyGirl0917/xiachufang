@@ -894,18 +894,23 @@ ul img:hover{
   margin: 3em 0 1em;
   font-size: 15px;
   text-align: center;
-  font-weight: 700;
 }
 .pager>*{
     display: inline-block;
     margin: 0 0.3em;
     padding: 0.2em 0.5em;
     vertical-align: top;
-    color:#dd3915 !important;
+    font-weight: 700;
 }
-.pager .avtive ,.pager>*:hover{
+.pager>span{
+  color:#000;
+}
+.pager>a{
+  color:#dd3915;
+}
+.pager .active ,.pager>a:hover{
   background-color: #dd3915;
-  color: #fff !important;
+  color: #fff;
 }
 @media (max-width: 575.98px){
   .pager{

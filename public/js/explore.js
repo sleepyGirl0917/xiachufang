@@ -15,24 +15,19 @@ $(function () {
     }
   })
 
+  var param = {};
+  var baseUrl = location.href.split("&")[0];
+  var page = parseInt(decode(param).page) || 1;
+  
   if (location.search !== "") {
-    // 对编码的url进行解码，获取地址栏参数
-    var str = decodeURI(location.search);
-    str = str.slice(1);
-    str = str.split("&");
-    var param = {};
-    for (var i = 0; i < str.length; i++) {
-      param[str[i].split("=")[0]] = str[i].split("=")[1]
-    }
-
-    if (param.class == 'head') { // /explore.html?class=head 
+    if (param.class == 'head') { // /explore.html?class=head 往期头条
       $.ajax({
         url: "/explore/head",
         type: "get",
-        data: "pageSize=7&page="+page,
+        data: "pageSize=7&page=" + page,
         success: function (data) {
           console.log(data)
-          var { name, firstList, secondList, page, pageSize, count, total } = data;
+          var { name, firstList, secondList, count, total } = data;
 
           // 中间
           var html = "";
@@ -72,34 +67,22 @@ $(function () {
           }
           $(".search-page ul").html(html);
 
-          // 分页 
-          var html = "";
-          var str = `<a class="prev">上一页</a>`
-          for (var i = 1; i <= total; i++) {
-            str += `<a class="page" href="/explore.html?class=head?page=${i}">${i}</a>`
-          }
-          str += `<a class="next">下一页</a>`
-          $(".pager").html(str)
-          $('.pager .page').eq(page - 1).addClass('active')
-          if (page > 1) {
-            $(".pager .prev").attr("href", "/explore.html?class=head?page=" + page)
-          } 
-          if(page<total){
-            $(".pager .next").attr("href", "/explore.html?class=head?page=" + `${parseInt(page)+1}`)
-          }
+          // 分页
+          pagination(page, total);
         }
       })
         .then(function () {
           getHeight($(".search-page ul img"), 0.47)
         })
     }
-    if (param.class == 'rising') { // /explore.html?class=rising
+    if (param.class == 'rising') { // /explore.html?class=rising 新秀菜谱
       $.ajax({
         url: "/explore/rising",
         type: "get",
+        data: "pageSize=7&page=" + page,
         success: function (data) {
           console.log(data)
-          var { name, firstList, secondList } = data;
+          var { name, firstList, secondList, count, total } = data;
 
           // 中间
           var html = "";
@@ -138,20 +121,23 @@ $(function () {
               </li>`;
           }
           $(".search-page ul").html(html);
-        }
 
+          // 分页
+          pagination(page, total);
+        }
       })
         .then(function () {
           getHeight($(".search-page ul img"), 0.47)
         })
     }
-    if (param.class == 'popmenu') { // /explore.html?class=popmenu
+    if (param.class == 'popmenu') { // /explore.html?class=popmenu 流行菜单
       $.ajax({
         url: "/explore/popmenu",
         type: "get",
+        data: "pageSize=7&page=" + page,
         success: function (data) {
           console.log(data)
-          var { name, firstList, secondList } = data;
+          var { name, firstList, secondList, count, total } = data;
 
           // 中间
           var html = "";
@@ -188,20 +174,23 @@ $(function () {
           </li>`;
           }
           $(".search-page ul").html(html);
+
+          // 分页
+          pagination(page, total);
         }
       })
         .then(function () {
           getHeight($(".search-page ul img"), 0.47)
         })
     }
-
-  } else { // /explore.html
+  } else { // /explore.html 本周最受欢迎
     $.ajax({
-      url: "/explore",
+      url: "/explore/",
       type: "get",
+      data: "pageSize=7&page=" + page,
       success: function (data) {
         console.log(data)
-        var { name, firstList, secondList } = data;
+        var { name, firstList, secondList, count, total } = data;
 
         // 中间
         var html = "";
@@ -240,6 +229,9 @@ $(function () {
               </li>`;
         }
         $(".search-page ul").html(html);
+
+        // 分页
+        pagination(page, total);
       }
     })
       .then(function () {
@@ -247,4 +239,44 @@ $(function () {
       })
   }
 
+  // 分页 
+  function pagination(page, total) {
+    if (page > total) {
+      location.href = `${baseUrl}&page=${total}`
+    } else {
+      var html = "";
+      if (page == 1) {
+        html += `<span class="prev">上一页</span>`;
+      } else {
+        html += `<a class="prev" href="${baseUrl}&page=${page - 1}">上一页</a>`
+      }
+      if (page > 3 && page + 3 < total) {
+        html += `<span>...</span>`
+      }
+      for (var i = 1; i <= total; i++) {
+        html += `<a class="page" href="${baseUrl}&page=${i}">${i}</a>`
+      }
+      if (page + 3 < total) {
+        html += `<span>...</span>`
+      }
+      if (page == total) {
+        html += `<span class="next">下一页</span>`;
+      } else {
+        html += `<a class="next" href="${baseUrl}&page=${page + 1}">下一页</a>`
+      }
+      $(".pager").html(html)
+      $('.pager .page').eq(page - 1).addClass('active')
+    }
+  }
+
+  // 对编码的url进行解码，获取地址栏参数
+  function decode(param) {
+    var str = decodeURI(location.search);
+    str = str.slice(1);
+    str = str.split("&");
+    for (var i = 0; i < str.length; i++) {
+      param[str[i].split("=")[0]] = str[i].split("=")[1]
+    }
+    return param
+  }
 })
