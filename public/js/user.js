@@ -2,9 +2,8 @@ $(function () {
   $.ajax({
     url: "/user/list",
     type: "get",
-    dataType: "json",
     success: function (data) {
-      console.log(data);
+      // console.log(data);
       // 下厨房的厨友们
       var html = "";
       for (var i = 0; i < 16; i++) {

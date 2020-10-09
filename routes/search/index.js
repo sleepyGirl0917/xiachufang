@@ -5,10 +5,10 @@ module.exports = (req, res) => {
   var output = {};
 
   // 获取参数
-  var { mode, keword, page, pageSize } = req.query;
+  var { mode, keyword, page, pageSize } = req.query;
 
   // 判断有无搜索关键词
-  if (!keword) {
+  if (!keyword) {
     res.send({ code: 400, msg: "keyword required" });
     return;
   }
@@ -30,7 +30,7 @@ module.exports = (req, res) => {
     var sql = " SELECT recipe_title,recipe_img,score,category,num_used,uname FROM xiachufang_recipe a,xiachufang_user b ";
     sql += " WHERE a.user_id=b.uid AND recipe_title LIKE ?";
     sql += " LIMIT ?,?";
-    pool.query(sql, ["%" + keword + "%", offset, pageSize], (err, result) => {
+    pool.query(sql, ["%" + keyword + "%", offset, pageSize], (err, result) => {
       if (err)
         throw err;
       output.firstList = result;
@@ -38,7 +38,7 @@ module.exports = (req, res) => {
       var sql = "SELECT * FROM xiachufang_recipe a,xiachufang_menu b,xiachufang_menu_contains c ";
       sql += " WHERE a.rid=c.recipe_id AND b.mid=c.menu_id ";
       sql += " AND recipe_title LIKE ? LIMIT 3";
-      pool.query(sql, ["%" + keword + "%"], (err, result) => {
+      pool.query(sql, ["%" + keyword + "%"], (err, result) => {
         if (err)
           throw err;
         output.secondList = result;
@@ -49,7 +49,7 @@ module.exports = (req, res) => {
     var sql = " SELECT uid,uname,avatar,num_concerned,num_recipe,num_upload FROM xiachufang_user ";
     sql += " WHERE uname LIKE ?";
     sql += " LIMIT ?,?";
-    pool.query(sql, ["%" + keword + "%", offset, pageSize], (err, result) => {
+    pool.query(sql, ["%" + keyword + "%", offset, pageSize], (err, result) => {
       if (err)
         throw err;
       output.firstList = result;
@@ -67,7 +67,7 @@ module.exports = (req, res) => {
     var sql = " SELECT mid,menu_title,cover_img,num_contains,uname,num_collected,menu_href,user_href ";
     sql += " FROM xiachufang_menu a,xiachufang_user b ";
     sql += " WHERE a.user_id=b.uid AND menu_title LIKE ? LIMIT ?,? ";
-    pool.query(sql, ["%" + keword + "%", offset, pageSize], (err, result) => {
+    pool.query(sql, ["%" + keyword + "%", offset, pageSize], (err, result) => {
       if (err)
         throw err;
       output.firstList = result;
@@ -75,7 +75,7 @@ module.exports = (req, res) => {
       var sql = " SELECT mid,menu_title,cover_img,menu_href FROM xiachufang_menu WHERE mid NOT IN ";
       sql += " (SELECT t.mid FROM (SELECT * FROM  xiachufang_menu WHERE menu_title LIKE ? LIMIT ?,?) AS t)"; // mysql 不支持子查询中使用limit，但是可以再嵌套一层
       sql += " ORDER BY RAND() LIMIT 11";
-      pool.query(sql, ["%" + keword + "%", offset, pageSize], (err, result) => {
+      pool.query(sql, ["%" + keyword + "%", offset, pageSize], (err, result) => {
         if (err)
           throw err;
         output.secondList = result;

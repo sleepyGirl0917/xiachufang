@@ -2,7 +2,6 @@ $(function () {
   $.ajax({
     url: "/index",
     type: "get",
-    dataType: "json",
     success: function (data) {
       var { seasonItems } = data;
       // header:时令食材
@@ -15,18 +14,6 @@ $(function () {
       $(".seasonal-ingredients .season-bg ul").html(html);
     }
   })
-
-  // 宽高比例自适应
-  function getHeight($img, n = 0.6) {
-    // console.log($img)
-    var width = $img.width();
-    $img.css("height", width * n);
-    $(window).resize(function () {
-      width = $img.width();
-      $img.css("height", $img.width() * n);
-      // console.log('width：' + width + '，height：' + width * n)
-    })
-  }
 
   if (location.search !== "") {
     // 对编码的url进行解码，获取地址栏参数
@@ -42,7 +29,6 @@ $(function () {
       $.ajax({
         url: "/explore/head",
         type: "get",
-        dataType: "json",
         success: function (data) {
           console.log(data)
           var { name,firstList, secondList } = data;
@@ -53,7 +39,7 @@ $(function () {
             var list = firstList[i];
             html += `<li>
               <div class="list-item-float clearfix">
-                <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
+                <a href="javascript:;" class="w-40 pr-1" title="${list.recipe_title}">
                   <img src="${list.recipe_img}" alt="">
                 </a>
                 <div class="info w-60">
@@ -94,7 +80,6 @@ $(function () {
       $.ajax({
         url: "/explore/rising",
         type: "get",
-        dataType: "json",
         success: function (data) {
           console.log(data)
           var { name,firstList, secondList } = data;
@@ -105,7 +90,7 @@ $(function () {
             var list = firstList[i];
             html += `<li>
               <div class="list-item-float clearfix">
-                <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
+                <a href="javascript:;" class="w-40 pr-1" title="${list.recipe_title}">
                   <img src="${list.recipe_img}" alt="">
                 </a>
                 <div class="info w-60">
@@ -147,7 +132,6 @@ $(function () {
       $.ajax({
         url: "/explore/popmenu",
         type: "get",
-        dataType: "json",
         success: function (data) {
           console.log(data)
           var { name, firstList, secondList } = data;
@@ -158,7 +142,7 @@ $(function () {
             var list = firstList[i];
             html += `<li>
             <div class="list-item-float clearfix item-border">
-              <a href="${list.menu_href}" class="w-40 pr-3" title="${list.menu_title}">
+              <a href="${list.menu_href}" class="w-40 pr-1" title="${list.menu_title}">
                 <img src="${list.cover_img}" alt="">
               </a>
               <div class="info w-60">
@@ -198,7 +182,6 @@ $(function () {
     $.ajax({
       url: "/explore",
       type: "get",
-      dataType: "json",
       success: function (data) {
         console.log(data)
         var { name,firstList, secondList } = data;
@@ -209,7 +192,7 @@ $(function () {
           var list = firstList[i];
           html += `<li>
               <div class="list-item-float clearfix">
-                <a href="javascript:;" class="w-40 pr-3" title="${list.recipe_title}">
+                <a href="javascript:;" class="w-40 pr-1" title="${list.recipe_title}">
                   <img src="${list.recipe_img}" alt="">
                 </a>
                 <div class="info w-60">
@@ -246,5 +229,4 @@ $(function () {
       getHeight($(".search-page ul img"), 0.47)
     })
   }
-
 })

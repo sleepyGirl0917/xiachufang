@@ -1,23 +1,10 @@
 //仅DOM内容加载后就提前执行
 $(function () {
-  // 宽高比例自适应
-  function getHeight($img, n = 0.6) {
-    // console.log($img)
-    var width = $img.width();
-    $img.css("height", width * n);
-    $(window).resize(function () {
-      width = $img.width();
-      $img.css("height", $img.width() * n);
-      // console.log('width：' + width + '，height：' + width * n)
-    })
-  }
-
   $.ajax({
     url: "/index",
     type: "get",
-    dataType: "json",
     success: function (data) {
-      console.log(data);
+      // console.log(data);
       var { carouselItems, risingItems, exploreItems, seasonItems, menuItems, userItems } = data;
       var html = "";
       // 轮播图

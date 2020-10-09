@@ -3,7 +3,6 @@ $(function () {
   $.ajax({
     url: "/user/islogin",
     type: "get",
-    dataType: "json",
     xhrFields: {
       withCredentials: true
     },
@@ -44,7 +43,6 @@ $(function () {
           $.ajax({
             url: "/user/logout",
             type: "get",
-            dataType: "json",
             xhrFields: {
               withCredentials: true
             },
@@ -52,7 +50,7 @@ $(function () {
             success: function (data) {
               if (data.code == 200) {
                 $.cookie('islogin', null);
-                window.location.href = "/login.html"
+                window.location.href = "/login.html";
               }
             }
           })
@@ -96,64 +94,59 @@ $(function () {
         }
       })
     })
+})
 
-  // $(window).resize(function(){
-  //   var w_width = $(window).width();
-  //   console.log(w_width);
-  // })
 
-  // JQ实现点击返回顶部（有动画过渡）
-  $(window).scroll(function () {
-    if ($(window).scrollTop() > 800) {
-      $("#toTop").fadeIn(500);
-    }
-    else {
-      $("#toTop").fadeOut(500);
-    }
-  });
-  $("#toTop").click(function () {
-    $('body,html').animate({ scrollTop: 0 }, 20);
-  });
+// JQ实现点击返回顶部（有动画过渡）
+$(window).scroll(function () {
+  if ($(window).scrollTop() > 800) {
+    $("#toTop").fadeIn(500);
+  }
+  else {
+    $("#toTop").fadeOut(500);
+  }
+});
+$("#toTop").click(function () {
+  $('body,html').animate({ scrollTop: 0 }, 20);
+});
 
-  // 为搜索框绑定oninput，onfocus
-  $("header input[type=text]").bind("input focus", () => {
-    // 搜索框的值
-    var input = $("header input[type=text]").val();
-    var html = `<div class="search-item">
-                <a href="/search_user.html?mode=2&keyword=${input}">搜“${input}”相关用户</a>
-              </div>
-              <div class="search-item">
-                <a href="/search_menu.html?mode=3&keyword=${input}">搜“${input}”相关菜单</a>
-              </div>`;
-    if (input) {
-      // 搜索框有值时，显示下拉列表，内容和值绑定
-      $(".search-menu").html(html);
-      $(".search-menu").css("display", "block");
-    } else {
-      // 搜索框值为空时，隐藏下拉列表，清空html
-      $(".search-menu").html("");
-      $(".search-menu").css("display", "none");
-    }
-  })
-  // 失去焦点时，仅隐藏下拉菜单
-  $("header input[type=text]").blur(function () {
+// 为搜索框绑定oninput，onfocus
+$("header input[type=text]").bind("input focus", () => {
+  // 搜索框的值
+  var input = $("header input[type=text]").val();
+  var html = `<div class="search-item">
+              <a href="/search_user.html?mode=2&keyword=${input}">搜“${input}”相关用户</a>
+            </div>
+            <div class="search-item">
+              <a href="/search_menu.html?mode=3&keyword=${input}">搜“${input}”相关菜单</a>
+            </div>`;
+  if (input) {
+    // 搜索框有值时，显示下拉列表，内容和值绑定
+    $(".search-menu").html(html);
+    $(".search-menu").css("display", "block");
+  } else {
+    // 搜索框值为空时，隐藏下拉列表，清空html
+    $(".search-menu").html("");
     $(".search-menu").css("display", "none");
-  })
+  }
+})
+// 失去焦点时，仅隐藏下拉菜单
+$("header input[type=text]").blur(function () {
+  $(".search-menu").css("display", "none");
+})
 
-  $("header .search-menu").on("mousedown", "a", function () {
-    window.location.href = $(this).attr("href");
-  })
-  // 搜索相关菜谱：form提交
-  $("header input[type=submit]").click(function () {
-    // 将隐藏域的值改为在后台获取，避免在浏览器篡改
-    $("header input[type=hidden]").attr("value", "1");
-  })
-  // 用户搜索框：form提交
-  $(".cooker-search input[type=submit]").click(function () {
-    // 将隐藏域的值改为在后台获取，避免在浏览器篡改
-    $(".cooker-search input[type=hidden]").attr("value", "2");
-  })
-
+$("header .search-menu").on("mousedown", "a", function () {
+  window.location.href = $(this).attr("href");
+})
+// 搜索相关菜谱：form提交
+$("header input[type=submit]").click(function () {
+  // 将隐藏域的值改为在后台获取，避免在浏览器篡改
+  $("header input[type=hidden]").attr("value", "1");
+})
+// 用户搜索框：form提交
+$(".cooker-search input[type=submit]").click(function () {
+  // 将隐藏域的值改为在后台获取，避免在浏览器篡改
+  $(".cooker-search input[type=hidden]").attr("value", "2");
 })
 
 $(window).on('load', function () {
@@ -166,60 +159,100 @@ $(window).on('load', function () {
     },
     crossDomain: true,
     success: function (result) {
-      var concernlist = result.concernlist;
-      if ($.cookie('islogin')) {
-        $(".concern a.button").attr("data-follow",function(){
-          var cookerId = parseInt($(this).attr("data-user-id"));
-          if (concernlist.includes(cookerId)){
-            return true
-          }else{
-            return false
-          }
-        })
-        $("[data-follow=true]").css("background", "#ccc7c2").html("已关注");
-        $("[data-follow=false]").css("background", "#dd3915").html("关注");
+      var concernlist = result.concernlist || [];
+      $(".concern a.button").attr("data-follow", function () {
+        var cookerId = parseInt($(this).attr("data-user-id"));
+        if (concernlist.includes(cookerId)) {
+          return true
+        } else {
+          return false
+        }
+      })
+      $("[data-follow=true]").css("background", "#ccc7c2").html("已关注");
+      $("[data-follow=false]").css("background", "#dd3915").html("关注");
+    }
+  }).then(function () {
+    // 关注按钮绑定点击事件
+    $(".concern a.button").click(function () {
+      if(isLogin()){
+        var cookerId = $(this).attr("data-user-id");
+        var status = $(this).attr("data-follow");
+        var _this = $(this);
+        if (status == 'true' ) {
+          // 已关注：点击发送取消关注请求
+          $.ajax({
+            url: "/user/delconcern",
+            type: "get",
+            data: "cookerId=" + cookerId,
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            success: function (result) {
+              _this.css("background", "#dd3915").html("关注").attr("data-follow", false);
+              status = false;
+              alert(result.msg)
+            }
+          })
+        } else {
+          // 未关注：点击发送关注请求
+          $.ajax({
+            url: "/user/addconcern",
+            type: "get",
+            data: "cookerId=" + cookerId,
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            success: function (result) {
+              _this.css("background", "#ccc7c2").html("已关注").attr("data-follow", true);
+              status = true;
+              alert(result.msg)
+            }
+          })
+        }
+      }else{
+        window.location.href = "/login.html";
+      }
+    })
+  })
+})
+
+/* $(window).resize(function(){
+  var w_width = $(window).width();
+  console.log(w_width);
+}) */
+
+// 宽高比例自适应
+function getHeight($img, n = 0.6) {
+  // console.log($img)
+  var width = $img.width();
+  $img.css("height", width * n);
+  $(window).resize(function () {
+    width = $img.width();
+    $img.css("height", $img.width() * n);
+    // console.log('width：' + width + '，height：' + width * n)
+  })
+}
+
+// 判断登录状态
+function isLogin(){
+  var loginStatus;
+  $.ajax({
+    url: "/user/islogin",
+    type: "get",
+    async:false,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
+    success: function (data){
+      if(data.code == 200){
+        loginStatus = true;
+      }else{
+        loginStatus = false;
       }
     }
   })
-
-  // 关注按钮绑定点击事件
-  $(".concern a.button").click(function () {
-    var cookerId = $(this).attr("data-user-id");
-    var status = $(this).attr("data-follow");
-    if (status == true) {
-      // 发送取消关注请求
-      $.ajax({
-        url: "/user/delconcern",
-        type: "get",
-        data: "cookerId=" + cookerId,
-        dataType: "json",
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (result) {
-          // status = false;
-          $(this).css("background", "#dd3915").html("关注");
-          alert(result.msg)
-        }
-      })
-    } else {
-      // 发送关注请求
-      $.ajax({
-        url: "/user/addconcern",
-        type: "get",
-        data: "cookerId=" + cookerId,
-        dataType: "json",
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (result) {
-          // status = true;
-          $(this).css("background", "#ccc7c2").html("已关注");
-          alert(result.msg)
-        }
-      })
-    }
-  })
-})
+  return loginStatus;
+}

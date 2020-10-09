@@ -183,7 +183,7 @@ $(function () {
       url:"/user/code",
       type:"post",
       data:{tel:$("input.tel").val()},
-      // dataType:"json",
+      dataType:"json",
       success: function (res) {
         $("input.code").val(res);
         // console.log('验证码发送成功，并接收到验证码' + res);
@@ -319,7 +319,14 @@ $(function () {
     } else {
       console.log('滑动验证成功');
     }
-    // 5、向服务器发送登录请求
+    // 5、判断是否选中复选框，如果选中，添加cookie  
+    setCookie();
+    // 6、判断是否同意协议
+    if(!$("#agree").is(':checked')){
+      $("form>.error").html('请勾选同意用户协议');
+      return;
+    }
+    // 7、向服务器发送登录请求
     $.ajax({
       url: "/user/login",
       type:"post",
@@ -327,11 +334,11 @@ $(function () {
         tel:$("input.tel").val(),
         code:$("input.code").val(),
       },
+      dataType: "json",
       xhrFields: {
         withCredentials: true
       },
       crossDomain: true,
-      dataType: "json",
       success:function(res){
         console.log(res);
         if (res.code == 200) {
@@ -370,4 +377,15 @@ $(function () {
     }, 3000)
   })
 
+  // 记住手机号
+  function setCookie(){
+    if($("#remember").attr("checked")){
+      var $tel = $("input.tel");
+      $.cookie("remUser", "true", {expires: 7}); 
+      $.cookie("usertel", $tel, {expires: 7});
+    }else{
+      $.cookie("remUser", null); 
+      $.cookie("usertel", null);
+    }
+  }
 })

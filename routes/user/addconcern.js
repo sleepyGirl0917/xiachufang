@@ -20,10 +20,14 @@ module.exports = (req, res) => {
       sql += ` UPDATE xiachufang_user SET num_concerned=num_concerned+1 WHERE uid=${cookerId}; `;
       pool.query(sql, (err, result) => {
         if (err) throw err;
-        if (result.affectedRows > 0) {
+        if (result[0].affectedRows > 0) {
           res.send({ code: 1, msg: "关注成功" });
+        }else {
+          res.send({ code: -1, msg: "关注失败" });
         }
       })
+    }else{
+      res.send({ code: -1, msg: "已经是关注状态" });
     }
   })
 }

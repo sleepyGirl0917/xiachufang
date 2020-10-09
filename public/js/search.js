@@ -2,7 +2,6 @@ $(function () {
   $.ajax({
     url: "/index",
     type: "get",
-    dataType: "json",
     success: function (data) {
       var { seasonItems } = data;
       // header:时令食材
@@ -15,18 +14,6 @@ $(function () {
       $(".seasonal-ingredients .season-bg ul").html(html);
     }
   })
-
-  // 宽高比例自适应
-  function getHeight($img, n = 0.6) {
-    // console.log($img)
-    var width = $img.width();
-    $img.css("height", width * n);
-    $(window).resize(function () {
-      width = $img.width();
-      $img.css("height", $img.width() * n);
-      // console.log('width：' + width + '，height：' + width * n)
-    })
-  }
 
   if (location.search !== "") {
     // 对编码的url进行解码，获取地址栏参数
@@ -44,13 +31,12 @@ $(function () {
       url: "/search",
       type: "get",
       data: param,
-      dataType: "json",
       success: function (data) {
         console.log(data)
         var code = data.code;
         var mode = data.mode;
         if (code == 400) {
-          window.location.href = "/search.html";
+          window.location.href = "/search400.html";
         } else {
           var { firstList, secondList } = data.data;
           if (mode == 1) {

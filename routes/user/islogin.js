@@ -16,6 +16,8 @@ module.exports = (req, res) => {
         // res.write(JSON.stringify({ code: 200, msg: result[0] }));
         // res.end()
         res.send({ code: 200, msg: result[0] });
+      }else{
+        res.send({ code: -1, msg: "用户信息有误" });
       }
     })
   }
