@@ -1,92 +1,50 @@
-$(function () {
-  // 验证成功的判断标准
-  var successPhoneNumber = false; // 手机号码验证初始值
-  var successPwd = false; // 密码格式初始值
-  var successCode = false; // 验证码格式验证初始值
-  var successDrag = false; // 滑动验证的初始值
-
-  codeList();
-
-  // 封装用ul/li模拟select/option的方法
+  // 用ul/li模拟select/option
   /* 
-  <div class="dropdown">
-    <span class="selected">中国大陆 +86 </span>
-    <span class="carat"></span>
-    <div>
-      <ul>
-        <li class="active">中国大陆 +86 </li>
-        <li class="">中国台湾 +886 </li>
-        <li class="">中国香港 +852 </li>
-        <li class="">中国澳门 +853 </li>
-      </ul>
-    </div>
-  </div> 
+    <div class="dropdown">
+      <span class="selected">中国大陆 +86 </span>
+      <span class="carat"></span>
+      <div>
+        <ul>
+          <li class="active">中国大陆 +86 </li>
+          <li class="">中国台湾 +886 </li>
+          <li class="">中国香港 +852 </li>
+          <li class="">中国澳门 +853 </li>
+        </ul>
+      </div>
+    </div>  
   */
-  function codeList() {
+  $(function(){
     var $dropdown = $(".dropdown");
     var $li = $(".dropdown ul li");
     $dropdown.click(function () {
-      // console.log(1);
       $(this).toggleClass("open");
     });
     $li.click(function () {
-      // console.log(2);
       $li.removeClass("active");
       $(this).addClass("active");
       $("span.selected").html($(this).html());
     })
     // 点击网页空白区域收回列表
     $(document).click(function (e) {
-      // console.log(3);
       // $dropdown为目标区域
       if (!$dropdown.is(e.target) && $dropdown.has(e.target).length == 0) {
         $dropdown.removeClass("open");
       }
-      /* 
-      判断点击事件发生在区域外的条件是：
-      1. 点击事件的对象不是目标区域本身!$dropdown.is(e.target)
-      2. 事件对象同时也不是目标区域的子元素 $dropdown.has(e.target).length == 0 
-      */
     });
-  }
+  })
+  
+  /**
+   * 判断点击事件发生在区域外的条件是：
+   * 1. 点击事件的对象不是目标区域本身!$dropdown.is(e.target)
+   * 2. 事件对象同时也不是目标区域的子元素 $dropdown.has(e.target).length == 0 
+   */
 
-  // 验证手机号码格式
-  function phone_valid() {
-    var $tel = $("input.tel");
-    var valid_rule = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
-    var phone_number = $tel.val();
-    if (valid_rule.test(phone_number)) {
-      successPhoneNumber = true;
-    } else {
-      successPhoneNumber = false;
-    }
-  }
-
-  // 验证密码格式
-  function password_valid() {
-    console.log('密码格式验证中···')
-    var $pwd = $("input.password");
-    var valid_rule = /^\w{6,12}$/;
-    var password = $pwd.val();
-    if (valid_rule.test(password)) {
-      successPwd = true;
-    } else {
-      successPwd = false;
-    }
-  }
-
-  // 判断验证码格式
-  function code_valid() {
-    console.log('验证码格式验证中···')
-    var $code = $("input.code");
-    var valid_rule = /^\d{6}$/;  //验证码是6位数字
-    var code_number = $code.val();
-    if (valid_rule.test(code_number)) {
-      successCode = true;
-    } else {
-      successCode = false;
-    }
-  }
+$(function () {
+  // 验证成功的判断标准
+  var successPhoneNumber = false; // 手机号码验证初始值
+  var successPwd = false; // 密码格式初始值
+  var successCode = false; // 验证码格式验证初始值
+  var successDrag = false; // 滑动验证的初始值
 
   // 滑块验证
   /*
@@ -161,6 +119,57 @@ $(function () {
       }
     })
   })
+
+  // 设置cookie
+  function setCookie(){
+    if($("#remember").attr("checked")){
+      var usertel = $("input.tel").val();
+      console.log(usertel)
+      $.cookie("remUser", "true", {expires: 7}); 
+      $.cookie("usertel", usertel, {expires: 7});
+    }else{
+      $.cookie("remUser", null); 
+      $.cookie("usertel", null);
+    }
+  }
+
+  // 验证手机号码格式
+  function phone_valid() {
+    var $tel = $("input.tel");
+    var valid_rule = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
+    var phone_number = $tel.val();
+    if (valid_rule.test(phone_number)) {
+      successPhoneNumber = true;
+    } else {
+      successPhoneNumber = false;
+    }
+  }
+
+  // 验证密码格式
+  function password_valid() {
+    console.log('密码格式验证中···')
+    var $pwd = $("input.password");
+    var valid_rule = /^\w{6,12}$/;
+    var password = $pwd.val();
+    if (valid_rule.test(password)) {
+      successPwd = true;
+    } else {
+      successPwd = false;
+    }
+  }
+
+  // 判断验证码格式
+  function code_valid() {
+    console.log('验证码格式验证中···')
+    var $code = $("input.code");
+    var valid_rule = /^\d{6}$/;  //验证码是6位数字
+    var code_number = $code.val();
+    if (valid_rule.test(code_number)) {
+      successCode = true;
+    } else {
+      successCode = false;
+    }
+  }
 
   // 发送验证码
   function sendCode() {
@@ -340,7 +349,7 @@ $(function () {
       },
       crossDomain: true,
       success:function(res){
-        console.log(res);
+        // console.log(res);
         if (res.code == 200) {
           $.cookie('islogin', 'true', { expires: 7 });
           window.location.href = '/index.html';
@@ -369,23 +378,20 @@ $(function () {
     xhr.send(formdata); */
 
   })
-
-  // 监听error提示，出现3秒后清空
-  $("form>.error").bind("DOMNodeInserted", function () {
-    setTimeout(() => {
-      $("form>.error").html('');
-    }, 3000)
-  })
-
-  // 记住手机号
-  function setCookie(){
-    if($("#remember").attr("checked")){
-      var $tel = $("input.tel");
-      $.cookie("remUser", "true", {expires: 7}); 
-      $.cookie("usertel", $tel, {expires: 7});
-    }else{
-      $.cookie("remUser", null); 
-      $.cookie("usertel", null);
-    }
-  }
 })
+
+// 读取cookie
+$(function(){
+  var usertel = $.cookie("usertel");   
+  $("input.tel").val(usertel);
+})
+
+// 监听error提示，出现3秒后清空
+$("form>.error").bind("DOMNodeInserted", function () {
+  setTimeout(() => {
+    $("form>.error").html('');
+  }, 3000)
+})
+  
+
+

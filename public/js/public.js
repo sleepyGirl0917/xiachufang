@@ -248,8 +248,10 @@ function isLogin(){
     crossDomain: true,
     success: function (data){
       if(data.code == 200){
+        $.cookie("islogin",true);
         loginStatus = true;
       }else{
+        $.cookie("islogin",null);
         loginStatus = false;
       }
     }
