@@ -21,27 +21,6 @@ CREATE TABLE `xiachufang_headline`(
   PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-INSERT INTO `xiachufang_headline` VALUES (NULL,'1','2019-10-10');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'2','2019-10-9');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'3','2019-10-8');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'4','2019-10-7');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'5','2019-10-6');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'16','2019-10-11');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'19','2019-10-12');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'8','2019-10-13');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'36','2019-10-14');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'26','2019-10-15');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'78','2019-10-16');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'66','2019-10-17');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'77','2019-10-18');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'25','2019-10-19');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'35','2019-10-20');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'46','2019-10-21');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'95','2019-10-22');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'108','2019-10-23');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'163','2019-10-24');
-INSERT INTO `xiachufang_headline` VALUES (NULL,'134','2019-10-25');
-
 -- ----------------------------
 -- Table structure for `xiachufang_recipe`
 -- 菜谱
@@ -63,6 +42,147 @@ CREATE TABLE `xiachufang_recipe`(
   `recipe_href` varchar(128) default NULL,
   PRIMARY KEY (`rid`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_user`
+-- 用户表
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_user`;
+CREATE TABLE `xiachufang_user` (
+  `uid` int(11) NOT NULL auto_increment,
+  `tel` varchar(16) default NULL,
+  `password` varchar(32) default NULL,
+  `uname` varchar(32) default NULL,
+  `avatar` varchar(128) default 'img/cooker/default.png',
+  `date_registe`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
+  `num_concern` int(11) default 0 COMMENT '关注数',
+  `num_concerned` int(11) default 0 COMMENT '被关注数',
+  `num_recipe` int(11) default 0 COMMENT '创建菜谱数',
+  `num_upload` int(11) default 0 COMMENT '作品数',
+  `user_href` varchar(128) default NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_recipe_upload`
+-- 用户在菜谱下上传的作品
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_recipe_upload`;
+CREATE TABLE `xiachufang_recipe_upload`(
+  `upid` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `recipe_id` int(11) default NULL,
+  `date_upload` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY  (`upid`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_menu_collect`
+-- 用户收藏的菜单
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_menu_collect`;
+CREATE TABLE `xiachufang_menu_collect`(
+  `mcid` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `menu_id` int(11) default NULL,
+  `date_collect` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '收藏创建时间',
+  PRIMARY KEY  (`mcid`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_user_concern`
+-- 关注的人
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_user_concern`;
+CREATE TABLE `xiachufang_user_concern`(
+  `cid` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL COMMENT '用户ID',
+  `user_concern_id` int(11) default NULL COMMENT '被关注的用户ID',
+  PRIMARY KEY  (`cid`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_menu`
+-- 菜单
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_menu`;
+CREATE TABLE `xiachufang_menu` (
+  `mid` int(11) NOT NULL auto_increment,
+  `menu_title`  varchar(64) default NULL,
+  `menu_details`  varchar(1024) default NULL COMMENT '菜单描述',
+  `cover_img` varchar(128) default NULL COMMENT '菜单封面',
+  `num_collected` int(8) default NULL COMMENT '收藏人数',
+  `num_contains` int(8) default NULL COMMENT '包含菜谱数',
+  `user_id` int(11) default NULL,
+  `menu_href` varchar(128) default NULL,
+  `date_created`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `date_changed`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY  (`mid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_menu_contains`
+-- 菜单详情
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_menu_contains`;
+CREATE TABLE `xiachufang_menu_contains` (
+  `cid` int(11) NOT NULL auto_increment,
+  `menu_id` int(11) default NULL,
+  `recipe_id` int(11) default NULL,
+  PRIMARY KEY  (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_category`
+-- 食材（肉类，水产，蔬菜，水果）
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_category`;
+CREATE TABLE `xiachufang_category`(
+  `fid` int(11) NOT NULL auto_increment,
+  `fname` varchar(32) default NULL,
+  `food_img` varchar(128) default NULL,
+  `score` decimal(3,1) default NULL,
+  `is_season` tinyint(1) default NULL COMMENT '时令食材',
+  `food_categary` VARCHAR(32) default NULL COMMENT '类别',
+  `category_href` varchar(128) default NULL,
+  PRIMARY KEY  (`fid`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `xiachufang_search`
+-- 搜菜谱，搜菜单，搜用户
+-- select count(*) from xiachufang_search where date_visited between CURDATE()-interval 7 day;7天内访问次数
+-- ----------------------------
+DROP TABLE IF EXISTS `xiachufang_search`;
+CREATE TABLE `xiachufang_search`(
+  `sid` int(11) NOT NULL auto_increment,
+  `recipe_id_search` int(11) default NULL,
+  `menu_id_search` int(11) default NULL,
+  `user_id_search` int(11) default NULL,
+  `date_visited`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '搜索时间',
+  PRIMARY KEY  (`sid`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+INSERT INTO `xiachufang_headline` VALUES (NULL,'1','2019-10-10');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'2','2019-10-9');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'3','2019-10-8');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'4','2019-10-7');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'5','2019-10-6');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'16','2019-10-11');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'19','2019-10-12');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'8','2019-10-13');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'36','2019-10-14');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'26','2019-10-15');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'78','2019-10-16');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'66','2019-10-17');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'77','2019-10-18');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'25','2019-10-19');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'35','2019-10-20');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'46','2019-10-21');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'95','2019-10-22');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'108','2019-10-23');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'163','2019-10-24');
+INSERT INTO `xiachufang_headline` VALUES (NULL,'134','2019-10-25');
 
 INSERT INTO `xiachufang_recipe` VALUES ('1','凉拌金针菇','/img/recipe/44d0e5a6aa124a26b3acd9363a3ae2b7_972w_1296h.jpg','金针菇、青辣椒、红辣椒、葱姜蒜、醋、生抽、盐、香油、蒜','33','195','7.8','4','2019-08-18 22:25:15','null','null','98973','/recipe/104018067/');
 INSERT INTO `xiachufang_recipe` VALUES ('2','停不下来的秘制凉拌鸡爪','/img/recipe/eb6086d62f6b4275b610d63b86093d67_1242w_1242h.jpg','鸡爪、小米椒、线椒、大蒜、冰糖、柠檬、生抽、醋、蚝油、姜、花椒','26','283','8.4','5','2019-08-16 20:03:32','null','null','52574','/recipe/104013468/');
@@ -230,27 +350,6 @@ INSERT INTO `xiachufang_recipe` VALUES ('161','香酥烤猪蹄','/img/recipe/0a4
 INSERT INTO `xiachufang_recipe` VALUES ('162','奶白鲫鱼汤','/img/recipe/29811e3d0bc44bceae84711da3706134_1152w_864h.jpg','鲫鱼、姜片、盐、小葱、香菜','3','63','8','153','2019-04-15 23:20:29','null','null','3732','/recipe/103773392/');
 INSERT INTO `xiachufang_recipe` VALUES ('163','冰皮月饼（零失败）','/img/recipe/6ebaf12c895111e6a9a10242ac110002_1225w_751h.jpg','糯米粉、粘米粉、澄面粉、牛奶、糖粉、玉米油（或无味的油）、莲蓉馅（或其他）、咸蛋黄、熟糯米粉','5','1028','8','154','2015-08-06 16:22:25','null','null','59198','/recipe/100539019/');
 INSERT INTO `xiachufang_recipe` VALUES ('164','肉末豆腐','/img/recipe/4aa8f19d8e094dfea478d7ae21b804f3_1242w_1646h.jpg','肉末、豆腐、葱、豆瓣酱、耗油、小米椒、盐、生抽、清水','0','41','6.4','155','2019-08-04 14:28:24','null','null','13971','/recipe/103964653/');
-
-
--- ----------------------------
--- Table structure for `xiachufang_user`
--- 用户表
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_user`;
-CREATE TABLE `xiachufang_user` (
-  `uid` int(11) NOT NULL auto_increment,
-  `tel` varchar(16) default NULL,
-  `password` varchar(32) default NULL,
-  `uname` varchar(32) default NULL,
-  `avatar` varchar(128) default 'img/cooker/default.png',
-  `date_registe`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
-  `num_concern` int(11) default 0 COMMENT '关注数',
-  `num_concerned` int(11) default 0 COMMENT '被关注数',
-  `num_recipe` int(11) default 0 COMMENT '创建菜谱数',
-  `num_upload` int(11) default 0 COMMENT '作品数',
-  `user_href` varchar(128) default NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO `xiachufang_user` VALUES (null,'18162536357','123456','ali','img/avatar/default.png',null,'0','0','0','0',null);
 INSERT INTO `xiachufang_user` VALUES (null,'13405228240','123456','xujing','img/avatar/default.png',null,'0','0','0','0',null);
@@ -605,19 +704,6 @@ INSERT INTO `xiachufang_user` VALUES (null,'18152048742','123456','手机用户8
 INSERT INTO `xiachufang_user` VALUES (null,'13405226601','123456','容遥遥','img/avatar/c6621b4a8a20488a84efed06730d0d3d_160w_160h.jpg',null,'110','1353','131','1417','/cook/100199712/');
 INSERT INTO `xiachufang_user` VALUES (null,'13405221251','123456','lazo','img/avatar/5f84ee9c104711e7947d0242ac110002_1080w_1074h.jpg',null,'0','3','1','5','/cook/114567064/');
 
--- ----------------------------
--- Table structure for `xiachufang_recipe_upload`
--- 用户在菜谱下上传的作品
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_recipe_upload`;
-CREATE TABLE `xiachufang_recipe_upload`(
-  `upid` int(11) NOT NULL auto_increment,
-  `user_id` int(11) default NULL,
-  `recipe_id` int(11) default NULL,
-  `date_upload` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY  (`upid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '6', '12', CURRENT_TIMESTAMP);
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '15', '11', CURRENT_TIMESTAMP);
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '13', '23', CURRENT_TIMESTAMP);
@@ -637,31 +723,6 @@ INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '40', '69', CURRENT_TIMESTA
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '63', '73', CURRENT_TIMESTAMP);
 INSERT INTO `xiachufang_recipe_upload` VALUES (NULL, '27', '27', CURRENT_TIMESTAMP);
 
--- ----------------------------
--- Table structure for `xiachufang_menu_collect`
--- 用户收藏的菜单
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_menu_collect`;
-CREATE TABLE `xiachufang_menu_collect`(
-  `mcid` int(11) NOT NULL auto_increment,
-  `user_id` int(11) default NULL,
-  `menu_id` int(11) default NULL,
-  `date_collect` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '收藏创建时间',
-  PRIMARY KEY  (`mcid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for `xiachufang_user_concern`
--- 关注的人
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_user_concern`;
-CREATE TABLE `xiachufang_user_concern`(
-  `cid` int(11) NOT NULL auto_increment,
-  `user_id` int(11) default NULL COMMENT '用户ID',
-  `user_concern_id` int(11) default NULL COMMENT '被关注的用户ID',
-  PRIMARY KEY  (`cid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
 INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '1');
 INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '2');
 INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '3');
@@ -672,26 +733,6 @@ INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '7');
 INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '8');
 INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '9');
 INSERT INTO `xiachufang_user_concern` VALUES (NULL, '1', '10');
-
-
--- ----------------------------
--- Table structure for `xiachufang_menu`
--- 菜单
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_menu`;
-CREATE TABLE `xiachufang_menu` (
-  `mid` int(11) NOT NULL auto_increment,
-  `menu_title`  varchar(64) default NULL,
-  `menu_details`  varchar(1024) default NULL COMMENT '菜单描述',
-  `cover_img` varchar(128) default NULL COMMENT '菜单封面',
-  `num_collected` int(8) default NULL COMMENT '收藏人数',
-  `num_contains` int(8) default NULL COMMENT '包含菜谱数',
-  `user_id` int(11) default NULL,
-  `menu_href` varchar(128) default NULL,
-  `date_created`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `date_changed`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-  PRIMARY KEY  (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO `xiachufang_menu` VALUES (null,'健身期间吃什么','摒弃掉之前的节食减肥开始健身希望能坚持','img/menu/b4153e6e879711e6a9a10242ac110002_640w_427h.jpg','49','14','156','/recipe_list/102421786/','3年前','3年前');
 INSERT INTO `xiachufang_menu` VALUES (null,'吃个饭简单点','在我心目中的比较容易做的菜~可以进便当的那种','img/menu/ce91790c882211e6b87c0242ac110003_650w_650h.jpg','28','72','157','/recipe_list/102697153/','3年前','1年前');
@@ -1006,19 +1047,6 @@ INSERT INTO `xiachufang_menu` VALUES (null,'宴客菜','过年过节露一手！
 选主菜：天上（鸡鸭等）地下（猪牛羊等）水中（鱼虾蟹贝等）','img/menu/50c847a8e4b14a1b84c297ef04ae5cfa_1024w_683h.jpg','183','44','351','/recipe_list/102395272/','3年前','1年前');
 INSERT INTO `xiachufang_menu` VALUES (null,'空气炸锅菜单','试验','img/menu/b0e1d4568a2011e6b87c0242ac110003_4608w_3072h.jpg','104','14','352','/recipe_list/104120256/','2年前','2年前');
 
-
--- ----------------------------
--- Table structure for `xiachufang_menu_contains`
--- 菜单详情
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_menu_contains`;
-CREATE TABLE `xiachufang_menu_contains` (
-  `cid` int(11) NOT NULL auto_increment,
-  `menu_id` int(11) default NULL,
-  `recipe_id` int(11) default NULL,
-  PRIMARY KEY  (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
 INSERT INTO xiachufang_menu_contains VALUES (NULL,1,3);
 INSERT INTO xiachufang_menu_contains VALUES (NULL,1,4);
 INSERT INTO xiachufang_menu_contains VALUES (NULL,1,5);
@@ -1029,22 +1057,6 @@ INSERT INTO xiachufang_menu_contains VALUES (NULL,2,4);
 INSERT INTO xiachufang_menu_contains VALUES (NULL,2,5);
 INSERT INTO xiachufang_menu_contains VALUES (NULL,2,6);
 INSERT INTO xiachufang_menu_contains VALUES (NULL,2,7);
-
--- ----------------------------
--- Table structure for `xiachufang_category`
--- 食材（肉类，水产，蔬菜，水果）
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_category`;
-CREATE TABLE `xiachufang_category`(
-  `fid` int(11) NOT NULL auto_increment,
-  `fname` varchar(32) default NULL,
-  `food_img` varchar(128) default NULL,
-  `score` decimal(3,1) default NULL,
-  `is_season` tinyint(1) default NULL COMMENT '时令食材',
-  `food_categary` VARCHAR(32) default NULL COMMENT '类别',
-  `category_href` varchar(128) default NULL,
-  PRIMARY KEY  (`fid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO `xiachufang_category` VALUES (NULL,'猪肉','img/category/01e098617c9211e58dc39dc38687f4d3.jpg',NULL,NULL,'猪','/category/731/');
 INSERT INTO `xiachufang_category` VALUES (NULL,'家常菜',NULL,NULL,NULL,'菜式','/category/40076/');
@@ -1611,21 +1623,6 @@ INSERT INTO `xiachufang_category` VALUES (NULL,'泡萝卜','img/category/07a7123
 INSERT INTO `xiachufang_category` VALUES (NULL,'咸黄瓜','img/category/3b20b8647c9211e5b66ab82a72e00100.jpg',NULL,NULL,'腌咸制品','/category/3094/');
 INSERT INTO `xiachufang_category` VALUES (NULL,'叉烧',NULL,NULL,NULL,'腌咸制品','/category/1011415/');
 INSERT INTO `xiachufang_category` VALUES (NULL,'酸豆角',NULL,NULL,NULL,'腌咸制品','/category/1007639/');
-
--- ----------------------------
--- Table structure for `xiachufang_search`
--- 搜菜谱，搜菜单，搜用户
--- select count(*) from xiachufang_search where date_visited between CURDATE()-interval 7 day;7天内访问次数
--- ----------------------------
-DROP TABLE IF EXISTS `xiachufang_search`;
-CREATE TABLE `xiachufang_search`(
-  `sid` int(11) NOT NULL auto_increment,
-  `recipe_id_search` int(11) default NULL,
-  `menu_id_search` int(11) default NULL,
-  `user_id_search` int(11) default NULL,
-  `date_visited`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '搜索时间',
-  PRIMARY KEY  (`sid`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO `xiachufang_search` VALUES (NULL,NULL,'131',NULL,NULL);
 INSERT INTO `xiachufang_search` VALUES (NULL,'126',NULL,'126',NULL);
