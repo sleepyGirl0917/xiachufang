@@ -189,7 +189,7 @@ $(function () {
     }, 1000);
     // 向服务器发送请求
     $.ajax({
-      url:"/user/code",
+      url:"/api/user/code",
       type:"post",
       data:{tel:$("input.tel").val()},
       dataType:"json",
@@ -264,7 +264,7 @@ $(function () {
     }
     // 5、向服务器发送注册请求
     $.ajax({
-      url:"/user/registe",
+      url:"/api/user/registe",
       type:"post",
       data:{
         tel:$("input.tel").val(),
@@ -337,7 +337,7 @@ $(function () {
     }
     // 7、向服务器发送登录请求
     $.ajax({
-      url: "/user/login",
+      url: "/api/user/login",
       type:"post",
       data:{
         tel:$("input.tel").val(),

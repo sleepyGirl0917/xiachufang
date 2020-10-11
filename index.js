@@ -8,7 +8,7 @@ const exploreRouter = require('./routes/explore.router');
 
 // 创建web服务器
 var server = express();
-server.listen(3002, () =>{
+server.listen(3002, () => {
   console.log('server is running on port 3002')
 });
 
@@ -17,7 +17,7 @@ server.all('*', (req, res, next) => {
   res.header("Access-Control-Allow-Origin", req.headers.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Credentials", true); 
+  res.header("Access-Control-Allow-Credentials", true);
   if (req.method === 'OPTIONS') {
     res.sendStatus(200);
   } else {
@@ -39,11 +39,11 @@ server.use(session({
 server.use(express.static('public'));
 
 // 使用body-parser中间件将post请求数据解析为对象
-server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser.urlencoded({ extended: false }));
 
 // 挂载路由
-server.use('/user', userRouter);
-server.use('/search', searchRouter);
-server.use('/explore', exploreRouter);
-server.use(indexRouter);
+server.use('/api/user', userRouter);
+server.use('/api/search', searchRouter);
+server.use('/api/explore', exploreRouter);
+server.use('/api', indexRouter);
 

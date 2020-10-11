@@ -1,7 +1,7 @@
 $(function () {
   // 是否登录
   $.ajax({
-    url: "/user/islogin",
+    url: "/api/user/islogin",
     type: "get",
     xhrFields: {
       withCredentials: true
@@ -41,7 +41,7 @@ $(function () {
         $('[href="/logout.html"]').click(function (e) {
           e.preventDefault();
           $.ajax({
-            url: "/user/logout",
+            url: "/api/user/logout",
             type: "get",
             xhrFields: {
               withCredentials: true
@@ -152,7 +152,7 @@ $(".cooker-search input[type=submit]").click(function () {
 $(window).on('load', function () {
   // 获取用户关注列表
   $.ajax({
-    url: "/user/concernlist",
+    url: "/api/user/concernlist",
     type: "get",
     xhrFields: {
       withCredentials: true
@@ -181,7 +181,7 @@ $(window).on('load', function () {
         if (status == 'true' ) {
           // 已关注：点击发送取消关注请求
           $.ajax({
-            url: "/user/delconcern",
+            url: "/api/user/delconcern",
             type: "get",
             data: "cookerId=" + cookerId,
             xhrFields: {
@@ -197,7 +197,7 @@ $(window).on('load', function () {
         } else {
           // 未关注：点击发送关注请求
           $.ajax({
-            url: "/user/addconcern",
+            url: "/api/user/addconcern",
             type: "get",
             data: "cookerId=" + cookerId,
             xhrFields: {
@@ -239,7 +239,7 @@ function getHeight($img, n = 0.6) {
 function isLogin(){
   var loginStatus;
   $.ajax({
-    url: "/user/islogin",
+    url: "/api/user/islogin",
     type: "get",
     async:false,
     xhrFields: {

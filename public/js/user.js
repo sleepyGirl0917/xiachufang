@@ -1,6 +1,6 @@
 $(function () {
   $.ajax({
-    url: "/user/list",
+    url: "/api/user/list",
     type: "get",
     success: function (data) {
       // console.log(data);

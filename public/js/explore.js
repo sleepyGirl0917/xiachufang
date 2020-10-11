@@ -1,6 +1,6 @@
 $(function () {
   $.ajax({
-    url: "/index",
+    url: "/api/index",
     type: "get",
     success: function (data) {
       var { seasonItems } = data;
@@ -22,7 +22,7 @@ $(function () {
   if (location.search !== "") {
     if (param.class == 'head') { // /explore.html?class=head 往期头条
       $.ajax({
-        url: "/explore/head",
+        url: "/api/explore/head",
         type: "get",
         data: "pageSize=7&page=" + page,
         success: function (data) {
@@ -77,7 +77,7 @@ $(function () {
     }
     if (param.class == 'rising') { // /explore.html?class=rising 新秀菜谱
       $.ajax({
-        url: "/explore/rising",
+        url: "/api/explore/rising",
         type: "get",
         data: "pageSize=7&page=" + page,
         success: function (data) {
@@ -132,7 +132,7 @@ $(function () {
     }
     if (param.class == 'popmenu') { // /explore.html?class=popmenu 流行菜单
       $.ajax({
-        url: "/explore/popmenu",
+        url: "/api/explore/popmenu",
         type: "get",
         data: "pageSize=7&page=" + page,
         success: function (data) {
@@ -185,7 +185,7 @@ $(function () {
     }
   } else { // /explore.html 本周最受欢迎
     $.ajax({
-      url: "/explore/",
+      url: "/api/explore/",
       type: "get",
       data: "pageSize=7&page=" + page,
       success: function (data) {

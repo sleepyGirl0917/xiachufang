@@ -1,6 +1,6 @@
 $(function () {
   $.ajax({
-    url: "/index",
+    url: "/api/index",
     type: "get",
     success: function (data) {
       var { seasonItems } = data;
@@ -28,7 +28,7 @@ $(function () {
 
     // 向服务器发送请求
     $.ajax({
-      url: "/search",
+      url: "/api/search",
       type: "get",
       data: param,
       success: function (data) {

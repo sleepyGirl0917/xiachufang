@@ -1,7 +1,7 @@
 //仅DOM内容加载后就提前执行
 $(function () {
   $.ajax({
-    url: "/index",
+    url: "/api/index",
     type: "get",
     success: function (data) {
       // console.log(data);
